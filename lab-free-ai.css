@@ -1,0 +1,76 @@
+/* Free local AI: clear costs, compact comparison, no additional top-level menu. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.free-starter{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-block:24px}
+.free-starter article{display:flex;flex-direction:column;align-items:flex-start;padding:30px;background:#f5f5f7;border-radius:22px;min-width:0}
+.starter-number{color:#626269;font-size:13px;font-weight:600;letter-spacing:.025em}
+.free-starter h4{font-size:25px;letter-spacing:-.035em;line-height:1.35;margin:22px 0 12px}
+.free-starter p{font-size:15px;line-height:1.8;margin:0 0 22px;color:#626269}
+.free-starter article>a:first-of-type{margin-top:auto}
+.free-starter a{font-size:14px;text-underline-offset:4px;min-height:32px;display:inline-flex;align-items:center}
+.free-starter .btn,.starter-guide{margin-top:12px;font-size:14px}
+span.starter-guide{color:#626269;line-height:1.7;min-height:44px;display:flex;align-items:center}
+.cost-footnote{font-size:13px;color:#626269;line-height:1.9;max-width:960px;margin:18px 0 24px}
+#freeStarterStatus{font-size:14px;line-height:1.8;color:#005bb5}
+#freeStarterStatus:empty{display:none}
+.cost-explainer{margin:20px 0 4px;max-width:920px}
+.cost-explainer>div{display:grid;grid-template-columns:210px minmax(0,1fr);gap:24px;padding:18px 0;border-top:1px solid #e5e5e8}
+.cost-explainer dt{font-weight:600;font-size:15px;color:#1d1d1f}
+.cost-explainer dd{margin:0;font-size:15px;line-height:1.9}
+.model-comparison-note{color:#626269;font-size:15px;line-height:1.8;max-width:840px;margin:0 0 24px}
+#models .model-filter{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:22px}
+#models .model-filter label{display:flex;flex-direction:column;gap:8px;font-size:13px;color:#626269;min-width:0}
+#models .model-filter select{min-height:44px;font:inherit;font-size:14px;color:#1d1d1f;background:#fff;border:1px solid #d2d2d7;border-radius:9px;padding:9px 12px;max-width:100%}
+#modelCount{flex:1 1 180px;line-height:1.6;font-size:13px}
+.free-model-table{width:100%;min-width:0;table-layout:fixed}
+.free-model-table th:nth-child(1){width:6%}
+.free-model-table th:nth-child(2){width:21%}
+.free-model-table th:nth-child(3){width:21%}
+.free-model-table th:nth-child(4){width:28%}
+.free-model-table th:nth-child(5){width:24%}
+.free-model-table th,.free-model-table td{padding:20px 14px;font-size:14px;vertical-align:top;overflow-wrap:anywhere;word-break:normal}
+.free-model-table small{display:block;color:#626269;font-size:12px;line-height:1.8;margin-top:7px}
+.free-model-table a{color:#005bb5;text-underline-offset:3px}
+.free-model-table b{font-size:15px;line-height:1.6;color:#1d1d1f}
+.free-model-table code{display:block;white-space:normal;font-size:12px;line-height:1.8;background:#f5f5f7;padding:8px;margin-top:10px;border-radius:6px;overflow-wrap:anywhere;color:#363638}
+.free-model-table .brand-name{display:inline-flex;align-items:flex-start;gap:7px}
+.free-model-table .brand-logo{width:21px;height:21px;flex-basis:21px}
+.cost-label{font-size:14px;color:#1d1d1f;font-weight:600}
+.cost-caution{color:#79531d}
+.free-model-table tr[hidden]{display:none!important}
+.free-setup{list-style:none;counter-reset:setup;max-width:960px;padding:0;margin:16px 0 32px}
+.free-setup>li{counter-increment:setup;display:grid;grid-template-columns:40px minmax(0,1fr);gap:22px;padding:30px 0;border-bottom:1px solid #e5e5e8}
+.free-setup>li:before{content:counter(setup);font-size:16px;border:1px solid #d2d2d7;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;color:#626269}
+.free-setup h4{font-size:21px;letter-spacing:-.025em;line-height:1.5;margin:2px 0 12px}
+.free-setup p{font-size:15px;line-height:1.9;margin:12px 0;overflow-wrap:anywhere}
+.free-setup code{font-size:13px;overflow-wrap:anywhere}
+.copy-command{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;border-radius:12px;background:#f5f5f7}
+.copy-command code{font-size:14px;color:#1d1d1f;white-space:normal}
+.copy-command .btn{white-space:nowrap;flex-shrink:0}
+.free-plan-entry{display:flex;align-items:center;flex-wrap:wrap;gap:14px 22px;margin-top:28px;padding:20px 24px;border:1px solid #e5e5e8;border-radius:16px}
+.free-plan-entry>div{flex:1 1 270px}
+.free-plan-entry strong{display:block;font-size:15px;font-weight:600}
+.free-plan-entry span{display:block;color:#626269;font-size:13px;line-height:1.7;margin-top:7px}
+.free-plan-entry a{font-size:14px;text-underline-offset:4px}
+.tool-cost{display:block;font-size:12px;line-height:1.7;color:#626269;margin-top:6px}
+@media(max-width:1000px){.free-starter{gap:14px}.free-starter article{padding:24px}.free-starter h4{font-size:22px}}
+@media(max-width:760px){
+  .free-starter{grid-template-columns:1fr;gap:16px}
+  .free-starter article{padding:26px}.free-starter h4{margin-top:14px}
+  .cost-explainer>div{grid-template-columns:1fr;gap:8px}
+  #models .model-filter{gap:14px 12px}#models .model-filter label{flex:1 1 130px}
+  #models .model-filter label:first-child{flex-basis:100%}
+  #models .model-filter select{width:100%}#modelCount{flex-basis:100%;padding-bottom:0}
+  .free-model-wrap{border:0;border-radius:0;overflow:visible}
+  .free-model-table,.free-model-table tbody{display:block;width:100%}
+  .free-model-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  .free-model-table tr{display:block;background:#f5f5f7;border-radius:18px;margin:0 0 16px;padding:22px}
+  .free-model-table td{display:block;padding:0 0 16px;border:0;white-space:normal}
+  .free-model-table td:first-child{padding-bottom:10px;font-size:12px;font-weight:600;color:#626269}
+  .free-model-table td:nth-child(2) b{font-size:20px}.free-model-table td:nth-child(2) small{margin-top:5px}
+  .free-model-table td:nth-child(n+3):before{content:attr(data-label);display:block;font-size:12px;color:#626269;margin-bottom:5px}
+  .free-model-table td:last-child{padding-bottom:0}.free-model-table code{background:#fff;padding:10px}
+  .free-setup>li{grid-template-columns:28px minmax(0,1fr);gap:16px;padding:26px 0}
+  .free-setup>li:before{width:27px;height:27px;font-size:13px}.free-setup h4{font-size:20px;margin-top:0}
+  .copy-command{flex-wrap:wrap;padding:16px;gap:12px}.copy-command .btn{min-height:44px}
+  .free-plan-entry{padding:20px}.free-plan-entry>div{flex-basis:100%}
+}

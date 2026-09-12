@@ -1,12 +1,16 @@
 (() => {
   const groups = [
     {name:'시작하기',pages:[['plan','내 설치 계획'],['macbook','기기 준비'],['start','첫날 설치'],['storage','장비·저장공간']]},
-    {name:'도구 선택',pages:[['models','모델 비교'],['dictation','받아쓰기 앱']]},
+    {name:'도구 선택',pages:[['models','무료 AI · 모델'],['dictation','받아쓰기 앱']]},
     {name:'활용·운영',pages:[['workflows','실사용·홈서버'],['architecture','Hermes 팀 구성'],['remote','원격 접속']]},
     {name:'참고자료',pages:[['reviews','사용 후기'],['sources','공식 출처']]},
     {name:'용어집',pages:[['glossary','용어 찾기']]}
   ];
   const terms = [
+    ['무료 로컬 AI','무료 모델 · 사용료 0원','기본','모델을 내려받아 내 기기에서 추론하면 외부 모델 API 요금이 들지 않는 구성. 하드웨어·전기 비용, 유료 부가 도구와 라이선스 제한은 별개입니다.','models'],
+    ['라이선스','License · Apache 2.0 · MIT · NC','기본','모델을 어떤 조건으로 사용·수정·배포할 수 있는지 정한 규칙. 무료 다운로드와 상업 이용 허용은 다릅니다. 정확한 모델 버전의 원문을 확인하세요.','models'],
+    ['오픈 웨이트','Open weights · 공개 가중치','모델','모델 가중치 파일이 공개되어 있다는 뜻입니다. 제한 없는 오픈 소스나 무료 상업 이용을 자동으로 뜻하지는 않습니다.','models'],
+    ['폴백','Fallback · 보조 모델','에이전트','주 모델이 실패했을 때 다른 제공자로 넘기는 경로. 로컬 AI라도 유료 클라우드 폴백이나 보조 작업을 연결하면 요금이 발생할 수 있습니다.','models'],
     ['LLM','대규모 언어 모델','모델','글을 읽고 답하거나 작성하는 모델. 에이전트가 작업을 판단할 때 사용하는 두뇌 역할입니다.','models'],
     ['로컬 AI','내 기기에서 처리','기본','모델을 내 컴퓨터에서 실행하는 방식. 앱에 클라우드 후처리가 켜져 있으면 일부 데이터는 외부로 나갈 수 있습니다.','models'],
     ['추론','Inference','모델','학습된 모델에 입력을 넣어 답이나 결과물을 만드는 과정입니다. 모델을 새로 학습시키는 것과는 다릅니다.','models'],
@@ -86,14 +90,15 @@
   input.addEventListener('input',renderTerms);category.addEventListener('change',renderTerms);
   document.getElementById('clearTerms').addEventListener('click',()=>{input.value='';category.value='';renderTerms();input.focus()});renderTerms();
   const modelTable=document.querySelector('#models table');
-  document.querySelector('#models .section-head p').textContent='32GB 구성을 위한 비교 후보입니다. 추천은 가이드의 판단이며, 이 기기에서 실측한 성능 순위는 아닙니다.';
-  const filter=document.createElement('div');filter.className='model-filter';filter.innerHTML='<label>모델 분야<select id="modelCategory"><option value="">전체 분야</option></select></label><span id="modelCount" role="status" aria-live="polite"></span>';
+  const filter=document.createElement('div');filter.className='model-filter';filter.innerHTML='<label>이용 기준<select id="modelAccess"><option value="local">무료 로컬 후보</option><option value="permissive">Apache / MIT만</option><option value="all">클라우드 포함 전체</option></select></label><label>개발사<select id="modelOrigin"><option value="">국내외 전체</option><option value="kr">국내 모델만</option></select></label><label>모델 분야<select id="modelCategory"><option value="">전체 분야</option></select></label><span id="modelCount" role="status" aria-live="polite"></span>';
   modelTable.parentNode.before(filter);
-  const rows=[...modelTable.tBodies[0].rows],modelSelect=filter.querySelector('select');
+  const rows=[...modelTable.tBodies[0].rows],modelSelect=filter.querySelector('#modelCategory'),modelAccess=filter.querySelector('#modelAccess'),modelOrigin=filter.querySelector('#modelOrigin');
+  rows.forEach(row=>[...row.cells].forEach((cell,i)=>cell.dataset.label=modelTable.tHead.rows[0].cells[i].textContent));
   const fieldNames={LLM:'대화·글쓰기',Image:'이미지',Video:'영상',ASR:'음성 인식',TTS:'음성 합성',OCR:'문자 인식',RAG:'문서 검색'};
   [...new Set(rows.map(r=>r.cells[0].textContent.trim()))].forEach(key=>{const o=document.createElement('option');o.value=key;o.textContent=fieldNames[key]+' · '+key;modelSelect.append(o)});
-  function filterModels(){let count=0;rows.forEach(r=>{r.hidden=!!modelSelect.value&&r.cells[0].textContent.trim()!==modelSelect.value;if(!r.hidden)count++});filter.querySelector('span').textContent=count+'개 모델'}
-  modelSelect.addEventListener('change',filterModels);filterModels();
+  function filterModels(){let count=0;rows.forEach(r=>{r.hidden=(!!modelSelect.value&&r.cells[0].textContent.trim()!==modelSelect.value)||(!!modelOrigin.value&&r.dataset.origin!==modelOrigin.value)||(modelAccess.value==='local'&&r.dataset.access==='cloud')||(modelAccess.value==='permissive'&&r.dataset.access!=='permissive');if(!r.hidden)count++});filter.querySelector('#modelCount').textContent=count?count+'개 모델 · 비용과 조건을 함께 확인':'해당 조건의 모델이 없습니다. 분야 또는 개발사를 전체로 바꿔보세요.'}
+  [modelSelect,modelAccess,modelOrigin].forEach(select=>select.addEventListener('change',filterModels));filterModels();
+  document.querySelectorAll('[data-copy-command]').forEach(button=>button.addEventListener('click',async()=>{const code=document.getElementById(button.dataset.copyCommand);try{await navigator.clipboard.writeText(code.textContent);button.textContent='복사됨';}catch{button.textContent='직접 선택해 복사';}setTimeout(()=>button.textContent='명령 복사',2500)}));
   const siteNote=document.createElement('p');siteNote.className='visitor-note';siteNote.textContent='Apple Silicon Mac · 메모리 32GB 구성을 중심으로 한 개인 구축 가이드입니다. 설치 목록은 이 브라우저에만 저장되며 계정 동기화나 실제 설치를 수행하지 않습니다. 모델·가격·지원 환경은 설치 전 공식 출처에서 확인하세요.';
   document.querySelector('.footer').before(siteNote);
 
@@ -127,14 +132,12 @@
   dialog.addEventListener('close',()=>{if(!searchNavigated&&searchReturnFocus?.isConnected)searchReturnFocus.focus({preventScroll:true})});
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();showSearch()}});
 
-  // Do not present unmeasured recommendation stars as benchmark scores.
-  if(modelTable.tHead.rows[0].cells.length===6){modelTable.tHead.rows[0].deleteCell(5);rows.forEach(row=>row.deleteCell(5))}
-  document.querySelector('#models .section-head p').textContent='작은 모델 하나로 시작하고, 결과가 부족할 때 더 큰 모델을 비교하세요. 실측 성능 순위가 아닌 설치 후보입니다.';
+  // Model recommendations describe fit and licensing, not unmeasured benchmark scores.
   const footer=document.querySelector('.footer');footer.replaceChildren();
   const footerName=document.createElement('span');footerName.textContent='Hermes Local Lab · 독립적인 개인 구축 가이드';
-  const footerDate=document.createElement('span');footerDate.textContent='문서·UI 검토 2026.09.11 · 기기 성능 실측 전';footer.append(footerName,footerDate);
+  const footerDate=document.createElement('span');footerDate.textContent='무료 AI 정보 보완 2026.09.12 · 기기 성능 실측 전';footer.append(footerName,footerDate);
   const policy=document.createElement('details');policy.className='editorial-detail source-policy';
-  policy.innerHTML='<summary>이 가이드의 확인 범위</summary><p>2026.09.11에 모델 카드, 설치 안내, 받아쓰기 처리 방식과 원격 도구 문서를 확인했습니다. 공식 지원 여부와 이 가이드의 선택 제안은 다릅니다. 다운로드 용량은 최대 메모리 사용량이 아니며, 한국어 정확도·속도는 이 맥미니에서 아직 측정하지 않았습니다.</p><p>가격은 결제 지역과 플랜에 따라 달라 고정 금액을 기재하지 않습니다. 무료 표시는 앱 또는 개인용 무료 플랜 기준입니다. 공식 링크는 해당 도구 설명과 함께 확인하세요.</p>';
+  policy.innerHTML='<summary>이 가이드의 확인 범위</summary><p>2026.09.12에는 무료 AI 후보의 모델 카드·라이선스·로컬 실행 범위와 설치 경로를 보완했습니다. 나머지 문서·UI 검토일은 2026.09.11입니다. 공식 지원 여부와 이 가이드의 선택 제안은 다릅니다. 다운로드 용량은 최대 메모리 사용량이 아니며, 한국어 정확도·속도는 이 맥미니에서 아직 측정하지 않았습니다.</p><p>모델 표의 0원은 내 기기에서 실행할 때의 모델·추론 사용료입니다. 전기·장비·외부 도구 비용과 라이선스 조건은 별개입니다. 실행 앱의 무료 범위와 네트워크 서비스의 개인용 무료 플랜도 구분합니다. 각 항목의 공식 출처에서 현행 조건을 확인하세요.</p>';
   document.querySelector('#sources .section-head').after(policy);
   // Short local outline: no extra top-level menu or sidebar.
   panels.forEach(panel=>{
@@ -158,7 +161,7 @@
   document.querySelectorAll('th').forEach(th=>th.scope='col');
   document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>document.querySelector('.panel.active h2')?.focus({preventScroll:true})));
   const skip=document.createElement('a');skip.href='#plan';skip.className='skip-content';skip.textContent='본문으로 이동';skip.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();document.querySelector('.panel.active h2')?.focus()});document.body.prepend(skip);
-  document.querySelectorAll('.table-wrap').forEach(wrap=>{if(wrap.closest('#dictation'))return;wrap.tabIndex=0;wrap.setAttribute('role','region');wrap.setAttribute('aria-label',(wrap.closest('.panel').querySelector('h2')?.textContent||'비교')+' 표, 좁은 화면에서는 좌우 스크롤');const hint=document.createElement('p');hint.className='table-scroll-hint';hint.textContent='표가 잘리면 좌우로 밀어서 확인하세요.';wrap.before(hint)});
+  document.querySelectorAll('.table-wrap').forEach(wrap=>{if(wrap.closest('#dictation')||wrap.classList.contains('free-model-wrap'))return;wrap.tabIndex=0;wrap.setAttribute('role','region');wrap.setAttribute('aria-label',(wrap.closest('.panel').querySelector('h2')?.textContent||'비교')+' 표, 좁은 화면에서는 좌우 스크롤');const hint=document.createElement('p');hint.className='table-scroll-hint';hint.textContent='표가 잘리면 좌우로 밀어서 확인하세요.';wrap.before(hint)});
   const updateChrome=()=>{
     const masthead=topbar.getBoundingClientRect().height;
     document.documentElement.style.setProperty('--masthead-height',masthead+'px');
