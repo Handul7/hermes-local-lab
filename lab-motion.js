@@ -104,7 +104,7 @@
     const summary=event.target.closest('summary');
     if(!summary||event.defaultPrevented||event.target.closest('a,button,input,select'))return;
     const detail=summary.parentElement;
-    if(detail.tagName!=='DETAILS'||!canAnimate())return;
+    if(detail.tagName!=='DETAILS'||detail.classList.contains('page-outline')||!canAnimate())return;
     event.preventDefault();
     const prior=detailsInFlight.get(detail);
     const height=detail.getBoundingClientRect().height;

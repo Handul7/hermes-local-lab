@@ -117,6 +117,22 @@
   document.body.append(dialog);
   const siteInput=dialog.querySelector('input'),searchResults=dialog.querySelector('#siteSearchResults');
   const pageIndex=groups.flatMap(g=>g.pages.filter(([id])=>id!=='glossary').map(([id,name])=>({id,name,group:g.name,text:document.getElementById(id).textContent.toLowerCase()})));
+  function revealSearchMatch(id,query){
+    if(!query)return false;
+    const panel=document.getElementById(id);
+    const match=[...panel.querySelectorAll('p,dd,dt,li,h3,h4,summary,td')].find(node=>node.textContent.toLowerCase().includes(query));
+    if(!match)return false;
+    document.querySelectorAll('.search-match').forEach(node=>node.classList.remove('search-match'));
+    const card=match.closest('.outcome-card');
+    if(card?.hidden)panel.querySelector('[aria-controls="'+card.id+'"]')?.click();
+    if(match.closest('tr')?.hidden&&id==='models'){
+      ['modelCategory','modelOrigin'].forEach(key=>{const select=document.getElementById(key);select.value='';select.dispatchEvent(new Event('change'))});
+    }
+    for(let detail=match.closest('details');detail;detail=detail.parentElement.closest('details'))detail.open=true;
+    match.classList.add('search-match');match.tabIndex=-1;
+    match.scrollIntoView({block:'start',behavior:'instant'});match.focus({preventScroll:true});
+    return true;
+  }
   function renderSearch(){
     const q=siteInput.value.trim().toLowerCase();searchResults.replaceChildren();
     const found=q?pageIndex.filter(p=>(p.name+' '+p.text).toLowerCase().includes(q)):pageIndex.filter(p=>['plan','start','models','dictation'].includes(p.id));
@@ -124,7 +140,7 @@
     const rank=(title,alias='')=>!q?0:title.toLowerCase()===q?6:title.toLowerCase().includes(q)?4:alias.toLowerCase().includes(q)?3:1;
     const matches=[...found.map(p=>({title:p.name,detail:p.group,id:p.id,rank:rank(p.name)})),...matchingTerms.map(t=>({title:t[0],detail:'용어 · '+t[1],id:'glossary',term:t[0],rank:rank(t[0],t[1])}))].sort((a,b)=>b.rank-a.rank).slice(0,10);
     dialog.querySelector('#siteSearchCount').textContent=q?(matches.length?'검색 결과 '+matches.length+'개'+(found.length+matchingTerms.length>10?' · 상위 10개 표시':''):'검색 결과가 없습니다. 더 짧은 단어나 용어로 다시 찾아보세요.'):'자주 찾는 가이드';
-    matches.forEach(m=>{const a=document.createElement('a');a.href='#'+m.id;const strong=document.createElement('strong');strong.textContent=m.title;const small=document.createElement('span');small.textContent=m.detail;a.append(strong,small);a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();e.stopPropagation();searchNavigated=true;dialog.close();if(m.term){input.value=m.term;category.value='';renderTerms()}openPanel(m.id);document.querySelector('#'+m.id+' h2')?.focus({preventScroll:true})});searchResults.append(a)});
+    matches.forEach(m=>{const a=document.createElement('a');a.href='#'+m.id;const strong=document.createElement('strong');strong.textContent=m.title;const small=document.createElement('span');small.textContent=m.detail;a.append(strong,small);a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();e.stopPropagation();searchNavigated=true;dialog.close();if(m.term){input.value=m.term;category.value='';renderTerms()}openPanel(m.id,true,false);if(!m.term&&revealSearchMatch(m.id,q))return;document.getElementById(m.id).scrollIntoView({block:'start',behavior:'instant'});document.querySelector('#'+m.id+' h2')?.focus({preventScroll:true})});searchResults.append(a)});
   }
   let searchReturnFocus,searchNavigated=false;
   function showSearch(){if(dialog.open)return;searchNavigated=false;searchReturnFocus=document.activeElement;renderSearch();dialog.showModal();siteInput.focus()}
@@ -148,12 +164,13 @@
     panel.querySelectorAll('h4').forEach(h=>h.setAttribute('aria-level','3'));
     const headings=[...panel.querySelectorAll(':scope > h3')];
     if(headings.length>=2){
-      const outline=document.createElement('nav');outline.className='page-outline';outline.setAttribute('aria-label','이 페이지에서');
-      const label=document.createElement('span');label.textContent='이 페이지에서';outline.append(label);
+      const outline=document.createElement('details');outline.className='page-outline';
+      const label=document.createElement('summary');label.textContent='이 페이지에서 · '+headings.length+'개 항목';outline.append(label);
+      const links=document.createElement('nav');links.setAttribute('aria-label','이 페이지에서');outline.append(links);
       headings.forEach(h=>{
         h.tabIndex=-1;h.classList.add('outline-target');
         const b=document.createElement('button');b.type='button';b.textContent=h.textContent;
-        b.addEventListener('click',()=>{h.scrollIntoView({block:'start',behavior:reduced()?'instant':'smooth'});h.focus({preventScroll:true})});outline.append(b);
+        b.addEventListener('click',()=>{outline.open=false;h.scrollIntoView({block:'start',behavior:reduced()?'instant':'smooth'});h.focus({preventScroll:true})});links.append(b);
       });
       panel.querySelector('.section-head')?.after(outline);
     }

@@ -7,7 +7,7 @@
 .outcome-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:24px 0 18px}
 .outcome-choice{min-width:0;min-height:78px;border:1px solid #d2d2d7;border-radius:12px;background:#fff;text-align:left;padding:15px 18px;color:#1d1d1f;cursor:pointer;font:inherit;transition:background 160ms,border-color 160ms}
 .outcome-choice strong{display:block;font-size:15px;font-weight:600}
-.outcome-choice span{display:block;font-size:12px;margin-top:6px;line-height:1.5;color:#626269}
+.outcome-choice span{display:block;font-size:13px;margin-top:6px;line-height:1.5;color:#626269}
 .outcome-choice:hover{background:#f5f5f7}
 .outcome-choice[aria-pressed="true"]{border-color:#1d1d1f;background:#f5f5f7;box-shadow:inset 0 0 0 1px #1d1d1f}
 .outcome-card{padding:32px;border:1px solid #e5e5e8;border-radius:20px;background:#fff;animation:outcome-in 180ms ease-out}
@@ -21,7 +21,12 @@
 .outcome-card .outcome-caption{font-size:12px;color:#626269;line-height:1.7;margin:12px 0 26px}
 .outcome-facts{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px}
 .outcome-facts dt{font-size:13px;font-weight:600;margin-bottom:7px}
-.outcome-facts dd{margin:0;color:#626269;font-size:14px;line-height:1.85}
+.outcome-facts dd{margin:0;color:#626269;font-size:15px;line-height:1.85}
+.outcome-caution{font-size:14px;line-height:1.85;color:#626269;margin:20px 0}
+.outcome-more{border-top:1px solid #e5e5e8;margin:20px 0 4px;padding:6px 0}
+.outcome-more>summary{font-size:15px;font-weight:600;min-height:44px;line-height:1.8;padding:9px 0;cursor:pointer;color:#1d1d1f}
+.outcome-more .outcome-facts{margin-top:18px}
+.outcome-more>a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;text-underline-offset:4px}
 .outcome-tradeoff{border-top:1px solid #e5e5e8;padding-top:22px;margin:24px 0 18px;font-size:14px;line-height:1.85;color:#626269}
 .outcome-tradeoff strong,.outcome-measure strong{display:block;font-size:13px;color:#1d1d1f;margin-bottom:5px;font-weight:600}
 .outcome-measure{font-size:14px;color:#626269;line-height:1.8;margin:0 0 18px}
