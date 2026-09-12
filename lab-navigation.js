@@ -15,6 +15,8 @@
     ['로컬 AI','내 기기에서 처리','기본','모델을 내 컴퓨터에서 실행하는 방식. 앱에 클라우드 후처리가 켜져 있으면 일부 데이터는 외부로 나갈 수 있습니다.','models'],
     ['추론','Inference','모델','학습된 모델에 입력을 넣어 답이나 결과물을 만드는 과정입니다. 모델을 새로 학습시키는 것과는 다릅니다.','models'],
     ['양자화','Quantization · Q4 · 4bit','모델','모델의 수치를 더 적은 비트로 표현해 메모리 사용량을 줄이는 방식. 정확도나 속도가 달라질 수 있습니다.','models'],
+    ['GGUF','양자화 모델 파일 형식','모델','Ollama·LM Studio·llama.cpp 등에서 사용하는 모델 파일 형식. 파일이 있어도 실행기의 모델 구조 지원·채팅 템플릿·도구 호출을 따로 확인해야 합니다.','models'],
+    ['활성 파라미터','MoE · A3B · A4B','모델','한 토큰을 처리할 때 사용하는 파라미터 규모입니다. 전체 가중치 크기나 필요한 메모리와 같지 않습니다. 30B-A3B를 3B 모델의 메모리로 계산하지 마세요.','models'],
     ['B · 파라미터','14B · 30B','모델','B는 10억을 뜻합니다. 14B는 약 140억 개 파라미터이며, 파일 크기나 필요한 메모리와 같은 숫자는 아닙니다.','models'],
     ['토큰','Token','모델','모델이 글을 처리하는 조각 단위. 한 글자나 한 단어와 항상 일치하지 않습니다.','models'],
     ['컨텍스트','Context window','모델','한 번에 참고할 수 있는 입력과 대화의 범위. 길어지면 메모리 사용량도 늘 수 있습니다.','models'],
@@ -90,14 +92,14 @@
   input.addEventListener('input',renderTerms);category.addEventListener('change',renderTerms);
   document.getElementById('clearTerms').addEventListener('click',()=>{input.value='';category.value='';renderTerms();input.focus()});renderTerms();
   const modelTable=document.querySelector('#models table');
-  const filter=document.createElement('div');filter.className='model-filter';filter.innerHTML='<label>이용 기준<select id="modelAccess"><option value="local">무료 로컬 후보</option><option value="permissive">Apache / MIT만</option><option value="all">클라우드 포함 전체</option></select></label><label>개발사<select id="modelOrigin"><option value="">국내외 전체</option><option value="kr">국내 모델만</option></select></label><label>모델 분야<select id="modelCategory"><option value="">전체 분야</option></select></label><span id="modelCount" role="status" aria-live="polite"></span>';
+  const filter=document.createElement('div');filter.className='model-filter';filter.innerHTML='<label>모델 분야<select id="modelCategory"><option value="">연관 기능 포함 전체</option></select></label><label>개발사<select id="modelOrigin"><option value="">국내외 전체</option><option value="kr">국내 모델만</option><option value="global">해외 모델만</option></select></label><span id="modelCount" role="status" aria-live="polite"></span>';
   modelTable.parentNode.before(filter);
-  const rows=[...modelTable.tBodies[0].rows],modelSelect=filter.querySelector('#modelCategory'),modelAccess=filter.querySelector('#modelAccess'),modelOrigin=filter.querySelector('#modelOrigin');
+  const rows=[...modelTable.tBodies[0].rows],modelSelect=filter.querySelector('#modelCategory'),modelOrigin=filter.querySelector('#modelOrigin');
   rows.forEach(row=>[...row.cells].forEach((cell,i)=>cell.dataset.label=modelTable.tHead.rows[0].cells[i].textContent));
   const fieldNames={LLM:'대화·글쓰기',Image:'이미지',Video:'영상',ASR:'음성 인식',TTS:'음성 합성',OCR:'문자 인식',RAG:'문서 검색'};
   [...new Set(rows.map(r=>r.cells[0].textContent.trim()))].forEach(key=>{const o=document.createElement('option');o.value=key;o.textContent=fieldNames[key]+' · '+key;modelSelect.append(o)});
-  function filterModels(){let count=0;rows.forEach(r=>{r.hidden=(!!modelSelect.value&&r.cells[0].textContent.trim()!==modelSelect.value)||(!!modelOrigin.value&&r.dataset.origin!==modelOrigin.value)||(modelAccess.value==='local'&&r.dataset.access==='cloud')||(modelAccess.value==='permissive'&&r.dataset.access!=='permissive');if(!r.hidden)count++});filter.querySelector('#modelCount').textContent=count?count+'개 모델 · 비용과 조건을 함께 확인':'해당 조건의 모델이 없습니다. 분야 또는 개발사를 전체로 바꿔보세요.'}
-  [modelSelect,modelAccess,modelOrigin].forEach(select=>select.addEventListener('change',filterModels));filterModels();
+  function filterModels(){let count=0;rows.forEach(r=>{r.hidden=(!!modelSelect.value&&r.cells[0].textContent.trim()!==modelSelect.value)||(!!modelOrigin.value&&r.dataset.origin!==modelOrigin.value);if(!r.hidden)count++});filter.querySelector('#modelCount').textContent=count?count+'개 실사용 후보 · 설치 경로 확인 / 실기기 검증 전':'해당 조건의 모델이 없습니다. 분야 또는 개발사를 전체로 바꿔보세요.'}
+  modelSelect.value='LLM';[modelSelect,modelOrigin].forEach(select=>select.addEventListener('change',filterModels));filterModels();
   document.querySelectorAll('[data-copy-command]').forEach(button=>button.addEventListener('click',async()=>{const code=document.getElementById(button.dataset.copyCommand);try{await navigator.clipboard.writeText(code.textContent);button.textContent='복사됨';}catch{button.textContent='직접 선택해 복사';}setTimeout(()=>button.textContent='명령 복사',2500)}));
   const siteNote=document.createElement('p');siteNote.className='visitor-note';siteNote.textContent='Apple Silicon Mac · 메모리 32GB 구성을 중심으로 한 개인 구축 가이드입니다. 설치 목록은 이 브라우저에만 저장되며 계정 동기화나 실제 설치를 수행하지 않습니다. 모델·가격·지원 환경은 설치 전 공식 출처에서 확인하세요.';
   document.querySelector('.footer').before(siteNote);

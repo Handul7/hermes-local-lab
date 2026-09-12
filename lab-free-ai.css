@@ -1,3 +1,4 @@
+.model-pick-ready .model-pick{display:inline-flex}
 /* Free local AI: clear costs, compact comparison, no additional top-level menu. */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .free-starter{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-block:24px}
@@ -74,3 +75,20 @@ span.starter-guide{color:#626269;line-height:1.7;min-height:44px;display:flex;al
   .copy-command{flex-wrap:wrap;padding:16px;gap:12px}.copy-command .btn{min-height:44px}
   .free-plan-entry{padding:20px}.free-plan-entry>div{flex-basis:100%}
 }
+
+/* One chooser connects model comparison, installation and the personal plan. */
+.model-pick{display:none;min-height:44px;margin-top:12px;font-size:12px}
+.model-installer{padding:24px;border:1px solid #d2d2d7;border-radius:18px;margin-block:20px;scroll-margin-top:210px}
+.model-installer>label{display:block;font-size:14px;font-weight:600;margin-bottom:10px}
+#starterModel{width:100%;min-height:48px;padding:10px 12px;border:1px solid #d2d2d7;border-radius:9px;background:#fff;color:#1d1d1f;font:inherit;font-size:15px}
+.model-install-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px 20px;margin-top:18px;font-size:14px}
+#modelInstallStatus{font-size:14px;color:#005bb5}
+#modelInstallStatus:empty{display:none}
+.model-checks{margin:22px 0 16px;padding:0;border:0}
+.model-checks legend{font-weight:600;font-size:16px;padding:0;margin-bottom:12px}
+.model-checks label{display:flex;align-items:flex-start;gap:12px;line-height:1.8;padding:12px 0;font-size:14px;cursor:pointer}
+.model-checks input{flex:0 0 auto;width:20px;height:20px;margin-top:3px;accent-color:#005bb5}
+.model-checks label[hidden]{display:none!important}
+#modelCheckStatus{font-size:13px;color:#626269;line-height:1.8}
+#models :is(button,select,input,a):focus-visible{outline:3px solid #0066cc;outline-offset:4px}
+@media(max-width:760px){.model-installer{padding:18px;scroll-margin-top:160px}.model-install-actions{align-items:flex-start;flex-direction:column}#models .model-filter label:first-child{flex-basis:130px}}
