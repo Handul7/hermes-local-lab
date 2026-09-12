@@ -126,6 +126,6 @@
       <p>첫 주의 기준은 설치 개수가 아니라 실제 사용 횟수와 줄어든 작업 시간입니다. 이미지·영상 모델은 이 흐름이 자리 잡은 뒤 추가해도 늦지 않습니다. 칩 세대별 성능을 보장하는 구성은 아닙니다.</p>
       <p>기능 확인: <a href="https://handy.computer/docs" target="_blank" rel="noopener noreferrer">Handy</a> · <a href="https://www.macwhisper.com/" target="_blank" rel="noopener noreferrer">MacWhisper</a> · <a href="https://tailscale.com/docs/how-to/quickstart" target="_blank" rel="noopener noreferrer">Tailscale</a> / 활용 제안 2026.09.10</p>
     </details>`;
-  workflows.querySelector('.section-head').after(practical);
+  (workflows.querySelector('#outcomeExplorer') || workflows.querySelector('.section-head')).after(practical);
   render();
 })();

@@ -18,6 +18,7 @@
 </div>
 <p class="cost-footnote">이 구성의 모델·로컬 추론 사용료는 0원입니다. 맥·전기·저장공간 비용은 별도이며, 유료 클라우드 기능을 켜면 비용이 달라집니다. ‘구성 담기’는 설치 계획에만 담고 프로그램을 설치하지 않습니다.</p>
 <p id="freeStarterStatus" role="status" aria-live="polite"></p>
+<aside class="outcome-entry" aria-label="활용과 기대효과"><div><strong>설치하면, 내 일은 무엇이 달라질까요?</strong><p>문서·회의록·검색·코딩·콘텐츠·홈서버. 필요한 구성과 기대효과를 작업별로 비교하세요.</p></div><a href="#workflows">할 수 있는 일·기대효과 보기 →</a></aside>
 <details class="editorial-detail"><summary>모델은 무료인데, 왜 결제 화면이 보일까요?</summary><dl class="cost-explainer">
 <div><dt>모델 · Qwen 등</dt><dd>내려받는 AI 파일입니다. Qwen3.5 9B는 Apache 2.0으로 공개됐습니다. 같은 Qwen 이름의 웹 서비스·API 요금과는 별개입니다. <a href="https://huggingface.co/Qwen/Qwen3.5-9B">모델·라이선스</a></dd></div>
 <div><dt>실행기 · Ollama / LM Studio</dt><dd>모델을 돌리는 프로그램입니다. 두 앱 모두 로컬 모델 실행이 무료 범위에 포함됩니다. 유료 플랜·클라우드 크레딧은 선택 사항입니다. 둘을 함께 설치할 필요는 없습니다. <a href="https://ollama.com/pricing">Ollama 요금 안내</a> · <a href="https://lmstudio.ai/pricing">LM Studio 요금 안내</a></dd></div>
@@ -70,16 +71,28 @@
 </section>
 <section class="panel" id="workflows">
 <div class="section-head"><div><div class="kicker">AT HOME, EVERY DAY</div><h2>집에 두고, 매일 쓰는 맥미니</h2></div><p>밖에서 일을 맡기고, 돌아오면 결과를 확인하는 작업실. 국내외 운영 사례에서 내게 필요한 일 하나만 골라 시작하세요.</p></div>
-<p class="verification-line">업데이트 2026.09.11 · 지피터스·YouTube·Reddit 사례 반영 · 조사 범위 06.11–09.11, 정확한 게시일이 없는 후기는 별도 표시 · M6 성능 실측 전</p>
-<div class="table-wrap"><table><thead><tr><th>하고 싶은 일</th><th>실제로 받는 결과</th><th>LLM의 역할</th><th>시작 판단</th></tr></thead><tbody>
-<tr><td><b>밖에서 작업 맡기기</b></td><td>완료 알림 + 결과 파일 링크</td><td>Hermes로 접수·처리·검토</td><td>기존 Hermes를 쓰는 내게 첫 순서</td></tr>
-<tr><td><b>녹음·음성 메모 정리</b></td><td>검색 가능한 전사문 + 할 일 초안</td><td>Whisper 전사 뒤 요약·정리</td><td>가장 먼저 · 새 마이크 불필요</td></tr>
-<tr><td><b>집안 문서 찾기</b></td><td>보증서·설명서 원문과 근거를 함께 찾기</td><td>찾은 문서의 설명·분류 보조</td><td>문서가 쌓여 있다면 우선</td></tr>
-<tr><td><b>Hermes 정기 보고</b></td><td>관심 저장소 변경·백업 상태 보고서</td><td>이미 수집한 변경사항만 요약</td><td>지금 쓰는 Hermes 유지</td></tr>
-<tr><td><b>콘텐츠 초안 모으기</b></td><td>메모·녹취 기반의 검토 대기 초안</td><td>기획·작성·원문 대조 역할 분리</td><td>주 1회 이상 만들 때 · 발행은 승인 후</td></tr>
-<tr><td><b>사진 보관·검색</b></td><td>여러 기기의 사진을 한곳에서 보기</td><td>대화형 LLM 없어도 가능</td><td>조건부 · 백업·운영 부담 확인</td></tr>
+<h3 id="outcomeTitle">내 일에 대입해 보기</h3>
+<div id="outcomeExplorer" aria-labelledby="outcomeTitle">
+<p class="outcome-intro">완성품을 대신 만드는 만능 비서보다, 반복 작업의 초안을 맡기는 도구로 시작하세요. 아래에서 하는 일을 고르면 결과물·기대효과·남는 수고를 비교할 수 있습니다.</p>
+<div class="outcome-choices" role="group" aria-label="활용 분야 선택"></div>
+<p id="outcomeStatus" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+<div class="outcome-examples"></div>
+<noscript><p>활용 분야 선택은 JavaScript가 필요합니다. 아래 방식 비교와 기존 사용자 사례는 그대로 읽을 수 있습니다.</p></noscript>
+<p class="outcome-disclaimer">활용 제안 2026.09.12 · 공식 기능 범위를 바탕으로 한 이 가이드의 예상입니다. 시간 절감·정확도·구매비 회수는 실측하지 않았습니다. 예시 구성은 자동으로 설치·연결되지 않으며, 모델을 추가로 사거나 전부 설치할 필요는 없습니다.</p>
+<details class="editorial-detail outcome-comparison"><summary>직접 하기 · 무료 로컬 AI · 클라우드 AI 비교</summary>
+<div class="table-wrap"><table><caption>특정 제품의 순위가 아닌 선택 기준입니다. 클라우드 서비스·연결 앱에 따라 범위가 다릅니다.</caption><thead><tr><th scope="col">비교 기준</th><th scope="col">직접 / 기존 도구</th><th scope="col">무료 로컬 AI</th><th scope="col">클라우드 AI</th></tr></thead><tbody>
+<tr><td>잘 맞는 상황</td><td>단발성·짧은 작업, 정해진 규칙의 자동화</td><td>내 파일로 반복하는 요약·전사·초안 작업</td><td>설치 부담을 줄이고 서비스에 통합된 기능을 이용할 때</td></tr>
+<tr><td>비용과 부담</td><td>작업 시간 + 기존 도구 비용</td><td>모델 추론 사용료 0원. 전기·저장공간·설정·유지보수는 별도</td><td>서비스별 무료 한도·구독·API 조건 확인. 로컬 도입으로 기존 구독료가 자동 절약되지는 않음</td></tr>
+<tr><td>자료가 머무는 곳</td><td>사용하는 편집기·동기화 설정에 따라 다름</td><td>로컬 처리로 구성 가능. 외부 도구·동기화·폴백·로그 전송은 따로 점검</td><td>서비스로 입력을 보냄. 보관·학습 이용·접근 정책을 확인</td></tr>
+<tr><td>품질과 기다림</td><td>내 숙련도와 작업량에 영향</td><td>32GB·문맥·모델·동시 작업에 영향. 정답·속도 보장 없음</td><td>모델·요금제·혼잡·네트워크에 영향. 고급 모델도 검토는 필요</td></tr>
+<tr><td>홈서버 가치</td><td>백업·공유·규칙 점검은 AI 없이 가능</td><td>맥북과 작업을 분리할 수 있음. 기기 전원·복구·예약 운영은 내 몫</td><td>서비스가 제공하는 작업 지속 기능과 파일 접근 범위를 따로 확인</td></tr>
 </tbody></table></div>
+<p class="outcome-disclaimer">로컬 비용·외부 연결의 구분: <a href="https://hermes-agent.nousresearch.com/docs/guides/local-ollama-setup">Hermes 공식 로컬 안내</a>. 데이터 처리 조건은 실제로 선택한 앱·서비스에서 확인하세요.</p>
+</details>
+<p class="outcome-week"><strong>첫 주에는 문서 한 종류만 반복해 보세요.</strong> 직접 끝내는 데 걸린 시간과 AI 사용 후 준비·검토·수정에 쓴 시간을 비교하고, 기계의 대기 시간은 따로 적습니다. 설정·유지보수 시간과 재작업까지 포함해도 도움이 되는지 보세요. 더 번거로운 작업은 기존 방식으로 남겨도 됩니다.</p>
+</div>
 <h3>사람들은 이렇게 쓰고 있습니다</h3>
+<p class="verification-line">후기 확인 2026.09.11 · 지피터스·YouTube·Reddit · 조사 범위 06.11–09.11, 정확한 게시일이 없는 후기는 별도 표시 · 맥미니 성능 실측 전</p>
 <p class="case-intro">후기는 사용자의 보고, 아래 시작 방법은 이 가이드의 제안입니다. <strong>집에서 실행하는 에이전트</strong>와 <strong>집에서 추론하는 모델</strong>을 구분해서 보세요.</p>
 <div class="usecase-grid">
 <article class="usecase-card"><div class="case-meta"><span>해외 · YouTube + 아티클</span><span>혼합형</span></div><h4>산책 중 요청하고, 완료 메일 받기</h4><p>Tim Hopper는 집 맥미니에 프로젝트를 두고 폰에서 작업을 맡깁니다. cmux·원격 세션·받아쓰기를 사용하고 긴 작업의 결과는 메일로 받습니다.</p><p class="case-takeaway"><strong>내 첫 목표</strong>맥북을 닫은 뒤에도 Hermes가 작은 작업을 마치고 결과 파일을 남기기.</p><details><summary>구성·근거 보기</summary><p>Mac mini + Tailscale + Mosh·Zellij + Claude Code. 외부 모델과 Cloudflare도 사용하므로 완전 로컬 사례는 아닙니다. 기존 tmux·Hermes를 전부 교체할 필요는 없습니다.</p><p class="case-date">작성자 글 2026.07.30 · 방송 기록 확인, 영상 전체 미시청</p><a href="https://tdhopper.com/blog/how-im-using-agents/" target="_blank" rel="noopener noreferrer">작성자 아티클 ↗</a> · <a href="https://www.youtube.com/watch?v=NH-ic7-V-jY&amp;t=1602" target="_blank" rel="noopener noreferrer">원격 작업 영상 26:42 ↗</a></details></article>
@@ -252,4 +265,4 @@ function updateProgress(){
  const button=document.querySelector('.progress-card [data-open]');button.dataset.open=next?destinations[next.dataset.task]:'workflows';button.textContent=next?'다음 단계 열기':'실전 활용 열기';
 }
 updateProgress();
-</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260911-7"><script src="lab-models.js?v=20260912-2"></script><script src="lab-planner.js?v=20260912-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260911-8"><script src="lab-navigation.js?v=20260912-2"></script><link rel="stylesheet" href="lab-motion.css?v=20260911-3"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-2"><script src="lab-motion.js?v=20260911-3"></script></body></html>
+</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260911-7"><script src="lab-models.js?v=20260912-2"></script><script src="lab-planner.js?v=20260912-3"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260912-1"><script src="lab-outcomes.js?v=20260912-1"></script><link rel="stylesheet" href="lab-navigation.css?v=20260911-8"><script src="lab-navigation.js?v=20260912-3"></script><link rel="stylesheet" href="lab-motion.css?v=20260911-3"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-2"><script src="lab-motion.js?v=20260911-3"></script></body></html>

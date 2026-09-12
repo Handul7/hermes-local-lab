@@ -1,0 +1,40 @@
+/* A quiet, task-first comparison. No simulated performance or automatic execution. */
+.outcome-entry{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 28px;border-block:1px solid #e5e5e8;margin:28px 0;padding:22px 0}
+.outcome-entry strong{font-size:18px;letter-spacing:-.025em}
+.outcome-entry p{margin:7px 0 0;font-size:14px;color:#626269;line-height:1.8}
+.outcome-entry a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;text-underline-offset:4px}
+.outcome-intro{max-width:830px;color:#626269;font-size:16px;line-height:1.85}
+.outcome-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:24px 0 18px}
+.outcome-choice{min-width:0;min-height:78px;border:1px solid #d2d2d7;border-radius:12px;background:#fff;text-align:left;padding:15px 18px;color:#1d1d1f;cursor:pointer;font:inherit;transition:background 160ms,border-color 160ms}
+.outcome-choice strong{display:block;font-size:15px;font-weight:600}
+.outcome-choice span{display:block;font-size:12px;margin-top:6px;line-height:1.5;color:#626269}
+.outcome-choice:hover{background:#f5f5f7}
+.outcome-choice[aria-pressed="true"]{border-color:#1d1d1f;background:#f5f5f7;box-shadow:inset 0 0 0 1px #1d1d1f}
+.outcome-card{padding:32px;border:1px solid #e5e5e8;border-radius:20px;background:#fff;animation:outcome-in 180ms ease-out}
+.outcome-card[hidden]{display:none!important}
+.outcome-card .outcome-priority{color:#626269;font-size:13px;margin:0 0 12px}
+.outcome-card h4{font-size:clamp(23px,2.3vw,30px);line-height:1.4;letter-spacing:-.035em;margin:0 0 24px;word-break:keep-all;overflow-wrap:anywhere}
+.outcome-flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.outcome-flow>div{padding:20px;background:#f5f5f7;border-radius:12px;min-width:0}
+.outcome-flow span{display:block;font-size:12px;color:#626269;margin-bottom:10px}
+.outcome-flow strong{display:block;font-size:17px;font-weight:600;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+.outcome-card .outcome-caption{font-size:12px;color:#626269;line-height:1.7;margin:12px 0 26px}
+.outcome-facts{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px}
+.outcome-facts dt{font-size:13px;font-weight:600;margin-bottom:7px}
+.outcome-facts dd{margin:0;color:#626269;font-size:14px;line-height:1.85}
+.outcome-tradeoff{border-top:1px solid #e5e5e8;padding-top:22px;margin:24px 0 18px;font-size:14px;line-height:1.85;color:#626269}
+.outcome-tradeoff strong,.outcome-measure strong{display:block;font-size:13px;color:#1d1d1f;margin-bottom:5px;font-weight:600}
+.outcome-measure{font-size:14px;color:#626269;line-height:1.8;margin:0 0 18px}
+.outcome-links{display:flex;flex-wrap:wrap;gap:8px 24px}
+.outcome-links a{display:inline-flex;align-items:center;min-height:44px;font-size:13px;text-underline-offset:4px}
+.outcome-disclaimer{font-size:13px;color:#626269;line-height:1.9;margin:18px 0 24px;max-width:900px}
+.outcome-comparison table{min-width:650px;table-layout:fixed}
+.outcome-comparison th:first-child{width:15%}
+.outcome-comparison th,.outcome-comparison td{font-size:14px;line-height:1.8;padding:16px;vertical-align:top;overflow-wrap:anywhere}
+.outcome-comparison caption{text-align:left;color:#626269;padding:0 0 14px;font-size:13px}
+.outcome-week{font-size:14px;color:#626269;line-height:1.9;max-width:850px;margin:20px 0 34px}
+.outcome-week strong{color:#1d1d1f}
+#outcomeExplorer :is(button,a,summary):focus-visible,.outcome-entry a:focus-visible{outline:3px solid #0066cc;outline-offset:4px}
+@keyframes outcome-in{from{opacity:.45;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.outcome-choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.outcome-choice{padding:14px 12px}.outcome-card{padding:22px 18px}.outcome-flow,.outcome-facts{grid-template-columns:1fr}.outcome-flow>div{padding:18px}.outcome-facts{gap:18px}.outcome-links{gap:4px 18px}}
+@media(prefers-reduced-motion:reduce){.outcome-choice{transition:none}.outcome-card{animation:none}}
