@@ -12,7 +12,8 @@
     {id:'lmstudio',name:'LM Studio',tags:['agent','docs'],type:'local',free:true,guide:'models',url:'https://lmstudio.ai/',why:'화면에서 모델을 고르고 대화하고 싶을 때. Ollama의 대안이며 둘 다 설치할 필요는 없습니다. 클라우드는 선택 사항.',step:'Mac 앱 설치 → 호환 GGUF / MLX 모델 다운로드 → 로컬 대화'},
     {id:'handy',name:'Handy',tags:['dictation'],type:'local',free:true,guide:'dictation',url:'https://handy.computer/docs',why:'단축키로 말하고 현재 입력창에 붙여넣는 무료 받아쓰기.',step:'마이크·입력 권한 → 다국어 Whisper → 한국어 5문장 시험'},
     {id:'macwhisper',name:'MacWhisper / Pro',tags:['meeting','dictation'],type:'local',free:false,guide:'dictation',url:'https://www.macwhisper.com/',why:'회의·녹음 전사와 자막을 함께 다룰 때 비교할 후보. Pro 기능은 유료.',step:'로컬 모델 선택 → 샘플 전사 → TXT를 Hermes에 전달'},
-    {id:'superwhisper',name:'Superwhisper',tags:['dictation'],type:'local',free:false,guide:'dictation',url:'https://superwhisper.com/',why:'앱별 문장 모드와 용어 사전이 필요한 경우 비교.',step:'로컬 음성 모델 → 후처리 방식 확인 → 입력 단축키 시험'},
+    {id:'superwhisper',name:'Superwhisper',tags:['dictation'],type:'local',free:false,guide:'dictation',url:'https://superwhisper.com/download',why:'앱별 문장 모드와 용어 사전이 필요한 경우 비교.',step:'로컬 음성 모델 → 후처리 방식 확인 → 입력 단축키 시험'},
+    {id:'wispr',name:'Wispr Flow',tags:['dictation'],type:'cloud',free:false,guide:'dictation',url:'https://wisprflow.ai/downloads',why:'말한 뒤 문장을 다듬는 받아쓰기 앱. 인터넷 필수이며 완전 로컬 구성에는 넣지 않습니다. 무료 제한 플랜과 Pro 유료 기능을 비교하세요.',step:'Apple Silicon Mac 버전 → 마이크·입력 권한 → 클라우드 처리·요금 확인 → 한국어 시험'},
     {id:'drawthings',name:'Draw Things',tags:['image'],type:'local',free:true,guide:'models',url:'https://drawthings.ai/',why:'이미지 생성 입문 후보. 언어 모델과 동시에 무거운 작업은 피하기.',step:'모델 다운로드 → 작은 이미지 1장 생성 → 소요 시간 기록'},
     {id:'comfyui',name:'ComfyUI',tags:['image','video'],type:'local',free:true,guide:'workflows',url:'https://docs.comfy.org/installation/desktop/macos',why:'이미지·영상 처리 단계를 연결. 32GB 영상 생성은 실험용으로 접근.',step:'기본 워크플로 → 낮은 해상도 시험 → 메모리·시간 확인'},
     {id:'hailuo',name:'MiniMax Hailuo',tags:['video'],type:'cloud',free:false,guide:'workflows',url:'https://hailuoai.video/',why:'영상 생성 시간을 줄이기 위한 클라우드 병행 후보. 이용료 별도 확인.',step:'서비스 조건 확인 → 짧은 컷 시험 → 결과만 로컬에 보관'},
@@ -35,9 +36,9 @@
   [...planPanel.children].filter(el=>el!==host).forEach(el=>setup.append(el));
   planPanel.append(setup);
   const goalIcons={agent:'team',dictation:'mic',meeting:'doc',code:'code',docs:'doc',image:'image',video:'video',remote:'remote'};
-  const toolIcons={hermes:'team',ollama:'model',qwen9b:'model',lmstudio:'model',handy:'mic',macwhisper:'doc',superwhisper:'mic',drawthings:'image',comfyui:'nodes',hailuo:'video',tailscale:'remote',tmux:'terminal'};
-  const outcomes={hermes:'조사 → 작성 → 검토',ollama:'실행기 · 모델은 별도',qwen9b:'대화 모델 · 문서 요약',lmstudio:'화면에서 모델 실행',handy:'음성 → 텍스트',macwhisper:'녹음 → 회의록·자막',superwhisper:'음성 → 다듬은 문장',drawthings:'아이디어 → 이미지',comfyui:'노드 → 이미지·영상',hailuo:'프롬프트 → 영상',tailscale:'맥북 ↔ 맥미니',tmux:'연결 해제 → 작업 유지'};
-  const costs={hermes:'앱 무료 · 연결 도구 비용 별도',ollama:'로컬 실행 무료',qwen9b:'모델 무료 · Apache 2.0',lmstudio:'로컬 실행 무료',handy:'앱 무료 · Whisper 로컬 모드',macwhisper:'무료 기능 + Pro 유료',superwhisper:'무료 범위 + 유료 기능',drawthings:'로컬 생성 무료',comfyui:'앱 무료 · 모델 조건 별도',hailuo:'클라우드 요금 별도',tailscale:'개인용 무료 플랜 · 조건 확인',tmux:'무료 오픈 소스'};
+  const toolIcons={hermes:'team',ollama:'model',qwen9b:'model',lmstudio:'model',handy:'mic',macwhisper:'doc',superwhisper:'mic',wispr:'mic',drawthings:'image',comfyui:'nodes',hailuo:'video',tailscale:'remote',tmux:'terminal'};
+  const outcomes={hermes:'조사 → 작성 → 검토',ollama:'실행기 · 모델은 별도',qwen9b:'대화 모델 · 문서 요약',lmstudio:'화면에서 모델 실행',handy:'음성 → 텍스트',macwhisper:'녹음 → 회의록·자막',superwhisper:'음성 → 다듬은 문장',wispr:'음성 → 클라우드 문장 정리',drawthings:'아이디어 → 이미지',comfyui:'노드 → 이미지·영상',hailuo:'프롬프트 → 영상',tailscale:'맥북 ↔ 맥미니',tmux:'연결 해제 → 작업 유지'};
+  const costs={hermes:'앱 무료 · 연결 도구 비용 별도',ollama:'로컬 실행 무료',qwen9b:'모델 무료 · Apache 2.0',lmstudio:'로컬 실행 무료',handy:'앱 무료 · Whisper 로컬 모드',macwhisper:'무료 기능 + Pro 유료',superwhisper:'무료 범위 + 유료 기능',wispr:'무료 제한 플랜 + Pro 유료 · 인터넷 필수',drawthings:'로컬 생성 무료',comfyui:'앱 무료 · 모델 조건 별도',hailuo:'클라우드 요금 별도',tailscale:'개인용 무료 플랜 · 조건 확인',tmux:'무료 오픈 소스'};
   modelChoices.forEach(model=>{toolIcons[model.id]='model';outcomes[model.id]=model.agent?'대화·도구 사용 후보':'한국어 문서 보조';costs[model.id]='모델 무료 · Apache 2.0 · '+model.size;});
   host.querySelector('.builder-intro').textContent='무료 로컬 AI부터 시작하세요. 실행기와 실제 모델을 함께 담고, 용도에 맞는 도구만 더하면 됩니다.';
   host.querySelector('#plannerBudget option[value="free"]').textContent='무료 시작 가능한 도구';
@@ -54,6 +55,7 @@
   function persist(message){try{localStorage.setItem('hermesInteractivePlan',JSON.stringify(state));status.textContent=message||'선택을 저장했습니다.'}catch{status.textContent='저장 공간을 사용할 수 없습니다. 목록을 내려받아 보관하세요.'}}
   function visibleTools(){return catalog.filter(t=>t.tags.some(x=>state.goals.includes(x))&&(state.privacy==='hybrid'||t.type!=='cloud')&&(state.budget!=='free'||t.free));}
   function render(){
+    document.querySelectorAll('[data-voice-save]').forEach(button=>{const saved=Object.hasOwn(state.tools,button.dataset.voiceSave);button.textContent=saved?'후보에 담김 ✓':'+ 설치 후보 담기';button.setAttribute('aria-pressed',String(saved));button.setAttribute('aria-label',catalog.find(t=>t.id===button.dataset.voiceSave).name+(saved?' 설치 후보에서 빼기':' 설치 후보에 담기'));});
     const tools=visibleTools();host.querySelector('#resultTitle').textContent='도구 후보 '+tools.length+'개';
     host.querySelector('#toolResults').innerHTML=tools.length?tools.map(t=>`<article class="tool-result"><span class="tool-tag">${t.type==='cloud'?'클라우드':t.type==='network'?'원격 네트워크':'로컬 설정 가능'}</span><h4>${t.name}</h4><p>${t.why}</p><div class="actions"><button class="btn" data-add="${t.id}" aria-pressed="${Object.hasOwn(state.tools,t.id)}">${Object.hasOwn(state.tools,t.id)?'목록에 담김 ✓':'설치 목록에 담기 +'}</button><button class="btn" data-guide="${t.guide}">가이드</button><a href="${t.url}" target="_blank" rel="noopener noreferrer">배포·설치 ↗</a></div></article>`).join(''):'<p class="builder-empty">하고 싶은 일을 선택하거나 비용·처리 조건을 넓혀보세요.</p>';
     const selected=catalog.filter(t=>Object.hasOwn(state.tools,t.id));host.querySelector('#savedCount').textContent=selected.length?selected.filter(t=>state.tools[t.id]).length+' / '+selected.length+' 완료':'아직 담은 도구가 없어요';
@@ -78,7 +80,7 @@
   });
   host.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.guide){openPanel(b.dataset.guide);document.querySelector('#'+b.dataset.guide+' h2')?.focus({preventScroll:true});return}if(b.dataset.add){const exists=Object.hasOwn(state.tools,b.dataset.add);if(exists)delete state.tools[b.dataset.add];else state.tools[b.dataset.add]=false;persist(exists?'목록에서 뺐습니다.':'설치 목록에 담았습니다.');render();host.querySelector('[data-add="'+b.dataset.add+'"]').focus()}if(b.dataset.remove){delete state.tools[b.dataset.remove];persist('목록에서 뺐습니다.');render();(host.querySelector('[data-add="'+b.dataset.remove+'"]')||host.querySelector('[data-remove]')||host.querySelector('#openChecklist')).focus()}});
   host.querySelector('#openChecklist').addEventListener('click',()=>{setup.open=true;setup.querySelector('summary').focus({preventScroll:true});setup.scrollIntoView({behavior:reduced()?'instant':'smooth',block:'start'})});
-  host.querySelector('#exportPlan').addEventListener('click',()=>{const lines=['# 내 맥미니 설치 목록','','비용 정보 확인: 2026-09-12. 모델·앱의 로컬 기능 기준이며 외부 API, 전기·장비 비용은 별도.','Hermes의 유료 폴백·보조 모델·외부 도구를 확인하세요. 기존에 담은 유료 후보는 필터 변경 후에도 남을 수 있습니다.','모델은 동시에 하나부터. A.X(16K)·Kanana(기본 32K)는 한국어 문서 보조이며 Hermes 메인에 바로 지정하지 않습니다.','다운로드 크기는 실행 RAM이 아닙니다. 맥미니 실기기 검증 전 후보입니다.','',...catalog.filter(t=>Object.hasOwn(state.tools,t.id)).map(t=>'- ['+(state.tools[t.id]?'x':' ')+'] '+t.name+'\n  '+costs[t.id]+'\n  '+t.step+'\n  '+t.url)];const url=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/markdown;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='my-mac-mini-plan.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='설치 목록 다운로드를 요청했습니다.'});
+  host.querySelector('#exportPlan').addEventListener('click',()=>{const lines=['# 내 맥미니 설치 목록','','받아쓰기 앱 설치 경로 확인: 2026-09-13. Mac은 공식 다운로드, App Store 링크는 iPhone용. 무료 다운로드와 무제한 사용은 다릅니다.','비용 정보 확인: 2026-09-12. 모델·앱의 로컬 기능 기준이며 외부 API, 전기·장비 비용은 별도.','Hermes의 유료 폴백·보조 모델·외부 도구를 확인하세요. 기존에 담은 유료 후보는 필터 변경 후에도 남을 수 있습니다.','모델은 동시에 하나부터. A.X(16K)·Kanana(기본 32K)는 한국어 문서 보조이며 Hermes 메인에 바로 지정하지 않습니다.','다운로드 크기는 실행 RAM이 아닙니다. 맥미니 실기기 검증 전 후보입니다.','',...catalog.filter(t=>Object.hasOwn(state.tools,t.id)).map(t=>'- ['+(state.tools[t.id]?'x':' ')+'] '+t.name+'\n  '+costs[t.id]+'\n  '+t.step+'\n  '+t.url)];const url=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/markdown;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='my-mac-mini-plan.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='설치 목록 다운로드를 요청했습니다.'});
   const dictation=document.getElementById('dictation');
   const voiceTable=dictation.querySelector('table');
   voiceTable.classList.add('voice-comparison');
@@ -87,6 +89,7 @@
     const cells=[...row.cells];
     const link=cells[0].querySelector('a');
     link.target='_blank';link.rel='noopener noreferrer';
+    if(row.dataset.voiceApp){const save=document.createElement('button');save.type='button';save.className='btn voice-save';save.dataset.voiceSave=row.dataset.voiceApp;cells[0].append(save);}
     const cloud=link.textContent.includes('Wispr');
     const recommendation=document.createElement('p');recommendation.className='voice-purpose';recommendation.textContent=cells[4].textContent;
     cells[1].append(recommendation);
@@ -99,6 +102,14 @@
     cells[2].append(detail);
     cells[3].remove();cells[4].remove();
     [...row.cells].forEach((cell,i)=>cell.dataset.label=['앱 · 공식 설치','이럴 때 선택','처리 방식'][i]);
+  });
+  dictation.addEventListener('click',event=>{
+    const button=event.target.closest('[data-voice-save]');if(!button)return;
+    const tool=catalog.find(item=>item.id===button.dataset.voiceSave);if(!tool)return;
+    const saved=Object.hasOwn(state.tools,tool.id);
+    if(saved)delete state.tools[tool.id];else state.tools[tool.id]=false;
+    const message=tool.name+(saved?'를 설치 후보에서 뺐습니다.':'를 설치 후보에 담았습니다. 실제 설치·결제는 하지 않습니다.')+(tool.type==='cloud'&&!saved?' 클라우드·유료 기능이 있는 비교 후보이며 현재 필터는 유지합니다.':'');
+    persist(message);render();document.getElementById('voicePlanStatus').textContent=status.textContent;
   });
   const namesNote=dictation.querySelector('.callout');
   foldText(namesNote,'Whisper · MacWhisper · Wispr, 이름이 헷갈린다면');
