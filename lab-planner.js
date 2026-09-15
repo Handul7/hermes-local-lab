@@ -125,17 +125,17 @@
   practical.innerHTML=`<h3 id="dailyUseTitle">세 대를 함께 쓰는 방법</h3>
     <div class="device-roles">
       <div>${svg('laptop')}<strong>맥북</strong><span>말로 입력 · 결과 검토 · 외부 접속</span></div>
-      <div>${svg('model')}<strong>맥미니</strong><span>Hermes 실행 · 문서 처리 · 결과 보관</span></div>
+      <div>${svg('model')}<strong>맥미니</strong><span>공유·백업 · Hermes 처리 · 결과 보관</span></div>
       <div>${svg('code')}<strong>윈도우 데스크톱</strong><span>기존 작업 유지 · GPU 작업은 사양 확인 후</span></div>
     </div>
     <details class="quiet-detail"><summary>도착 후 첫 주, 이 세 가지만 해보기</summary>
       <ol class="first-week">
-        <li><strong>말로 메모 한 편 쓰기</strong><p>실제로 말하는 기기에 Handy 또는 MacWhisper를 설치하고, 한국어 1분을 입력해 오타 수정 시간을 비교하세요. 맥북에서 말한다면 앱도 맥북에 설치합니다.</p><a href="#dictation">받아쓰기 가이드 →</a></li>
-        <li><strong>녹음 하나를 회의록으로 만들기</strong><p>동의를 받은 녹음으로 전사 → Hermes 요약 → 사람이 원문 대조. 결정사항·할 일만 뽑고, 자동 발송은 나중에 연결하세요.</p></li>
-        <li><strong>맥북에서 맥미니 작업 이어받기</strong><p>Tailscale과 SSH 연결 후 tmux 세션 재접속을 시험하세요. LLM은 하나부터, 에이전트 작업도 순차 실행부터 시작하고 메모리 압력을 확인합니다.</p><a href="#remote">원격 접속 가이드 →</a></li>
+        <li><strong>두 기기에서 같은 파일 열기</strong><p>공유 폴더의 테스트 파일을 맥북과 윈도우에서 열어보세요. 필요한 폴더만 공유하고, 계정별 접근 권한을 확인합니다.</p><a href="#storage">HDD와 공유 자료실 준비 →</a></li>
+        <li><strong>백업에서 파일 하나 되찾기</strong><p>맥북의 첫 Time Machine 백업을 마친 뒤 테스트 파일을 다른 위치로 복원해 비교하세요. 공유 자료와 맥미니 자체 자료도 별도 백업 대상인지 확인합니다.</p></li>
+        <li><strong>맥북을 닫고도 작업 끝내기</strong><p>맥미니에서 Hermes로 작은 문서 요약을 실행하고 맥북을 닫아보세요. 다시 접속해 결과와 로그를 확인합니다. 주력 모델 하나로 순차 처리부터 시작하세요.</p><a href="#remote">원격 접속 가이드 →</a></li>
       </ol>
       <p>첫 주의 기준은 설치 개수가 아니라 실제 사용 횟수와 줄어든 작업 시간입니다. 이미지·영상 모델은 이 흐름이 자리 잡은 뒤 추가해도 늦지 않습니다. 칩 세대별 성능을 보장하는 구성은 아닙니다.</p>
-      <p>기능 확인: <a href="https://handy.computer/docs" target="_blank" rel="noopener noreferrer">Handy</a> · <a href="https://www.macwhisper.com/" target="_blank" rel="noopener noreferrer">MacWhisper</a> · <a href="https://tailscale.com/docs/how-to/quickstart" target="_blank" rel="noopener noreferrer">Tailscale</a> / 활용 제안 2026.09.10</p>
+      <p>활용 제안 2026.09.15 · 준비·검토·유지보수 시간까지 포함해 직접 하던 방식과 비교하세요. 아직 실기기에서 통과한 항목은 아닙니다.</p>
     </details>`;
   (workflows.querySelector('#outcomeExplorer') || workflows.querySelector('.section-head')).after(practical);
   render();

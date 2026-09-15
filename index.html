@@ -75,7 +75,46 @@
 <details class="editorial-detail"><summary>오프라인 확인과 매일 쓸 만한 무료 작업</summary><p>모델 다운로드를 마친 뒤 네트워크를 끄고, Ollama에서 짧은 대화와 로컬 문서 요약을 해보세요. 이 시험은 로컬 추론 확인용이지 모든 도구의 과금·외부 전송이 없다는 증명은 아닙니다. 검색·메신저는 인터넷이 필요합니다.</p><ul><li>집에 있는 문서 → 주력 LLM으로 요약·할 일 추출. 원본 폴더는 읽기 전용부터.</li><li>맥북에서 Handy로 지시 입력 → 맥미니의 Hermes에서 문서 작업 → 결과 검토.</li><li>회의 녹음 → Whisper로 전사 → A.X 또는 주력 LLM으로 회의록 초안. 음성 인식 모델은 글로 바꾸기만 하며 요약은 별도입니다. 녹음·개인정보 처리 동의를 확인하세요.</li><li>이미지가 필요할 때만 LLM을 쉬게 하고 Draw Things로 썸네일 초안 생성.</li></ul><p>문서검색은 Qwen3-Embedding으로 자료를 색인하고 관련 문단을 찾은 뒤, 주력 LLM이 근거를 받아 답하게 합니다. 임베딩만 설치해도 문서 비서가 완성되는 것은 아닙니다. 자주 쓰는 모델·검색 색인은 SSD, 미사용 모델·녹음 원본은 HDD에 보관하세요. <a href="#storage">저장공간 가이드 →</a></p><p>무료 웹 채팅·무료 API 체험은 내 기기에 설치하는 AI와 다릅니다. 크레딧 소진·사용량 제한·외부 전송 조건이 있어 이번 기본 구성에서는 제외했습니다.</p></details>
 </section>
 <section class="panel" id="workflows">
-<div class="section-head"><div><div class="kicker">AT HOME, EVERY DAY</div><h2>집에 두고, 매일 쓰는 맥미니</h2></div><p>밖에서 일을 맡기고, 돌아오면 결과를 확인하는 작업실. 국내외 운영 사례에서 내게 필요한 일 하나만 골라 시작하세요.</p></div>
+<div class="section-head"><div><div class="kicker">AT HOME, EVERY DAY</div><h2>집에 두고, 매일 쓰는 맥미니</h2></div><p>파일은 한곳에, 오래 걸리는 일은 맥미니에. 맥북과 윈도우는 지금처럼 쓰면서, 이 두 가지부터 시작합니다.</p></div>
+<h3 id="homePriorityTitle">도착하면 먼저 할 두 가지</h3>
+<div class="home-priorities" aria-labelledby="homePriorityTitle">
+<article class="home-priority" id="homeShared">
+<p class="home-priority-label">01 · AI 없이도 매일 유용하게</p>
+<h4>공용 자료실 + 맥북 백업</h4>
+<p class="home-priority-lead">맥북과 윈도우에서 같은 자료 폴더를 열고, 집에서는 맥북을 맥미니에 연결된 디스크로 백업합니다.</p>
+<p class="home-priority-benefit"><strong>기대효과</strong>파일을 기기마다 옮기는 수고를 줄이고, 실수로 지운 파일을 되찾을 사본을 남깁니다.</p>
+<details class="home-priority-more"><summary>준비물과 시작 기준 보기</summary>
+<dl>
+<dt>추가 앱 없이 시작</dt><dd>macOS 기본 파일 공유(SMB)와 Time Machine을 사용합니다. 같은 집 네트워크에서 먼저 시험하고, 필요한 폴더와 사용자에게만 접근을 허용하세요.</dd>
+<dt>남는 HDD 두 개</dt><dd>HDD 1은 공유 자료실, HDD 2는 백업용 후보입니다. 먼저 용량·건강 상태·기존 자료를 확인하세요. 기존 자료를 다른 곳에 복사하기 전에는 포맷하지 않습니다.</dd>
+<dt>맥북 백업 연결</dt><dd>맥미니의 백업 전용 공유 폴더를 Time Machine 대상으로 지정하고, 맥북에서 선택합니다. 용량 제한을 정하고 첫 백업을 확인하세요. 맥미니 자체 백업까지 담을지는 디스크 용량을 보고 따로 정합니다.</dd>
+<dt>살 것이 있다면</dt><dd>HDD 규격에 맞는 전원·케이스와 유선 LAN 케이블부터. Thunderbolt 독·NAS·새 SSD는 지금 필수가 아닙니다. <a href="#storage">기존 장비와 구매 순서 →</a></dd>
+</dl>
+<p class="home-priority-caution"><strong>파일 공유는 백업이 아닙니다.</strong> HDD 1에만 있는 원본은 별도 사본이 필요합니다. HDD 2에 맥북 백업을 만든다고 공유 자료까지 자동 보호되지는 않습니다. Time Machine은 Windows 백업 기능도 아닙니다. 중요한 자료는 집 밖의 사본도 남기세요.</p>
+<p class="home-priority-check"><strong>첫 확인</strong>맥북·윈도우에서 테스트 파일 열기 → 맥북 백업 완료 확인 → 파일 하나를 다른 위치로 복원해 원본과 비교.</p>
+<p class="home-priority-sources">공식 설정: <a href="https://support.apple.com/en-gb/guide/mac-help/mh14107/mac" target="_blank" rel="noopener noreferrer">Apple 파일 공유 ↗</a> · <a href="https://support.apple.com/guide/mac-help/back-up-to-a-shared-folder-mchl31533145/mac" target="_blank" rel="noopener noreferrer">네트워크 Time Machine ↗</a></p>
+</details>
+</article>
+<article class="home-priority" id="homeHermes">
+<p class="home-priority-label">02 · 기존 Hermes를 집의 작업실로</p>
+<h4>맥북을 닫아도 이어지는 작업</h4>
+<p class="home-priority-lead">녹음·문서를 맡기고 나중에 결과만 확인합니다. 나는 맥북에서 일하고, 긴 처리는 집의 맥미니가 이어갑니다.</p>
+<p class="home-priority-benefit"><strong>기대효과</strong>맥북의 작업 시간과 처리 대기를 분리합니다. 큰 모델의 속도보다 작업이 끝까지 이어지는지가 기준입니다.</p>
+<details class="home-priority-more"><summary>맡길 일과 운영 기준 보기</summary>
+<p class="home-flow">작업함 → Hermes 순차 처리 → 결과함 + 실행 기록 → 내가 검토</p>
+<dl>
+<dt>처음 맡길 일</dt><dd>텍스트 문서 하나의 요약부터. 이후 동의받은 녹음의 전사·회의록 초안, 문서 목록 정리, 프로젝트 점검 보고 중 반복하는 일 하나를 고릅니다. 전사는 Whisper 계열 도구를 별도로 연결합니다.</dd>
+<dt>실행은 맥미니에서</dt><dd>Hermes와 로컬 모델 실행기를 맥미니에서 구동합니다. 맥북은 요청·검토·원격 접속용입니다. 작업함은 예시 폴더 구조이며, 폴더 감시·완료 알림은 따로 연결해야 합니다. <a href="#remote">Tailscale·SSH·tmux 연결 →</a></dd>
+<dt>32GB 멀티에이전트</dt><dd>접수 → 작업 → 원문 대조 역할을 하나의 주력 모델로 순차 처리하는 것부터 시작합니다. 전사·큰 LLM 작업·사진 색인을 동시에 켜 두지 않습니다.</dd>
+<dt>안전한 권한</dt><dd>원본은 읽기, 결과함만 쓰기부터. 외부 발송·삭제·결제는 내가 승인합니다. 백업 폴더는 에이전트의 수정 대상에서 제외하고, 모델 API·SMB를 인터넷에 직접 공개하지 않습니다.</dd>
+</dl>
+<p class="home-priority-caution">맥미니 전원과 작업 프로세스가 유지돼야 합니다. 화면 끄기와 시스템 잠자기는 다르며, tmux는 재부팅 복구 도구가 아닙니다. 재시작 후 로그인·디스크 연결·Hermes 재개를 따로 시험하세요. 외부 모델·메신저를 연결하면 완전 로컬은 아닙니다.</p>
+<p class="home-priority-check"><strong>첫 확인</strong>맥북을 닫고 작은 작업 3건 완료 → 결과 파일·실패 기록 확인 → 재접속해서 검토. 처리 속도와 한국어 품질은 실기기에서 확인합니다.</p>
+<p class="home-priority-sources">공식 연결: <a href="https://hermes-agent.nousresearch.com/docs/guides/local-ollama-setup" target="_blank" rel="noopener noreferrer">Hermes 로컬 실행 ↗</a> · <a href="https://support.apple.com/en-gb/guide/mac-help/mchle41a6ccd/mac" target="_blank" rel="noopener noreferrer">Apple 잠자기 설정 ↗</a></p>
+</details>
+</article>
+</div>
+<p class="home-priority-note">활용 계획 보완 <time datetime="2026-09-15">2026.09.15</time> · 32GB / 512GB + 기존 HDD 기준의 제안입니다. 아직 장비 설정이나 백업을 실행한 것은 아닙니다.</p>
 <h3 id="outcomeTitle">내 일에 대입해 보기</h3>
 <div id="outcomeExplorer" aria-labelledby="outcomeTitle">
 <p class="outcome-intro">반복해서 하는 일 하나를 골라보세요. 받을 결과와 기대효과를 먼저, 필요한 구성은 펼쳐서 확인하세요.</p>
@@ -152,6 +191,7 @@
 </div>
 <details class="editorial-detail"><summary>성공담만 보지 않기 · 실패 사례와 자료 선정 기준</summary><p><a href="https://www.reddit.com/r/hermesagent/comments/1u8jqiw/mac_mini_16gb/" target="_blank" rel="noopener noreferrer">Hermes 연결 실패 질문</a>(검색 게시일 2026.06.17)은 모델이 실행돼도 문맥 길이 검사에서 막힐 수 있음을 보여줍니다. 댓글의 검사 우회법은 검증된 설치 지침으로 채택하지 않았습니다. 현재 버전에서도 같은 문제라고 단정하지 않습니다.</p><p><a href="https://www.youtube.com/watch?v=tUNdcBMKMMw" target="_blank" rel="noopener noreferrer">Mario Alka의 맥미니 AI 비판 영상</a>(2026.06.25)은 에이전트 실행과 추론 장비의 차이를 살펴볼 비교 관점입니다. 설명·챕터만 확인했으며 Linux를 선호하는 제작자의 의견입니다.</p><p>확인일은 게시일이 아닙니다. 국내 상대 날짜·검색 색인과 충돌하는 날짜는 확정하지 않았습니다. YouTube는 연결된 작성자 글·방송 기록 또는 설명을 확인했으며 영상 전체를 재생 검증하지 않았습니다. 후기의 속도·만족도를 내 M6의 성능으로 환산하지 않습니다.</p></details>
 <h3>나중에 늘릴 일과 상시 운영 기준</h3>
+<details class="editorial-detail home-optional-media"><summary>Plex · 이런 미디어 서버 용도도 있어요</summary><p>소장한 영상·음악을 TV나 다른 기기에서 보는 개인 미디어 서버입니다. <strong>현재 설치 계획에는 넣지 않습니다.</strong> 공유·백업과 Hermes 작업실을 써본 뒤, 정말 필요해지면 살펴보세요.</p><p>참고로 <a href="https://www.reddit.com/r/PleX/comments/1wf44i8/mac_mini_for_plex_server_should_i_keep_it_or/" target="_blank" rel="noopener noreferrer">남는 맥미니·HDD를 활용하는 Reddit 글</a>(2026.09.13)도 있습니다. 사용자 경험이지 내 기기의 재생 성능 검증은 아닙니다. 외부에서 개인 영상을 재생할 때는 앱·계정에 따라 Plex Pass 또는 Remote Watch Pass 등 구독 조건이 있으므로 <a href="https://support.plex.tv/articles/requirements-for-remote-playback-of-personal-media/" target="_blank" rel="noopener noreferrer">공식 요금 적용 범위</a>를 확인하세요.</p></details>
 <details class="editorial-detail"><summary>AI가 없어도 유용한 공통 작업 보드와 HDD 백업</summary><p><a href="https://www.gpters.org/dev/post/notion-subscription-fee-0-IBEaVI2GEXZfeXH" target="_blank" rel="noopener noreferrer">지피터스의 팀 업무 웹앱 후기</a>는 맥미니에 작은 앱을 올려 Mac·Windows에서 함께 쓴 사례입니다. 본문은 ‘3달 전’으로 최근 범위 경계가 미확정입니다. 내게는 집안 장비·할 일·콘텐츠 제작 현황판으로 응용할 수 있습니다. 구독료가 없어도 기기·AI·관리 비용은 별도입니다.</p><p><a href="https://www.tomshardware.com/desktops/mini-pcs/a-mac-mini-server-is-running-headless-in-my-closet-it-manages-my-photo-library-and-handles-my-backups" target="_blank" rel="noopener noreferrer">Tom’s Hardware의 맥미니 백업 운영기</a>(2026.07.30)는 외장 SSD·HDD로 사진과 문서를 관리합니다. AI 실사용 사례는 아니지만 남는 HDD 활용에 참고할 만합니다. 새 NAS를 사기 전에 <a href="#storage">내 장비·백업 계획</a>부터 확인하세요.</p></details>
 <details class="editorial-detail"><summary>사진 서버는 좋은 사례지만, 바로 iCloud를 끊지는 않기</summary><p>Immich는 사진 보관·검색에 유용하며 대화형 LLM이 필수는 아닙니다. 다만 <a href="https://docs.immich.app/install/requirements/">공식 요구사항</a>은 Linux 계열 운영을 권장하고 비 Linux Docker 운영을 강하게 비권장합니다. macOS에서 실사용하는 사람은 있어도, 이 가이드에서는 운영 부담을 감수할 때만 선택합니다.</p><p>복사한 사진 일부로 시험하고, 원본과 데이터베이스를 모두 별도 백업하세요. 앱에 사진이 보인다고 백업이 된 것은 아닙니다. <a href="https://docs.immich.app/administration/backup-and-restore/">공식 백업·복원 안내</a></p></details>
 <details class="editorial-detail"><summary>24시간 켜 두기 전에 확인할 것</summary><ul>
@@ -197,7 +237,7 @@
 <div class="code"># Mac mini<br># Tailscale은 공식 macOS 앱 설치·로그인<br>brew install tmux<br><br># 같은 Tailnet의 MacBook에서<br>ssh 사용자명@맥미니-기기이름<br><br># 끊겨도 유지되는 Hermes 세션<br>tmux new -s hermes<br>hermes<br># 분리: Ctrl-b d / 재접속: tmux attach -t hermes<br><br># cmux<br>brew tap manaflow-ai/cmux<br>brew install --cask cmux<br><br># hrdr 코딩 하네스<br>brew install kryptic-sh/tap/hrdr</div>
 <div class="callout">Tailscale 공식 문서는 macOS Standalone 앱을 권장합니다. 이 가이드는 Tailscale 연결망 위에서 macOS 기본 원격 로그인(SSH)을 쓰는 구성입니다. 별도 기능인 Tailscale SSH와 혼동하지 마세요. 원격 로그인은 필요한 계정만 허용하세요. tmux·herdr는 재부팅 뒤 프로세스 복구를 보장하지 않습니다.</div></section>
 <section class="panel" id="reviews"><div class="section-head"><div><h2>최근 사용자 경험, 근거와 함께</h2></div><p>2026.06.11–09.11 범위에서 확인한 사례입니다. 개인 경험과 공식 지원 여부는 구분해서 읽으세요.</p></div><div class="callout">홈서버 운영 사례와 실제 적용 순서는 <a href="#workflows">실사용·홈서버</a>에, 구매 조건은 <a href="#storage">장비·저장공간</a>에 정리했습니다. Mac mini 사례와 Mac Studio 비교 사례를 구분합니다.</div><div class="review-list"><article><span class="verification-line">Reddit · 2026.08.15 게시</span><h3>Apple Silicon 최적화는 실행 도구마다 다르다</h3><p>작성자는 여러 Mac 추론 도구의 캐시·배치·추측 디코딩 지원이 흩어져 있다고 평가했습니다. 특정 도구가 언제나 가장 빠르다는 근거로 일반화하지 않았습니다.</p><a href="https://www.reddit.com/r/LocalLLaMA/comments/1vphr8u/sota_apple_silicon_inference_august_15_2026/">원문과 반론 읽기 →</a></article><article><span class="verification-line">Reddit · 2026.08.22 게시</span><h3>메모리와 개발 환경도 함께 고려</h3><p>Mac mini·MacBook 사용자들이 모델 실행과 개발 도구를 함께 쓸 때의 메모리 부담, 실행 도구별 차이를 보고했습니다. 기종·모델·설정이 달라 댓글의 속도를 M6 32GB 예상 성능으로 옮기지 않았습니다.</p><a href="https://www.reddit.com/r/macmini/comments/1vv69jj/question_what_are_your_experiences_with_local_llms/">사용자 경험 읽기 →</a></article><article><span class="verification-line">GitHub · README 확인 2026.09.11 · 후기가 아닌 기능 문서</span><h3>herdr의 Hermes 연동</h3><p>저장소는 Hermes 통합과 SSH 원격 연결을 안내합니다. 이는 기능 문서이지 3개월간의 사용자 만족도나 안정성 통계는 아닙니다.</p><a href="https://github.com/SuperCodeAgents/herdr-terminal">기능·설치 문서 읽기 →</a></article></div><details class="editorial-detail"><summary>선정 기준과 한계</summary><p>게시일을 확인한 Reddit 사례만 최근 후기로 포함했습니다. 검색 색인의 날짜와 원문 상대 날짜는 다를 수 있습니다. GitHub 문서는 확인 날짜를 표시하며 후기와 분리했습니다. Threads는 날짜와 본문을 검증한 사례가 없어 포함하지 않았습니다. 투표 수·댓글 일부만으로 대세나 성능 순위를 매기지 않습니다.</p><p>내 기기에서는 같은 문서와 질문으로 모델·실행 도구를 하나씩 비교하고, 첫 응답 시간·작업 성공·메모리 압박을 기록하세요.</p></details></section>
-<section class="panel" id="storage"><div class="section-head"><div><div class="kicker">STORAGE PLAN</div><h2>새로 사기 전에, 있는 장비부터</h2></div><p>512GB 내장 SSD와 남는 HDD 2개로 시작합니다. 상시 홈서버에 필요한 연결·백업부터 준비하세요.</p></div><div class="grid"><article class="card featured"><span class="label">INTERNAL SSD</span><h3>macOS · 앱 · 현재 모델</h3><p>Hermes, 런타임, 주력 Qwen, 현재 프로젝트.</p></article><article class="card"><span class="label">HDD 01</span><h3>아카이브</h3><p>미사용 모델, 완성 이미지·영상, 이전 프로젝트.</p></article><article class="card"><span class="label">HDD 02</span><h3>Time Machine</h3><p>Time Machine 전용으로 사용합니다. 보관용 HDD의 자료도 별도 사본이 필요합니다.</p></article></div><div class="callout">Time Machine 설정 중 디스크 지우기 안내가 나올 수 있습니다. 기존 HDD 자료를 다른 곳에 복사하기 전에는 지우지 마세요. 백업 후 파일 하나를 복원해 확인하세요.</div><p class="verification-line"><a href="https://support.apple.com/en-us/104984">Apple Time Machine 안내</a> · 확인 2026.09.11</p>
+<section class="panel" id="storage"><div class="section-head"><div><div class="kicker">STORAGE PLAN</div><h2>새로 사기 전에, 있는 장비부터</h2></div><p>512GB 내장 SSD와 남는 HDD 2개로 시작합니다. 상시 홈서버에 필요한 연결·백업부터 준비하세요.</p></div><div class="grid"><article class="card featured"><span class="label">INTERNAL SSD</span><h3>macOS · 앱 · 현재 모델</h3><p>Hermes, 런타임, 주력 Qwen, 현재 프로젝트.</p></article><article class="card"><span class="label">HDD 01</span><h3>공유 자료실 · 아카이브</h3><p>완성 파일·이전 프로젝트를 맥북과 윈도우에서 SMB로 공유합니다. 여기에만 있는 파일은 백업이 아닙니다.</p></article><article class="card"><span class="label">HDD 02</span><h3>백업 전용 후보</h3><p>우선 맥북의 네트워크 Time Machine용으로 검토합니다. 맥미니·공유 자료의 별도 백업은 용량과 대상을 확인해 따로 설정합니다.</p></article></div><div class="callout">Time Machine 설정 중 디스크 지우기 안내가 나올 수 있습니다. 기존 HDD 자료를 다른 곳에 복사하기 전에는 지우지 마세요. 백업 후 파일 하나를 복원해 확인하세요.</div><p class="verification-line"><a href="https://support.apple.com/en-us/104984">Apple Time Machine 안내</a> · 확인 2026.09.11</p>
 <h3>구매 우선순위</h3>
 <p>아래는 용도별 추천이지 실측 제품 순위가 아닙니다. HDD의 크기·SATA 여부·용량·상태, 공유기 포트 속도는 아직 미확인입니다. 이 정보 없이 케이스나 네트워크 장비를 확정 구매하지 마세요.</p>
 <div class="table-wrap"><table><thead><tr><th>우선순위</th><th>장비·후보</th><th>살 이유와 선택 기준</th><th>보류해도 되는 경우</th></tr></thead><tbody>
@@ -273,4 +313,4 @@ function updateProgress(){
  const button=document.querySelector('.progress-card [data-open]');button.dataset.open=next?destinations[next.dataset.task]:'workflows';button.textContent=next?'다음 단계 열기':'실전 활용 열기';
 }
 updateProgress();
-</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20260912-2"></script><script src="lab-planner.js?v=20260913-1"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260912-2"><script src="lab-outcomes.js?v=20260912-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20260913-1"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20260912-1"></script></body></html>
+</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20260912-2"></script><script src="lab-planner.js?v=20260915-1"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260915-1"><script src="lab-outcomes.js?v=20260912-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20260915-1"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20260912-1"></script></body></html>
