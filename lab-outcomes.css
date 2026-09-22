@@ -67,3 +67,36 @@
 .home-priority-note{margin:16px 0 30px;max-width:850px}
 .home-priority :is(a,summary):focus-visible{outline:3px solid #0066cc;outline-offset:4px}
 @media(max-width:760px){.home-priorities{grid-template-columns:1fr;gap:16px}.home-priority{padding:24px 20px}.home-priority h4{font-size:24px}}
+
+/* Jev is an optional cloud helper, never part of the free-local installation plan. */
+.jev-guide{margin:44px 0 24px;padding:32px;border:1px solid #e5e5e8;border-radius:20px;background:#fff;min-width:0}
+.jev-guide .jev-eyebrow{font-size:13px;color:#626269;margin:0 0 16px}
+.jev-guide,.jev-guide h3{scroll-margin-top:var(--site-chrome-height,190px)}
+.jev-guide h3{font-size:clamp(24px,3vw,34px);letter-spacing:-.04em;line-height:1.35;margin:0 0 18px;word-break:keep-all;overflow-wrap:anywhere}
+.jev-guide p,.jev-guide dd,.jev-trial li{font-size:15px;line-height:1.85;color:#626269;word-break:keep-all;overflow-wrap:anywhere}
+.jev-guide strong{font-weight:600;color:#1d1d1f}
+.jev-guide .jev-lead{max-width:790px;margin:0 0 24px;font-size:17px}
+.jev-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;list-style:none;margin:0;padding:0;border:1px solid #e5e5e8;border-radius:12px;overflow:hidden;background:#e5e5e8}
+.jev-flow li{min-width:0;padding:20px;background:#f5f5f7}
+.jev-flow span{display:block;font-size:12px;color:#626269;margin-bottom:10px}
+.jev-flow strong{display:block;font-size:16px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
+.jev-flow p{margin:8px 0 0;font-size:14px}
+.jev-guide .jev-status{margin:20px 0 24px;font-size:14px}
+.jev-status>strong{display:block;margin-bottom:4px}
+.jev-detail{border-top:1px solid #e5e5e8;padding:6px 0}
+.jev-detail>summary{min-height:44px;padding:11px 0;cursor:pointer;font-size:15px;line-height:1.6;font-weight:600;word-break:keep-all;overflow-wrap:anywhere}
+.jev-detail code{overflow-wrap:anywhere}
+.jev-facts{margin:12px 0 22px}
+.jev-facts>div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;padding:16px 0}
+.jev-facts dt{font-size:14px;font-weight:600;line-height:1.8;color:#1d1d1f;word-break:keep-all;overflow-wrap:anywhere}
+.jev-facts dd{margin:0}
+.jev-trial{padding-left:22px;margin:18px 0}
+.jev-trial li{padding-left:4px;margin:14px 0}
+.jev-links{display:flex;gap:4px 22px;flex-wrap:wrap}
+.jev-links a{display:inline-flex;align-items:center;min-height:44px;font-size:13px}
+.jev-guide .jev-verified{font-size:12px;margin:20px 0 0}
+.jev-guide a,.jev-entry a{text-underline-offset:4px}
+.jev-guide :is(a,summary):focus-visible,.jev-entry a:focus-visible{outline:3px solid #0066cc;outline-offset:4px}
+.jev-entry{font-size:14px;color:#626269;line-height:1.85;margin:18px 0 24px;overflow-wrap:anywhere}
+.jev-entry a{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:760px){.jev-guide{padding:24px 20px}.jev-flow{grid-template-columns:1fr}.jev-flow li{padding:18px}.jev-facts>div{grid-template-columns:1fr;gap:6px;padding:14px 0}.jev-guide .jev-lead{font-size:16px}}
