@@ -44,6 +44,22 @@
 @media(max-width:760px){.outcome-choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.outcome-choice{padding:14px 12px}.outcome-card{padding:22px 18px}.outcome-flow,.outcome-facts{grid-template-columns:1fr}.outcome-flow>div{padding:18px}.outcome-facts{gap:18px}.outcome-links{gap:4px 18px}}
 @media(prefers-reduced-motion:reduce){.outcome-choice{transition:none}.outcome-card{animation:none}}
 
+/* Qwen media stays inside the existing model guide, not the default install plan. */
+.qwen-local-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:20px 0}
+.qwen-local-options article{min-width:0;padding:20px;border-radius:12px;background:#f5f5f7}
+.qwen-local-options .qwen-purpose{font-size:12px;color:#626269}
+.qwen-local-options h5{margin:8px 0 14px;font-size:18px;line-height:1.5;letter-spacing:-.02em;color:#1d1d1f;overflow-wrap:anywhere}
+.qwen-local-options p{margin:12px 0}
+.qwen-local-options .update-links{gap:0 16px;margin-bottom:0}
+.qwen-cloud{margin:24px 0 0;border-block:1px solid #e5e5e8}
+.qwen-cloud>summary{padding:18px 0;min-height:52px;font-size:14px;line-height:1.8;cursor:pointer}
+.qwen-cloud-list{margin:18px 0}
+.qwen-cloud-list>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:20px;padding:14px 0;border-bottom:1px solid #e5e5e8}
+.qwen-cloud-list dt{font-size:14px;font-weight:600;line-height:1.8;overflow-wrap:anywhere}
+.qwen-cloud-list dd{margin:0;font-size:14px}
+#qwenMediaUpdate summary,#qwenVoiceWorkflow>summary{scroll-margin-top:var(--site-chrome-height,190px)}
+@media(max-width:760px){.qwen-local-options{grid-template-columns:1fr;gap:14px}.qwen-local-options article{padding:18px}.qwen-cloud-list>div{grid-template-columns:1fr;gap:6px}}
+
 /* Two personal priorities, with implementation detail kept behind native disclosures. */
 .home-priorities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:20px}
 .home-priority{min-width:0;padding:28px;border:1px solid #e5e5e8;border-radius:20px;background:#fff}
