@@ -7,6 +7,9 @@
     {name:'용어집',pages:[['glossary','용어 찾기']]}
   ];
   const terms = [
+    ['oMLX','MLX 기반 로컬 모델 서버','모델','Apple Silicon에서 모델을 제공하는 오픈 소스 서버. 반복 입력의 캐시와 동시 요청 관리 기능을 제공합니다. MLX 프레임워크나 모델 자체와는 구분합니다.','models'],
+    ['KV 캐시','KV cache · Prefix cache','모델','이전에 처리한 입력의 중간 계산을 보관해 재사용하는 캐시. 문맥이 길면 메모리를 더 쓸 수 있으며, SSD에 저장한다고 실행 RAM이 늘어나는 것은 아닙니다.','models'],
+    ['추측 디코딩','Speculative decoding · MTP · 초안 모델','모델','여러 다음 토큰을 먼저 제안하고 주 모델이 검증하는 가속 방식. 작은 초안 모델을 함께 쓰는 경우 메모리가 더 필요합니다. 작업과 지원 엔진에 따라 효과가 다릅니다.','models'],
     ['무료 로컬 AI','무료 모델 · 사용료 0원','기본','모델을 내려받아 내 기기에서 추론하면 외부 모델 API 요금이 들지 않는 구성. 하드웨어·전기 비용, 유료 부가 도구와 라이선스 제한은 별개입니다.','models'],
     ['라이선스','License · Apache 2.0 · MIT · NC','기본','모델을 어떤 조건으로 사용·수정·배포할 수 있는지 정한 규칙. 무료 다운로드와 상업 이용 허용은 다릅니다. 정확한 모델 버전의 원문을 확인하세요.','models'],
     ['오픈 웨이트','Open weights · 공개 가중치','모델','모델 가중치 파일이 공개되어 있다는 뜻입니다. 제한 없는 오픈 소스나 무료 상업 이용을 자동으로 뜻하지는 않습니다.','models'],
@@ -122,7 +125,7 @@
   function revealSearchMatch(id,query){
     if(!query)return false;
     const panel=document.getElementById(id);
-    const match=[...panel.querySelectorAll('p,dd,dt,li,h3,h4,summary,td')].find(node=>node.textContent.toLowerCase().includes(query));
+    const match=[...panel.querySelectorAll('p,dd,dt,li,h3,h4,summary,td')].find(node=>!node.closest('.update-decisions')&&node.textContent.toLowerCase().includes(query));
     if(!match)return false;
     document.querySelectorAll('.search-match').forEach(node=>node.classList.remove('search-match'));
     const card=match.closest('.outcome-card');
@@ -155,9 +158,9 @@
   // Model recommendations describe fit and licensing, not unmeasured benchmark scores.
   const footer=document.querySelector('.footer');footer.replaceChildren();
   const footerName=document.createElement('span');footerName.textContent='Hermes Local Lab · 독립적인 개인 구축 가이드';
-  const footerDate=document.createElement('span');footerDate.textContent='Jev 안내 보완 2026.09.22 · 항목별 확인일은 본문 참고';footer.append(footerName,footerDate);
+  const footerDate=document.createElement('span');footerDate.textContent='로컬 AI 동향 보완 2026.09.23 · 항목별 확인일은 본문 참고';footer.append(footerName,footerDate);
   const policy=document.createElement('details');policy.className='editorial-detail source-policy';
-  policy.innerHTML='<summary>이 가이드의 확인 범위</summary><p>2026.09.22에는 Jev의 공식 문서·가격·언어 한계와 Hermes용 커뮤니티 플러그인을 확인했습니다. 무료 로컬 AI와 구분한 선택형 클라우드 기능 안내이며, API 연결·설치·한국어 성능 시험은 하지 않았습니다. 검색·스킬 추천·근거 대조는 도입 제안이고 현재 작동하는 Jev 기능이 아닙니다. 다른 모델·앱 정보까지 이날 모두 재검증한 것은 아닙니다.</p><p>2026.09.15에는 공용 자료실·맥북 백업과 상시 Hermes 작업실을 우선 활용법으로 정리했습니다. Apple·Hermes 공식 기능을 바탕으로 한 구성 제안이며, 실제 백업·복구나 작업 지속을 이 맥미니에서 시험한 결과는 아닙니다. Plex는 참고 용도로만 남겼습니다. 기존 모델·받아쓰기 비교를 모두 재검증했다는 뜻은 아닙니다.</p><p>2026.09.13에는 Superwhisper·Wispr Flow의 공식 Mac 다운로드와 한국 iPhone 앱스토어 링크를 확인하고 설치 후보 저장에 연결했습니다. App Store 링크는 맥용 설치 파일이 아닙니다.</p><p>2026.09.12에는 무료 AI 후보의 모델 카드·라이선스·로컬 실행 범위와 설치 경로, 작업별 활용·기대효과 비교를 보완했습니다. 기대효과는 공식 기능을 바탕으로 한 활용 제안이며 실제 출력이나 생산성 실측이 아닙니다. 나머지 문서·후기 검토일은 2026.09.11입니다. 공식 지원 여부와 이 가이드의 선택 제안은 다릅니다. 다운로드 용량은 최대 메모리 사용량이 아니며, 한국어 정확도·속도는 이 맥미니에서 아직 측정하지 않았습니다.</p><p>모델 표의 0원은 내 기기에서 실행할 때의 모델·추론 사용료입니다. 전기·장비·외부 도구 비용과 라이선스 조건은 별개입니다. 실행 앱의 무료 범위와 네트워크 서비스의 개인용 무료 플랜도 구분합니다. 각 항목의 공식 출처에서 현행 조건을 확인하세요.</p>';
+  policy.innerHTML='<summary>이 가이드의 확인 범위</summary><p>2026.09.23에는 최근 3개월의 Reddit·Threads 사용기와 Ollama·oMLX·LM Studio·Qwen 공식 자료를 대조했습니다. 실행기 변화, 큰 모델의 조건부 비교, 32GB에서 제외할 가속 엔진, 기존 Windows PC와의 역할 분담을 추가했습니다. 기본 무료 구성은 유지했습니다. 커뮤니티 수치는 자기 보고이며 새 맥미니 실측이 아닙니다. 기존 6개 모델·받아쓰기 앱·가격을 이날 모두 재검증했다는 뜻은 아닙니다.</p><p>2026.09.22에는 Jev의 공식 문서·가격·언어 한계와 Hermes용 커뮤니티 플러그인을 확인했습니다. 무료 로컬 AI와 구분한 선택형 클라우드 기능 안내이며, API 연결·설치·한국어 성능 시험은 하지 않았습니다. 검색·스킬 추천·근거 대조는 도입 제안이고 현재 작동하는 Jev 기능이 아닙니다. 다른 모델·앱 정보까지 이날 모두 재검증한 것은 아닙니다.</p><p>2026.09.15에는 공용 자료실·맥북 백업과 상시 Hermes 작업실을 우선 활용법으로 정리했습니다. Apple·Hermes 공식 기능을 바탕으로 한 구성 제안이며, 실제 백업·복구나 작업 지속을 이 맥미니에서 시험한 결과는 아닙니다. Plex는 참고 용도로만 남겼습니다. 기존 모델·받아쓰기 비교를 모두 재검증했다는 뜻은 아닙니다.</p><p>2026.09.13에는 Superwhisper·Wispr Flow의 공식 Mac 다운로드와 한국 iPhone 앱스토어 링크를 확인하고 설치 후보 저장에 연결했습니다. App Store 링크는 맥용 설치 파일이 아닙니다.</p><p>2026.09.12에는 무료 AI 후보의 모델 카드·라이선스·로컬 실행 범위와 설치 경로, 작업별 활용·기대효과 비교를 보완했습니다. 기대효과는 공식 기능을 바탕으로 한 활용 제안이며 실제 출력이나 생산성 실측이 아닙니다. 나머지 문서·후기 검토일은 2026.09.11입니다. 공식 지원 여부와 이 가이드의 선택 제안은 다릅니다. 다운로드 용량은 최대 메모리 사용량이 아니며, 한국어 정확도·속도는 이 맥미니에서 아직 측정하지 않았습니다.</p><p>모델 표의 0원은 내 기기에서 실행할 때의 모델·추론 사용료입니다. 전기·장비·외부 도구 비용과 라이선스 조건은 별개입니다. 실행 앱의 무료 범위와 네트워크 서비스의 개인용 무료 플랜도 구분합니다. 각 항목의 공식 출처에서 현행 조건을 확인하세요.</p>';
   document.querySelector('#sources .section-head').after(policy);
   // Short local outline: no extra top-level menu or sidebar.
   panels.forEach(panel=>{

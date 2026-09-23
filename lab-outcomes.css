@@ -100,3 +100,46 @@
 .jev-entry{font-size:14px;color:#626269;line-height:1.85;margin:18px 0 24px;overflow-wrap:anywhere}
 .jev-entry a{display:inline-flex;align-items:center;min-height:44px}
 @media(max-width:760px){.jev-guide{padding:24px 20px}.jev-flow{grid-template-columns:1fr}.jev-flow li{padding:18px}.jev-facts>div{grid-template-columns:1fr;gap:6px;padding:14px 0}.jev-guide .jev-lead{font-size:16px}}
+
+/* A compact editorial update: keep experimental tools outside the default plan. */
+.local-update{margin:28px 0 36px;padding:28px;border:1px solid #e5e5e8;border-radius:20px;background:#fff;min-width:0}
+.local-update .update-date{margin:0 0 12px;font-size:12px;color:#626269;letter-spacing:.02em}
+.local-update h3{margin:0 0 12px;font-size:clamp(23px,2.8vw,30px);letter-spacing:-.035em;line-height:1.4}
+.local-update .update-intro{margin:0 0 24px;max-width:680px;color:#626269;font-size:15px;line-height:1.8}
+.update-decisions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0 0 24px;padding:20px 0;border-block:1px solid #e5e5e8}
+.update-decisions dt{font-size:12px;color:#626269;margin-bottom:8px}
+.update-decisions dd{margin:0;font-size:16px;line-height:1.7;font-weight:600}
+.update-decisions dd span{font-size:13px;color:#626269;font-weight:400}
+.local-update .update-detail{margin:0;border:0;border-bottom:1px solid #e5e5e8;border-radius:0;background:transparent}
+.local-update .update-detail>summary{padding:18px 0;min-height:52px;font-size:15px;line-height:1.7}
+.update-body{padding:4px 0 16px;min-width:0}
+.update-body :is(p,li,dd){font-size:15px;line-height:1.9;color:#626269}
+.update-body strong,.update-body h4,.update-watch dt{color:#1d1d1f}
+.update-body h4{margin:24px 0 10px;font-size:18px;letter-spacing:-.02em}
+.update-body h4:first-child{margin-top:8px}
+.update-body :is(code,p,li,dd),.local-update :is(h3,dd),.update-device-roles span{overflow-wrap:anywhere;word-break:keep-all}
+.update-body code{font-size:13px;color:#1d1d1f}
+.update-body ul{padding-left:22px}
+.update-body .update-caution{padding:16px 18px;border-radius:12px;background:#f5f5f7;font-size:14px}
+.update-links{display:flex;flex-wrap:wrap;gap:4px 18px}
+.update-links a,.trial-models a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}
+.local-update .update-scope,.update-body .update-scope{margin:18px 0 0;font-size:12px;color:#626269;line-height:1.8}
+.update-watch{margin:0}
+.update-watch>div+div{border-top:1px solid #e5e5e8;padding-top:20px}
+.update-watch dt{font-size:16px;font-weight:600;margin:16px 0 10px}
+.update-watch dd{margin:0 0 20px}
+.trial-models{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.trial-models article{min-width:0;border-top:1px solid #e5e5e8;padding-top:12px}
+.trial-models code{display:block;padding:12px;background:#f5f5f7;border-radius:8px;user-select:all}
+.update-device-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0;list-style:none}
+.update-device-roles li{padding:16px;border-radius:12px;background:#f5f5f7;min-width:0}
+.update-device-roles strong,.update-device-roles span{display:block}
+.update-device-roles span{margin-top:8px;font-size:13px}
+.update-workflow{margin-block:28px}
+.update-entry{font-size:14px;line-height:1.9;color:#626269;margin:20px 0;overflow-wrap:anywhere}
+.update-entry a{display:inline-flex;align-items:center;min-height:44px}
+.update-entry a:focus-visible{outline:3px solid #0066cc;outline-offset:4px}
+.update-workflow .update-body{padding:8px 20px 20px}
+.recent-reviews article p:last-of-type{margin-bottom:12px}
+.local-update :is(a,summary):focus-visible,.update-workflow :is(a,summary):focus-visible{outline:3px solid #0066cc;outline-offset:4px}
+@media(max-width:760px){.local-update{padding:22px 20px}.update-decisions{gap:14px;grid-template-columns:1fr}.update-decisions>div{display:grid;grid-template-columns:42px 1fr;gap:12px}.update-decisions dt{margin:4px 0 0}.trial-models,.update-device-roles{grid-template-columns:1fr}.update-workflow .update-body{padding-inline:12px}.local-update .update-detail>summary{font-size:14px}}
