@@ -102,6 +102,8 @@
     const links = element('div', '', 'outcome-links');
     const guide = element('a', item.guideLabel + ' →'); guide.href = '#' + item.guide;
     const source = element('a', item.source + ' ↗'); source.href = item.url;
+    const recipeIds={writing:'recipeContent',meeting:'recipeVoice',knowledge:'recipeDocs',creative:'recipeContent',server:'recipeWatch'};
+    if(recipeIds[item.id]){const recipe=element('a','이 작업의 실행안 →');recipe.href='#workflows';recipe.dataset.guideDetail=recipeIds[item.id];links.append(recipe);}
     links.append(guide); more.append(tradeoff, measure, source); card.append(more, links); examples.append(card); cards.push(card);
     button.addEventListener('click', () => {
       if (button.getAttribute('aria-pressed') === 'true') return;

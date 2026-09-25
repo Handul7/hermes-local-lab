@@ -47,6 +47,12 @@
   host.querySelectorAll('.choice').forEach(el=>{const key=el.querySelector('input').value;el.insertAdjacentHTML('afterbegin',`<span class="goal-visual" aria-hidden="true">${svg(goalIcons[key])}</span>`);el.dataset.goal=key});
   function foldText(el,title){const d=document.createElement('details');d.className='quiet-detail';const s=document.createElement('summary');s.textContent=title;el.before(d);d.append(s,el)}
   foldText(host.querySelector('.builder-layout > div > .muted'),'로컬·무료 기준 안내');
+  const journey=document.createElement('nav');journey.className='guide-journey';journey.setAttribute('aria-label','가이드 읽는 순서');
+  journey.innerHTML='<a href="#start"><span>01 · 도착하면</span><strong>첫날 설치</strong><small>기기 준비부터 대화 한 번까지</small></a><a href="#models"><span>02 · 하나만 골라</span><strong>무료 모델 선택</strong><small>기본 추천과 대안 비교</small></a><a href="#workflows"><span>03 · 매일 쓰기</span><strong>내 활용법 찾기</strong><small>백업·문서·녹음부터</small></a>';
+  freePlan.before(journey);
+  const custom=document.createElement('details');custom.className='planner-custom';custom.id='customPlan';custom.innerHTML='<summary>용도에 맞게 도구 더 고르기 <span>선택 사항</span></summary>';
+  const picker=host.querySelector('.builder-layout > div');picker.before(custom);custom.append(picker);
+  custom.before(host.querySelector('.builder-summary'));
   host.querySelector('.builder-summary > p').textContent='필요한 도구만 골라 담으세요.';
   host.querySelector('.builder-summary > p:last-of-type').textContent='자동 저장 · 다른 맥으로 옮길 땐 내려받기';
   document.querySelectorAll('.panel:not(#plan) .card').forEach(card=>{const items=[...card.children].filter(el=>el.matches('p,ul'));if(!items.length||(items.length===1&&items[0].matches('p')))return;const d=document.createElement('details');d.className='quiet-detail';d.innerHTML='<summary>자세히 보기</summary>';card.append(d);items.forEach(el=>d.append(el))});
@@ -66,7 +72,7 @@
     host.querySelectorAll('.tool-visual > .icon').forEach(el=>el.remove());
     host.querySelectorAll('.tool-visual').forEach(el=>el.removeAttribute('aria-hidden'));
     host.querySelectorAll('.tool-result').forEach((card,i)=>{card.querySelector('[data-guide]').setAttribute('aria-label',tools[i].name+' 가이드');card.querySelector('.actions a').setAttribute('aria-label',tools[i].name+' 배포·설치 (새 탭)')});
-    if(!selected.length)host.querySelector('#savedTools').innerHTML='<p class="builder-empty">후보의 “+ 담기”를 누르면 여기에 설치 순서가 정리됩니다.</p>';
+    if(!selected.length)host.querySelector('#savedTools').innerHTML='<p class="builder-empty">위의 무료 기본 구성을 담거나, 도구 더 고르기를 펼쳐 필요한 것만 선택하세요. 저장만 하며 설치는 실행하지 않습니다.</p>';
     host.querySelectorAll('.saved-tool').forEach(el=>foldText(el.querySelector('small'),'설치 순서'));
     let bar=host.querySelector('.saved-meter');if(!bar){bar=document.createElement('div');bar.className='saved-meter';bar.setAttribute('aria-hidden','true');host.querySelector('#savedCount').after(bar)}bar.style.setProperty('--fill',selected.length?selected.filter(t=>state.tools[t.id]).length/selected.length*100+'%':'0%');
   }
@@ -78,7 +84,7 @@
     const savedMessage=model.name+'와 실행기를 설치 목록에 담았습니다. 기존 항목·완료 상태는 유지됩니다. 실제 설치·동시 실행은 하지 않습니다.';
     persist(savedMessage);render();document.getElementById('modelInstallStatus').textContent=status.textContent;
   });
-  host.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.guide){openPanel(b.dataset.guide);document.querySelector('#'+b.dataset.guide+' h2')?.focus({preventScroll:true});return}if(b.dataset.add){const exists=Object.hasOwn(state.tools,b.dataset.add);if(exists)delete state.tools[b.dataset.add];else state.tools[b.dataset.add]=false;persist(exists?'목록에서 뺐습니다.':'설치 목록에 담았습니다.');render();host.querySelector('[data-add="'+b.dataset.add+'"]').focus()}if(b.dataset.remove){delete state.tools[b.dataset.remove];persist('목록에서 뺐습니다.');render();(host.querySelector('[data-add="'+b.dataset.remove+'"]')||host.querySelector('[data-remove]')||host.querySelector('#openChecklist')).focus()}});
+  host.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.guide){openPanel(b.dataset.guide);document.querySelector('#'+b.dataset.guide+' h2')?.focus({preventScroll:true});return}if(b.dataset.add){const exists=Object.hasOwn(state.tools,b.dataset.add);if(exists)delete state.tools[b.dataset.add];else state.tools[b.dataset.add]=false;persist(exists?'목록에서 뺐습니다.':'설치 목록에 담았습니다.');render();host.querySelector('[data-add="'+b.dataset.add+'"]').focus()}if(b.dataset.remove){delete state.tools[b.dataset.remove];persist('목록에서 뺐습니다.');render();(custom.open&&host.querySelector('[data-add="'+b.dataset.remove+'"]')||host.querySelector('[data-remove]')||host.querySelector('#openChecklist')).focus()}});
   host.querySelector('#openChecklist').addEventListener('click',()=>{setup.open=true;setup.querySelector('summary').focus({preventScroll:true});setup.scrollIntoView({behavior:reduced()?'instant':'smooth',block:'start'})});
   host.querySelector('#exportPlan').addEventListener('click',()=>{const lines=['# 내 맥미니 설치 목록','','받아쓰기 앱 설치 경로 확인: 2026-09-13. Mac은 공식 다운로드, App Store 링크는 iPhone용. 무료 다운로드와 무제한 사용은 다릅니다.','비용 정보 확인: 2026-09-12. 모델·앱의 로컬 기능 기준이며 외부 API, 전기·장비 비용은 별도.','Hermes의 유료 폴백·보조 모델·외부 도구를 확인하세요. 기존에 담은 유료 후보는 필터 변경 후에도 남을 수 있습니다.','모델은 동시에 하나부터. A.X(16K)·Kanana(기본 32K)는 한국어 문서 보조이며 Hermes 메인에 바로 지정하지 않습니다.','다운로드 크기는 실행 RAM이 아닙니다. 맥미니 실기기 검증 전 후보입니다.','',...catalog.filter(t=>Object.hasOwn(state.tools,t.id)).map(t=>'- ['+(state.tools[t.id]?'x':' ')+'] '+t.name+'\n  '+costs[t.id]+'\n  '+t.step+'\n  '+t.url)];const url=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/markdown;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='my-mac-mini-plan.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='설치 목록 다운로드를 요청했습니다.'});
   const dictation=document.getElementById('dictation');
@@ -128,15 +134,7 @@
       <div>${svg('model')}<strong>맥미니</strong><span>공유·백업 · Hermes 처리 · 결과 보관</span></div>
       <div>${svg('code')}<strong>윈도우 데스크톱</strong><span>기존 작업 유지 · GPU 작업은 사양 확인 후</span></div>
     </div>
-    <details class="quiet-detail"><summary>도착 후 첫 주, 이 세 가지만 해보기</summary>
-      <ol class="first-week">
-        <li><strong>두 기기에서 같은 파일 열기</strong><p>공유 폴더의 테스트 파일을 맥북과 윈도우에서 열어보세요. 필요한 폴더만 공유하고, 계정별 접근 권한을 확인합니다.</p><a href="#storage">HDD와 공유 자료실 준비 →</a></li>
-        <li><strong>백업에서 파일 하나 되찾기</strong><p>맥북의 첫 Time Machine 백업을 마친 뒤 테스트 파일을 다른 위치로 복원해 비교하세요. 공유 자료와 맥미니 자체 자료도 별도 백업 대상인지 확인합니다.</p></li>
-        <li><strong>맥북을 닫고도 작업 끝내기</strong><p>맥미니에서 Hermes로 작은 문서 요약을 실행하고 맥북을 닫아보세요. 다시 접속해 결과와 로그를 확인합니다. 주력 모델 하나로 순차 처리부터 시작하세요.</p><a href="#remote">원격 접속 가이드 →</a></li>
-      </ol>
-      <p>첫 주의 기준은 설치 개수가 아니라 실제 사용 횟수와 줄어든 작업 시간입니다. 이미지·영상 모델은 이 흐름이 자리 잡은 뒤 추가해도 늦지 않습니다. 칩 세대별 성능을 보장하는 구성은 아닙니다.</p>
-      <p>활용 제안 2026.09.15 · 준비·검토·유지보수 시간까지 포함해 직접 하던 방식과 비교하세요. 아직 실기기에서 통과한 항목은 아닙니다.</p>
-    </details>`;
-  (workflows.querySelector('#outcomeExplorer') || workflows.querySelector('.section-head')).after(practical);
+    `;
+  workflows.querySelector('#homePriorityTitle').before(practical);
   render();
 })();

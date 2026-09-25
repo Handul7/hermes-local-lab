@@ -61,6 +61,7 @@
   select.addEventListener('change', render);
   document.querySelectorAll('[data-model-pick]').forEach(button => button.addEventListener('click', () => {
     if (!models.some(model => model.id === button.dataset.modelPick)) return;
+    for (let detail = select.closest('details'); detail; detail = detail.parentElement.closest('details')) detail.open = true;
     select.value = button.dataset.modelPick;
     render();
     document.getElementById('modelInstaller').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
