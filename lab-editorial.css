@@ -94,12 +94,17 @@
 :is(.planner-custom,.guide-collection,.source-group,.setup-details,.page-outline)[open]>summary::after{transform:rotate(225deg)}
 :is(.planner-custom,.guide-collection,.source-group,.setup-details,.page-outline)>summary:hover{color:#0066cc}
 .guide-steps>li>span{width:38px;height:38px;padding:0;display:grid;place-items:center;background:#eef3f8;color:#3c607d;border-radius:50%;font-size:13px;font-weight:600}
-#macbook .card-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:#fff;color:#455a71;margin-bottom:18px}
-#macbook .card-icon .icon{width:22px;height:22px;stroke-width:1.6;color:inherit}
+#macbook .card-eyebrow{display:flex;align-items:center;gap:10px;min-height:24px;margin:0 0 18px;color:#536577}
+#macbook .card-eyebrow .card-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px;width:22px;height:22px;padding:0;margin:0;border:0;border-radius:0;background:none;box-shadow:none;color:inherit;transform:none}
+#macbook .card-eyebrow .card-icon .icon{display:block;width:22px;height:22px;stroke-width:1.6;color:inherit;transform:none}
+#macbook .card-eyebrow .label{display:block;margin:0;font-size:14px;line-height:24px;font-weight:500;letter-spacing:0;color:inherit}
 #macbook .card h3{margin-top:0}
 .home-priority .home-priority-label{display:flex;align-items:center;gap:12px;font-size:14px}
 .priority-emblem{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:0 0 40px;border-radius:12px;background:#edf4ef;color:#3d6457}
 .priority-emblem .icon{width:22px;height:22px;stroke-width:1.6;color:inherit}
+.device-roles>div{grid-template-columns:28px minmax(0,1fr);column-gap:12px}
+.device-roles>.device-role .icon{width:26px;height:26px;stroke-width:1.5;margin-top:0;color:#536577}
+.device-roles>.device-role strong{line-height:26px}
 .home-priority p,.home-priority dd{font-size:16px;line-height:1.9}
 .home-priority .home-priority-caution,.home-priority .home-priority-check{font-size:15px}
 .outcome-choice{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:12px;align-content:center}

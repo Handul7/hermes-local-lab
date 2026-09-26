@@ -130,9 +130,9 @@
   practical.setAttribute('aria-labelledby','dailyUseTitle');
   practical.innerHTML=`<h3 id="dailyUseTitle">세 대를 함께 쓰는 방법</h3>
     <div class="device-roles">
-      <div>${svg('laptop')}<strong>맥북</strong><span>말로 입력 · 결과 검토 · 외부 접속</span></div>
-      <div>${svg('model')}<strong>맥미니</strong><span>공유·백업 · Hermes 처리 · 결과 보관</span></div>
-      <div>${svg('code')}<strong>윈도우 데스크톱</strong><span>기존 작업 유지 · GPU 작업은 사양 확인 후</span></div>
+      <div class="device-role">${svg('laptop')}<strong>맥북</strong><span>말로 입력 · 결과 검토 · 외부 접속</span></div>
+      <div class="device-role">${svg('mini')}<strong>맥미니</strong><span>공유·백업 · Hermes 처리 · 결과 보관</span></div>
+      <div class="device-role">${svg('desktop')}<strong>윈도우 데스크톱</strong><span>기존 작업 유지 · GPU 작업은 사양 확인 후</span></div>
     </div>
     `;
   workflows.querySelector('#homePriorityTitle').before(practical);

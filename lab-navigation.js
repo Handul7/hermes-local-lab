@@ -208,11 +208,10 @@
   };
   if('ResizeObserver' in window){const observer=new ResizeObserver(updateChrome);observer.observe(topbar);observer.observe(nav)}updateChrome();
   // Decorative wayfinding only: labels, saved plans and routing stay unchanged.
-  iconPaths.mini='<rect x="3" y="6" width="18" height="12" rx="4"/><path d="M7 14h4m5 0h1"/>';
   iconPaths.book='<path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Zm0 0v15"/>';
   iconPaths.arrow='<path d="M5 12h14m-5-5 5 5-5 5"/>';
   iconPaths.search='<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>';
-  const guideMarks={plan:'mini',macbook:'laptop',start:'install',storage:'drive',models:'model',dictation:'mic',workflows:'remote',architecture:'team',remote:'terminal',reviews:'video',sources:'link',glossary:'book'};
+  const guideMarks={plan:'mini',macbook:'laptop',start:'install',storage:'drive',models:'model',dictation:'mic',workflows:'home',architecture:'team',remote:'terminal',reviews:'video',sources:'link',glossary:'book'};
   const mark=(name,className)=>{
     const node=document.createElement('span');node.className=className;
     node.setAttribute('aria-hidden','true');node.innerHTML=svg(name);
@@ -230,13 +229,11 @@
   home.prepend(mark('mini','site-emblem'));
   searchButton.prepend(mark('search','search-emblem'));
   document.querySelectorAll('.outcome-choice').forEach(button=>{
-    const name={writing:'doc',meeting:'mic',knowledge:'book',coding:'code',creative:'image',server:'remote'}[button.dataset.outcome];
+    const name={writing:'doc',meeting:'mic',knowledge:'book',coding:'code',creative:'image',server:'home'}[button.dataset.outcome];
     button.prepend(mark(name,'outcome-emblem'));
   });
   ['homeShared','homeHermes'].forEach((id,i)=>{
     document.querySelector('#'+id+' .home-priority-label')?.prepend(mark(i?'team':'drive','priority-emblem'));
   });
-  // Restore existing functional illustrations only where they aid recognition.
-  document.querySelectorAll('#macbook .card-icon, #storage .card-icon').forEach(node=>node.setAttribute('aria-hidden','true'));
   openPanel(location.hash.slice(1)||'plan',false,false);
 })();
