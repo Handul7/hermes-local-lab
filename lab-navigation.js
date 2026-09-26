@@ -171,7 +171,7 @@
   // Model recommendations describe fit and licensing, not unmeasured benchmark scores.
   const footer=document.querySelector('.footer');footer.replaceChildren();
   const footerName=document.createElement('span');footerName.textContent='Hermes Local Lab · 독립적인 개인 구축 가이드';
-  const footerDate=document.createElement('span');footerDate.textContent='읽기 흐름 정리 2026.09.25 · 자료 확인일은 항목별 표기';footer.append(footerName,footerDate);
+  const footerDate=document.createElement('span');footerDate.textContent='화면·가독성 개선 2026.09.26 · 자료 확인일은 항목별 표기';footer.append(footerName,footerDate);
   const policy=document.createElement('details');policy.className='editorial-detail source-policy';
   policy.innerHTML='<summary>이 가이드의 확인 범위</summary><p>2026.09.23 추가 확인: Qwen3-ASR·TTS·ForcedAligner의 공개 모델과 MLX Audio 구현, Qwen-Image-2.1의 Draw Things 등록·연구용 라이선스·ComfyUI MPS 오류 보고를 확인했습니다. 최신 클라우드 음성·Omni·이미지 발표는 로컬 설치 후보와 구분했습니다. 모델 파일 크기는 RAM 사용량이 아니며, M6 32GB 설치·한국어 품질·처리 속도는 실측하지 않았습니다. 녹음 → 요약 → 음성 활용은 연결 제안이지 구현된 자동화가 아닙니다.</p><p>2026.09.23에는 최근 3개월의 Reddit·Threads 사용기와 Ollama·oMLX·LM Studio·Qwen 공식 자료를 대조했습니다. 실행기 변화, 큰 모델의 조건부 비교, 32GB에서 제외할 가속 엔진, 기존 Windows PC와의 역할 분담을 추가했습니다. 기본 무료 구성은 유지했습니다. 커뮤니티 수치는 자기 보고이며 새 맥미니 실측이 아닙니다. 기존 6개 모델·받아쓰기 앱·가격을 이날 모두 재검증했다는 뜻은 아닙니다.</p><p>2026.09.22에는 Jev의 공식 문서·가격·언어 한계와 Hermes용 커뮤니티 플러그인을 확인했습니다. 무료 로컬 AI와 구분한 선택형 클라우드 기능 안내이며, API 연결·설치·한국어 성능 시험은 하지 않았습니다. 검색·스킬 추천·근거 대조는 도입 제안이고 현재 작동하는 Jev 기능이 아닙니다. 다른 모델·앱 정보까지 이날 모두 재검증한 것은 아닙니다.</p><p>2026.09.15에는 공용 자료실·맥북 백업과 상시 Hermes 작업실을 우선 활용법으로 정리했습니다. Apple·Hermes 공식 기능을 바탕으로 한 구성 제안이며, 실제 백업·복구나 작업 지속을 이 맥미니에서 시험한 결과는 아닙니다. Plex는 참고 용도로만 남겼습니다. 기존 모델·받아쓰기 비교를 모두 재검증했다는 뜻은 아닙니다.</p><p>2026.09.13에는 Superwhisper·Wispr Flow의 공식 Mac 다운로드와 한국 iPhone 앱스토어 링크를 확인하고 설치 후보 저장에 연결했습니다. App Store 링크는 맥용 설치 파일이 아닙니다.</p><p>2026.09.12에는 무료 AI 후보의 모델 카드·라이선스·로컬 실행 범위와 설치 경로, 작업별 활용·기대효과 비교를 보완했습니다. 기대효과는 공식 기능을 바탕으로 한 활용 제안이며 실제 출력이나 생산성 실측이 아닙니다. 나머지 문서·후기 검토일은 2026.09.11입니다. 공식 지원 여부와 이 가이드의 선택 제안은 다릅니다. 다운로드 용량은 최대 메모리 사용량이 아니며, 한국어 정확도·속도는 이 맥미니에서 아직 측정하지 않았습니다.</p><p>모델 표의 0원은 내 기기에서 실행할 때의 모델·추론 사용료입니다. 전기·장비·외부 도구 비용과 라이선스 조건은 별개입니다. 실행 앱의 무료 범위와 네트워크 서비스의 개인용 무료 플랜도 구분합니다. 각 항목의 공식 출처에서 현행 조건을 확인하세요.</p>';
   document.querySelector('#sources .section-head').after(policy);
@@ -207,5 +207,36 @@
     document.documentElement.style.setProperty('--site-chrome-height',(masthead+nav.getBoundingClientRect().height+24)+'px');
   };
   if('ResizeObserver' in window){const observer=new ResizeObserver(updateChrome);observer.observe(topbar);observer.observe(nav)}updateChrome();
+  // Decorative wayfinding only: labels, saved plans and routing stay unchanged.
+  iconPaths.mini='<rect x="3" y="6" width="18" height="12" rx="4"/><path d="M7 14h4m5 0h1"/>';
+  iconPaths.book='<path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Zm0 0v15"/>';
+  iconPaths.arrow='<path d="M5 12h14m-5-5 5 5-5 5"/>';
+  iconPaths.search='<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>';
+  const guideMarks={plan:'mini',macbook:'laptop',start:'install',storage:'drive',models:'model',dictation:'mic',workflows:'remote',architecture:'team',remote:'terminal',reviews:'video',sources:'link',glossary:'book'};
+  const mark=(name,className)=>{
+    const node=document.createElement('span');node.className=className;
+    node.setAttribute('aria-hidden','true');node.innerHTML=svg(name);
+    node.querySelector('svg').setAttribute('focusable','false');return node;
+  };
+  panels.forEach(panel=>{
+    const heading=panel.querySelector('h2');if(!heading)return;
+    heading.classList.add('guide-heading');
+    heading.prepend(mark(guideMarks[panel.id]||'doc','page-emblem'));
+  });
+  document.querySelectorAll('.guide-journey a').forEach(link=>{
+    const row=document.createElement('span');row.className='journey-top';row.setAttribute('aria-hidden','true');
+    row.append(mark(guideMarks[link.hash.slice(1)],'journey-icon'),mark('arrow','journey-arrow'));link.prepend(row);
+  });
+  home.prepend(mark('mini','site-emblem'));
+  searchButton.prepend(mark('search','search-emblem'));
+  document.querySelectorAll('.outcome-choice').forEach(button=>{
+    const name={writing:'doc',meeting:'mic',knowledge:'book',coding:'code',creative:'image',server:'remote'}[button.dataset.outcome];
+    button.prepend(mark(name,'outcome-emblem'));
+  });
+  ['homeShared','homeHermes'].forEach((id,i)=>{
+    document.querySelector('#'+id+' .home-priority-label')?.prepend(mark(i?'team':'drive','priority-emblem'));
+  });
+  // Restore existing functional illustrations only where they aid recognition.
+  document.querySelectorAll('#macbook .card-icon, #storage .card-icon').forEach(node=>node.setAttribute('aria-hidden','true'));
   openPanel(location.hash.slice(1)||'plan',false,false);
 })();
