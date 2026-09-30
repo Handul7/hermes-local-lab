@@ -69,7 +69,7 @@
 </section>
 <section class="panel" id="models">
 <div class="section-head"><div><h2>구독 없이, 내 맥에서.</h2></div><p>32GB 맥미니에서 시작할 대화 모델 6개만 골랐습니다. 기본 모델 하나를 먼저 쓰고, 필요한 기능만 더하세요.</p></div>
-<p class="verification-line">기본 후보 선정 2026.09.12 · 6개 후보 배포·조건 재확인 2026.09.30 · 맥미니 실측 전</p>
+<p class="verification-line">기본 후보 선정 2026.09.12 · 6개 후보 배포·조건 재확인 2026.10.01 · 맥미니 실측 전</p>
 <p class="update-entry"><strong>도착 전, 달라진 것만.</strong> Gemini TTS는 클라우드, 한국어 로컬 음성은 Qwen부터. 실행기·판단 모델·개인정보 설정도 다시 확인했습니다. <a href="#models" data-guide-detail="geminiTtsUpdate">TTS 비교 →</a> · <a href="#models" data-guide-detail="septemberAudit">9/30 점검표 →</a></p>
 <p class="review-entry"><span>실사용 후기 · 9/25 추가</span>같은 32GB라도 모델 단독 대화와 Hermes 작업의 여유는 다릅니다. <a href="#reviews">세 영상으로 본 활용법·메모리 한계 →</a></p>
 <h3>처음에는 이 구성부터</h3>
@@ -78,7 +78,7 @@
 </div>
 <details class="editorial-detail optional-tools"><summary>말로 입력하거나 이미지를 만들고 싶다면</summary><div class="free-starter starter-optional">
 <article><span class="starter-number">02 · 말로 입력</span><h4>Handy + Whisper</h4><p>한국어로 말하면 입력창에 텍스트로.<br>Whisper 다국어 모델을 선택하세요.</p><a href="https://handy.computer/">Handy 받기 ↗</a><a class="starter-guide" href="#dictation">받아쓰기 비교 →</a></article>
-<article><span class="starter-number">03 · 필요해지면</span><h4>Draw Things + FLUX</h4><p>썸네일·삽화 초안 만들기.<br>로컬 모드와 FLUX.1 schnell부터.</p><a href="https://drawthings.ai/">Draw Things 받기 ↗</a><span class="starter-guide">이미지 생성은 선택 사항</span></article>
+<article><span class="starter-number">03 · 필요해지면</span><h4>Draw Things + FLUX</h4><p>썸네일·삽화 초안 만들기.<br>로컬 모드와 FLUX.1 schnell부터.</p><a href="https://drawthings.ai/">Draw Things 받기 ↗</a><a class="starter-guide" href="#models" data-guide-detail="imageModelUpdate">FLUX.2·Z-Image 비교 후보</a></article>
 </div></details>
 <p class="cost-footnote">로컬 모델·추론 사용료 0원. 맥·전기·저장공간 및 유료 클라우드 기능 비용은 별도입니다.</p>
 <p id="freeStarterStatus" role="status" aria-live="polite"></p>
@@ -103,10 +103,13 @@
 <tr data-origin="global" data-access="permissive"><td>RAG</td><td><a href="https://huggingface.co/Qwen/Qwen3-Embedding-0.6B"><b>Qwen3-Embedding 0.6B</b></a><small>Alibaba · 해외 · 다국어 검색</small></td><td><span class="cost-label">로컬 사용료 0원</span><small>Apache 2.0 · 상업 이용 허용*</small></td><td>집에 모아둔 문서에서 관련 내용 찾기.<small>답변 모델이 아님. 문서 색인·검색 앱을 따로 연결해야 함.</small></td><td><a href="https://ollama.com/library/qwen3-embedding:0.6b">Ollama 모델 ↗</a></td></tr>
 </tbody></table></div>
 <p class="cost-footnote">* Apache 2.0 / MIT는 라이선스 조건 준수 아래 상업 이용을 허용합니다. 저작권 고지·재배포 의무, 추가 구성요소의 조건, 입력·출력의 권리까지 없어지는 것은 아닙니다. 표는 선택을 돕는 요약이며 출시·납품 전 원문을 확인하세요.</p>
+<p class="verification-line">10/1 검증: 공개 모델·라이선스·배포 경로 확인. ‘첫 후보’는 설치 제안, ‘커뮤니티 변환’은 배포 주체, ‘직접 확인’은 아래의 내 기기 기록입니다. 서로 다른 검증 수준이며 속도·한국어 품질 보증은 아닙니다.</p>
 <details class="editorial-detail"><summary>어떤 기준으로 골랐나요? 빠진 모델은 왜 제외했나요?</summary><p>표준 Mac 실행 경로, 구체적인 양자화 파일, 32GB에서의 여유, 한국어 활용 목적, 이용 조건을 함께 봤습니다. 성능 실측이나 한국어 순위표는 아닙니다. <a href="https://huggingface.co/meetLog/A.X-4.0-Light-mlx-4bit">A.X의 macOS 회의 요약 활용 설명</a>은 제작자 사례이며 독립 벤치마크로 보지 않습니다.</p><ul>
 <li><strong>큰 모델:</strong> <a href="https://ollama.com/library/qwen3.8:27b">Qwen3.8 27B 약 18GB</a>, <a href="https://ollama.com/library/glm-4.7-flash">GLM-4.7-Flash 약 19GB</a>, <a href="https://huggingface.co/sarvamai/sarvam-30b-gguf">인도 Sarvam 30B 약 19.6GB</a>는 실행 불가능하다는 뜻이 아니라, 상시 홈서버의 첫 구성에서 여유가 적어 제외했습니다. Sarvam은 인도 언어 중심입니다.</li>
-<li><strong>설정·이용 조건:</strong> <a href="https://huggingface.co/naver-ellm/HyperCLOVAX-SEED-Think-14B-GGUF">네이버 Think 14B</a> 배포 안내의 별도 실행기, <a href="https://huggingface.co/kakaocorp/kanana-2-3b-instruct/blob/main/LICENSE">Kanana 2 자체 조건</a>, <a href="https://huggingface.co/LGAI-EXAONE/EXAONE-3.5-7.8B-Instruct/blob/main/LICENSE">EXAONE 1.1-NC 비상업 연구 조건</a>은 이번 업무 기본 목록에 넣지 않았습니다. 작은 네이버 1.5B도 주력 에이전트보다 경량 보조·실험에 가깝습니다.</li>
-<li><strong>중복·특화 후보:</strong> Phi·Granite는 경량 대안이지만 우선 설치 수를 줄였습니다. 일본어 TinySwallow, 동남아 SEA-LION, 영어 중심 Nemotron, Apertus·Falcon은 한국어 주력으로 추가 설치할 근거가 부족해 보류했습니다. <a href="https://huggingface.co/CohereLabs/c4ai-command-r7b-12-2024">Cohere R7B</a>는 비상업 조건도 있습니다.</li>
+<li><strong>네이버 · 설치 경로 확인 필요:</strong> <a href="https://huggingface.co/naver-ellm/HyperCLOVAX-SEED-Think-14B-GGUF">Think 14B의 공식 GGUF</a>가 있지만 배포 안내에는 별도 llama.cpp 경로가 남아 있습니다. ‘파일 공개’와 ‘일반 Mac 실행기에서 검증 완료’를 구분해 첫 설치에서는 보류합니다.</li>
+<li><strong>카카오 · 자체 라이선스 ≠ 무조건 유료:</strong> <a href="https://huggingface.co/kakaocorp/kanana-2-3b-instruct/blob/main/LICENSE">Kanana 2 조건</a>은 자체 서비스 운영과 모델 접근권의 제공·재판매 등을 구분합니다. 표시 의무와 추가 상업 조건을 확인해야 하며 Apache 2.0인 Kanana 1.5와 같지 않습니다. 2의 작은 모델도 Mac 실행 경로를 확인하기 전에는 기본 후보로 올리지 않습니다.</li>
+<li><strong>LG · 버전마다 조건 확인:</strong> 3.5의 <a href="https://huggingface.co/LGAI-EXAONE/EXAONE-3.5-7.8B-Instruct/blob/main/LICENSE">EXAONE 1.1-NC</a>만으로 전체 제품군을 설명하지 않습니다. <a href="https://huggingface.co/collections/LGAI-EXAONE/exaone-40">EXAONE 4.0 1.2B와 공식 GGUF</a>도 있지만, <a href="https://huggingface.co/LGAI-EXAONE/EXAONE-4.0-1.2B/blob/main/LICENSE">4.0의 1.2-NC</a>는 연구·교육 목적 조건이 있어 일반 업무용 무료 기본 모델과 구분합니다.</li>
+<li><strong>버전 미지정 · 검증 보류:</strong> Phi·Granite·TinySwallow·SEA-LION·Nemotron·Apertus·Falcon은 제품군 이름만으로 한국어 품질·32GB 적합성을 판단하지 않습니다. 정확한 모델 ID·크기·양자화가 정해지면 재검토합니다. <a href="https://huggingface.co/CohereLabs/c4ai-command-r7b-12-2024">Cohere R7B</a>는 CC-BY-NC 조건으로 업무 기본 목록에서 제외합니다.</li>
 <li><strong>영상·별도 파이프라인:</strong> MiniMax Hailuo는 클라우드 서비스입니다. 로컬 영상 생성, Qwen3-TTS, 별도 PaddleOCR 구성은 초기 설치에서 제외하고 <a href="#workflows">실사용·홈서버 가이드</a>에서 필요할 때 검토하세요.</li>
 </ul><p>MoE의 활성 파라미터 수는 전체 모델 크기가 아닙니다. 더 큰 모델을 HDD에 보관할 수 있다고 32GB 메모리에서 쾌적해지는 것도 아닙니다.</p></details>
 <details class="editorial-detail"><summary>Hermes 메인 모델과 한국어 보조 모델은 어떻게 나누나요?</summary><p><strong>Qwen·Gemma·Ministral·gpt-oss</strong>는 메인 후보로 실제 도구 시험을 합니다. <strong>A.X·Kanana</strong>는 짧은 한국어 문서 보조부터 사용합니다. <a href="https://hermes-agent.nousresearch.com/docs/guides/local-ollama-setup">Hermes 공식 로컬 가이드</a>는 도구 작업에 64K 이상을 요구하지만 A.X는 16K, Kanana 기본 설정은 32K입니다. 숫자만 64K로 올려 지원 범위를 늘릴 수는 없습니다.</p><p>새 모델을 연결할 때 파일 읽기 → 별도 결과 파일 작성 → 다시 읽기를 확인하세요. 답변에 도구 이름을 적는 것과 실제 실행은 다릅니다. <a href="https://github.com/NousResearch/hermes-agent/issues/66452">Qwen3.5 도구 호출 문제 보고</a>는 특정 버전·환경의 재현 확인이 필요한 이슈이며 모든 Mac의 장애를 뜻하지 않습니다.</p><p>멀티에이전트는 우선 하나의 모델 서버를 공유하고 작업을 순차 처리하세요. 역할마다 별도 모델을 상시 띄우지 않습니다. 보조 모델로 넘길 때도 주 모델을 내리는 운영을 먼저 시험하세요. <a href="#architecture">팀 구성 가이드 →</a></p></details>
@@ -139,16 +142,47 @@
 <details class="editorial-detail"><summary>오프라인 확인과 매일 쓸 만한 무료 작업</summary><p>모델 다운로드를 마친 뒤 네트워크를 끄고, Ollama에서 짧은 대화와 로컬 문서 요약을 해보세요. 이 시험은 로컬 추론 확인용이지 모든 도구의 과금·외부 전송이 없다는 증명은 아닙니다. 검색·메신저는 인터넷이 필요합니다.</p><p><a href="#workflows">할 수 있는 일·기대효과 비교 →</a> · <a href="#dictation">받아쓰기 앱 고르기 →</a></p><p>문서검색은 Qwen3-Embedding으로 자료를 색인하고 관련 문단을 찾은 뒤, 주력 LLM이 근거를 받아 답하게 합니다. 임베딩만 설치해도 문서 비서가 완성되는 것은 아닙니다. 자주 쓰는 모델·검색 색인은 SSD, 미사용 모델·녹음 원본은 HDD에 보관하세요. <a href="#storage">저장공간 가이드 →</a></p><p>무료 웹 채팅·무료 API 체험은 내 기기에 설치하는 AI와 다릅니다. 크레딧 소진·사용량 제한·외부 전송 조건이 있어 이번 기본 구성에서는 제외했습니다.</p></details>
 </details>
 <h3>필요할 때 더 알아보기</h3>
-<details class="editorial-detail guide-collection" id="modelNews"><summary>최신 변경 사항과 점검표 <span>9/30 확인 · 세부 기록은 펼쳐보기</span></summary>
+<details class="editorial-detail guide-collection" id="modelNews"><summary>최신 변경 사항과 점검표 <span>10/1 확인 · 로컬 후보와 새 발표 구분</span></summary>
 <aside class="local-update" id="septemberUpdate" aria-labelledby="septemberTitle">
-<p class="update-date">도착 전 점검 · <time datetime="2026-09-30">2026.09.30 확인</time></p>
+<p class="update-date">도착 전 점검 · <time datetime="2026-10-01">2026.10.01 확인</time></p>
 <h3 id="septemberTitle">요즘 소식, 내 맥에는 이렇게.</h3>
 <p class="update-intro">32GB에서 쓸 수 있는 로컬 도구와 클라우드 발표를 구분했습니다. 기본 대화 구성을 유지하고, 음성·이미지는 필요할 때 하나씩 더하세요.</p>
 <dl class="update-decisions">
 <div><dt>유지</dt><dd>작은 Qwen + Hermes<br><span>기존 무료 시작 구성 그대로</span></dd></div>
-<div><dt>보완</dt><dd>실행기 · 한국어 음성<br><span>안정 버전과 작은 TTS부터</span></dd></div>
-<div><dt>구분</dt><dd>Gemini TTS ≠ 로컬<br><span>무료 API 한도와 로컬 무료는 별개</span></dd></div>
+<div><dt>보완</dt><dd>이미지 후보 · 이용 조건<br><span>FLUX.2·Z-Image는 선택 비교</span></dd></div>
+<div><dt>구분</dt><dd>새 클라우드 기능 ≠ 로컬<br><span>OpenAI·Gemini 발표는 따로 보기</span></dd></div>
 </dl>
+<details class="editorial-detail update-detail" id="octoberAudit"><summary>10/1 모델 검증 · 이번에 달라진 판단</summary><div class="update-body">
+<dl class="jev-facts">
+<div><dt>그대로 시작 · 대화 모델 6개</dt><dd>Qwen3.5 9B·Gemma 4 12B·Ministral 3 8B·gpt-oss 20B·A.X 4.0 Light·Kanana 1.5의 공개 배포와 이용 조건을 대조했습니다. 새 모델이 많아도 첫 설치는 주력 하나입니다.</dd></div>
+<div><dt>추가 비교 · 이미지 2개</dt><dd>FLUX.2 klein 4B와 Z-Image-Turbo를 기존 FLUX.1 schnell 옆의 선택 후보로 보완했습니다. 최근 하루에 새로 나온 모델이라는 뜻은 아닙니다. <a href="#models" data-guide-detail="imageModelUpdate">설치 경로·역할 비교</a></dd></div>
+<div><dt>설명 보완 · 국내 모델·큰 모델</dt><dd>Kanana 2의 자체 조건을 유료·사용 불가로 단정하지 않고, EXAONE 3.5와 4.0의 라이선스를 구분했습니다. Gemma 26B는 MLX 약 16GB / GGUF 약 19GB로 구분합니다. <a href="https://ollama.com/library/gemma4:26b">배포 용량 확인</a></dd></div>
+<div><dt>보류 유지 · 영상·미지정 버전</dt><dd>MiniMax H3의 Draw Things 등록은 확인했지만 32GB 실용성은 미확인입니다. 제품군 이름만 있는 모델은 정확한 버전·양자화가 정해질 때까지 검증 보류입니다.</dd></div>
+</dl><p class="update-scope">2026.10.01 공식 카드·라이선스·배포 경로 대조. 문서 검증이지 M6 실행 시험이 아닙니다. 과거 영상의 측정치는 원래 조건과 날짜를 유지합니다. 실행기·받아쓰기 앱은 별도의 9/30 확인 기록을 참고하세요.</p>
+</div></details>
+<details class="editorial-detail update-detail" id="frontierUpdate"><summary>OpenAI·Google 새 발표 · 내 맥미니에 필요한가?</summary><div class="update-body">
+<p><strong>로컬 설치 목록과 별개인 선택형 서비스입니다.</strong> 확인일 2026.10.01 · 아래 발표일은 공식 페이지 표기입니다. 모델 파일을 내려받는 기능, 클라우드 추론, 내 컴퓨터 도구 접근을 혼동하지 않습니다.</p>
+<dl class="jev-facts">
+<div><dt>9/29 · ChatGPT Work 기기 간 이어가기</dt><dd>지원되는 새 동기화 작업을 데스크톱에서 시작하고 웹·모바일에서 이어갈 수 있습니다. 허용된 로컬 파일·도구가 필요한 단계는 연결된 컴퓨터가 온라인이어야 합니다. <strong>내 활용 제안:</strong> 집의 맥미니를 작업 기기로 두고 밖에서는 진행·결과를 검토하기. 클라우드가 작업을 조율하므로 무료 오프라인 AI가 아니며, 기존 작업이 자동 전환되는 것도 아닙니다. 계정·앱·권한 조건부터 확인하세요. <a href="https://learn.chatgpt.com/docs/enterprise/cloud-local-access">공식 연결 조건</a></dd></div>
+<div><dt>9/29 · Dots 상시 에이전트</dt><dd>자체 클라우드 컴퓨터에서 조사·문서·코드 작업을 계속하는 기능입니다. 내 컴퓨터가 꺼져도 클라우드 작업은 가능하지만, 내 맥 파일을 쓰는 단계는 별도 접근 허용과 연결이 필요합니다. <strong>Hermes 대체 설치가 아니라 비교 대상</strong>이며 적격 계정에 순차 제공됩니다. 민감 자료는 기존 로컬 구성에 두고 외부 공개 자료 조사부터 검토하세요. <a href="https://learn.chatgpt.com/docs/dots">Dots 기능·접근 안내</a></dd></div>
+<div><dt>9/29 · GPT-6.1 Sol·Multi-agent beta</dt><dd>Responses API에서 모델이 하위 에이전트에 작업을 위임하는 클라우드 기능입니다. API 요금이 적용되고 로컬 gpt-oss와 다릅니다. <strong>내 판단:</strong> 긴 코딩·검수 작업의 선택적 비교 대상으로만 남깁니다. Hermes의 기존 위임 구조에 자동 연결되는 기능이 아니며, 별도 개발·권한·비용 상한 검증이 필요합니다. <a href="https://developers.openai.com/api/docs/guides/responses-multi-agent">공식 멀티에이전트 안내</a> · <a href="https://developers.openai.com/api/docs/changelog">발표·API 요금</a></dd></div>
+<div><dt>9/30 · Gemini 4 Argon</dt><dd>Google이 장시간 코딩·지식 업무·방어적 보안 작업용으로 발표했습니다. 최초 제공은 Fairwind의 신뢰된 보안 파트너 대상이며, 유료 API·Google AI Ultra 등으로 확대할 계획입니다. <strong>Gemma 4와 다른 모델</strong>이고 공식 로컬 가중치·Mac 설치 경로는 확인되지 않았습니다. 지금 설치하거나 일반 계정에서 바로 쓸 수 있는 것으로 안내하지 않습니다. 내 맥미니의 무료 기본 구성은 변경하지 않습니다. <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">Google 9/30 공식 발표</a></dd></div>
+</dl>
+<p class="update-caution"><strong>이번 사이트에는 연결하지 않았습니다.</strong> API·계정·로컬 파일 접근 권한은 그대로입니다. 향후 시험할 때도 별도 테스트 폴더와 비민감 자료부터, 전송·파일 삭제·외부 게시에는 승인 단계를 둡니다. API 키를 이 공개 사이트에 넣지 않습니다.</p>
+<p>원격 화면·터미널이 필요하면 기존 Tailscale·SSH·Jump Desktop 구성을 유지하세요. 작업 이어가기 기능은 원격 데스크톱이나 로컬 LLM 실행기의 동의어가 아닙니다. <a href="#remote">원격 운영 가이드</a> · <a href="https://learn.chatgpt.com/docs/whats-new/devday-2026">OpenAI 9/29 발표 모음</a></p>
+</div></details>
+<details class="editorial-detail update-detail" id="imageModelUpdate"><summary>이미지·영상 보완 · FLUX.2, Z-Image, MiniMax H3</summary><div class="update-body">
+<p>FLUX.1 schnell은 기존 기본 후보로 유지합니다. 아래 두 이미지는 필요할 때 하나만 비교하세요. 모두 설치할 필요는 없습니다.</p>
+<div class="qwen-local-options">
+<article><span class="qwen-purpose">생성·편집 비교 · 로컬 사용료 0원</span><h5>FLUX.2 klein 4B</h5><p>텍스트로 그림을 만들고 참조 이미지를 함께 쓰는 편집 후보. 4B 모델은 Apache 2.0입니다. 다른 FLUX 변형까지 같은 조건이라고 가정하지 않습니다.</p><p><strong>설치:</strong> Draw Things 최신 앱의 로컬 모델 목록에서 FLUX.2 klein 4B 지원·다운로드 구성을 확인하세요. 개발자 저장소의 등록 경로를 확인했으며 텍스트 인코더·VAE도 필요합니다. 공식 약 13GB VRAM 안내는 NVIDIA 기준이지 내 맥의 메모리·속도 실측이 아닙니다.</p><p class="update-links"><a href="https://huggingface.co/black-forest-labs/FLUX.2-klein-4B">공식 모델·이용 조건</a><a href="https://github.com/drawthingsai/community-models/blob/main/models/flux-2-klein-4b-exact/metadata.json">Draw Things 등록</a></p></article>
+<article><span class="qwen-purpose">이미지 초안 비교 · 로컬 사용료 0원</span><h5>Z-Image-Turbo</h5><p>6B·Apache 2.0 이미지 생성 모델. 썸네일·삽화 초안을 비교할 후보입니다. 영어·중국어 문자 표현을 강조하므로 한글 글자 품질은 별도 시험하고 후편집하세요.</p><p><strong>설치:</strong> Draw Things의 Z-Image-Turbo 로컬 모델을 확인하세요. 6B 생성 모델 외에 텍스트 인코더·VAE가 더 필요합니다. 다른 GPU에서의 빠른 생성 수치를 맥미니 예상 속도로 옮기지 않습니다.</p><p class="update-links"><a href="https://huggingface.co/Tongyi-MAI/Z-Image-Turbo">공식 모델·이용 조건</a><a href="https://github.com/drawthingsai/community-models/blob/main/models/z-image-turbo-1.0-exact/metadata.json">Draw Things 등록</a></p></article>
+</div>
+<h4>MiniMax H3 · Mac 경로는 확인, 32GB 추천은 보류</h4>
+<p>Draw Things 개발자 저장소에 H3 변환 모델과 실행 구성이 등록돼 있습니다. 따라서 Mac 실행 경로 자체가 없다고 단정하지 않습니다. 다만 큰 텍스트 인코더 등 추가 구성요소가 필요하고 <strong>내 32GB에서의 최대 메모리·생성 시간은 미확인</strong>입니다. 전체 2K 워크플로의 일부 API 단계와 공개 모델을 구분하며, Hailuo 클라우드 서비스와도 다릅니다.</p>
+<p class="update-links"><a href="https://github.com/drawthingsai/community-models/blob/main/models/minimax-h3-fl2va/metadata.json">H3 로컬 등록 구성</a><a href="https://www.minimax.io/news/minimax-h3-open-source">MiniMax 공개 범위</a><a href="https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE">H3 자체 이용 조건</a><a href="https://drawthings.ai/downloads/">Draw Things 설치</a></p>
+<p class="update-caution">첫 시험은 주력 LLM을 내리고 이미지 한 장부터. 등록 파일은 실행 경로의 근거이지 최소 앱 버전·32GB 성능 보증이 아닙니다. Wan 2.2의 NVIDIA VRAM 안내도 Mac 성능으로 환산하지 않습니다. 영상은 첫날 설치에서 제외합니다.</p>
+<p class="update-scope">2026.10.01 배포·조건 확인 · 이미지 2개는 기존 누락 보완 · 새 맥미니 실측 전 · 설치 계획에는 자동 추가하지 않음</p>
+</div></details>
 <details class="editorial-detail update-detail" id="geminiTtsUpdate"><summary>Gemini TTS vs Qwen TTS · 내 맥에서 말하게 하려면?</summary>
 <div class="update-body">
 <p><strong>Gemini 3.8 Flash TTS·Flash-Lite TTS는 9/23 발표한 클라우드 음성 합성 서비스입니다.</strong> 공식 로컬 가중치·Mac 설치 경로는 확인되지 않았습니다. 맥미니에서 API를 호출할 수는 있지만, 맥 안에서 추론하는 모델은 아닙니다. 공개 모델 Gemma와도 구분하세요.</p>
@@ -169,7 +203,7 @@
 <article><span class="qwen-purpose">녹음 → 글</span><h5>Qwen3-ASR 1.7B</h5><p>한국어 녹음·회의 파일을 텍스트로 바꿉니다. Whisper와 같은 녹음으로 정확도를 비교할 후보입니다.</p><p><strong>Mac 경로:</strong> MLX Audio + 1.7B 8bit 변환본. 내려받을 모델은 약 <strong>2.46GB</strong>이며, 가벼운 0.6B도 선택할 수 있습니다.</p><p class="update-links"><a href="https://huggingface.co/Qwen/Qwen3-ASR-1.7B">Qwen 공식 모델 ↗</a><a href="https://github.com/Blaizzy/mlx-audio/blob/main/mlx_audio/stt/models/qwen3_asr/README.md">Mac 실행 안내 ↗</a><a href="https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-8bit">8bit 모델 받기 ↗</a></p></article>
 <article><span class="qwen-purpose">글 → 목소리</span><h5>Qwen3-TTS 1.7B CustomVoice</h5><p>요약·메모를 한국어 음성으로 듣는 용도입니다. 기본 제공 한국어 목소리 Sohee부터 비교하세요.</p><p><strong>Mac 경로:</strong> MLX Audio + CustomVoice 1.7B 8bit. 모델은 약 <strong>3.08GB</strong>입니다. VoiceDesign·Base의 목소리 설계·복제와는 구분합니다.</p><p class="update-links"><a href="https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice">Qwen 공식 모델 ↗</a><a href="https://github.com/Blaizzy/mlx-audio/blob/main/mlx_audio/tts/models/qwen3_tts/README.md">Mac 실행 안내 ↗</a><a href="https://huggingface.co/mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-8bit">8bit 모델 받기 ↗</a></p></article>
 </div>
-<p><strong>자막 시간이 필요할 때만 · Qwen3-ForcedAligner 0.6B:</strong> 녹음과 이미 있는 대본을 맞춰 단어별 시간을 붙입니다. 한국어를 지원하지만 화자 분리나 새 전사를 대신하는 모델은 아닙니다. <a href="https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B">공식 모델</a> · <a href="https://github.com/Blaizzy/mlx-audio/blob/main/mlx_audio/stt/models/qwen3_asr/README.md">MLX 정렬 안내 ↗</a></p>
+<p><strong>자막 시간이 필요할 때만 · Qwen3-ForcedAligner 0.6B:</strong> 녹음과 이미 있는 대본을 맞춰 단어별 시간을 붙입니다. 한국어를 지원하지만 화자 분리나 새 전사를 대신하는 모델은 아닙니다. 공식 설명은 최대 5분 음성 범위이므로 긴 녹음은 나눠 처리하세요(10/1 재확인). <a href="https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B">공식 모델</a> · <a href="https://github.com/Blaizzy/mlx-audio/blob/main/mlx_audio/stt/models/qwen3_asr/README.md">MLX 정렬 안내 ↗</a></p>
 <p class="update-caution">세 모델은 Apache 2.0이며 로컬 추론 API 사용료는 0원입니다. MLX Audio와 MLX 변환본은 <strong>커뮤니티 구현</strong>입니다. 위 용량은 다운로드 크기이지 최대 RAM 사용량이 아닙니다. 운영체제·실행 중인 모델의 메모리가 추가로 필요합니다.</p>
 <p class="update-links"><a href="https://github.com/Blaizzy/mlx-audio#installation">MLX Audio 설치 시작 ↗</a><a href="#workflows" data-guide-detail="qwenVoiceWorkflow">내 맥미니에서 어떻게 쓸까? →</a></p>
 <h4>Qwen-Image-2.1 · 9/20 공개, 조건부 로컬 실험</h4>
@@ -216,7 +250,7 @@
 <p><strong>기본 추천 6개를 대체하지 않는 시험 후보입니다.</strong> 짧은 대화가 된다는 후기와 긴 코딩 작업에서 메모리가 부족하다는 후기가 함께 있습니다. 모델 파일 외에 문맥·초안 모델·macOS 메모리가 필요합니다.</p>
 <div class="trial-models">
 <article><h4>Qwen3.8 27B</h4><p>코딩·자료 검토·도구 사용을 작은 Qwen과 비교할 후보. Ollama 기본 태그는 <strong>약 18GB · Q4_K_M</strong>입니다.</p><code>ollama run qwen3.8:27b</code><a href="https://ollama.com/library/qwen3.8:27b">모델·실행 안내 ↗</a></article>
-<article><h4>Gemma 4 26B-A4B</h4><p>문서·이미지 이해와 대화 응답을 비교할 후보. Ollama 기본 태그는 <strong>약 19GB · Q4_K_M</strong>입니다. A4B는 전체 메모리가 4B급이라는 뜻이 아닙니다.</p><code>ollama run gemma4:26b</code><a href="https://ollama.com/library/gemma4:26b">모델·실행 안내 ↗</a></article>
+<article><h4>Gemma 4 26B-A4B</h4><p>문서·이미지 이해와 대화 응답을 비교할 후보. 10/1 Ollama 배포는 <strong>MLX 약 16GB / GGUF 약 19GB · Q4_K_M</strong>로 구분됩니다. 다운로드 크기는 RAM 사용량이 아니며, A4B는 전체 메모리가 4B급이라는 뜻이 아닙니다.</p><code>ollama run gemma4:26b</code><a href="https://ollama.com/library/gemma4:26b">모델·실행 안내 ↗</a></article>
 </div>
 <p>두 태그 모두 Apache 2.0, 로컬 모델 추론 사용료는 0원입니다. 명령을 직접 실행하면 다운로드·모델 실행이 시작됩니다. 계획에 자동으로 추가하지 않습니다.</p>
 <p class="update-caution"><strong>도착 후 비교 기준:</strong> 다른 큰 모델을 종료하고 같은 한국어 문서·질문으로 하나씩 시험하세요. 첫 요청과 캐시가 재사용되는 반복 요청을 구분하고, 답의 정확도·도구 호출 성공·메모리 압박을 함께 봅니다. 버전·양자화·문맥·동시 요청 수도 기록하세요. 긴 문맥이나 멀티에이전트 동시 추론이 기본으로 안전하다는 뜻은 아닙니다.</p>
@@ -239,13 +273,13 @@
 <div><dt>대화 모델 6개 · 유지·표기 수정</dt><dd>Qwen·Gemma·Ministral·gpt-oss의 Ollama 배포와 A.X·Kanana의 공식 카드·GGUF 경로를 다시 대조했습니다. Gemma 12B 용량을 MLX 약 7.7GB / GGUF 약 8.0GB로 수정. A.X 16K·Kanana 기본 32K와 한국어 보조 역할은 유지합니다.</dd></div>
 <div><dt>실행기·Hermes · 업데이트</dt><dd>Ollama 안정판 0.35.0, Hermes v0.21.5, MLX Audio 0.5.7 확인. oMLX의 RC와 LM Studio Bionic은 선택 비교이며 전부 설치할 필요가 없습니다.</dd></div>
 <div><dt>음성 · 로컬·클라우드 분리</dt><dd>Gemini 3.8 TTS는 클라우드, Qwen3-TTS 0.6B는 작은 로컬 후보로 추가했습니다. Handy의 무료 로컬 받아쓰기·Superwhisper의 오프라인 전사·Wispr Flow의 인터넷 필수 구분은 공식 안내와 다시 대조했습니다. 각 앱의 유료 플랜·앱스토어 요구사항 전체를 이번에 재검증한 것은 아닙니다.</dd></div>
-<div><dt>이미지·영상 · 조건부 유지</dt><dd>Qwen-Image-2.1의 연구용 조건과 ComfyUI MPS 오류 이슈를 다시 확인했습니다. MiniMax H3는 공개 구성요소가 있어도 전체 워크플로 일부는 API이며, Mac 32GB 실사용 경로는 확인하지 못했습니다. 영상 생성을 기본 설치로 승격하지 않습니다. <a href="https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE">Qwen 조건</a> · <a href="https://github.com/Comfy-Org/ComfyUI/issues/16433">Mac 오류 이슈</a> · <a href="https://www.minimax.io/news/minimax-h3-open-source">H3 공식 구성 ↗</a></dd></div>
+<div><dt>이미지·영상 · 조건부 유지</dt><dd>Qwen-Image-2.1의 연구용 조건과 ComfyUI MPS 오류 이슈를 다시 확인했습니다. MiniMax H3는 전체 워크플로 일부가 API입니다. <strong>10/1 보완:</strong> Draw Things 로컬 등록은 확인했지만 32GB 실용성은 미검증이므로 영상 생성을 기본 설치로 승격하지 않습니다. <a href="#models" data-guide-detail="imageModelUpdate">H3·이미지 후보 최신 확인</a> · <a href="https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE">Qwen 조건</a> · <a href="https://github.com/Comfy-Org/ComfyUI/issues/16433">Mac 오류 이슈</a></dd></div>
 <div><dt>원격·백업 · 기존 원칙 유지</dt><dd>Tailscale 위의 일반 SSH와 Tailscale SSH 전용 기능은 다릅니다. macOS 후자는 오픈 소스 tailscaled 조건을 확인해야 합니다. 기존 HDD 자료 보존·Time Machine 복원 시험을 우선하고 장비를 추가 구매하지 않습니다. <a href="https://tailscale.com/docs/features/tailscale-ssh">SSH 공식 조건</a> · <a href="https://support.apple.com/en-us/104984">Apple 백업 안내 ↗</a></dd></div>
 <div><dt>아직 보류 · 조건부터 확인</dt><dd>Splash는 최소 36GB, Qwen4는 32GB용 공식 설치 후보를 이번 조사에서 확인하지 못했습니다. Tev1은 가중치 라이선스 확정·한국어 검증 전입니다. 화제성만으로 설치 목록을 늘리지 않습니다.</dd></div>
 </dl>
 <p class="update-scope">주요 설치·운영 안내를 분야별로 점검한 기록입니다. 전체 외부 링크의 무결성·모든 부가 앱의 최신 버전·국내 장비 가격·이전 영상 전체를 재검증한 것은 아닙니다. 항목별 이전 확인일은 그대로 남겼습니다. 이 맥미니에서 설치·속도·한국어 품질을 실측한 결과는 아닙니다.</p>
 </div></details>
-<p class="update-scope">추가 조사 2026.09.30 · 최근 일주일의 공식 발표·Reddit·Threads를 우선 확인 · 9/23 기록은 당시의 확인일 유지 · 실기기 검증 전</p>
+<p class="update-scope">10/1 모델 검증·OpenAI/Google 공식 발표 보완 · Reddit·Threads 확인 기록은 9/30 기준 유지 · 항목별 확인일과 실기기 미검증 표시를 구분합니다.</p>
 </aside>
 </details>
 </section>
@@ -411,6 +445,7 @@
 <h3 style="margin-top:34px">기존 Mac에서 가져올 때</h3><div class="table-wrap"><table><thead><tr><th>방식</th><th>추천 상황</th><th>주의점</th></tr></thead><tbody><tr><td><b>새 Mac으로 설정</b></td><td>깔끔한 개발·원격 콘솔 환경</td><td class="yes">이번 구성에 가장 추천</td></tr><tr><td><b>Mac 마이그레이션</b></td><td>앱·계정·설정을 거의 그대로 이전</td><td>불필요한 앱과 설정도 따라올 수 있음</td></tr><tr><td><b>Windows 마이그레이션</b></td><td>문서·메일·연락처·브라우저 자료 이전</td><td>macOS 버전에 맞는 Windows Migration Assistant 필요</td></tr><tr><td><b>Time Machine 복원</b></td><td>기존 Mac 환경 전체 복구</td><td>복원 전 새 macOS 업데이트 권장</td></tr></tbody></table></div>
 <p class="guide-notice">Homebrew·SSH·tmux·cmux의 설치 명령과 연결 순서는 <a href="#remote">원격 접속 가이드 →</a></p><div class="callout"><a href="https://support.apple.com/en-us/102613">Apple 마이그레이션 안내</a>에 따르면 기존 Mac의 자료는 삭제하지 않습니다. 512GB 저장공간을 효율적으로 쓰려면 응용 프로그램 전체 이전보다 필요한 계정과 사용자 파일만 선별하는 편이 좋다.</div></section>
 <section class="panel" id="remote"><div class="section-head"><div><div class="kicker">HEADLESS OPERATIONS</div><h2>밖에서도 맥미니의 AI 팀을 운영</h2></div><p>터미널은 Tailscale + SSH + tmux, 화면은 Jump Desktop으로 접근합니다. Jump의 자동 연결은 자체 연결 방식을 사용하며 Tailscale이 필수는 아닙니다.</p></div>
+<p class="review-entry"><span>10/1 선택형 보완</span>ChatGPT Work의 기기 간 이어가기는 클라우드 조율 기능입니다. 로컬 추론·원격 화면과 구분하고 기존 Hermes 원격 구성은 유지하세요. <a href="#models" data-guide-detail="frontierUpdate">OpenAI 새 기능과 내 맥미니 활용</a></p>
 <p class="guide-notice"><strong>기본은 Tailscale + SSH + tmux.</strong> cmux·herdr는 여러 작업을 관리할 때, Jump Desktop은 화면 조작이 필요할 때만 추가합니다. 서버 포트를 인터넷에 직접 공개하지 않습니다.</p>
 <h3 style="margin-top:34px">구축 순서</h3><div class="steps"><article class="step"><span class="num">01</span><h3>Tailscale 연결</h3><p>Mac mini와 MacBook을 같은 Tailnet에 등록하고 기기 이름을 고정한다.</p></article><article class="step"><span class="num">02</span><h3>SSH 확인</h3><p>macOS 원격 로그인을 켜고 Tailnet 주소로 접속을 시험한다.</p></article><article class="step"><span class="num">03</span><h3>세션 지속</h3><p>tmux 또는 herdr 안에서 Hermes와 모델 서버를 실행한다.</p></article><article class="step"><span class="num">04</span><h3>GUI 비상 경로</h3><p>Jump Desktop Connect의 권한을 설정하고 로컬 복구 수단이 있는 상태에서 재접속을 시험합니다.</p></article></div>
 <div class="code"># Mac mini<br># Tailscale은 공식 macOS 앱 설치·로그인<br>brew install tmux<br><br># 같은 Tailnet의 MacBook에서<br>ssh 사용자명@맥미니-기기이름<br><br># 끊겨도 유지되는 Hermes 세션<br>tmux new -s hermes<br>hermes<br># 분리: Ctrl-b d / 재접속: tmux attach -t hermes</div>
@@ -613,4 +648,4 @@ function updateProgress(){
  const button=document.querySelector('.progress-card [data-open]');button.dataset.open=next?destinations[next.dataset.task]:'workflows';button.textContent=next?'다음 단계 열기':'실전 활용 열기';
 }
 updateProgress();
-</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20260930-1"></script><script src="lab-planner.js?v=20260926-2"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260923-2"><script src="lab-outcomes.js?v=20260925-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20260930-1"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20260912-1"></script><link rel="stylesheet" href="lab-reviews.css?v=20260925-1"><link rel="stylesheet" href="lab-editorial.css?v=20260930-1"></body></html>
+</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20260930-1"></script><script src="lab-planner.js?v=20260926-2"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260923-2"><script src="lab-outcomes.js?v=20260925-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20261001-1"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20260912-1"></script><link rel="stylesheet" href="lab-reviews.css?v=20260925-1"><link rel="stylesheet" href="lab-editorial.css?v=20260930-1"></body></html>
