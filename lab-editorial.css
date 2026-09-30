@@ -165,3 +165,5 @@
 @media(prefers-reduced-motion:reduce){
   .guide-journey a,.journey-arrow{transition:none!important;transform:none!important}
 }
+/* Keep every linked disclosure below the measured sticky masthead. */
+.panel details>summary{scroll-margin-top:var(--site-chrome-height,190px)}

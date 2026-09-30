@@ -9,6 +9,18 @@
 <section class="panel active" id="plan"><div class="section-head"><div><div class="kicker">YOUR BUILD PLAN</div><h2>맥미니가 오면 여기서 시작</h2></div><p>완료한 항목을 체크하면 이 브라우저에 진행 상황이 저장된다. 위 메뉴는 실제 구축 순서대로 배치했다.</p></div><div class="journey"><aside class="progress-card"><span class="label">SETUP PROGRESS</span><div class="progress-ring"><b id="progressText">0%</b></div><h3 id="progressTitle">아직 시작 전</h3><p class="muted" id="progressHint">먼저 백업용 HDD와 Apple 계정을 준비하세요.</p><button class="btn primary" data-open="macbook">첫 단계 열기</button></aside><div><div class="checklist"><label class="task"><input type="checkbox" data-task="prepare"><span><strong>장비와 계정 준비</strong><small>HDD 케이스, 모니터 입력, Apple 계정, 기존 자료 백업</small></span><span class="phase">도착 전</span></label><label class="task"><input type="checkbox" data-task="macos"><span><strong>macOS·보안·Time Machine</strong><small>업데이트, FileVault, 나의 Mac 찾기, 백업 디스크 설정</small></span><span class="phase">첫날</span></label><label class="task"><input type="checkbox" data-task="hermes"><span><strong>Hermes 기본 실행 확인</strong><small>설치 후 첫 대화와 파일 접근 범위를 확인</small></span><span class="phase">첫날</span></label><label class="task"><input type="checkbox" data-task="model"><span><strong>로컬 모델 하나 연결</strong><small>Ollama 등 실행기 하나만 선택해 도구 호출 시험</small></span><span class="phase">기본 구축</span></label><label class="task"><input type="checkbox" data-task="agents"><span><strong>멀티에이전트 역할 분리</strong><small>Research, Builder, Media, Memory, Review 역할과 권한 설정</small></span><span class="phase">AI 팀</span></label><label class="task"><input type="checkbox" data-task="remote"><span><strong>원격 접속 이중화</strong><small>Tailscale+SSH를 기본으로, Jump Desktop을 비상 GUI로 확인</small></span><span class="phase">원격</span></label><label class="task"><input type="checkbox" data-task="workflow"><span><strong>첫 실전 워크플로 완주</strong><small>회의록, 문서 비서, 개발 또는 숏폼 중 하나를 끝까지 실행</small></span><span class="phase">활용</span></label></div><div class="next-card"><b>결정 원칙</b><span class="muted">처음부터 전부 설치하지 말고, 체크리스트 한 단계가 정상 동작한 뒤 다음 단계로 이동하세요.</span></div></div></div><div class="decision-grid"><div class="decision"><b>LLM 런타임</b><span>첫 시작은 Ollama·LM Studio. 반복 작업 서버가 필요해지면 oMLX를 비교하세요. MLX는 앱 안에서 쓰이는 엔진일 수도 있습니다.</span></div><div class="decision"><b>터미널 유지</b><span>안정성은 tmux, 여러 에이전트 가시성은 cmux/herdr.</span></div><div class="decision"><b>영상 생성</b><span>짧은 실험은 Wan 로컬, 품질과 시간 절약은 MiniMax Hailuo 병행.</span></div></div></section>
 <section class="panel" id="architecture"><div class="section-head"><div><div class="kicker">SYSTEM MAP</div><h2>Hermes가 팀을 지휘한다</h2></div><p>아래 이름은 이 가이드가 제안하는 역할 예시이며 Hermes의 기본 에이전트 목록은 아닙니다.</p></div><div class="architecture"><article class="orchestrator"><span class="label">ORCHESTRATOR</span><h3>Hermes Agent</h3><p>작업을 분해하고 결과를 통합합니다. 위임·메모리·권한 범위는 선택한 모드와 설정에 따라 확인하세요.</p><div class="connector">INPUT → PLAN → DELEGATE → REVIEW → DELIVER</div></article><div class="agents"><article class="agent"><b>Research Agent</b><span>웹·GitHub·문서 조사</span></article><article class="agent"><b>Planner Agent</b><span>의존성과 실행 순서</span></article><article class="agent"><b>Builder Agent</b><span>코드·파일·자동화</span></article><article class="agent"><b>Media Agent</b><span>이미지·음성·영상</span></article><article class="agent"><b>Memory Agent</b><span>OCR·임베딩·검색</span></article><article class="agent"><b>Review Agent</b><span>사실·품질·권한 검수</span></article></div></div><div class="callout">하나의 주력 LLM을 공유하고 Whisper·OCR·이미지 모델은 작업이 있을 때만 불러오는 구성이 32GB에서 우선 시험할 구성입니다. 역할별 위임도 처음에는 순차 실행하고, 실제 권한 격리가 적용되는지 테스트 폴더에서 확인하세요.</div>
 <p class="update-entry"><strong>9월 운영 판단:</strong> Hermes는 유지하고 실행기만 필요할 때 비교하세요. oMLX의 캐시·동시 요청 기능이 있어도 32GB에서는 순차 작업부터입니다. <a href="#models">최신 실행기·모델 선택 기준 →</a></p>
+<details class="editorial-detail guide-collection" id="localDecisionModels"><summary>9/30 추가 · 로컬 판단 모델 <span>Nimble는 비교 후보, Tev1은 보류</span></summary>
+<div class="update-body">
+<p><strong>Jev가 로컬로 공개된 것은 아닙니다.</strong> Ollama 0.35부터 Jev와 같은 형태의 <code>/v1/systemone</code> API로 다른 판단 모델을 실행할 수 있습니다. 글을 쓰는 모델 대신, 요청 분류·스킬 후보 선택·검토 대상 표시를 맡기는 선택 사항입니다.</p>
+<dl class="jev-facts">
+<div><dt>Nimble 9B · 선택 실험</dt><dd>Bespoke Labs의 Apache 2.0 모델. <code>nimble:9b</code>는 약 9.5GB 다운로드이며 로컬 추론 사용료는 없습니다. 주력 Qwen과 계속 함께 띄우지 말고 별도로 시험하세요. <a href="https://ollama.com/library/nimble">공식 배포·API 예제 ↗</a></dd></div>
+<div><dt>Tev1 0.8B / 4B · 설치 추천 보류</dt><dd>Ollama 배포 크기는 812MB / 4.5GB로 작지만, 공식 0.8B 모델 카드는 미세조정 가중치의 라이선스가 확정 중이라고 안내합니다. 코드의 MIT·기반 모델의 Apache 2.0을 최종 가중치 조건으로 옮기지 않습니다. <a href="https://huggingface.co/togethercomputer/Tev1-0.8B-experimental#license">공식 이용 조건 ↗</a> · <a href="https://ollama.com/library/tev1">실험 모델의 한계 ↗</a></dd></div>
+</dl>
+<p><strong>한국어 50~100건으로 판단만 기록한 뒤 도입.</strong> 정답·‘해당 없음’·애매한 요청을 포함해 오분류와 지연을 비교하는 이 가이드의 시험 제안입니다. 유효한 응답 형식·높은 confidence는 정답이나 실행 승인이 아닙니다. 정확한 규칙·권한·실행은 코드와 사람에게 남깁니다.</p>
+<p>판단 API는 일반 채팅과 다릅니다. 현재는 HTTP API 또는 TypeSafe SDK 경로를 확인하세요. Hermes용 기존 Jev 플러그인의 로컬 호환성은 아직 검증하지 않았으며, 이 사이트에 API를 연결하거나 설치 계획에 자동 추가하지 않았습니다.</p>
+<p class="update-links"><a href="https://github.com/ollama/ollama/releases/tag/v0.35.0">Ollama 공식 변경 사항 ↗</a><a href="https://docs.typesafe.ai/concepts/system-one">TypeSafe 역할 구분 ↗</a></p>
+<p class="verification-line">공식 문서 확인 2026.09.30 · 한국어 정확도·M6 메모리·Hermes 연결 실측 전</p>
+</div></details>
 <details class="editorial-detail guide-collection" id="optionalJev"><summary>선택 사항 · Jev 판단 API <span>무료 로컬 구성에는 필요하지 않음</span></summary>
 <article class="jev-guide" id="jevGuide" aria-labelledby="jevTitle">
 <p class="jev-eyebrow">선택 기능 · 클라우드 API · 안내만</p>
@@ -57,7 +69,8 @@
 </section>
 <section class="panel" id="models">
 <div class="section-head"><div><h2>구독 없이, 내 맥에서.</h2></div><p>32GB 맥미니에서 시작할 대화 모델 6개만 골랐습니다. 기본 모델 하나를 먼저 쓰고, 필요한 기능만 더하세요.</p></div>
-<p class="verification-line">기본 후보 확인 2026.09.12 · 최근 변화 검토 2026.09.23 · 맥미니 실측 전</p>
+<p class="verification-line">기본 후보 선정 2026.09.12 · 6개 후보 배포·조건 재확인 2026.09.30 · 맥미니 실측 전</p>
+<p class="update-entry"><strong>도착 전, 달라진 것만.</strong> Gemini TTS는 클라우드, 한국어 로컬 음성은 Qwen부터. 실행기·판단 모델·개인정보 설정도 다시 확인했습니다. <a href="#models" data-guide-detail="geminiTtsUpdate">TTS 비교 →</a> · <a href="#models" data-guide-detail="septemberAudit">9/30 점검표 →</a></p>
 <p class="review-entry"><span>실사용 후기 · 9/25 추가</span>같은 32GB라도 모델 단독 대화와 Hermes 작업의 여유는 다릅니다. <a href="#reviews">세 영상으로 본 활용법·메모리 한계 →</a></p>
 <h3>처음에는 이 구성부터</h3>
 <div class="free-starter starter-main" aria-label="무료 로컬 AI 시작 구성">
@@ -80,7 +93,7 @@
 <p class="model-comparison-note">기본 화면은 대화·문서 모델 6개입니다. 분야를 바꾸면 받아쓰기·이미지·문서검색도 볼 수 있습니다. 표의 용량은 다운로드 크기이며 실제 RAM 사용량·속도가 아닙니다. 모든 후보를 설치하거나 동시에 실행할 필요는 없습니다.</p>
 <div class="table-wrap free-model-wrap"><table class="free-model-table"><caption class="sr-only">국내외 무료 로컬 모델의 용도, 비용, 라이선스와 설치 경로</caption><thead><tr><th scope="col">분야</th><th scope="col">모델 · 개발사</th><th scope="col">비용 · 이용 범위</th><th scope="col">추천 활용 · 32GB 판단</th><th scope="col">설치 · 실행</th></tr></thead><tbody>
 <tr data-origin="global" data-access="permissive"><td>LLM</td><td><a href="https://huggingface.co/Qwen/Qwen3.5-9B"><b>Qwen3.5 9B</b></a><small>Alibaba · 중국 · 기본 후보</small></td><td><span class="cost-label">로컬 사용료 0원</span><small>Apache 2.0 · 상업 이용 허용*</small></td><td>한국어 문서 요약·이메일 초안·사진 설명.<small>6.6GB / Q4_K_M. 일반 대화부터 시작. Hermes 도구 호출은 버전별 시험 필요.</small></td><td><a href="https://ollama.com/library/qwen3.5:9b">Ollama 모델 ↗</a><button class="btn model-pick" type="button" data-model-pick="qwen9b" aria-label="Qwen3.5 9B 설치 안내 선택">설치 안내 선택</button></td></tr>
-<tr data-origin="global" data-access="permissive"><td>LLM</td><td><a href="https://ai.google.dev/gemma/docs/core/model_card_4"><b>Gemma 4 12B</b></a><small>Google · 미국 / DeepMind · 영국</small></td><td><span class="cost-label">로컬 사용료 0원</span><small>Apache 2.0 · 상업 이용 허용*</small></td><td>문서 이미지·화면 캡처 이해, 글쓰기.<small>7.6GB / Q4_K_M. Qwen의 대안. 작은 글자·표의 숫자는 원문 대조. 음성 입력은 앱 지원 별도 확인.</small></td><td><a href="https://ollama.com/library/gemma4:12b">Ollama 모델 ↗</a><button class="btn model-pick" type="button" data-model-pick="gemma12b" aria-label="Gemma 4 12B 설치 안내 선택">설치 안내 선택</button></td></tr>
+<tr data-origin="global" data-access="permissive"><td>LLM</td><td><a href="https://ai.google.dev/gemma/docs/core/model_card_4"><b>Gemma 4 12B</b></a><small>Google · 미국 / DeepMind · 영국</small></td><td><span class="cost-label">로컬 사용료 0원</span><small>Apache 2.0 · 상업 이용 허용*</small></td><td>문서 이미지·화면 캡처 이해, 글쓰기.<small>약 7.7GB(MLX) / 8.0GB(GGUF Q4_K_M) · 배포 형식별 차이. Qwen의 대안. 작은 글자·표의 숫자는 원문 대조. 음성 입력은 앱 지원 별도 확인.</small></td><td><a href="https://ollama.com/library/gemma4:12b">Ollama 모델 ↗</a><button class="btn model-pick" type="button" data-model-pick="gemma12b" aria-label="Gemma 4 12B 설치 안내 선택">설치 안내 선택</button></td></tr>
 <tr data-origin="global" data-access="permissive"><td>LLM</td><td><a href="https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"><b>Ministral 3 8B</b></a><small>Mistral AI · 프랑스 · 비교 후보</small></td><td><span class="cost-label">로컬 사용료 0원</span><small>Apache 2.0 · 상업 이용 허용*</small></td><td>다국어 문서·이미지 이해, JSON 출력.<small>6.0GB / Q4_K_M. 한국어 지원. Qwen·Gemma가 맞지 않을 때 비교할 대안이며 필수 추가 설치는 아님.</small></td><td><a href="https://ollama.com/library/ministral-3:8b">Ollama 모델 ↗</a><button class="btn model-pick" type="button" data-model-pick="ministral8b" aria-label="Ministral 3 8B 설치 안내 선택">설치 안내 선택</button></td></tr>
 <tr data-origin="global" data-access="permissive"><td>LLM</td><td><a href="https://huggingface.co/openai/gpt-oss-20b"><b>gpt-oss 20B</b></a><small>OpenAI · 미국 · 단독 실행 후보</small></td><td><span class="cost-label">로컬 사용료 0원</span><small>Apache 2.0 · 상업 이용 허용*</small></td><td>작업 계획·코드·도구 사용 비교.<small>14GB / MXFP4. 다른 생성 모델을 내리고 시작. Hermes 메인 후보이지 호환성 검증 완료는 아님.</small></td><td><a href="https://ollama.com/library/gpt-oss:20b">Ollama 모델 ↗</a><button class="btn model-pick" type="button" data-model-pick="gptoss20b" aria-label="gpt-oss 20B 설치 안내 선택">설치 안내 선택</button></td></tr>
 <tr data-origin="kr" data-access="permissive"><td>LLM</td><td><a href="https://huggingface.co/skt/A.X-4.0-Light"><b>A.X 4.0 Light 7B</b></a><small>SKT · 한국 · 문서 보조 후보</small></td><td><span class="cost-label">로컬 사용료 0원</span><small>Apache 2.0 · 상업 이용 허용*</small></td><td>한국어 회의록·메일·문장 다듬기.<small>4.44GB / Q4_K_M. 공식 문맥 16K. 긴 도구 작업의 Hermes 메인으로 바로 지정하지 않기.</small></td><td><a href="https://huggingface.co/mykor/A.X-4.0-Light-gguf">커뮤니티 GGUF ↗</a><small>SKT 공식 변환본은 아님.</small><button class="btn model-pick" type="button" data-model-pick="ax7b" aria-label="A.X 4.0 Light 7B 설치 안내 선택">설치 안내 선택</button></td></tr>
@@ -126,16 +139,28 @@
 <details class="editorial-detail"><summary>오프라인 확인과 매일 쓸 만한 무료 작업</summary><p>모델 다운로드를 마친 뒤 네트워크를 끄고, Ollama에서 짧은 대화와 로컬 문서 요약을 해보세요. 이 시험은 로컬 추론 확인용이지 모든 도구의 과금·외부 전송이 없다는 증명은 아닙니다. 검색·메신저는 인터넷이 필요합니다.</p><p><a href="#workflows">할 수 있는 일·기대효과 비교 →</a> · <a href="#dictation">받아쓰기 앱 고르기 →</a></p><p>문서검색은 Qwen3-Embedding으로 자료를 색인하고 관련 문단을 찾은 뒤, 주력 LLM이 근거를 받아 답하게 합니다. 임베딩만 설치해도 문서 비서가 완성되는 것은 아닙니다. 자주 쓰는 모델·검색 색인은 SSD, 미사용 모델·녹음 원본은 HDD에 보관하세요. <a href="#storage">저장공간 가이드 →</a></p><p>무료 웹 채팅·무료 API 체험은 내 기기에 설치하는 AI와 다릅니다. 크레딧 소진·사용량 제한·외부 전송 조건이 있어 이번 기본 구성에서는 제외했습니다.</p></details>
 </details>
 <h3>필요할 때 더 알아보기</h3>
-<details class="editorial-detail guide-collection" id="modelNews"><summary>음성·이미지·큰 모델·실행기 소식 <span>9/23 확인 기록</span></summary>
+<details class="editorial-detail guide-collection" id="modelNews"><summary>최신 변경 사항과 점검표 <span>9/30 확인 · 세부 기록은 펼쳐보기</span></summary>
 <aside class="local-update" id="septemberUpdate" aria-labelledby="septemberTitle">
-<p class="update-date">최근 변화 · <time datetime="2026-09-23">2026.09.23 확인</time></p>
+<p class="update-date">도착 전 점검 · <time datetime="2026-09-30">2026.09.30 확인</time></p>
 <h3 id="septemberTitle">요즘 소식, 내 맥에는 이렇게.</h3>
 <p class="update-intro">32GB에서 쓸 수 있는 로컬 도구와 클라우드 발표를 구분했습니다. 기본 대화 구성을 유지하고, 음성·이미지는 필요할 때 하나씩 더하세요.</p>
 <dl class="update-decisions">
 <div><dt>유지</dt><dd>작은 Qwen + Hermes<br><span>기존 무료 시작 구성 그대로</span></dd></div>
-<div><dt>추가</dt><dd>Qwen 음성 · 이미지<br><span>음성부터 비교, 이미지는 조건부</span></dd></div>
-<div><dt>보류</dt><dd>Splash · Qwen4<br><span>메모리 조건·공식 파일 확인부터</span></dd></div>
+<div><dt>보완</dt><dd>실행기 · 한국어 음성<br><span>안정 버전과 작은 TTS부터</span></dd></div>
+<div><dt>구분</dt><dd>Gemini TTS ≠ 로컬<br><span>무료 API 한도와 로컬 무료는 별개</span></dd></div>
 </dl>
+<details class="editorial-detail update-detail" id="geminiTtsUpdate"><summary>Gemini TTS vs Qwen TTS · 내 맥에서 말하게 하려면?</summary>
+<div class="update-body">
+<p><strong>Gemini 3.8 Flash TTS·Flash-Lite TTS는 9/23 발표한 클라우드 음성 합성 서비스입니다.</strong> 공식 로컬 가중치·Mac 설치 경로는 확인되지 않았습니다. 맥미니에서 API를 호출할 수는 있지만, 맥 안에서 추론하는 모델은 아닙니다. 공개 모델 Gemma와도 구분하세요.</p>
+<div class="qwen-local-options">
+<article><span class="qwen-purpose">선택형 클라우드 · 인터넷 필요</span><h5>Gemini 3.8 TTS</h5><p>Flash는 표현·연기·캐릭터 목소리, Flash-Lite는 대량 음성 생성의 비용·응답성에 초점을 둡니다. 나레이션·콘텐츠용 비교 후보입니다.</p><p>설치 대신 <strong>Google AI Studio / Gemini API</strong>에서 사용합니다. 무료 티어가 있어도 사용 한도와 유료 요금이 별도이며, 무료 티어의 제품 개선용 데이터 이용 조건을 확인해야 합니다. 개인 문서·회의록은 보내지 않는 것부터 시작하세요.</p><p class="update-links"><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-text-to-speech/">9/23 공식 발표 ↗</a><a href="https://ai.google.dev/gemini-api/docs/speech-generation">AI Studio·API 시작 ↗</a><a href="https://ai.google.dev/gemini-api/docs/pricing">무료 범위·요금·데이터 조건 ↗</a></p></article>
+<article><span class="qwen-purpose">무료 로컬 · 한국어부터 시험</span><h5>Qwen3-TTS 0.6B CustomVoice</h5><p>Hermes가 만든 짧은 요약·오늘 할 일을 한국어로 듣는 후보. 한국어 기본 목소리 <strong>Sohee</strong>를 지원합니다. 1월 공개 모델을 이번에 가벼운 선택지로 보완한 것이며 새 9월 모델은 아닙니다.</p><p><strong>MLX Audio + 커뮤니티 4bit 모델</strong> 경로가 있습니다. 다운로드 약 1.69GB, Apache 2.0, 로컬 추론 사용료 0원. 크기·Mac 구현을 근거로 32GB의 시험 후보로 골랐으며 실제 RAM·속도·한국어 품질은 도착 후 확인합니다.</p><p class="update-links"><a href="https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice">공식 모델·한국어 목소리 ↗</a><a href="https://huggingface.co/mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit">Mac 모델·실행 예제 ↗</a><a href="https://github.com/Blaizzy/mlx-audio#installation">실행기 설치 안내 ↗</a></p></article>
+</div>
+<p><strong>내 추천:</strong> 먼저 0.6B로 짧은 한국어 문장을 듣고, 품질이 아쉬울 때 아래의 1.7B와 비교하세요. 전체 문서를 한 번에 읽히거나 주력 LLM·이미지 모델과 동시에 실행하지 않습니다. 받아쓰기는 음성 → 글(ASR), TTS는 글 → 음성입니다. Gemini Live의 실시간 대화와도 다른 기능입니다.</p>
+<p class="update-links"><a href="#workflows" data-guide-detail="qwenVoiceWorkflow">녹음 → 요약 → 음성 활용 →</a><a href="#dictation">말로 입력할 앱이 필요하다면 →</a></p>
+<p class="update-caution">MLX Audio 0.5.7까지 확인했습니다. 0.5.6에는 Parakeet Redux·Nemotron 3 화자 구분 기능과 예제가 추가됐지만, 한국어 회의에 바로 맞는다는 검증은 아닙니다. 기존 Whisper·Qwen 전사를 자동 교체하지 않습니다. <a href="https://github.com/Blaizzy/mlx-audio/releases">릴리스 기록 ↗</a></p>
+<p class="update-scope">공식 제공 방식·이용 조건·Mac 경로 확인 2026.09.30 · 다운로드 크기 ≠ 최대 RAM · 실제 음성 생성 시험 전</p>
+</div></details>
 <details class="editorial-detail update-detail" id="qwenMediaUpdate"><summary>Qwen 이미지·음성 · 내 맥에서 쓸 수 있는 것은?</summary>
 <div class="update-body">
 <p><strong>32GB에서는 음성부터, 이미지는 조건부 실험으로.</strong> 아래 음성 모델은 2026년 1월 공개 계열입니다. 9월의 최신 클라우드 발표와 구분해, 9/23 현재 Mac용 실행 경로를 추가 확인했습니다. 작은 모델과 Apple Silicon 구현을 근거로 한 후보 선정이며 M6 성능 실측은 아닙니다.</p>
@@ -170,14 +195,21 @@
 <details class="editorial-detail update-detail" id="runtimeUpdate"><summary>실행기 변화 · Ollama 유지? oMLX 비교?</summary>
 <div class="update-body">
 <h4>Ollama · 먼저 안정 버전으로</h4>
-<p>확인 시점의 정식 최신 버전은 <strong>0.34.3 (9/19)</strong>입니다. <code>ollama show 모델명</code>으로 thinking 지원·기본값을 확인하는 기능 등이 추가됐습니다. 0.34.4-rc0의 Qwen3.8 개선은 시험 버전 소식이므로 첫 설치 기준에서 제외합니다.</p>
+<p>9/30 확인한 정식 최신 버전은 <strong>0.35.0 (릴리스 표기 9/28)</strong>입니다. 판단 모델 API가 추가됐고, macOS 업데이트 표시·MLX 다운로드 멈춤 등이 수정됐습니다. 기존 0.34.3 안내를 갱신했습니다. <a href="#architecture" data-guide-detail="localDecisionModels">Nimble·Tev1의 역할과 주의점 →</a></p>
 <p>Ollama에도 MLX와 Gemma 4의 다중 토큰 예측(MTP) 가속이 들어왔습니다. 이제 “Ollama냐 MLX냐”만으로 나누기보다 <strong>앱·모델 형식·실제 작업</strong>을 함께 비교하세요. 공식 가속 수치를 내 32GB 맥의 예상 속도로 옮기지는 않습니다.</p>
-<p class="update-links"><a href="https://ollama.com/download/mac">Mac 설치 ↗</a><a href="https://github.com/ollama/ollama/releases/tag/v0.34.3">정식 릴리스 ↗</a><a href="https://ollama.com/blog/faster-gemma-4-mlx-mtp">6/29 MLX·MTP 안내 ↗</a></p>
+<p class="update-links"><a href="https://ollama.com/download/mac">Mac 설치 ↗</a><a href="https://github.com/ollama/ollama/releases/tag/v0.35.0">정식 릴리스 ↗</a><a href="https://ollama.com/blog/faster-gemma-4-mlx-mtp">6/29 MLX·MTP 안내 ↗</a></p>
+<p class="update-caution"><strong>0.40.0-rc0는 시험 버전입니다.</strong> 지원 아키텍처의 Apple Silicon 기본 MLX 실행을 안내하지만, 정식 안정판과 혼동하지 않습니다. 새 맥미니의 첫 설치는 안정판부터입니다.</p>
+<h4>Hermes · 기존 환경을 유지하며 갱신</h4>
+<p>공식 안정 태그는 <strong>v0.21.5 / v2026.9.24</strong>. 설정·스킬·작업 데이터를 백업한 뒤 공식 업데이트 안내를 따르고, 로컬 모델 대화·테스트 파일 읽기/쓰기·Gateway 재연결을 확인하세요. 버전 번호가 올라갔다고 모든 모델의 도구 호출이 검증된 것은 아닙니다. <a href="https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24">공식 릴리스 ↗</a></p>
 <h4>oMLX · 같은 문서와 지시를 반복한다면</h4>
 <p>Apple Silicon용 로컬 모델 서버입니다. 반복 입력의 앞부분을 RAM·SSD 캐시에서 재사용하는 기능이 있어, 같은 규칙과 자료를 여러 번 쓰는 Hermes 작업의 <strong>비교 후보</strong>로 추가했습니다. 무료 오픈 소스(Apache 2.0)이며, 빨라지는 정도는 별도 시험이 필요합니다.</p>
 <ul><li><strong>설치:</strong> 공식 Releases의 macOS DMG → Applications. macOS 15 이상 조건과 사용할 MLX 모델 지원을 확인하세요. GGUF 파일을 그대로 넣는 실행기는 아닙니다.</li><li><strong>연결:</strong> OpenAI 호환 주소 <code>http://localhost:8000/v1</code>. 기존 Hermes 설정을 백업하고 모델명·도구 호출을 시험합니다. Ollama의 11434 포트와 구분하세요.</li><li><strong>512GB 운영 제안:</strong> 모델 하나·동시 요청 1개부터. SSD 캐시 상한은 예를 들어 20GB로 제한해 사용량을 관찰하세요. 이는 공식 최적값이 아닌 시작 제안입니다.</li></ul>
 <p class="update-caution">SSD 캐시는 RAM 증설이 아닙니다. 캐시에는 입력에서 파생된 정보가 남을 수 있으니 접근을 제한하고, 남는 HDD는 백업·보관용으로 두세요. 서버를 인터넷에 직접 공개하지 않습니다.</p>
-<p class="update-links"><a href="https://github.com/jundot/omlx/releases">oMLX 설치 파일 ↗</a><a href="https://github.com/jundot/omlx#readme">기능·요구사항·Hermes 연결 ↗</a></p>
+<p>9/30 확인한 최신 게시 릴리스는 <strong>0.7.0rc1 (9/24)</strong>이며 이름상 릴리스 후보입니다. 정식 0.6.4와 구분하고, RC의 SSD 오프로딩·분산 기능을 첫날 필수 구성으로 삼지 않습니다.</p>
+<p class="update-links"><a href="https://github.com/jundot/omlx/releases">oMLX 설치 파일·변경 기록 ↗</a><a href="https://github.com/jundot/omlx#readme">기능·요구사항·Hermes 연결 ↗</a></p>
+<h4>LM Studio / Bionic · GUI가 필요할 때만</h4>
+<p>Bionic 1.1.6(9/23)은 Canvas·파일 편집과 Gemma 4 비전 기본 로딩 설정 수정을 안내합니다. 이미 Hermes를 쓰므로 새 에이전트 앱까지 한 번에 옮길 필요는 없습니다. Splash의 최소 36GB 조건은 그대로라 32GB 기본 구성에서는 제외합니다. <a href="https://lmstudio.ai/changelog">공식 변경 기록 ↗</a> · <a href="https://lmstudio.ai/blog/splash-engine">Splash 요구사항 ↗</a></p>
+<p class="verification-line">버전 확인 2026.09.30 · 릴리스 날짜는 출처 표기 · 설치 시 안정판 상태를 다시 확인하세요.</p>
 </div></details>
 <details class="editorial-detail update-detail" id="largerModelTrial"><summary>조금 더 큰 모델 · 32GB에서 조건부 비교할 2개</summary>
 <div class="update-body">
@@ -195,7 +227,25 @@
 <div><dt>Splash Engine · 9/18 발표</dt><dd>LM Studio Bionic용 실험 엔진의 공식 최소 조건은 M3 이상·macOS 26.4 이상·<strong>통합 메모리 36GB</strong>입니다. 권장은 48GB 이상. <strong>내 32GB 맥미니는 대상에서 제외</strong>합니다. LM Studio의 일반 로컬 실행 전체가 불가능하다는 뜻은 아닙니다. <a href="https://lmstudio.ai/blog/splash-engine">공식 지원 조건 ↗</a></dd></div>
 <div><dt>Qwen4 · 발표 소식과 설치는 별개</dt><dd>9/22 Reddit에서 발표 소식이 크게 공유됐습니다. 다만 이번 확인에서는 공식 로컬 가중치와 설치 경로를 확인하지 못해 다운로드 추천을 보류합니다. “출시됐다”거나 32GB에 적합하다고 가정하지 않습니다. <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmxfjs/qwen_4_announced_at_apsara_conference/">발표 소식 원문</a> · <a href="https://huggingface.co/Qwen/models">공식 모델 목록 ↗</a></dd></div>
 </dl></div></details>
-<p class="update-scope">후기 탐색 범위 2026.06.23–09.23 · 공식 기능과 개인 경험을 교차 확인 · 이 맥미니에서 설치·속도·한국어 품질을 실측한 결과는 아닙니다.</p>
+<details class="editorial-detail update-detail" id="localOnlyCheck"><summary>무료·로컬 확인 · 앱 이름만으로 판단하지 않기</summary><div class="update-body">
+<p>Ollama 앱에도 로컬 모델과 클라우드 모델이 함께 있습니다. <strong>로컬 모델 태그·연결 주소·Hermes의 폴백·음성 후처리</strong>를 각각 확인해야 합니다.</p>
+<p>공식 FAQ는 <code>OLLAMA_NO_CLOUD=1</code> 또는 기존 <code>server.json</code>의 <code>disable_ollama_cloud: true</code> 설정을 안내합니다. 기존 파일을 통째로 덮어쓰지 말고 설정을 병합한 뒤 Ollama를 재시작하고, 로그의 <code>Ollama cloud disabled: true</code>를 확인하세요. Mac 앱은 터미널에 값을 한 번 입력하는 것만으로 적용되지 않을 수 있어 공식 macOS 환경 변수 절차를 따릅니다.</p>
+<p>이 옵션은 <strong>Ollama의 클라우드 모델·웹 검색</strong>을 끄는 설정이지, Hermes·MCP·다른 앱의 네트워크 사용까지 막는 방화벽은 아닙니다. 모델 다운로드 후 네트워크를 끄고 짧은 대화와 문서 요약을 시험하세요. 검색·메신저가 필요한 작업은 별도로 구분합니다.</p>
+<p class="update-links"><a href="https://docs.ollama.com/faq#how-do-i-disable-ollama-cloud-features">공식 로컬 전용 설정 ↗</a><a href="#reviews" data-guide-detail="septemberCommunity">Threads에서 짚은 주의점 →</a></p>
+<p class="verification-line">2026.09.30 문서 확인 · 안내만 추가했으며 사용자 기기 설정은 변경하지 않았습니다.</p>
+</div></details>
+<details class="editorial-detail update-detail" id="septemberAudit"><summary>9/30 점검표 · 바꿀 것 / 유지할 것 / 보류할 것</summary><div class="update-body">
+<dl class="jev-facts">
+<div><dt>대화 모델 6개 · 유지·표기 수정</dt><dd>Qwen·Gemma·Ministral·gpt-oss의 Ollama 배포와 A.X·Kanana의 공식 카드·GGUF 경로를 다시 대조했습니다. Gemma 12B 용량을 MLX 약 7.7GB / GGUF 약 8.0GB로 수정. A.X 16K·Kanana 기본 32K와 한국어 보조 역할은 유지합니다.</dd></div>
+<div><dt>실행기·Hermes · 업데이트</dt><dd>Ollama 안정판 0.35.0, Hermes v0.21.5, MLX Audio 0.5.7 확인. oMLX의 RC와 LM Studio Bionic은 선택 비교이며 전부 설치할 필요가 없습니다.</dd></div>
+<div><dt>음성 · 로컬·클라우드 분리</dt><dd>Gemini 3.8 TTS는 클라우드, Qwen3-TTS 0.6B는 작은 로컬 후보로 추가했습니다. Handy의 무료 로컬 받아쓰기·Superwhisper의 오프라인 전사·Wispr Flow의 인터넷 필수 구분은 공식 안내와 다시 대조했습니다. 각 앱의 유료 플랜·앱스토어 요구사항 전체를 이번에 재검증한 것은 아닙니다.</dd></div>
+<div><dt>이미지·영상 · 조건부 유지</dt><dd>Qwen-Image-2.1의 연구용 조건과 ComfyUI MPS 오류 이슈를 다시 확인했습니다. MiniMax H3는 공개 구성요소가 있어도 전체 워크플로 일부는 API이며, Mac 32GB 실사용 경로는 확인하지 못했습니다. 영상 생성을 기본 설치로 승격하지 않습니다. <a href="https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE">Qwen 조건</a> · <a href="https://github.com/Comfy-Org/ComfyUI/issues/16433">Mac 오류 이슈</a> · <a href="https://www.minimax.io/news/minimax-h3-open-source">H3 공식 구성 ↗</a></dd></div>
+<div><dt>원격·백업 · 기존 원칙 유지</dt><dd>Tailscale 위의 일반 SSH와 Tailscale SSH 전용 기능은 다릅니다. macOS 후자는 오픈 소스 tailscaled 조건을 확인해야 합니다. 기존 HDD 자료 보존·Time Machine 복원 시험을 우선하고 장비를 추가 구매하지 않습니다. <a href="https://tailscale.com/docs/features/tailscale-ssh">SSH 공식 조건</a> · <a href="https://support.apple.com/en-us/104984">Apple 백업 안내 ↗</a></dd></div>
+<div><dt>아직 보류 · 조건부터 확인</dt><dd>Splash는 최소 36GB, Qwen4는 32GB용 공식 설치 후보를 이번 조사에서 확인하지 못했습니다. Tev1은 가중치 라이선스 확정·한국어 검증 전입니다. 화제성만으로 설치 목록을 늘리지 않습니다.</dd></div>
+</dl>
+<p class="update-scope">주요 설치·운영 안내를 분야별로 점검한 기록입니다. 전체 외부 링크의 무결성·모든 부가 앱의 최신 버전·국내 장비 가격·이전 영상 전체를 재검증한 것은 아닙니다. 항목별 이전 확인일은 그대로 남겼습니다. 이 맥미니에서 설치·속도·한국어 품질을 실측한 결과는 아닙니다.</p>
+</div></details>
+<p class="update-scope">추가 조사 2026.09.30 · 최근 일주일의 공식 발표·Reddit·Threads를 우선 확인 · 9/23 기록은 당시의 확인일 유지 · 실기기 검증 전</p>
 </aside>
 </details>
 </section>
@@ -336,6 +386,7 @@
 </section>
 <section class="panel" id="dictation">
 <div class="section-head"><div><div class="kicker">VOICE TO TEXT · 2026.09.11 확인</div><h2>말로 입력하고, Hermes에 맡기기</h2></div><p>짧은 지시는 받아쓰기 앱으로, 긴 회의·영상은 파일 전사로 처리한다. 아래 추천은 기능과 공식 문서 기준이며 한국어 정확도를 직접 측정한 순위는 아니다.</p></div>
+<p class="update-entry"><strong>답변을 목소리로 듣고 싶다면:</strong> 받아쓰기와 다른 TTS 기능입니다. <a href="#models" data-guide-detail="geminiTtsUpdate">Gemini 클라우드 vs 무료 로컬 Qwen 비교 · 9/30 →</a></p>
 <p class="update-entry"><strong>녹음 파일을 로컬 모델로 처리하려면:</strong> Qwen 음성 모델의 Mac 실행 경로를 9/23 확인했습니다. Qwen은 모델이고, 아래 앱의 단축키 입력 기능과는 별개입니다. 이 앱들의 Qwen 지원을 확인했다는 뜻은 아닙니다. <a href="#models" data-guide-detail="qwenMediaUpdate">무료 Qwen 음성 모델 보기 →</a></p>
 <p class="voice-install-note"><strong>두 앱의 맥 버전은 공식 사이트에서 설치하세요.</strong> 앱스토어 링크는 iPhone용이며, 무료 다운로드와 무제한 무료 사용은 다릅니다.<span>Superwhisper·Wispr Flow 설치 경로 확인 <time datetime="2026-09-13">2026.09.13</time> · 기기 실측 전</span></p>
 <div class="callout">이름 구분: Whisper는 음성 인식 모델, MacWhisper Pro와 Superwhisper(슈퍼위스퍼)는 서로 다른 앱, Wispr Flow(위스퍼 플로우)는 별도 서비스입니다. Wispr Flow의 받아쓰기는 인터넷 연결이 필요합니다.</div>
@@ -457,6 +508,23 @@
 <details class="editorial-detail"><summary>성공담만 보지 않기 · 실패 사례와 자료 선정 기준</summary><p><a href="https://www.reddit.com/r/hermesagent/comments/1u8jqiw/mac_mini_16gb/" target="_blank" rel="noopener noreferrer">Hermes 연결 실패 질문</a>(검색 게시일 2026.06.17)은 모델이 실행돼도 문맥 길이 검사에서 막힐 수 있음을 보여줍니다. 댓글의 검사 우회법은 검증된 설치 지침으로 채택하지 않았습니다. 현재 버전에서도 같은 문제라고 단정하지 않습니다.</p><p><a href="https://www.youtube.com/watch?v=tUNdcBMKMMw" target="_blank" rel="noopener noreferrer">Mario Alka의 맥미니 AI 비판 영상</a>(2026.06.25)은 에이전트 실행과 추론 장비의 차이를 살펴볼 비교 관점입니다. 설명·챕터만 확인했으며 Linux를 선호하는 제작자의 의견입니다.</p><p>확인일은 게시일이 아닙니다. 국내 상대 날짜·검색 색인과 충돌하는 날짜는 확정하지 않았습니다. YouTube는 연결된 작성자 글·방송 기록 또는 설명을 확인했으며 영상 전체를 재생 검증하지 않았습니다. 후기의 속도·만족도를 내 M6의 성능으로 환산하지 않습니다.</p></details>
 </details>
 
+<details class="editorial-detail review-archive" id="septemberCommunity"><summary>Reddit·Threads · 9/30 새로 확인한 4건</summary>
+<p class="verification-line">게시글의 주장·공식 기능·내 적용 제안을 구분합니다. 국내 Threads는 브라우저의 ‘로컬 AI → 최근 검색’에서 원문을 확인했습니다.</p>
+<div class="review-list recent-reviews">
+<article><span class="verification-line">Threads · 2026.09.30 · lazymac_2x · 설명용 예시</span><h3>로컬 앱이라고 모든 자료가 로컬에 남지는 않는다</h3><p>Ollama의 클라우드 경로와 외부 도구 전송을 나눠 보자는 글입니다. 작성자가 가상 화면·합성 내레이션이라고 밝혀 실사용 벤치마크로 분류하지 않았습니다.</p><p><strong>내 적용:</strong> 공식 FAQ와 대조한 로컬 전용 설정을 추가했습니다. Hermes 폴백·음성 후처리까지 각각 점검합니다.</p><a href="https://www.threads.com/@lazymac_2x/post/Dd6H-YAjL-m">게시글 원문 ↗</a> · <a href="#models" data-guide-detail="localOnlyCheck">내 설정 확인 →</a></article>
+<article><span class="verification-line">Threads · 9/30 확인 · techkwon · 공식 발표 소개</span><h3>짧은 채팅 속도 대신, 에이전트 작업을 재생해 보기</h3><p>AA-AgentPerf-Local 소개 글을 개발사의 9/29 발표·GitHub와 대조했습니다. 초기 Mac 비교 장비는 M5 Pro 64GB이며, 내 M6 32GB 결과가 아닙니다.</p><p><strong>내 적용:</strong> 기기 도착 후 선택형 진단 도구로만 사용. 속도 측정과 실제 한국어 답변 품질은 따로 확인합니다.</p><a href="https://www.threads.com/@techkwon/post/Dd5bOF2ErQH">소개 글 ↗</a> · <a href="https://artificialanalysis.ai/articles/aa-agentperf-local">공식 발표 ↗</a></article>
+<article><span class="verification-line">Reddit · 9/30 원문 확인 · M6 32GB 입문자의 질문</span><h3>큰 외장 SSD부터 사야 할까?</h3><p>256GB 맥미니 구매자가 외장 SSD와 여러 에이전트 구성을 묻는 글입니다. 실제 성능 측정기가 아니며 댓글의 주장도 서로 다릅니다.</p><p><strong>내 적용:</strong> 나는 512GB 내장 SSD로 작은 모델부터 시작. 외장 SSD는 모델 보관·로딩 공간용으로 검토하고 RAM 증설처럼 기대하지 않습니다.</p><a href="https://www.reddit.com/r/macmini/comments/1wteued/m6_mac_mini_first_timer_for_llm/">질문·댓글 원문 ↗</a> · <a href="#storage">내 구매 우선순위 →</a></article>
+<article><span class="verification-line">Reddit · 9/30 원문 확인 · R9700 GPU 4장 · 초기 사용기</span><h3>Qwen3.8-Flash-Next의 호평, 장비 조건부터</h3><p>여러 GPU를 사용한 작성자가 속도와 사용감을 공유했습니다. 32GB 맥미니 한 대와 다른 구성이라 처리량 수치나 모델 추천을 그대로 가져오지 않았습니다.</p><p><strong>내 적용:</strong> 같은 ‘Qwen3.8’ 이름이라도 27B와 Flash-Next를 구분. 큰 모델을 받기 전 전체 가중치와 실행 메모리를 확인합니다.</p><a href="https://www.reddit.com/r/LocalLLaMA/comments/1wsxgbo/first_few_days_of_qwen38flashnext_on_4x_r9700_its/">사용 조건·원문 ↗</a></article>
+</div>
+<p class="update-scope">검색은 최신 글의 표본이며 전체 커뮤니티의 추세·만족도 조사가 아닙니다. 과거 후기·영상은 기존 확인일을 유지합니다.</p>
+</details>
+<details class="editorial-detail" id="agentBenchmark"><summary>도착 후 선택 실험 · AA-AgentPerf-Local로 무엇을 확인할까?</summary>
+<p>실제 에이전트 대화 기록을 로컬 모델 서버에 재생해 지연·처리량을 측정하는 무료 오픈 소스 도구입니다. <strong>한국어 정답률·Hermes 도구 실행 성공률을 검증하는 도구는 아닙니다.</strong> 기존 Ollama·LM Studio의 OpenAI 호환 서버를 대상으로 비교할 수 있습니다.</p>
+<p>macOS를 지원하며 공식 설치 경로는 <code>uv tool install agentperf-local</code>입니다. 먼저 <code>aa-mini-v1</code>의 8K 문맥 설치 확인부터 검토하세요. 전체 시험은 65,536 문맥이 필요해 32GB에서는 모델별 여유를 확인해야 합니다. 축소 시험은 전체 점수와 비교할 수 없습니다.</p>
+<p><strong>Ollama 결과에도 주의:</strong> <code>ignore_eos</code>를 지원하지 않아 recorded 방식으로 측정되며 exact 방식의 순위와 직접 비교하지 않습니다. 기본은 도구 실행 생략이고, 실제 셸 명령을 실행하는 live 모드는 켜지 않습니다. 결과 제출·클라우드 서버 연결도 별도 선택입니다.</p>
+<p class="update-links"><a href="https://github.com/ArtificialAnalysis/aa-agentperf-local">공식 설치·메모리 조건·측정 한계 ↗</a><a href="#models">먼저 모델 하나 선택 →</a></p>
+<p class="verification-line">확인 2026.09.30 · 설치·측정·결과 업로드를 수행하지 않았습니다.</p>
+</details>
 <details class="editorial-detail review-archive"><summary>Reddit·Threads 사례 4건 · 9/23 확인 기록</summary>
 <p class="verification-line">최근 3개월(2026.06.23–09.23)에서 확인한 사례 · 이번 영상 추가 때 원문을 다시 검증한 것은 아닙니다.</p>
 <div class="review-list recent-reviews">
@@ -545,4 +613,4 @@ function updateProgress(){
  const button=document.querySelector('.progress-card [data-open]');button.dataset.open=next?destinations[next.dataset.task]:'workflows';button.textContent=next?'다음 단계 열기':'실전 활용 열기';
 }
 updateProgress();
-</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20260925-2"></script><script src="lab-planner.js?v=20260926-2"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260923-2"><script src="lab-outcomes.js?v=20260925-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20260926-2"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20260912-1"></script><link rel="stylesheet" href="lab-reviews.css?v=20260925-1"><link rel="stylesheet" href="lab-editorial.css?v=20260926-2"></body></html>
+</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20260930-1"></script><script src="lab-planner.js?v=20260926-2"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260923-2"><script src="lab-outcomes.js?v=20260925-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20260930-1"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20260912-1"></script><link rel="stylesheet" href="lab-reviews.css?v=20260925-1"><link rel="stylesheet" href="lab-editorial.css?v=20260930-1"></body></html>
