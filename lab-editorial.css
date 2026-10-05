@@ -167,3 +167,36 @@
 }
 /* Keep every linked disclosure below the measured sticky masthead. */
 .panel details>summary{scroll-margin-top:var(--site-chrome-height,190px)}
+/* Storage decisions and field notes use the existing disclosure/navigation model. */
+.field-note-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0}
+.field-note-grid>article{min-width:0;background:#f5f5f7;border:1px solid var(--line);border-radius:16px;padding:24px}
+.field-note-grid h3,.field-note-grid h4{font-size:20px;line-height:1.5;margin:8px 0 12px;letter-spacing:-.025em;color:var(--text)}
+.field-note-grid p,.field-note-grid li{font-size:15px;line-height:1.85;color:var(--muted);overflow-wrap:anywhere}
+.field-note-grid li+li{margin-top:12px}
+.field-note-grid ol{padding-left:22px}
+.field-note-grid a{color:var(--blue);text-underline-offset:4px}
+.storage-verdict{padding:32px;border:1px solid #dbe5ee;border-radius:20px;background:#f0f5fa;margin:24px 0}
+.storage-verdict h3{font-size:clamp(22px,3vw,30px);line-height:1.5;letter-spacing:-.035em;margin:10px 0 16px}
+.storage-verdict p{max-width:850px;font-size:16px;line-height:1.85;color:var(--muted)}
+.storage-verdict>a{display:inline-block;min-height:44px;align-content:center;color:var(--blue)}
+.storage-roles{margin:28px 0 40px}
+.storage-map{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center;margin:24px 0}
+.storage-map>div{padding:24px 16px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;text-align:center;min-width:0}
+.storage-map strong,.storage-map div>span{display:block}
+.storage-map strong{font-size:17px;color:var(--text)}
+.storage-map div>span{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.6}
+.storage-link{font-size:13px;color:var(--muted);white-space:nowrap}
+.storage-caption{text-align:left;padding:16px 20px;color:var(--muted);font-size:14px;line-height:1.7;background:#f5f5f7}
+#storage>.editorial-detail{max-width:none}
+#storage>h3{margin-top:40px;font-size:24px;letter-spacing:-.025em}
+#storage p,#storage li{overflow-wrap:anywhere}
+#storage .editorial-detail>ul>li+li{margin-top:14px}
+@media(max-width:760px){
+  .field-note-grid{grid-template-columns:1fr}
+  .field-note-grid>article{padding:20px}
+  .storage-verdict{padding:24px 20px}
+  .storage-roles{grid-template-columns:1fr}
+  .storage-map{grid-template-columns:1fr;gap:8px}
+  .storage-map>div{padding:16px}
+  .storage-link{text-align:center}
+}
