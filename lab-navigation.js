@@ -1,9 +1,9 @@
 (() => {
   const groups = [
-    {name:'시작하기',pages:[['start','AI 서버 초기 설정'],['plan','내 설치 목록'],['macbook','맥북 준비'],['storage','장비·저장공간']]},
+    {name:'시작하기',pages:[['start','AI 서버 초기 설정'],['storage','장비·저장공간'],['plan','내 설치 목록'],['macbook','맥북 준비']],auxiliary:['macbook']},
     {name:'도구 고르기',pages:[['models','무료 AI · 모델'],['dictation','받아쓰기 앱']]},
     {name:'활용·운영',pages:[['workflows','실사용·홈서버'],['architecture','Hermes 팀 구성'],['remote','원격 접속']]},
-    {name:'후기·자료',pages:[['reviews','실사용 후기'],['sources','공식 출처'],['glossary','용어집']]}
+    {name:'후기·자료',pages:[['reviews','실사용 후기'],['sources','공식 출처'],['glossary','용어집']],auxiliary:['sources','glossary']}
   ];
   const terms = [
     ['DAS','직접 연결 저장장치 · 다스','기본','USB 등으로 컴퓨터 한 대에 연결하는 저장장치. 맥미니가 SMB로 공유하면 Windows·MacBook도 네트워크로 접근할 수 있습니다.','storage'],
@@ -72,17 +72,23 @@
   pageTools.innerHTML='<span id="locationLabel"></span><a href="#glossary">용어가 궁금할 때</a>';
   nav.after(pageTools);
   const nativeOpen=openPanel;
+  const navLabels={start:'초기 설정',storage:'저장공간',plan:'설치 목록',workflows:'실사용',architecture:'에이전트 구성'};
   openPanel=function(id,push=true,scroll=true){
     if(!panels.some(p=>p.id===id))id='start';
-    nativeOpen(id,push,scroll);
+    nativeOpen(id,push,false);
     const group=groups.find(g=>g.pages.some(p=>p[0]===id));
     primaryNav.querySelectorAll('a').forEach((a,i)=>{if(groups[i]===group)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
-    nav.querySelector('.secondary-nav').innerHTML=group.pages.map(([key,name])=>`<a href="#${key}"${key===id?' aria-current="page"':''}>${name}</a>`).join('');
-    nav.querySelector('.secondary-nav').hidden=group.pages.length===1;
+    const visiblePages=group.pages.filter(([key])=>!group.auxiliary?.includes(key)||key===id);
+    nav.querySelector('.secondary-nav').innerHTML=visiblePages.map(([key,name])=>`<a href="#${key}"${key===id?' aria-current="page"':''}>${navLabels[key]||name}</a>`).join('');
+    nav.querySelector('.secondary-nav').hidden=visiblePages.length===1;
     const label=group.pages.find(p=>p[0]===id)[1];
     pageTools.querySelector('span').textContent=group.name+' / '+label;
     pageTools.querySelector('a').hidden=id==='glossary';
     document.title=label+' · Hermes Local Lab';
+    // Update sticky chrome before positioning a new page; never scroll through
+    // an unrelated document from the previous page's reading position.
+    updateChrome();
+    if(scroll)document.getElementById(id).scrollIntoView({block:'start',behavior:'instant'});
   };
   panels.forEach(p=>{const heading=p.querySelector('h2');if(heading){heading.id='heading-'+p.id;p.setAttribute('role','region');p.setAttribute('aria-labelledby',heading.id);heading.tabIndex=-1}});
   function followGuideLink(id,detailId){
@@ -146,10 +152,18 @@
   document.body.append(dialog);
   const siteInput=dialog.querySelector('input'),searchResults=dialog.querySelector('#siteSearchResults');
   const pageIndex=groups.flatMap(g=>g.pages.filter(([id])=>id!=='glossary').map(([id,name])=>({id,name,group:g.name,text:document.getElementById(id).textContent.toLowerCase()})));
+  function findSearchMatch(id,query){
+    return [...document.getElementById(id).querySelectorAll('p,dd,dt,li,h3,h4,h5,h6,summary,td')].find(node=>!node.closest('.update-decisions')&&node.textContent.toLowerCase().includes(query));
+  }
+  function searchExcerpt(id,query){
+    const text=(query?findSearchMatch(id,query)?.textContent:document.querySelector('#'+id+' .section-head p, #'+id+' .builder-intro')?.textContent)?.replace(/\s+/g,' ').trim()||'';
+    const at=query?text.toLowerCase().indexOf(query):0,start=Math.max(0,at-28),end=Math.min(text.length,start+110);
+    return (start?'…':'')+text.slice(start,end)+(end<text.length?'…':'');
+  }
   function revealSearchMatch(id,query){
     if(!query)return false;
     const panel=document.getElementById(id);
-    const match=[...panel.querySelectorAll('p,dd,dt,li,h3,h4,h5,h6,summary,td')].find(node=>!node.closest('.update-decisions')&&node.textContent.toLowerCase().includes(query));
+    const match=findSearchMatch(id,query);
     if(!match)return false;
     document.querySelectorAll('.search-match').forEach(node=>node.classList.remove('search-match'));
     const card=match.closest('.outcome-card');
@@ -167,9 +181,9 @@
     const found=q?pageIndex.filter(p=>(p.name+' '+p.text).toLowerCase().includes(q)):pageIndex.filter(p=>['plan','start','models','dictation'].includes(p.id));
     const matchingTerms=q?terms.filter(t=>t.slice(0,4).join(' ').toLowerCase().includes(q)):[];
     const rank=(title,alias='')=>!q?0:title.toLowerCase()===q?6:title.toLowerCase().includes(q)?4:alias.toLowerCase().includes(q)?3:1;
-    const matches=[...found.map(p=>({title:p.name,detail:p.group,id:p.id,rank:rank(p.name)})),...matchingTerms.map(t=>({title:t[0],detail:'용어 · '+t[1],id:'glossary',term:t[0],rank:rank(t[0],t[1])}))].sort((a,b)=>b.rank-a.rank).slice(0,10);
+    const matches=[...found.map(p=>({title:p.name,detail:p.group,id:p.id,excerpt:searchExcerpt(p.id,q),rank:rank(p.name)})),...matchingTerms.map(t=>({title:t[0],detail:'용어 · '+t[1],id:'glossary',term:t[0],excerpt:t[3],rank:rank(t[0],t[1])}))].sort((a,b)=>b.rank-a.rank).slice(0,10);
     dialog.querySelector('#siteSearchCount').textContent=q?(matches.length?'검색 결과 '+matches.length+'개'+(found.length+matchingTerms.length>10?' · 상위 10개 표시':''):'검색 결과가 없습니다. 더 짧은 단어나 용어로 다시 찾아보세요.'):'자주 찾는 가이드';
-    matches.forEach(m=>{const a=document.createElement('a');a.href='#'+m.id;const strong=document.createElement('strong');strong.textContent=m.title;const small=document.createElement('span');small.textContent=m.detail;a.append(strong,small);a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();e.stopPropagation();searchNavigated=true;dialog.close();if(m.term){input.value=m.term;category.value='';renderTerms()}openPanel(m.id,true,false);if(!m.term&&revealSearchMatch(m.id,q))return;document.getElementById(m.id).scrollIntoView({block:'start',behavior:'instant'});document.querySelector('#'+m.id+' h2')?.focus({preventScroll:true})});searchResults.append(a)});
+    matches.forEach(m=>{const a=document.createElement('a');a.href='#'+m.id;const strong=document.createElement('strong');strong.textContent=m.title;const small=document.createElement('span');small.textContent=m.detail;a.append(strong,small);if(m.excerpt){const excerpt=document.createElement('p');excerpt.className='search-excerpt';excerpt.textContent=m.excerpt;a.append(excerpt)}a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();e.stopPropagation();searchNavigated=true;dialog.close();if(m.term){input.value=m.term;category.value='';renderTerms()}openPanel(m.id,true,false);if(!m.term&&revealSearchMatch(m.id,q))return;document.getElementById(m.id).scrollIntoView({block:'start',behavior:'instant'});document.querySelector('#'+m.id+' h2')?.focus({preventScroll:true})});searchResults.append(a)});
   }
   let searchReturnFocus,searchNavigated=false;
   function showSearch(){if(dialog.open)return;searchNavigated=false;searchReturnFocus=document.activeElement;renderSearch();dialog.showModal();siteInput.focus()}
@@ -182,7 +196,9 @@
   // Model recommendations describe fit and licensing, not unmeasured benchmark scores.
   const footer=document.querySelector('.footer');footer.replaceChildren();
   const footerName=document.createElement('span');footerName.textContent='Hermes Local Lab · 독립적인 개인 구축 가이드';
-  const footerDate=document.createElement('span');footerDate.textContent='최근 점검 2026.10.05 · 활용 사례·7900 GRE·DAS/NAS / 자료 확인일은 항목별 표기';footer.append(footerName,footerDate);
+  const footerDate=document.createElement('span');footerDate.textContent='구성 정리 2026.10.05 · 자료 확인일은 항목별 표기';footer.append(footerName,footerDate);
+  const utilityLinks=document.createElement('nav');utilityLinks.className='footer-utilities';utilityLinks.setAttribute('aria-label','참고 자료');
+  utilityLinks.innerHTML='<a href="#sources">공식 출처·확인 범위</a><a href="#glossary">용어집</a><a href="#macbook">맥북 준비</a>';footer.prepend(utilityLinks);
   const policy=document.createElement('details');policy.className='editorial-detail source-policy';
   policy.innerHTML='<summary>이 가이드의 확인 범위</summary><p>2026.09.23 추가 확인: Qwen3-ASR·TTS·ForcedAligner의 공개 모델과 MLX Audio 구현, Qwen-Image-2.1의 Draw Things 등록·연구용 라이선스·ComfyUI MPS 오류 보고를 확인했습니다. 최신 클라우드 음성·Omni·이미지 발표는 로컬 설치 후보와 구분했습니다. 모델 파일 크기는 RAM 사용량이 아니며, M6 32GB 설치·한국어 품질·처리 속도는 실측하지 않았습니다. 녹음 → 요약 → 음성 활용은 연결 제안이지 구현된 자동화가 아닙니다.</p><p>2026.09.23에는 최근 3개월의 Reddit·Threads 사용기와 Ollama·oMLX·LM Studio·Qwen 공식 자료를 대조했습니다. 실행기 변화, 큰 모델의 조건부 비교, 32GB에서 제외할 가속 엔진, 기존 Windows PC와의 역할 분담을 추가했습니다. 기본 무료 구성은 유지했습니다. 커뮤니티 수치는 자기 보고이며 새 맥미니 실측이 아닙니다. 기존 6개 모델·받아쓰기 앱·가격을 이날 모두 재검증했다는 뜻은 아닙니다.</p><p>2026.09.22에는 Jev의 공식 문서·가격·언어 한계와 Hermes용 커뮤니티 플러그인을 확인했습니다. 무료 로컬 AI와 구분한 선택형 클라우드 기능 안내이며, API 연결·설치·한국어 성능 시험은 하지 않았습니다. 검색·스킬 추천·근거 대조는 도입 제안이고 현재 작동하는 Jev 기능이 아닙니다. 다른 모델·앱 정보까지 이날 모두 재검증한 것은 아닙니다.</p><p>2026.09.15에는 공용 자료실·맥북 백업과 상시 Hermes 작업실을 우선 활용법으로 정리했습니다. Apple·Hermes 공식 기능을 바탕으로 한 구성 제안이며, 실제 백업·복구나 작업 지속을 이 맥미니에서 시험한 결과는 아닙니다. Plex는 참고 용도로만 남겼습니다. 기존 모델·받아쓰기 비교를 모두 재검증했다는 뜻은 아닙니다.</p><p>2026.09.13에는 Superwhisper·Wispr Flow의 공식 Mac 다운로드와 한국 iPhone 앱스토어 링크를 확인하고 설치 후보 저장에 연결했습니다. App Store 링크는 맥용 설치 파일이 아닙니다.</p><p>2026.09.12에는 무료 AI 후보의 모델 카드·라이선스·로컬 실행 범위와 설치 경로, 작업별 활용·기대효과 비교를 보완했습니다. 기대효과는 공식 기능을 바탕으로 한 활용 제안이며 실제 출력이나 생산성 실측이 아닙니다. 나머지 문서·후기 검토일은 2026.09.11입니다. 공식 지원 여부와 이 가이드의 선택 제안은 다릅니다. 다운로드 용량은 최대 메모리 사용량이 아니며, 한국어 정확도·속도는 이 맥미니에서 아직 측정하지 않았습니다.</p><p>모델 표의 0원은 내 기기에서 실행할 때의 모델·추론 사용료입니다. 전기·장비·외부 도구 비용과 라이선스 조건은 별개입니다. 실행 앱의 무료 범위와 네트워크 서비스의 개인용 무료 플랜도 구분합니다. 각 항목의 공식 출처에서 현행 조건을 확인하세요.</p>';
   document.querySelector('#sources .section-head').after(policy);
@@ -197,20 +213,24 @@
   const setupPolicy=document.createElement('p');
   setupPolicy.innerHTML='2026.10.05: 새 맥미니의 AI 서버 초기 설정을 6단계로 정리했습니다. Apple 전원·원격 로그인·백업, Ollama 설치·Hermes 연결, OpenClaw·Orca·Paseo·Dots 공식 안내를 확인했습니다. 이전 모델 비교 전체의 확인일을 바꾼 것은 아니며, 실제 맥미니 설치·무인 복구·한국어 성능 시험은 하지 않았습니다. <a href="#start">AI 서버 초기 설정 →</a> · <a href="#architecture" data-guide-detail="optionalAgentTools">선택 도구 안내 →</a>';
   policy.querySelector('summary').after(setupPolicy);
+  const history=document.createElement('details');history.className='editorial-detail';history.innerHTML='<summary>날짜별 조사 범위·변경 기록</summary>';
+  [...policy.children].filter(node=>node.tagName!=='SUMMARY').forEach(node=>history.append(node));
+  const scope=document.createElement('p');scope.textContent='공식 지원·커뮤니티 사용기·이 가이드의 활용 제안을 구분합니다. 모델의 한국어 품질, 속도와 새 맥미니의 무인 운영은 직접 시험 전입니다. 확인일은 항목별로 다르며, 사이트 구성을 정리한 날이 전체 정보의 재검증일은 아닙니다.';
+  policy.append(scope,history);
   // Short local outline: no extra top-level menu or sidebar.
   panels.forEach(panel=>{
     panel.querySelector('h2')?.setAttribute('aria-level','1');
     panel.querySelectorAll('h3').forEach(h=>h.setAttribute('aria-level','2'));
     panel.querySelectorAll('h4').forEach(h=>h.setAttribute('aria-level','3'));
-    const headings=[...panel.querySelectorAll(':scope > h3')];
-    if(headings.length>=2){
+    const headings=[...panel.querySelectorAll(':scope > h3, :scope > details[id] > summary')];
+    if(headings.length>=2&&panel.id!=='start'){
       const outline=document.createElement('details');outline.className='page-outline';
-      const label=document.createElement('summary');label.textContent='이 페이지에서 · '+headings.length+'개 항목';outline.append(label);
+      const label=document.createElement('summary');label.textContent='바로 찾기 · '+headings.length+'개 항목';outline.append(label);
       const links=document.createElement('nav');links.setAttribute('aria-label','이 페이지에서');outline.append(links);
       headings.forEach(h=>{
         h.tabIndex=-1;h.classList.add('outline-target');
-        const b=document.createElement('button');b.type='button';b.textContent=h.textContent;
-        b.addEventListener('click',()=>{outline.open=false;h.scrollIntoView({block:'start',behavior:reduced()?'instant':'smooth'});h.focus({preventScroll:true})});links.append(b);
+        const b=document.createElement('button');b.type='button';b.textContent=h.tagName==='SUMMARY'?[...h.childNodes].filter(node=>node.nodeType===Node.TEXT_NODE).map(node=>node.textContent).join('').trim():h.textContent;
+        b.addEventListener('click',()=>{outline.open=false;if(h.tagName==='SUMMARY')h.parentElement.open=true;h.scrollIntoView({block:'start',behavior:'instant'});h.focus({preventScroll:true})});links.append(b);
       });
       panel.querySelector('.section-head')?.after(outline);
     }
@@ -219,7 +239,7 @@
   Object.entries(nextPages).forEach(([id,[target,title,reason]])=>{const nav=document.createElement('nav');nav.className='reading-next';nav.setAttribute('aria-label','다음 가이드');const small=document.createElement('span');small.textContent=reason;const a=document.createElement('a');a.href='#'+target;a.textContent=title+' →';nav.append(small,a);document.getElementById(id).append(nav)});
   document.querySelectorAll('th').forEach(th=>th.scope='col');
   document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>document.querySelector('.panel.active h2')?.focus({preventScroll:true})));
-  const skip=document.createElement('a');skip.href='#plan';skip.className='skip-content';skip.textContent='본문으로 이동';skip.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();document.querySelector('.panel.active h2')?.focus()});document.body.prepend(skip);
+  const skip=document.createElement('a');skip.href='#start';skip.className='skip-content';skip.textContent='본문으로 이동';skip.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();document.querySelector('.panel.active h2')?.focus()});document.body.prepend(skip);
   document.querySelectorAll('.table-wrap').forEach(wrap=>{if(wrap.closest('#dictation')||wrap.classList.contains('free-model-wrap'))return;wrap.tabIndex=0;wrap.setAttribute('role','region');wrap.setAttribute('aria-label',(wrap.closest('.panel').querySelector('h2')?.textContent||'비교')+' 표, 좁은 화면에서는 좌우 스크롤');const hint=document.createElement('p');hint.className='table-scroll-hint';hint.textContent='표가 잘리면 좌우로 밀어서 확인하세요.';wrap.before(hint)});
   const updateChrome=()=>{
     const masthead=topbar.getBoundingClientRect().height;

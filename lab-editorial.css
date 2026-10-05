@@ -200,3 +200,72 @@
   .storage-map>div{padding:16px}
   .storage-link{text-align:center}
 }
+/* Consolidated guide: one primary task per page, context on demand. */
+.panel>.section-head{padding:24px 0 20px}
+.section-head h2,.lab-builder h2{font-size:clamp(30px,3.5vw,42px);line-height:1.25;letter-spacing:-.035em}
+.panel>.section-head p,.builder-intro{font-size:17px;line-height:1.8;margin-top:14px;max-width:760px}
+.page-emblem{width:44px;height:44px;flex-basis:44px;border-radius:13px}
+.page-emblem .icon{width:25px;height:25px}
+.guide-heading{gap:14px}
+.panel>h3,#workflows>h3,#start>h3{font-size:24px;margin:32px 0 16px;line-height:1.4}
+.page-tools{padding-top:14px}
+.page-outline{margin:0 0 18px;padding:0;border-bottom:1px solid #e8e8ed}
+.page-outline>summary{font-size:14px;min-height:44px;padding-block:12px;color:#59616b}
+.page-outline>summary::after{top:18px}
+.page-outline nav{display:flex;flex-wrap:wrap;gap:6px 16px;padding:0 0 12px}
+.page-outline button{min-height:44px;text-align:left}
+.panel>.reading-next{margin-top:40px;padding-block:24px}
+.guide-bridge{font-size:15px;line-height:1.85;border-top:1px solid var(--line);padding-top:20px;margin:24px 0;color:var(--muted)}
+.guide-bridge a{color:var(--blue);text-underline-offset:4px}
+.archive-collection{background:#fafafa;border-color:#e5e5e8}
+.archive-note{color:var(--muted);font-size:14px;line-height:1.8;max-width:760px}
+.setup-overview{margin:8px 0;padding-block:8px}
+.setup-overview>summary{font-size:15px}
+.setup-overview>summary span{font-size:13px;font-weight:400;color:var(--muted);margin-left:12px}
+.guide-collection[open]>.guide-collection{background:#fff}
+.footer{flex-wrap:wrap;gap:8px 24px}
+.footer-utilities{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px 24px;margin-bottom:8px}
+.footer-utilities a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;color:#45586b;text-decoration:none}
+.footer-utilities a:hover{text-decoration:underline}
+.footer-utilities a:focus-visible{outline:2px solid #0066cc;outline-offset:3px}
+#siteSearchResults a{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:16px;border-radius:12px}
+#siteSearchResults .search-excerpt{grid-column:1/-1;margin:4px 0 0;font-size:14px;line-height:1.7;color:#59616b;overflow-wrap:anywhere}
+.lab-builder{padding-top:24px;margin-bottom:30px}
+#plan .builder-layout{margin-top:22px}
+#plan .builder-summary{padding:24px;border-radius:16px}
+#models>.starter-main{margin-top:14px}
+#models .model-comparison-note{font-size:15px;max-width:900px}
+#models>.optional-tools{margin-bottom:22px}
+.nav-motion-line{transition-duration:180ms}
+#start .server-intro{padding:24px;gap:24px;margin:16px 0;border-radius:16px}
+#start .server-intro h3{font-size:24px;margin:10px 0;line-height:1.4}
+#start .server-map li{padding:10px 14px}
+#start .server-map li+li{margin-top:12px}
+#start .server-map li+li:before{height:12px;top:-13px}
+@media(max-width:760px){
+  .shell{padding-inline:20px}
+  .secondary-nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;max-width:100%;padding-bottom:2px}
+  .secondary-nav a{white-space:nowrap;flex-shrink:0}
+  .panel>.section-head{padding:24px 0 16px}
+  .section-head h2,.lab-builder h2{font-size:30px;line-height:1.32;text-wrap:pretty}
+  .panel>.section-head p,.builder-intro{font-size:16px;margin-top:12px}
+  .guide-heading{align-items:flex-start;gap:12px}
+  .page-emblem{width:36px;height:36px;flex-basis:36px;border-radius:10px;margin-top:2px}
+  .page-emblem .icon{width:22px;height:22px}
+  .panel>h3,#workflows>h3,#start>h3{font-size:22px;margin-top:28px}
+  .guide-collection{padding-inline:16px;border-radius:12px}
+  .guide-collection>summary{font-size:16px}
+  .guide-collection>summary span{font-size:13px}
+  #siteSearchResults a{grid-template-columns:1fr}
+  #siteSearchResults a>span{font-size:12px}
+  #start .server-intro{padding:20px;gap:18px}
+  #start .server-intro h3{font-size:21px}
+  #start .server-map{gap:6px}
+  #start .server-map li{display:block;padding:8px 12px}
+  #start .server-map li+li{margin:0}
+  #start .server-map li+li:before{display:none}
+  #start .server-map span{display:inline;margin-right:10px}
+  #start .server-map strong{font-size:14px}
+  .setup-overview>summary span{display:block;margin:4px 0 0}
+}
+@media(prefers-reduced-motion:reduce){.nav-motion-line{transition:none}}

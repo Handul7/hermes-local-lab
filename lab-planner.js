@@ -27,29 +27,21 @@
   let state={goals:['agent'],privacy:'local',budget:'free',tools:{}};
   try {const s=JSON.parse(localStorage.getItem('hermesInteractivePlan')||'null');if(s&&Array.isArray(s.goals)){state.goals=s.goals.filter(x=>labels[x]);state.privacy=s.privacy==='hybrid'?'hybrid':'local';state.budget=s.budget==='free'?'free':'all';for(const t of catalog)if(s.tools&&Object.hasOwn(s.tools,t.id))state.tools[t.id]=s.tools[t.id]===true;}} catch {}
   const host=document.createElement('div');host.className='lab-builder';
-  host.innerHTML=`<div class="kicker">BUILD YOUR LOCAL LAB</div><h2>내 맥미니로 무엇부터 해볼까?</h2><p class="builder-intro">하고 싶은 일을 고르면 도구 후보가 바뀝니다. 비교해서 필요한 것만 담고, 아래 설치 가이드로 이어가세요.</p><div class="builder-layout"><div><fieldset class="builder-options"><legend>1. 하고 싶은 일 · 여러 개 선택 가능</legend><div class="choice-grid">${Object.entries(labels).map(([id,name])=>`<label class="choice"><input type="checkbox" value="${id}" ${state.goals.includes(id)?'checked':''}>${name}</label>`).join('')}</div></fieldset><fieldset class="builder-options"><legend>2. 내 기준</legend><div class="preference-row"><label>AI 처리<select id="plannerPrivacy"><option value="local">로컬 처리 우선</option><option value="hybrid">클라우드도 비교</option></select></label><label>비용<select id="plannerBudget"><option value="all">유료 후보도 비교</option><option value="free">무료 도구만</option></select></label></div></fieldset><p class="muted">로컬 후보도 음성·AI 후처리 설정에 따라 외부 서비스를 사용할 수 있습니다. 무료는 앱 또는 개인용 무료 플랜 기준이며 모델·API 비용을 보장하지 않습니다. 후보들은 대안도 포함하므로 전부 설치할 필요는 없습니다.</p><h3 id="resultTitle">도구 후보</h3><div class="tool-results" id="toolResults"></div></div><aside class="builder-summary"><h3>내 설치 목록</h3><span class="builder-count" id="savedCount"></span><p>담은 도구를 권장 순서로 정리했습니다. 조건을 바꿔도 이미 담은 항목은 유지됩니다.</p><div id="savedTools"></div><button class="btn" id="exportPlan">설치 목록 내려받기</button><button class="btn primary" id="openChecklist">기본 구축 체크리스트 보기</button><p>이 브라우저에 저장됩니다. 다른 맥으로 옮길 때 목록을 내려받으세요.</p><div class="builder-status" id="plannerStatus" role="status" aria-live="polite"></div></aside></div>`;
+  host.innerHTML=`<div class="kicker">BUILD YOUR LOCAL LAB</div><h2>내 맥미니로 무엇부터 해볼까?</h2><p class="builder-intro">하고 싶은 일을 고르면 도구 후보가 바뀝니다. 비교해서 필요한 것만 담고, 아래 설치 가이드로 이어가세요.</p><div class="builder-layout"><div><fieldset class="builder-options"><legend>1. 하고 싶은 일 · 여러 개 선택 가능</legend><div class="choice-grid">${Object.entries(labels).map(([id,name])=>`<label class="choice"><input type="checkbox" value="${id}" ${state.goals.includes(id)?'checked':''}>${name}</label>`).join('')}</div></fieldset><fieldset class="builder-options"><legend>2. 내 기준</legend><div class="preference-row"><label>AI 처리<select id="plannerPrivacy"><option value="local">로컬 처리 우선</option><option value="hybrid">클라우드도 비교</option></select></label><label>비용<select id="plannerBudget"><option value="all">유료 후보도 비교</option><option value="free">무료 도구만</option></select></label></div></fieldset><p class="muted">로컬 후보도 음성·AI 후처리 설정에 따라 외부 서비스를 사용할 수 있습니다. 무료는 앱 또는 개인용 무료 플랜 기준이며 모델·API 비용을 보장하지 않습니다. 후보들은 대안도 포함하므로 전부 설치할 필요는 없습니다.</p><h3 id="resultTitle">도구 후보</h3><div class="tool-results" id="toolResults"></div></div><aside class="builder-summary"><h3>내 설치 목록</h3><span class="builder-count" id="savedCount"></span><p>담은 도구를 권장 순서로 정리했습니다. 조건을 바꿔도 이미 담은 항목은 유지됩니다.</p><div id="savedTools"></div><button class="btn" id="exportPlan">설치 목록 내려받기</button><button class="btn primary" id="openChecklist">AI 서버 6단계 이어하기</button><p>이 브라우저에 저장됩니다. 다른 맥으로 옮길 때 목록을 내려받으세요.</p><div class="builder-status" id="plannerStatus" role="status" aria-live="polite"></div></aside></div>`;
   document.getElementById('plan').prepend(host);
-  host.querySelector('h2').textContent='내 AI 서버 설치 목록';
-  const setup=document.createElement('details');setup.className='setup-details';
-  setup.innerHTML='<summary>기본 설치 체크리스트</summary>';
-  const planPanel=document.getElementById('plan');
-  [...planPanel.children].filter(el=>el!==host).forEach(el=>setup.append(el));
-  planPanel.append(setup);
+  host.querySelector('h2').textContent='내 설치 목록';
   const goalIcons={agent:'team',dictation:'mic',meeting:'doc',code:'code',docs:'doc',image:'image',video:'video',remote:'remote'};
   const toolIcons={hermes:'team',ollama:'model',qwen9b:'model',lmstudio:'model',handy:'mic',macwhisper:'doc',superwhisper:'mic',wispr:'mic',drawthings:'image',comfyui:'nodes',hailuo:'video',tailscale:'remote',tmux:'terminal'};
   const outcomes={hermes:'조사 → 작성 → 검토',ollama:'실행기 · 모델은 별도',qwen9b:'대화 모델 · 문서 요약',lmstudio:'화면에서 모델 실행',handy:'음성 → 텍스트',macwhisper:'녹음 → 회의록·자막',superwhisper:'음성 → 다듬은 문장',wispr:'음성 → 클라우드 문장 정리',drawthings:'아이디어 → 이미지',comfyui:'노드 → 이미지·영상',hailuo:'프롬프트 → 영상',tailscale:'맥북 ↔ 맥미니',tmux:'연결 해제 → 작업 유지'};
   const costs={hermes:'앱 무료 · 연결 도구 비용 별도',ollama:'로컬 실행 무료',qwen9b:'모델 무료 · Apache 2.0',lmstudio:'로컬 실행 무료',handy:'앱 무료 · Whisper 로컬 모드',macwhisper:'무료 기능 + Pro 유료',superwhisper:'무료 범위 + 유료 기능',wispr:'무료 제한 플랜 + Pro 유료 · 인터넷 필수',drawthings:'로컬 생성 무료',comfyui:'앱 무료 · 모델 조건 별도',hailuo:'클라우드 요금 별도',tailscale:'개인용 무료 플랜 · 조건 확인',tmux:'무료 오픈 소스'};
   modelChoices.forEach(model=>{toolIcons[model.id]='model';outcomes[model.id]=model.agent?'대화·도구 사용 후보':'한국어 문서 보조';costs[model.id]='모델 무료 · Apache 2.0 · '+model.size;});
-  host.querySelector('.builder-intro').textContent='무료 로컬 AI부터 시작하세요. 실행기와 실제 모델을 함께 담고, 용도에 맞는 도구만 더하면 됩니다.';
+  host.querySelector('.builder-intro').textContent='비교하면서 담아 둔 도구를 한곳에서 확인하세요. 설치 완료는 직접 체크하고, 서버 설정 진행은 6단계 가이드에서 이어갑니다.';
   host.querySelector('#plannerBudget option[value="free"]').textContent='무료 시작 가능한 도구';
   host.querySelector('.builder-layout > div > .muted').textContent='무료 표시는 각 도구의 기본 로컬 기능 또는 개인용 무료 플랜 기준입니다. Qwen3.5 9B의 로컬 추론은 API 요금이 없지만, Hermes의 외부 도구·앱의 클라우드 기능은 별도입니다. 라이선스와 전기·저장공간 비용도 구분하세요. 이미 담은 유료 항목은 필터를 바꿔도 유지됩니다.';
   const freePlan=document.createElement('div');freePlan.className='free-plan-entry';freePlan.innerHTML='<div><strong>처음이라면, 무료 기본 구성</strong><span>Ollama → Qwen3.5 9B → Hermes</span></div><button class="btn" type="button" data-free-starter>무료 기본 구성 담기</button><a href="#models">비용·모델 비교 →</a>';host.querySelector('.builder-intro').after(freePlan);
   host.querySelectorAll('.choice').forEach(el=>{const key=el.querySelector('input').value;el.insertAdjacentHTML('afterbegin',`<span class="goal-visual" aria-hidden="true">${svg(goalIcons[key])}</span>`);el.dataset.goal=key});
   function foldText(el,title){const d=document.createElement('details');d.className='quiet-detail';const s=document.createElement('summary');s.textContent=title;el.before(d);d.append(s,el)}
   foldText(host.querySelector('.builder-layout > div > .muted'),'로컬·무료 기준 안내');
-  const journey=document.createElement('nav');journey.className='guide-journey';journey.setAttribute('aria-label','가이드 읽는 순서');
-  journey.innerHTML='<a href="#start"><span>01 · 새 맥에서</span><strong>AI 서버 초기 설정</strong><small>첫 부팅부터 원격 접속까지</small></a><a href="#models"><span>02 · 하나만 골라</span><strong>무료 모델 선택</strong><small>기본 추천과 대안 비교</small></a><a href="#workflows"><span>03 · 매일 쓰기</span><strong>내 활용법 찾기</strong><small>백업·문서·녹음부터</small></a>';
-  freePlan.before(journey);
   const custom=document.createElement('details');custom.className='planner-custom';custom.id='customPlan';custom.innerHTML='<summary>용도에 맞게 도구 더 고르기 <span>선택 사항</span></summary>';
   const picker=host.querySelector('.builder-layout > div');picker.before(custom);custom.append(picker);
   custom.before(host.querySelector('.builder-summary'));
@@ -85,7 +77,7 @@
     persist(savedMessage);render();document.getElementById('modelInstallStatus').textContent=status.textContent;
   });
   host.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.guide){openPanel(b.dataset.guide);document.querySelector('#'+b.dataset.guide+' h2')?.focus({preventScroll:true});return}if(b.dataset.add){const exists=Object.hasOwn(state.tools,b.dataset.add);if(exists)delete state.tools[b.dataset.add];else state.tools[b.dataset.add]=false;persist(exists?'목록에서 뺐습니다.':'설치 목록에 담았습니다.');render();host.querySelector('[data-add="'+b.dataset.add+'"]').focus()}if(b.dataset.remove){delete state.tools[b.dataset.remove];persist('목록에서 뺐습니다.');render();(custom.open&&host.querySelector('[data-add="'+b.dataset.remove+'"]')||host.querySelector('[data-remove]')||host.querySelector('#openChecklist')).focus()}});
-  host.querySelector('#openChecklist').addEventListener('click',()=>{setup.open=true;setup.querySelector('summary').focus({preventScroll:true});setup.scrollIntoView({behavior:reduced()?'instant':'smooth',block:'start'})});
+  host.querySelector('#openChecklist').addEventListener('click',()=>{openPanel('start');document.querySelector('#start h2')?.focus({preventScroll:true})});
   host.querySelector('#exportPlan').addEventListener('click',()=>{const lines=['# 내 맥미니 설치 목록','','받아쓰기 앱 설치 경로 확인: 2026-09-13. Mac은 공식 다운로드, App Store 링크는 iPhone용. 무료 다운로드와 무제한 사용은 다릅니다.','비용 정보 확인: 2026-09-12. 모델·앱의 로컬 기능 기준이며 외부 API, 전기·장비 비용은 별도.','Hermes의 유료 폴백·보조 모델·외부 도구를 확인하세요. 기존에 담은 유료 후보는 필터 변경 후에도 남을 수 있습니다.','모델은 동시에 하나부터. A.X(16K)·Kanana(기본 32K)는 한국어 문서 보조이며 Hermes 메인에 바로 지정하지 않습니다.','다운로드 크기는 실행 RAM이 아닙니다. 맥미니 실기기 검증 전 후보입니다.','',...catalog.filter(t=>Object.hasOwn(state.tools,t.id)).map(t=>'- ['+(state.tools[t.id]?'x':' ')+'] '+t.name+'\n  '+costs[t.id]+'\n  '+t.step+'\n  '+t.url)];const url=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/markdown;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='my-mac-mini-plan.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='설치 목록 다운로드를 요청했습니다.'});
   const dictation=document.getElementById('dictation');
   const voiceTable=dictation.querySelector('table');
@@ -125,16 +117,5 @@
   const logoNote=document.createElement('p');logoNote.className='brand-note';
   logoNote.innerHTML='브랜드 로고로 표시합니다. Whisper는 OpenAI, Hermes는 Nous Research 개발사 로고이며, 확인되지 않은 로고는 생략했습니다. <a href="https://github.com/lobehub/lobe-icons" target="_blank" rel="noopener noreferrer">아이콘 출처</a>';
   document.querySelector('#models .table-wrap').after(logoNote);
-  const workflows=document.getElementById('workflows');
-  const practical=document.createElement('section');practical.className='daily-use';
-  practical.setAttribute('aria-labelledby','dailyUseTitle');
-  practical.innerHTML=`<h3 id="dailyUseTitle">세 대를 함께 쓰는 방법</h3>
-    <div class="device-roles">
-      <div class="device-role">${svg('laptop')}<strong>맥북</strong><span>말로 입력 · 결과 검토 · 외부 접속</span></div>
-      <div class="device-role">${svg('mini')}<strong>맥미니</strong><span>공유·백업 · Hermes 처리 · 결과 보관</span></div>
-      <div class="device-role">${svg('desktop')}<strong>윈도우 데스크톱</strong><span>기존 작업 유지 · GPU 작업은 사양 확인 후</span></div>
-    </div>
-    `;
-  workflows.querySelector('#homePriorityTitle').before(practical);
   render();
 })();

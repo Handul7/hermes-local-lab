@@ -2,7 +2,7 @@
   'use strict';
   const preference=matchMedia('(prefers-reduced-motion: reduce)');
   const canAnimate=()=>!preference.matches&&typeof Element.prototype.animate==='function';
-  const timing={duration:300,easing:'cubic-bezier(.22,1,.36,1)'};
+  const timing={duration:180,easing:'cubic-bezier(.22,1,.36,1)'};
   const running=new Set();
   function play(node,frames,options=timing){
     if(!node||!canAnimate())return null;
@@ -29,7 +29,7 @@
     const content=panel.querySelector('.builder-layout')||[...panel.children].find(el=>el!==heading&&!el.matches('.page-outline'));
     // Only entrance groups move; long documents and sticky controls do not.
     [heading,intro,content].filter((node,i,all)=>node&&all.indexOf(node)===i).forEach((node,i)=>{
-      const animation=play(node,[{opacity:0,transform:'translateY(18px)'},{opacity:1,transform:'translateY(0)'}],{duration:540,delay:i*65,easing:timing.easing,fill:'backwards'});
+      const animation=play(node,[{opacity:.7,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:timing.easing});
       if(animation){entranceAnimations.add(animation);animation.finished.then(()=>entranceAnimations.delete(animation),()=>entranceAnimations.delete(animation))}
     });
   }
@@ -41,7 +41,7 @@
       if(!entry.isIntersecting)continue;
       const node=entry.target;observer.unobserve(node);revealed.add(node);
       if(node.contains(document.activeElement))continue;
-      const animation=play(node,[{opacity:.12,transform:'translateY(24px)'},{opacity:1,transform:'translateY(0)'}],{duration:620,easing:timing.easing});
+      const animation=play(node,[{opacity:.8,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:timing.easing});
       if(animation){revealAnimations.set(node,animation);animation.finished.then(()=>revealAnimations.delete(node),()=>revealAnimations.delete(node))}
     }
   },{threshold:0,rootMargin:'0px 0px -48px 0px'}):null;

@@ -6,7 +6,7 @@
 <header class="topbar"><div class="brand"><span class="brand-mark" data-icon="nodes"></span>Hermes Local Lab</div><div class="meta">Mac mini · 32GB · 512GB · 2026.09.06</div></header>
 <section class="hero"><div><div class="kicker">HERMES-FIRST · MULTI-AGENT</div><h1>맥미니 한 대를<br>AI 팀으로 쓰는 법</h1><p>기획, 리서치, 코딩, 문서, 음성, 이미지 에이전트를 Hermes가 지휘한다. 32GB용 설치 후보와 순서, 출처가 있는 사용자 경험를 한곳에서 확인한다.</p><div class="actions"><button class="btn primary" data-open="start">첫날 설치 시작</button><button class="btn" data-open="workflows">무엇을 할 수 있나</button></div></div><aside class="machine"><div class="machine-top"><div><div class="kicker">TARGET MACHINE</div><h2>Mac mini 로컬 AI 노드</h2></div><span class="status">● READY PLAN</span></div><div class="specs"><div class="spec"><b>32GB</b><span>통합 메모리</span></div><div class="spec"><b>512GB</b><span>내부 SSD</span></div><div class="spec"><b>2× HDD</b><span>보관 + Time Machine</span></div><div class="spec"><b>9B</b><span>권장 상시 모델</span></div></div></aside></section>
 <nav class="tabs" role="tablist"><button class="tab" aria-selected="true" data-tab="plan">내 구축 플랜</button><button class="tab" aria-selected="false" data-tab="macbook">맥북 준비</button><button class="tab" aria-selected="false" data-tab="start">1. 첫날 설치</button><button class="tab" aria-selected="false" data-tab="architecture">2. AI 팀</button><button class="tab" aria-selected="false" data-tab="remote">3. 원격 운영</button><button class="tab" aria-selected="false" data-tab="workflows">4. 실전 활용</button><button class="tab" aria-selected="false" data-tab="storage">저장장치</button><button class="tab" aria-selected="false" data-tab="models">모델 선택</button><button class="tab" aria-selected="false" data-tab="reviews">최근 후기</button><button class="tab" aria-selected="false" data-tab="sources">공식 링크</button><button class="tab" aria-selected="false" data-tab="dictation">받아쓰기</button></nav>
-<section class="panel active" id="plan"><div class="section-head"><div><div class="kicker">YOUR BUILD PLAN</div><h2>설치 목록과 이전 체크리스트</h2></div><p>완료한 항목을 체크하면 이 브라우저에 진행 상황이 저장된다. 위 메뉴는 실제 구축 순서대로 배치했다.</p></div><div class="journey"><aside class="progress-card"><span class="label">SETUP PROGRESS</span><div class="progress-ring"><b id="progressText">0%</b></div><h3 id="progressTitle">아직 시작 전</h3><p class="muted" id="progressHint">먼저 백업용 HDD와 Apple 계정을 준비하세요.</p><button class="btn primary" data-open="macbook">첫 단계 열기</button></aside><div><div class="checklist"><label class="task"><input type="checkbox" data-task="prepare"><span><strong>장비와 계정 준비</strong><small>HDD 케이스, 모니터 입력, Apple 계정, 기존 자료 백업</small></span><span class="phase">도착 전</span></label><label class="task"><input type="checkbox" data-task="macos"><span><strong>macOS·보안·Time Machine</strong><small>업데이트, FileVault, 나의 Mac 찾기, 백업 디스크 설정</small></span><span class="phase">첫날</span></label><label class="task"><input type="checkbox" data-task="hermes"><span><strong>Hermes 기본 실행 확인</strong><small>설치 후 첫 대화와 파일 접근 범위를 확인</small></span><span class="phase">첫날</span></label><label class="task"><input type="checkbox" data-task="model"><span><strong>로컬 모델 하나 연결</strong><small>Ollama 등 실행기 하나만 선택해 도구 호출 시험</small></span><span class="phase">기본 구축</span></label><label class="task"><input type="checkbox" data-task="agents"><span><strong>멀티에이전트 역할 분리</strong><small>Research, Builder, Media, Memory, Review 역할과 권한 설정</small></span><span class="phase">AI 팀</span></label><label class="task"><input type="checkbox" data-task="remote"><span><strong>원격 접속 이중화</strong><small>Tailscale+SSH를 기본으로, Jump Desktop을 비상 GUI로 확인</small></span><span class="phase">원격</span></label><label class="task"><input type="checkbox" data-task="workflow"><span><strong>첫 실전 워크플로 완주</strong><small>회의록, 문서 비서, 개발 또는 숏폼 중 하나를 끝까지 실행</small></span><span class="phase">활용</span></label></div><div class="next-card"><b>결정 원칙</b><span class="muted">처음부터 전부 설치하지 말고, 체크리스트 한 단계가 정상 동작한 뒤 다음 단계로 이동하세요.</span></div></div></div><div class="decision-grid"><div class="decision"><b>LLM 런타임</b><span>첫 시작은 Ollama·LM Studio. 반복 작업 서버가 필요해지면 oMLX를 비교하세요. MLX는 앱 안에서 쓰이는 엔진일 수도 있습니다.</span></div><div class="decision"><b>터미널 유지</b><span>안정성은 tmux, 여러 에이전트 가시성은 cmux/herdr.</span></div><div class="decision"><b>영상 생성</b><span>짧은 실험은 Wan 로컬, 품질과 시간 절약은 MiniMax Hailuo 병행.</span></div></div></section>
+<section class="panel active" id="plan"><noscript><h2>내 설치 목록</h2><p>목록 저장은 JavaScript를 켜야 사용할 수 있습니다. 초기 설정은 아래 AI 서버 6단계를 따라가세요.</p></noscript></section>
 <section class="panel" id="architecture"><div class="section-head"><div><div class="kicker">SYSTEM MAP</div><h2>Hermes가 팀을 지휘한다</h2></div><p>아래 이름은 이 가이드가 제안하는 역할 예시이며 Hermes의 기본 에이전트 목록은 아닙니다.</p></div><div class="architecture"><article class="orchestrator"><span class="label">ORCHESTRATOR</span><h3>Hermes Agent</h3><p>작업을 분해하고 결과를 통합합니다. 위임·메모리·권한 범위는 선택한 모드와 설정에 따라 확인하세요.</p><div class="connector">INPUT → PLAN → DELEGATE → REVIEW → DELIVER</div></article><div class="agents"><article class="agent"><b>Research Agent</b><span>웹·GitHub·문서 조사</span></article><article class="agent"><b>Planner Agent</b><span>의존성과 실행 순서</span></article><article class="agent"><b>Builder Agent</b><span>코드·파일·자동화</span></article><article class="agent"><b>Media Agent</b><span>이미지·음성·영상</span></article><article class="agent"><b>Memory Agent</b><span>OCR·임베딩·검색</span></article><article class="agent"><b>Review Agent</b><span>사실·품질·권한 검수</span></article></div></div><div class="callout">하나의 주력 LLM을 공유하고 Whisper·OCR·이미지 모델은 작업이 있을 때만 불러오는 구성이 32GB에서 우선 시험할 구성입니다. 역할별 위임도 처음에는 순차 실행하고, 실제 권한 격리가 적용되는지 테스트 폴더에서 확인하세요.</div>
 <details class="editorial-detail guide-collection" id="optionalAgentTools"><summary>기본 설정 다음 · OpenClaw · Paseo · Orca · Dots <span>2026.10.05 확인 · 전부 설치할 필요는 없어요</span></summary>
 <div class="update-body">
@@ -88,7 +88,7 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 </dl>
 </details>
 <details class="jev-detail" id="jevTrial">
-<summary>맥미니가 오면, 이 순서로 판단하세요</summary>
+<summary>맥미니에서, 이 순서로 판단하세요</summary>
 <ol class="jev-trial">
 <li><strong>먼저 무료 구성으로 불편 찾기.</strong> Ollama + Qwen + Hermes를 쓰며 스킬을 잘못 고르는 실제 사례를 모읍니다. 완전 로컬·외부 전송 금지가 우선이면 Jev는 제외합니다.</li>
 <li><strong>한국어 50~100건으로 소규모 비교.</strong> 이 가이드의 시험 제안입니다. 사람의 정답을 붙이고 ‘해당 없음’, 애매한 요청, 악의적인 지시문도 넣습니다. 실행에는 연결하지 않고 판단만 기록해 기존 방식과 오추천·누락·지연·비용을 비교합니다. 영문 예제 성능을 한국어 성능으로 보지 마세요.</li>
@@ -104,19 +104,12 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <section class="panel" id="models">
 <div class="section-head"><div><h2>구독 없이, 내 맥에서.</h2></div><p>32GB 맥미니에서 시작할 대화 모델 6개만 골랐습니다. 기본 모델 하나를 먼저 쓰고, 필요한 기능만 더하세요.</p></div>
 <p class="verification-line">기본 후보 선정 2026.09.12 · 6개 후보 배포·조건 재확인 2026.10.01 · 맥미니 실측 전</p>
-<p class="update-entry"><strong>첫 설치 전에, 달라진 것만.</strong> Gemini TTS는 클라우드, 한국어 로컬 음성은 Qwen부터. 실행기·판단 모델·개인정보 설정도 다시 확인했습니다. <a href="#models" data-guide-detail="geminiTtsUpdate">TTS 비교 →</a> · <a href="#models" data-guide-detail="septemberAudit">9/30 점검표 →</a></p>
-<p class="review-entry"><span>실사용 후기 · 9/25 추가</span>같은 32GB라도 모델 단독 대화와 Hermes 작업의 여유는 다릅니다. <a href="#reviews">세 영상으로 본 활용법·메모리 한계 →</a></p>
 <h3>처음에는 이 구성부터</h3>
 <div class="free-starter starter-main" aria-label="무료 로컬 AI 시작 구성">
 <article><div><span class="starter-number">먼저, 문서 하나부터</span><h4>Ollama + Qwen</h4><p>실행기와 대화 모델 하나로 요약부터 시작하세요.<br>Hermes 연결은 도구 시험 후 진행합니다.</p></div><div class="starter-actions"><a href="https://ollama.com/download/mac">Ollama 받기 ↗</a><button class="btn" type="button" data-free-starter>무료 기본 구성 담기</button><small>Ollama·Qwen·Hermes 3개를 계획에 담습니다.<br>실제 설치는 하지 않습니다.</small></div></article>
 </div>
-<details class="editorial-detail optional-tools"><summary>말로 입력하거나 이미지를 만들고 싶다면</summary><div class="free-starter starter-optional">
-<article><span class="starter-number">02 · 말로 입력</span><h4>Handy + Whisper</h4><p>한국어로 말하면 입력창에 텍스트로.<br>Whisper 다국어 모델을 선택하세요.</p><a href="https://handy.computer/">Handy 받기 ↗</a><a class="starter-guide" href="#dictation">받아쓰기 비교 →</a></article>
-<article><span class="starter-number">03 · 필요해지면</span><h4>Draw Things + FLUX</h4><p>썸네일·삽화 초안 만들기.<br>로컬 모드와 FLUX.1 schnell부터.</p><a href="https://drawthings.ai/">Draw Things 받기 ↗</a><a class="starter-guide" href="#models" data-guide-detail="imageModelUpdate">FLUX.2·Z-Image 비교 후보</a></article>
-</div></details>
 <p class="cost-footnote">로컬 모델·추론 사용료 0원. 맥·전기·저장공간 및 유료 클라우드 기능 비용은 별도입니다.</p>
 <p id="freeStarterStatus" role="status" aria-live="polite"></p>
-<aside class="outcome-entry" aria-label="활용과 기대효과"><div><strong>설치하면, 내 일은 무엇이 달라질까요?</strong><p>문서·회의록·검색·코딩·콘텐츠·홈서버. 필요한 구성과 기대효과를 작업별로 비교하세요.</p></div><a href="#workflows">할 수 있는 일·기대효과 보기 →</a></aside>
 <details class="editorial-detail"><summary>모델은 무료인데, 왜 결제 화면이 보일까요?</summary><dl class="cost-explainer">
 <div><dt>모델 · Qwen 등</dt><dd>내려받는 AI 파일입니다. Qwen3.5 9B는 Apache 2.0으로 공개됐습니다. 같은 Qwen 이름의 웹 서비스·API 요금과는 별개입니다. <a href="https://huggingface.co/Qwen/Qwen3.5-9B">모델·라이선스</a></dd></div>
 <div><dt>실행기 · Ollama / LM Studio</dt><dd>모델을 돌리는 프로그램입니다. 두 앱 모두 로컬 모델 실행이 무료 범위에 포함됩니다. 유료 플랜·클라우드 크레딧은 선택 사항입니다. 둘을 함께 설치할 필요는 없습니다. <a href="https://ollama.com/pricing">Ollama 요금 안내</a> · <a href="https://lmstudio.ai/pricing">LM Studio 요금 안내</a></dd></div>
@@ -175,8 +168,12 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 </fieldset><button class="btn" type="button" id="resetModelChecks">이 모델 기록 초기화</button><p id="modelCheckStatus" role="status" aria-live="polite">0 / 4개 직접 확인 · 아직 검증 전</p></details>
 <details class="editorial-detail"><summary>오프라인 확인과 매일 쓸 만한 무료 작업</summary><p>모델 다운로드를 마친 뒤 네트워크를 끄고, Ollama에서 짧은 대화와 로컬 문서 요약을 해보세요. 이 시험은 로컬 추론 확인용이지 모든 도구의 과금·외부 전송이 없다는 증명은 아닙니다. 검색·메신저는 인터넷이 필요합니다.</p><p><a href="#workflows">할 수 있는 일·기대효과 비교 →</a> · <a href="#dictation">받아쓰기 앱 고르기 →</a></p><p>문서검색은 Qwen3-Embedding으로 자료를 색인하고 관련 문단을 찾은 뒤, 주력 LLM이 근거를 받아 답하게 합니다. 임베딩만 설치해도 문서 비서가 완성되는 것은 아닙니다. 자주 쓰는 모델·검색 색인은 SSD, 미사용 모델·녹음 원본은 HDD에 보관하세요. <a href="#storage">저장공간 가이드 →</a></p><p>무료 웹 채팅·무료 API 체험은 내 기기에 설치하는 AI와 다릅니다. 크레딧 소진·사용량 제한·외부 전송 조건이 있어 이번 기본 구성에서는 제외했습니다.</p></details>
 </details>
-<h3>필요할 때 더 알아보기</h3>
-<details class="editorial-detail guide-collection" id="modelNews"><summary>최신 변경 사항과 점검표 <span>10/5 설치 경로·실행기 보완 · 모델별 확인일 구분</span></summary>
+<h3>필요할 때 확장하기</h3>
+<details class="editorial-detail optional-tools"><summary>말로 입력하거나 이미지를 만들고 싶다면</summary><div class="free-starter starter-optional">
+<article><span class="starter-number">02 · 말로 입력</span><h4>Handy + Whisper</h4><p>한국어로 말하면 입력창에 텍스트로.<br>Whisper 다국어 모델을 선택하세요.</p><a href="https://handy.computer/">Handy 받기 ↗</a><a class="starter-guide" href="#dictation">받아쓰기 비교 →</a></article>
+<article><span class="starter-number">03 · 필요해지면</span><h4>Draw Things + FLUX</h4><p>썸네일·삽화 초안 만들기.<br>로컬 모드와 FLUX.1 schnell부터.</p><a href="https://drawthings.ai/">Draw Things 받기 ↗</a><a class="starter-guide" href="#models" data-guide-detail="imageModelUpdate">FLUX.2·Z-Image 비교 후보</a></article>
+</div></details>
+<details class="editorial-detail guide-collection" id="runtimeChoices"><summary>실행기 선택·업데이트 <span>Ollama · LM Studio · oMLX / 10월 5일 설치 안내 포함</span></summary>
 <details class="editorial-detail update-detail" id="octoberSetupAudit"><summary>10/5 · 새 맥미니의 첫 설치에 달라지는 점</summary><div class="update-body">
 <p><strong>기본 모델은 Qwen3.5 9B로 유지합니다.</strong> 새 서버에서 먼저 한국어 대화와 파일 도구 호출을 확인하세요. 더 큰 모델이나 새 실행기를 모두 설치하는 것이 이번 업데이트의 목표는 아닙니다.</p>
 <dl class="jev-facts"><div><dt>Ollama · 정식 0.35.1</dt><dd>GitHub의 Latest 정식 릴리스를 확인했습니다. 첫 설치는 공식 Mac 앱으로 하고 RC·개발 빌드를 기본값으로 고르지 않습니다. <code>ollama launch hermes</code> 연결 경로도 공식 문서에 있습니다. <a href="https://github.com/ollama/ollama/releases/tag/v0.35.1">릴리스</a> · <a href="https://docs.ollama.com/integrations/hermes">Hermes 연결</a></dd></div>
@@ -185,34 +182,39 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <p>OpenClaw·Paseo·Orca·Dots는 모델 목록이 아닌 <a href="#architecture" data-guide-detail="optionalAgentTools">선택형 운영 도구</a>로 정리했습니다. 전체 초기 설정은 <a href="#start">6단계 시작 가이드</a>를 따라가세요.</p>
 <p class="verification-line">2026.10.05 공식 배포·설치 문서 확인 · 기존 모델 표 전체·가격·커뮤니티 후기의 새 재검증 기록은 아님 · 기기 실측 전</p>
 </div></details>
+<details class="editorial-detail update-detail" id="runtimeUpdate"><summary>실행기 변화 · Ollama 유지? oMLX 비교?</summary>
+<div class="update-body">
+<h4>Ollama · 먼저 안정 버전으로</h4>
+<p>9/30 확인한 정식 최신 버전은 <strong>0.35.0 (릴리스 표기 9/28)</strong>입니다. 판단 모델 API가 추가됐고, macOS 업데이트 표시·MLX 다운로드 멈춤 등이 수정됐습니다. 기존 0.34.3 안내를 갱신했습니다. <a href="#architecture" data-guide-detail="localDecisionModels">Nimble·Tev1의 역할과 주의점 →</a></p>
+<p>Ollama에도 MLX와 Gemma 4의 다중 토큰 예측(MTP) 가속이 들어왔습니다. 이제 “Ollama냐 MLX냐”만으로 나누기보다 <strong>앱·모델 형식·실제 작업</strong>을 함께 비교하세요. 공식 가속 수치를 내 32GB 맥의 예상 속도로 옮기지는 않습니다.</p>
+<p class="update-links"><a href="https://ollama.com/download/mac">Mac 설치 ↗</a><a href="https://github.com/ollama/ollama/releases/tag/v0.35.0">정식 릴리스 ↗</a><a href="https://ollama.com/blog/faster-gemma-4-mlx-mtp">6/29 MLX·MTP 안내 ↗</a></p>
+<p class="update-caution"><strong>0.40.0-rc0는 시험 버전입니다.</strong> 지원 아키텍처의 Apple Silicon 기본 MLX 실행을 안내하지만, 정식 안정판과 혼동하지 않습니다. 새 맥미니의 첫 설치는 안정판부터입니다.</p>
+<h4>Hermes · 기존 환경을 유지하며 갱신</h4>
+<p>공식 안정 태그는 <strong>v0.21.5 / v2026.9.24</strong>. 설정·스킬·작업 데이터를 백업한 뒤 공식 업데이트 안내를 따르고, 로컬 모델 대화·테스트 파일 읽기/쓰기·Gateway 재연결을 확인하세요. 버전 번호가 올라갔다고 모든 모델의 도구 호출이 검증된 것은 아닙니다. <a href="https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24">공식 릴리스 ↗</a></p>
+<h4>oMLX · 같은 문서와 지시를 반복한다면</h4>
+<p>Apple Silicon용 로컬 모델 서버입니다. 반복 입력의 앞부분을 RAM·SSD 캐시에서 재사용하는 기능이 있어, 같은 규칙과 자료를 여러 번 쓰는 Hermes 작업의 <strong>비교 후보</strong>로 추가했습니다. 무료 오픈 소스(Apache 2.0)이며, 빨라지는 정도는 별도 시험이 필요합니다.</p>
+<ul><li><strong>설치:</strong> 공식 Releases의 macOS DMG → Applications. macOS 15 이상 조건과 사용할 MLX 모델 지원을 확인하세요. GGUF 파일을 그대로 넣는 실행기는 아닙니다.</li><li><strong>연결:</strong> OpenAI 호환 주소 <code>http://localhost:8000/v1</code>. 기존 Hermes 설정을 백업하고 모델명·도구 호출을 시험합니다. Ollama의 11434 포트와 구분하세요.</li><li><strong>512GB 운영 제안:</strong> 모델 하나·동시 요청 1개부터. SSD 캐시 상한은 예를 들어 20GB로 제한해 사용량을 관찰하세요. 이는 공식 최적값이 아닌 시작 제안입니다.</li></ul>
+<p class="update-caution">SSD 캐시는 RAM 증설이 아닙니다. 캐시에는 입력에서 파생된 정보가 남을 수 있으니 접근을 제한하고, 남는 HDD는 백업·보관용으로 두세요. 서버를 인터넷에 직접 공개하지 않습니다.</p>
+<p><strong>10/5 재확인: 0.7.0 정식판</strong>이 0.7.0rc1 이후 공개됐습니다. 메모리 보호 기능과 RC 회귀 문제가 보완됐지만 SSD 오프로딩·분산 기능은 첫날 필수가 아닙니다. <a href="https://github.com/jundot/omlx/releases/tag/v0.7.0">정식 릴리스</a></p>
+<p class="update-links"><a href="https://github.com/jundot/omlx/releases">oMLX 설치 파일·변경 기록 ↗</a><a href="https://github.com/jundot/omlx#readme">기능·요구사항·Hermes 연결 ↗</a></p>
+<h4>LM Studio / Bionic · GUI가 필요할 때만</h4>
+<p>Bionic 1.1.6(9/23)은 Canvas·파일 편집과 Gemma 4 비전 기본 로딩 설정 수정을 안내합니다. 이미 Hermes를 쓰므로 새 에이전트 앱까지 한 번에 옮길 필요는 없습니다. Splash의 최소 36GB 조건은 그대로라 32GB 기본 구성에서는 제외합니다. <a href="https://lmstudio.ai/changelog">공식 변경 기록 ↗</a> · <a href="https://lmstudio.ai/blog/splash-engine">Splash 요구사항 ↗</a></p>
+<p class="verification-line">버전 확인 2026.09.30 · 릴리스 날짜는 출처 표기 · 설치 시 안정판 상태를 다시 확인하세요.</p>
+</div></details>
+</details>
+<details class="editorial-detail guide-collection" id="modelNews"><summary>이미지·영상·음성 확장 <span>Qwen · FLUX · MiniMax · Gemini / 로컬과 클라우드 구분</span></summary>
+
 <aside class="local-update" id="septemberUpdate" aria-labelledby="septemberTitle">
 <p class="update-date">도착 전 점검 · <time datetime="2026-10-01">2026.10.01 확인</time></p>
-<h3 id="septemberTitle">요즘 소식, 내 맥에는 이렇게.</h3>
+<h3 id="septemberTitle">내가 필요한 기능부터</h3>
 <p class="update-intro">32GB에서 쓸 수 있는 로컬 도구와 클라우드 발표를 구분했습니다. 기본 대화 구성을 유지하고, 음성·이미지는 필요할 때 하나씩 더하세요.</p>
 <dl class="update-decisions">
 <div><dt>유지</dt><dd>작은 Qwen + Hermes<br><span>기존 무료 시작 구성 그대로</span></dd></div>
 <div><dt>보완</dt><dd>이미지 후보 · 이용 조건<br><span>FLUX.2·Z-Image는 선택 비교</span></dd></div>
 <div><dt>구분</dt><dd>새 클라우드 기능 ≠ 로컬<br><span>OpenAI·Gemini 발표는 따로 보기</span></dd></div>
 </dl>
-<details class="editorial-detail update-detail" id="octoberAudit"><summary>10/1 모델 검증 · 이번에 달라진 판단</summary><div class="update-body">
-<dl class="jev-facts">
-<div><dt>그대로 시작 · 대화 모델 6개</dt><dd>Qwen3.5 9B·Gemma 4 12B·Ministral 3 8B·gpt-oss 20B·A.X 4.0 Light·Kanana 1.5의 공개 배포와 이용 조건을 대조했습니다. 새 모델이 많아도 첫 설치는 주력 하나입니다.</dd></div>
-<div><dt>추가 비교 · 이미지 2개</dt><dd>FLUX.2 klein 4B와 Z-Image-Turbo를 기존 FLUX.1 schnell 옆의 선택 후보로 보완했습니다. 최근 하루에 새로 나온 모델이라는 뜻은 아닙니다. <a href="#models" data-guide-detail="imageModelUpdate">설치 경로·역할 비교</a></dd></div>
-<div><dt>설명 보완 · 국내 모델·큰 모델</dt><dd>Kanana 2의 자체 조건을 유료·사용 불가로 단정하지 않고, EXAONE 3.5와 4.0의 라이선스를 구분했습니다. Gemma 26B는 MLX 약 16GB / GGUF 약 19GB로 구분합니다. <a href="https://ollama.com/library/gemma4:26b">배포 용량 확인</a></dd></div>
-<div><dt>보류 유지 · 영상·미지정 버전</dt><dd>MiniMax H3의 Draw Things 등록은 확인했지만 32GB 실용성은 미확인입니다. 제품군 이름만 있는 모델은 정확한 버전·양자화가 정해질 때까지 검증 보류입니다.</dd></div>
-</dl><p class="update-scope">2026.10.01 공식 카드·라이선스·배포 경로 대조. 문서 검증이지 M6 실행 시험이 아닙니다. 과거 영상의 측정치는 원래 조건과 날짜를 유지합니다. 실행기·받아쓰기 앱은 별도의 9/30 확인 기록을 참고하세요.</p>
-</div></details>
-<details class="editorial-detail update-detail" id="frontierUpdate"><summary>OpenAI·Google 새 발표 · 내 맥미니에 필요한가?</summary><div class="update-body">
-<p><strong>로컬 설치 목록과 별개인 선택형 서비스입니다.</strong> 확인일 2026.10.01 · 아래 발표일은 공식 페이지 표기입니다. 모델 파일을 내려받는 기능, 클라우드 추론, 내 컴퓨터 도구 접근을 혼동하지 않습니다.</p>
-<dl class="jev-facts">
-<div><dt>9/29 · ChatGPT Work 기기 간 이어가기</dt><dd>지원되는 새 동기화 작업을 데스크톱에서 시작하고 웹·모바일에서 이어갈 수 있습니다. 허용된 로컬 파일·도구가 필요한 단계는 연결된 컴퓨터가 온라인이어야 합니다. <strong>내 활용 제안:</strong> 집의 맥미니를 작업 기기로 두고 밖에서는 진행·결과를 검토하기. 클라우드가 작업을 조율하므로 무료 오프라인 AI가 아니며, 기존 작업이 자동 전환되는 것도 아닙니다. 계정·앱·권한 조건부터 확인하세요. <a href="https://learn.chatgpt.com/docs/enterprise/cloud-local-access">공식 연결 조건</a></dd></div>
-<div><dt>9/29 · Dots 상시 에이전트</dt><dd>자체 클라우드 컴퓨터에서 조사·문서·코드 작업을 계속하는 기능입니다. 내 컴퓨터가 꺼져도 클라우드 작업은 가능하지만, 내 맥 파일을 쓰는 단계는 별도 접근 허용과 연결이 필요합니다. <strong>Hermes 대체 설치가 아니라 비교 대상</strong>이며 적격 계정에 순차 제공됩니다. 민감 자료는 기존 로컬 구성에 두고 외부 공개 자료 조사부터 검토하세요. <a href="https://learn.chatgpt.com/docs/dots">Dots 기능·접근 안내</a></dd></div>
-<div><dt>9/29 · GPT-6.1 Sol·Multi-agent beta</dt><dd>Responses API에서 모델이 하위 에이전트에 작업을 위임하는 클라우드 기능입니다. API 요금이 적용되고 로컬 gpt-oss와 다릅니다. <strong>내 판단:</strong> 긴 코딩·검수 작업의 선택적 비교 대상으로만 남깁니다. Hermes의 기존 위임 구조에 자동 연결되는 기능이 아니며, 별도 개발·권한·비용 상한 검증이 필요합니다. <a href="https://developers.openai.com/api/docs/guides/responses-multi-agent">공식 멀티에이전트 안내</a> · <a href="https://developers.openai.com/api/docs/changelog">발표·API 요금</a></dd></div>
-<div><dt>9/30 · Gemini 4 Argon</dt><dd>Google이 장시간 코딩·지식 업무·방어적 보안 작업용으로 발표했습니다. 최초 제공은 Fairwind의 신뢰된 보안 파트너 대상이며, 유료 API·Google AI Ultra 등으로 확대할 계획입니다. <strong>Gemma 4와 다른 모델</strong>이고 공식 로컬 가중치·Mac 설치 경로는 확인되지 않았습니다. 지금 설치하거나 일반 계정에서 바로 쓸 수 있는 것으로 안내하지 않습니다. 내 맥미니의 무료 기본 구성은 변경하지 않습니다. <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">Google 9/30 공식 발표</a></dd></div>
-</dl>
-<p class="update-caution"><strong>이번 사이트에는 연결하지 않았습니다.</strong> API·계정·로컬 파일 접근 권한은 그대로입니다. 향후 시험할 때도 별도 테스트 폴더와 비민감 자료부터, 전송·파일 삭제·외부 게시에는 승인 단계를 둡니다. API 키를 이 공개 사이트에 넣지 않습니다.</p>
-<p>원격 화면·터미널이 필요하면 기존 Tailscale·SSH·Jump Desktop 구성을 유지하세요. 작업 이어가기 기능은 원격 데스크톱이나 로컬 LLM 실행기의 동의어가 아닙니다. <a href="#remote">원격 운영 가이드</a> · <a href="https://learn.chatgpt.com/docs/whats-new/devday-2026">OpenAI 9/29 발표 모음</a></p>
-</div></details>
+
+
 <details class="editorial-detail update-detail" id="imageModelUpdate"><summary>이미지·영상 보완 · FLUX.2, Z-Image, MiniMax H3</summary><div class="update-body">
 <p>FLUX.1 schnell은 기존 기본 후보로 유지합니다. 아래 두 이미지는 필요할 때 하나만 비교하세요. 모두 설치할 필요는 없습니다.</p>
 <div class="qwen-local-options">
@@ -268,25 +270,21 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 </details>
 <p class="update-scope">공식 모델·이용 조건·Mac 실행 경로 확인 2026.09.23 · 설치나 한국어 품질·속도 시험은 하지 않았습니다. 기존 무료 설치 계획에는 자동으로 추가하지 않습니다.</p>
 </div></details>
-<details class="editorial-detail update-detail" id="runtimeUpdate"><summary>실행기 변화 · Ollama 유지? oMLX 비교?</summary>
-<div class="update-body">
-<h4>Ollama · 먼저 안정 버전으로</h4>
-<p>9/30 확인한 정식 최신 버전은 <strong>0.35.0 (릴리스 표기 9/28)</strong>입니다. 판단 모델 API가 추가됐고, macOS 업데이트 표시·MLX 다운로드 멈춤 등이 수정됐습니다. 기존 0.34.3 안내를 갱신했습니다. <a href="#architecture" data-guide-detail="localDecisionModels">Nimble·Tev1의 역할과 주의점 →</a></p>
-<p>Ollama에도 MLX와 Gemma 4의 다중 토큰 예측(MTP) 가속이 들어왔습니다. 이제 “Ollama냐 MLX냐”만으로 나누기보다 <strong>앱·모델 형식·실제 작업</strong>을 함께 비교하세요. 공식 가속 수치를 내 32GB 맥의 예상 속도로 옮기지는 않습니다.</p>
-<p class="update-links"><a href="https://ollama.com/download/mac">Mac 설치 ↗</a><a href="https://github.com/ollama/ollama/releases/tag/v0.35.0">정식 릴리스 ↗</a><a href="https://ollama.com/blog/faster-gemma-4-mlx-mtp">6/29 MLX·MTP 안내 ↗</a></p>
-<p class="update-caution"><strong>0.40.0-rc0는 시험 버전입니다.</strong> 지원 아키텍처의 Apple Silicon 기본 MLX 실행을 안내하지만, 정식 안정판과 혼동하지 않습니다. 새 맥미니의 첫 설치는 안정판부터입니다.</p>
-<h4>Hermes · 기존 환경을 유지하며 갱신</h4>
-<p>공식 안정 태그는 <strong>v0.21.5 / v2026.9.24</strong>. 설정·스킬·작업 데이터를 백업한 뒤 공식 업데이트 안내를 따르고, 로컬 모델 대화·테스트 파일 읽기/쓰기·Gateway 재연결을 확인하세요. 버전 번호가 올라갔다고 모든 모델의 도구 호출이 검증된 것은 아닙니다. <a href="https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24">공식 릴리스 ↗</a></p>
-<h4>oMLX · 같은 문서와 지시를 반복한다면</h4>
-<p>Apple Silicon용 로컬 모델 서버입니다. 반복 입력의 앞부분을 RAM·SSD 캐시에서 재사용하는 기능이 있어, 같은 규칙과 자료를 여러 번 쓰는 Hermes 작업의 <strong>비교 후보</strong>로 추가했습니다. 무료 오픈 소스(Apache 2.0)이며, 빨라지는 정도는 별도 시험이 필요합니다.</p>
-<ul><li><strong>설치:</strong> 공식 Releases의 macOS DMG → Applications. macOS 15 이상 조건과 사용할 MLX 모델 지원을 확인하세요. GGUF 파일을 그대로 넣는 실행기는 아닙니다.</li><li><strong>연결:</strong> OpenAI 호환 주소 <code>http://localhost:8000/v1</code>. 기존 Hermes 설정을 백업하고 모델명·도구 호출을 시험합니다. Ollama의 11434 포트와 구분하세요.</li><li><strong>512GB 운영 제안:</strong> 모델 하나·동시 요청 1개부터. SSD 캐시 상한은 예를 들어 20GB로 제한해 사용량을 관찰하세요. 이는 공식 최적값이 아닌 시작 제안입니다.</li></ul>
-<p class="update-caution">SSD 캐시는 RAM 증설이 아닙니다. 캐시에는 입력에서 파생된 정보가 남을 수 있으니 접근을 제한하고, 남는 HDD는 백업·보관용으로 두세요. 서버를 인터넷에 직접 공개하지 않습니다.</p>
-<p><strong>10/5 재확인: 0.7.0 정식판</strong>이 0.7.0rc1 이후 공개됐습니다. 메모리 보호 기능과 RC 회귀 문제가 보완됐지만 SSD 오프로딩·분산 기능은 첫날 필수가 아닙니다. <a href="https://github.com/jundot/omlx/releases/tag/v0.7.0">정식 릴리스</a></p>
-<p class="update-links"><a href="https://github.com/jundot/omlx/releases">oMLX 설치 파일·변경 기록 ↗</a><a href="https://github.com/jundot/omlx#readme">기능·요구사항·Hermes 연결 ↗</a></p>
-<h4>LM Studio / Bionic · GUI가 필요할 때만</h4>
-<p>Bionic 1.1.6(9/23)은 Canvas·파일 편집과 Gemma 4 비전 기본 로딩 설정 수정을 안내합니다. 이미 Hermes를 쓰므로 새 에이전트 앱까지 한 번에 옮길 필요는 없습니다. Splash의 최소 36GB 조건은 그대로라 32GB 기본 구성에서는 제외합니다. <a href="https://lmstudio.ai/changelog">공식 변경 기록 ↗</a> · <a href="https://lmstudio.ai/blog/splash-engine">Splash 요구사항 ↗</a></p>
-<p class="verification-line">버전 확인 2026.09.30 · 릴리스 날짜는 출처 표기 · 설치 시 안정판 상태를 다시 확인하세요.</p>
+
+
+
+<details class="editorial-detail update-detail" id="localOnlyCheck"><summary>무료·로컬 확인 · 앱 이름만으로 판단하지 않기</summary><div class="update-body">
+<p>Ollama 앱에도 로컬 모델과 클라우드 모델이 함께 있습니다. <strong>로컬 모델 태그·연결 주소·Hermes의 폴백·음성 후처리</strong>를 각각 확인해야 합니다.</p>
+<p>공식 FAQ는 <code>OLLAMA_NO_CLOUD=1</code> 또는 기존 <code>server.json</code>의 <code>disable_ollama_cloud: true</code> 설정을 안내합니다. 기존 파일을 통째로 덮어쓰지 말고 설정을 병합한 뒤 Ollama를 재시작하고, 로그의 <code>Ollama cloud disabled: true</code>를 확인하세요. Mac 앱은 터미널에 값을 한 번 입력하는 것만으로 적용되지 않을 수 있어 공식 macOS 환경 변수 절차를 따릅니다.</p>
+<p>이 옵션은 <strong>Ollama의 클라우드 모델·웹 검색</strong>을 끄는 설정이지, Hermes·MCP·다른 앱의 네트워크 사용까지 막는 방화벽은 아닙니다. 모델 다운로드 후 네트워크를 끄고 짧은 대화와 문서 요약을 시험하세요. 검색·메신저가 필요한 작업은 별도로 구분합니다.</p>
+<p class="update-links"><a href="https://docs.ollama.com/faq#how-do-i-disable-ollama-cloud-features">공식 로컬 전용 설정 ↗</a><a href="#reviews" data-guide-detail="septemberCommunity">Threads에서 짚은 주의점 →</a></p>
+<p class="verification-line">2026.09.30 문서 확인 · 안내만 추가했으며 사용자 기기 설정은 변경하지 않았습니다.</p>
 </div></details>
+
+<p class="update-scope">10/1 모델 검증·OpenAI/Google 공식 발표 보완 · Reddit·Threads 확인 기록은 9/30 기준 유지 · 항목별 확인일과 실기기 미검증 표시를 구분합니다.</p>
+</aside>
+</details>
+<details class="editorial-detail guide-collection" id="modelLimits"><summary>큰 모델·새 엔진은 언제? <span>32GB에서의 조건과 보류 이유</span></summary>
 <details class="editorial-detail update-detail" id="largerModelTrial"><summary>조금 더 큰 모델 · 32GB에서 조건부 비교할 2개</summary>
 <div class="update-body">
 <p><strong>기본 추천 6개를 대체하지 않는 시험 후보입니다.</strong> 짧은 대화가 된다는 후기와 긴 코딩 작업에서 메모리가 부족하다는 후기가 함께 있습니다. 모델 파일 외에 문맥·초안 모델·macOS 메모리가 필요합니다.</p>
@@ -303,12 +301,26 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <div><dt>Splash Engine · 9/18 발표</dt><dd>LM Studio Bionic용 실험 엔진의 공식 최소 조건은 M3 이상·macOS 26.4 이상·<strong>통합 메모리 36GB</strong>입니다. 권장은 48GB 이상. <strong>내 32GB 맥미니는 대상에서 제외</strong>합니다. LM Studio의 일반 로컬 실행 전체가 불가능하다는 뜻은 아닙니다. <a href="https://lmstudio.ai/blog/splash-engine">공식 지원 조건 ↗</a></dd></div>
 <div><dt>Qwen4 · 발표 소식과 설치는 별개</dt><dd>9/22 Reddit에서 발표 소식이 크게 공유됐습니다. 다만 이번 확인에서는 공식 로컬 가중치와 설치 경로를 확인하지 못해 다운로드 추천을 보류합니다. “출시됐다”거나 32GB에 적합하다고 가정하지 않습니다. <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmxfjs/qwen_4_announced_at_apsara_conference/">발표 소식 원문</a> · <a href="https://huggingface.co/Qwen/models">공식 모델 목록 ↗</a></dd></div>
 </dl></div></details>
-<details class="editorial-detail update-detail" id="localOnlyCheck"><summary>무료·로컬 확인 · 앱 이름만으로 판단하지 않기</summary><div class="update-body">
-<p>Ollama 앱에도 로컬 모델과 클라우드 모델이 함께 있습니다. <strong>로컬 모델 태그·연결 주소·Hermes의 폴백·음성 후처리</strong>를 각각 확인해야 합니다.</p>
-<p>공식 FAQ는 <code>OLLAMA_NO_CLOUD=1</code> 또는 기존 <code>server.json</code>의 <code>disable_ollama_cloud: true</code> 설정을 안내합니다. 기존 파일을 통째로 덮어쓰지 말고 설정을 병합한 뒤 Ollama를 재시작하고, 로그의 <code>Ollama cloud disabled: true</code>를 확인하세요. Mac 앱은 터미널에 값을 한 번 입력하는 것만으로 적용되지 않을 수 있어 공식 macOS 환경 변수 절차를 따릅니다.</p>
-<p>이 옵션은 <strong>Ollama의 클라우드 모델·웹 검색</strong>을 끄는 설정이지, Hermes·MCP·다른 앱의 네트워크 사용까지 막는 방화벽은 아닙니다. 모델 다운로드 후 네트워크를 끄고 짧은 대화와 문서 요약을 시험하세요. 검색·메신저가 필요한 작업은 별도로 구분합니다.</p>
-<p class="update-links"><a href="https://docs.ollama.com/faq#how-do-i-disable-ollama-cloud-features">공식 로컬 전용 설정 ↗</a><a href="#reviews" data-guide-detail="septemberCommunity">Threads에서 짚은 주의점 →</a></p>
-<p class="verification-line">2026.09.30 문서 확인 · 안내만 추가했으며 사용자 기기 설정은 변경하지 않았습니다.</p>
+</details>
+<details class="editorial-detail guide-collection archive-collection" id="modelArchive"><summary>모델 검증·발표 기록 <span>9/30 · 10/1 확인 당시의 판단과 출처</span></summary><p class="archive-note">지난 확인 기록입니다. 현재 선택은 위 비교표를 기준으로 하고, 발표일과 확인일은 각 항목에서 구분하세요.</p>
+<details class="editorial-detail update-detail" id="octoberAudit"><summary>10/1 모델 검증 · 이번에 달라진 판단</summary><div class="update-body">
+<dl class="jev-facts">
+<div><dt>그대로 시작 · 대화 모델 6개</dt><dd>Qwen3.5 9B·Gemma 4 12B·Ministral 3 8B·gpt-oss 20B·A.X 4.0 Light·Kanana 1.5의 공개 배포와 이용 조건을 대조했습니다. 새 모델이 많아도 첫 설치는 주력 하나입니다.</dd></div>
+<div><dt>추가 비교 · 이미지 2개</dt><dd>FLUX.2 klein 4B와 Z-Image-Turbo를 기존 FLUX.1 schnell 옆의 선택 후보로 보완했습니다. 최근 하루에 새로 나온 모델이라는 뜻은 아닙니다. <a href="#models" data-guide-detail="imageModelUpdate">설치 경로·역할 비교</a></dd></div>
+<div><dt>설명 보완 · 국내 모델·큰 모델</dt><dd>Kanana 2의 자체 조건을 유료·사용 불가로 단정하지 않고, EXAONE 3.5와 4.0의 라이선스를 구분했습니다. Gemma 26B는 MLX 약 16GB / GGUF 약 19GB로 구분합니다. <a href="https://ollama.com/library/gemma4:26b">배포 용량 확인</a></dd></div>
+<div><dt>보류 유지 · 영상·미지정 버전</dt><dd>MiniMax H3의 Draw Things 등록은 확인했지만 32GB 실용성은 미확인입니다. 제품군 이름만 있는 모델은 정확한 버전·양자화가 정해질 때까지 검증 보류입니다.</dd></div>
+</dl><p class="update-scope">2026.10.01 공식 카드·라이선스·배포 경로 대조. 문서 검증이지 M6 실행 시험이 아닙니다. 과거 영상의 측정치는 원래 조건과 날짜를 유지합니다. 실행기·받아쓰기 앱은 별도의 9/30 확인 기록을 참고하세요.</p>
+</div></details>
+<details class="editorial-detail update-detail" id="frontierUpdate"><summary>OpenAI·Google 새 발표 · 내 맥미니에 필요한가?</summary><div class="update-body">
+<p><strong>로컬 설치 목록과 별개인 선택형 서비스입니다.</strong> 확인일 2026.10.01 · 아래 발표일은 공식 페이지 표기입니다. 모델 파일을 내려받는 기능, 클라우드 추론, 내 컴퓨터 도구 접근을 혼동하지 않습니다.</p>
+<dl class="jev-facts">
+<div><dt>9/29 · ChatGPT Work 기기 간 이어가기</dt><dd>지원되는 새 동기화 작업을 데스크톱에서 시작하고 웹·모바일에서 이어갈 수 있습니다. 허용된 로컬 파일·도구가 필요한 단계는 연결된 컴퓨터가 온라인이어야 합니다. <strong>내 활용 제안:</strong> 집의 맥미니를 작업 기기로 두고 밖에서는 진행·결과를 검토하기. 클라우드가 작업을 조율하므로 무료 오프라인 AI가 아니며, 기존 작업이 자동 전환되는 것도 아닙니다. 계정·앱·권한 조건부터 확인하세요. <a href="https://learn.chatgpt.com/docs/enterprise/cloud-local-access">공식 연결 조건</a></dd></div>
+<div><dt>9/29 · Dots 상시 에이전트</dt><dd>자체 클라우드 컴퓨터에서 조사·문서·코드 작업을 계속하는 기능입니다. 내 컴퓨터가 꺼져도 클라우드 작업은 가능하지만, 내 맥 파일을 쓰는 단계는 별도 접근 허용과 연결이 필요합니다. <strong>Hermes 대체 설치가 아니라 비교 대상</strong>이며 적격 계정에 순차 제공됩니다. 민감 자료는 기존 로컬 구성에 두고 외부 공개 자료 조사부터 검토하세요. <a href="https://learn.chatgpt.com/docs/dots">Dots 기능·접근 안내</a></dd></div>
+<div><dt>9/29 · GPT-6.1 Sol·Multi-agent beta</dt><dd>Responses API에서 모델이 하위 에이전트에 작업을 위임하는 클라우드 기능입니다. API 요금이 적용되고 로컬 gpt-oss와 다릅니다. <strong>내 판단:</strong> 긴 코딩·검수 작업의 선택적 비교 대상으로만 남깁니다. Hermes의 기존 위임 구조에 자동 연결되는 기능이 아니며, 별도 개발·권한·비용 상한 검증이 필요합니다. <a href="https://developers.openai.com/api/docs/guides/responses-multi-agent">공식 멀티에이전트 안내</a> · <a href="https://developers.openai.com/api/docs/changelog">발표·API 요금</a></dd></div>
+<div><dt>9/30 · Gemini 4 Argon</dt><dd>Google이 장시간 코딩·지식 업무·방어적 보안 작업용으로 발표했습니다. 최초 제공은 Fairwind의 신뢰된 보안 파트너 대상이며, 유료 API·Google AI Ultra 등으로 확대할 계획입니다. <strong>Gemma 4와 다른 모델</strong>이고 공식 로컬 가중치·Mac 설치 경로는 확인되지 않았습니다. 지금 설치하거나 일반 계정에서 바로 쓸 수 있는 것으로 안내하지 않습니다. 내 맥미니의 무료 기본 구성은 변경하지 않습니다. <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">Google 9/30 공식 발표</a></dd></div>
+</dl>
+<p class="update-caution"><strong>이번 사이트에는 연결하지 않았습니다.</strong> API·계정·로컬 파일 접근 권한은 그대로입니다. 향후 시험할 때도 별도 테스트 폴더와 비민감 자료부터, 전송·파일 삭제·외부 게시에는 승인 단계를 둡니다. API 키를 이 공개 사이트에 넣지 않습니다.</p>
+<p>원격 화면·터미널이 필요하면 기존 Tailscale·SSH·Jump Desktop 구성을 유지하세요. 작업 이어가기 기능은 원격 데스크톱이나 로컬 LLM 실행기의 동의어가 아닙니다. <a href="#remote">원격 운영 가이드</a> · <a href="https://learn.chatgpt.com/docs/whats-new/devday-2026">OpenAI 9/29 발표 모음</a></p>
 </div></details>
 <details class="editorial-detail update-detail" id="septemberAudit"><summary>9/30 점검표 · 바꿀 것 / 유지할 것 / 보류할 것</summary><div class="update-body">
 <dl class="jev-facts">
@@ -321,8 +333,6 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 </dl>
 <p class="update-scope">주요 설치·운영 안내를 분야별로 점검한 기록입니다. 전체 외부 링크의 무결성·모든 부가 앱의 최신 버전·국내 장비 가격·이전 영상 전체를 재검증한 것은 아닙니다. 항목별 이전 확인일은 그대로 남겼습니다. 이 맥미니에서 설치·속도·한국어 품질을 실측한 결과는 아닙니다.</p>
 </div></details>
-<p class="update-scope">10/1 모델 검증·OpenAI/Google 공식 발표 보완 · Reddit·Threads 확인 기록은 9/30 기준 유지 · 항목별 확인일과 실기기 미검증 표시를 구분합니다.</p>
-</aside>
 </details>
 </section>
 <section class="panel" id="workflows">
@@ -335,16 +345,10 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <h4>공용 자료실 + 맥북 백업</h4>
 <p class="home-priority-lead">맥북과 윈도우에서 같은 자료 폴더를 열고, 집에서는 맥북을 맥미니에 연결된 디스크로 백업합니다.</p>
 <p class="home-priority-benefit"><strong>기대효과</strong>파일을 기기마다 옮기는 수고를 줄이고, 실수로 지운 파일을 되찾을 사본을 남깁니다.</p>
-<details class="home-priority-more"><summary>준비물과 시작 기준 보기</summary>
-<dl>
-<dt>추가 앱 없이 시작</dt><dd>macOS 기본 파일 공유(SMB)와 Time Machine을 사용합니다. 같은 집 네트워크에서 먼저 시험하고, 필요한 폴더와 사용자에게만 접근을 허용하세요.</dd>
-<dt>남는 HDD 두 개</dt><dd>현재 계획은 HDD A에 Mac Time Machine, HDD B에 Windows 파일 이력과 중요 자료 백업입니다. 공용 작업 원본·현재 모델은 SSD에 둡니다. 먼저 용량·건강 상태·기존 자료를 확인하고, 복사본 없이 포맷하지 않습니다. <a href="#storage">DAS·NAS와 디스크 배치 비교</a></dd>
-<dt>맥북 백업 연결</dt><dd>맥미니의 백업 전용 공유 폴더를 Time Machine 대상으로 지정하고, 맥북에서 선택합니다. 용량 제한을 정하고 첫 백업을 확인하세요. 맥미니 자체 백업까지 담을지는 디스크 용량을 보고 따로 정합니다.</dd>
-<dt>살 것이 있다면</dt><dd>HDD 규격에 맞는 전원·케이스와 유선 LAN 케이블부터. Thunderbolt 독·NAS·새 SSD는 지금 필수가 아닙니다. <a href="#storage">기존 장비와 구매 순서 →</a></dd>
-</dl>
-<p class="home-priority-caution"><strong>파일 공유는 백업이 아닙니다.</strong> SSD의 공용 원본도 백업 대상에 명시적으로 포함해야 합니다. Time Machine은 Windows 백업 기능이 아니며, Windows 파일 이력은 전체 PC 복구 이미지가 아닙니다. 중요한 자료는 다른 장소에도 사본을 남기세요.</p>
-<p class="home-priority-check"><strong>첫 확인</strong>맥북·윈도우에서 테스트 파일 열기 → 맥북 백업 완료 확인 → 파일 하나를 다른 위치로 복원해 원본과 비교.</p>
-<p class="home-priority-sources">공식 설정: <a href="https://support.apple.com/en-gb/guide/mac-help/mh14107/mac" target="_blank" rel="noopener noreferrer">Apple 파일 공유 ↗</a> · <a href="https://support.apple.com/guide/mac-help/back-up-to-a-shared-folder-mchl31533145/mac" target="_blank" rel="noopener noreferrer">네트워크 Time Machine ↗</a></p>
+<details class="home-priority-more"><summary>작게 시작하고 확인하기</summary>
+<p>맥북·Windows에서 같은 테스트 파일을 열어보고, 백업한 파일 하나를 다른 위치로 복원해 원본과 비교하세요.</p>
+<p><strong>파일 공유는 백업이 아닙니다.</strong> 작업 원본과 복구 사본을 구분하고, 중요한 자료는 다른 장소에도 사본을 남깁니다.</p>
+<p>HDD 두 개의 역할, Time Machine·Windows 백업, DAS·NAS 선택은 <a href="#storage" data-guide-detail="backupLayout">저장공간 가이드의 백업 배치</a>에 모았습니다.</p>
 </details>
 </article>
 <article class="home-priority" id="homeHermes">
@@ -420,6 +424,16 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <p class="update-links"><a href="https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-7900-gre-16g-gddr6">Sapphire 사양</a><a href="https://docs.ollama.com/gpu">Ollama GPU 지원</a><a href="https://ollama.com/download/windows">Windows 설치</a><a href="https://docs.comfy.org/installation/manual_install">ComfyUI AMD 설치</a><a href="https://www.threads.com/@sequence_ai/post/DcWI28lj92d">국내 작업 분담 사례</a></p>
 <p class="update-scope">2026.10.05 공식 지원·원문 확인 · RTX 5080 사용기를 RX 7900 GRE 성능의 근거로 사용하지 않습니다. GPU가 맥에 직접 연결되거나 두 기기의 RAM이 합쳐지는 구조도 아닙니다.</p>
 </div></details>
+<details class="editorial-detail guide-collection" id="researchWorkflow"><summary>자료 수집·변경사항 보고 <span>영상 사례에서 가져온 활용 제안</span></summary>
+<p class="review-plan-note">아래는 영상을 바탕으로 한 도입 제안입니다. 현재 이 사이트에 연결·자동 실행되는 기능은 아닙니다.</p>
+<ol class="review-adoption">
+<li><span>먼저</span><div><h4>링크 자료실</h4><p>링크 → 요약·원문·확인일 → 무료 로컬/클라우드 구분 → 해볼 일. 첫 시험은 링크 10개로, 중복·확인 불가·수정 시간을 점검합니다.</p></div></li>
+<li><span>다음</span><div><h4>변경사항 보고</h4><p>새 소식을 모두 쌓기보다 기존 추천에서 달라진 점만 확인합니다. 사이트 수정·메일 발송은 자동 실행하지 않고 제안부터 검토합니다.</p></div></li>
+<li><span>필요할 때</span><div><h4>전사·파일 정리</h4><p>내 녹음과 허용한 폴더부터. 작은 모델 하나를 공유하고 음성·이미지 작업은 순차 처리합니다. 음성 메모를 자료실에 합치는 것은 이 가이드의 확장 제안입니다.</p></div></li>
+</ol>
+
+
+<p><a href="#reviews">아이디어의 근거와 사용자 후기 →</a></p></details>
 <h3>실행과 운영</h3>
 <details class="editorial-detail guide-collection" id="workflowRecipes"><summary>분야별 실행안 <span>원격 작업·녹음·문서 검색·정기 보고·초안</span></summary>
 <p class="case-intro">아래는 그대로 설치되는 패키지가 아니라, 기존 Hermes로 하나씩 구성할 실행안입니다. 한 가지를 일주일 써본 뒤 다음으로 넘어가세요.</p>
@@ -493,10 +507,12 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <section class="panel" id="start">
 <div class="section-head"><div><div class="kicker">MAC MINI · AI SERVER</div><h2>새 맥미니, AI 서버로 시작하기</h2></div><p>처음 켜는 순간부터 밖에서 작업을 확인하기까지.<br>아래 6단계를 순서대로 따라오세요.</p></div>
 <p class="verification-line">초기 설정·공식 설치 경로 확인 <time datetime="2026-10-05">2026.10.05</time> · 32GB / 512GB 기준 · 새 기기 실측 전</p>
+<details class="editorial-detail setup-overview" id="serverOverview"><summary>오늘 만들 구성 한눈에 보기 <span>맥북·Windows → 맥미니 → 로컬 모델</span></summary>
 <div class="server-intro">
 <div><span class="server-eyebrow">오늘 만들 것</span><h3>집에서 일하고,<br>어디서든 확인하는 AI.</h3><p>기본 구성은 <strong>Ollama + Qwen3.5 9B + Hermes</strong>입니다. 모델의 로컬 추론 사용료는 0원. 전기·장비·외부 서비스 비용은 별도예요.</p></div>
 <ol class="server-map" aria-label="내 기기들의 역할"><li><span>요청·검토</span><strong>맥북 · Windows · 휴대폰</strong></li><li><span>집에서 실행</span><strong>Mac mini · Hermes</strong></li><li><span>내 맥에서 생각</span><strong>Ollama · Qwen 9B</strong></li></ol>
 </div>
+</details>
 <div class="server-progress" id="serverProgress" hidden><div><strong id="serverProgressText" role="status" aria-live="polite">0 / 6단계 확인</strong><span id="serverSaveHint">이 브라우저에만 저장 · 실제 설치 상태를 자동 감지하지 않습니다.</span></div><progress id="serverProgressBar" max="6" value="0" aria-label="AI 서버 설정 진행률"></progress><button type="button" class="btn primary" id="serverContinue">첫 단계 시작</button></div>
 <div class="server-steps">
 <details class="server-step" id="serverDevice" data-server-step="device" open>
@@ -583,7 +599,8 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <h3 style="margin-top:34px">구축 순서</h3><div class="steps"><article class="step"><span class="num">01</span><h3>Tailscale 연결</h3><p>Mac mini와 MacBook을 같은 Tailnet에 등록하고 기기 이름을 고정한다.</p></article><article class="step"><span class="num">02</span><h3>SSH 확인</h3><p>macOS 원격 로그인을 켜고 Tailnet 주소로 접속을 시험한다.</p></article><article class="step"><span class="num">03</span><h3>세션 지속</h3><p>tmux 또는 herdr 안에서 Hermes와 모델 서버를 실행한다.</p></article><article class="step"><span class="num">04</span><h3>GUI 비상 경로</h3><p>Jump Desktop Connect의 권한을 설정하고 로컬 복구 수단이 있는 상태에서 재접속을 시험합니다.</p></article></div>
 <div class="code"># Mac mini<br># Tailscale은 공식 macOS 앱 설치·로그인<br>brew install tmux<br><br># 같은 Tailnet의 MacBook에서<br>ssh 사용자명@맥미니-기기이름<br><br># 끊겨도 유지되는 Hermes 세션<br>tmux new -s hermes<br>hermes<br># 분리: Ctrl-b d / 재접속: tmux attach -t hermes</div>
 <div class="callout">Tailscale 공식 문서는 macOS Standalone 앱을 권장합니다. 이 가이드는 Tailscale 연결망 위에서 macOS 기본 원격 로그인(SSH)을 쓰는 구성입니다. 별도 기능인 Tailscale SSH와 혼동하지 마세요. 원격 로그인은 필요한 계정만 허용하세요. tmux·herdr는 재부팅 뒤 프로세스 복구를 보장하지 않습니다.</div><details class="editorial-detail"><summary>추가 원격 도구 비교 <span>cmux·herdr·hrdr·Jump Desktop</span></summary><p>아래는 대안·편의 도구입니다. 모두 설치하지 말고 필요한 것만 선택하세요.</p><div class="code"># cmux<br>brew tap manaflow-ai/cmux<br>brew install --cask cmux<br><br># hrdr 코딩 하네스<br>brew install kryptic-sh/tap/hrdr</div><h3 style="margin-top:34px">원격 운영 스택</h3><div class="table-wrap"><table><thead><tr><th>도구</th><th>용도</th><th>맥미니에서의 위치</th><th>추천 판단</th></tr></thead><tbody><tr><td><b>Tailscale</b></td><td>사설 네트워크·기기 주소</td><td>Host와 Client 모두 설치</td><td class="yes">필수에 가까움</td></tr><tr><td><b>macOS Remote Login</b></td><td>표준 SSH 서버</td><td>시스템 설정에서 활성화</td><td class="yes">기본 터미널 접속</td></tr><tr><td><b>tmux</b></td><td>지속 세션·분할 터미널</td><td>Mac mini</td><td class="yes">안정성 우선</td></tr><tr><td><b>cmux</b></td><td>네이티브 터미널·에이전트 알림</td><td>주로 MacBook, 필요시 mini</td><td>편의성 우선</td></tr><tr><td><b>herdr</b></td><td>에이전트 멀티플렉서·원격 attach</td><td>Mac mini + MacBook</td><td>멀티에이전트에 적합</td></tr><tr><td><b>hrdr</b></td><td>OpenAI 호환 모델용 코딩 하네스</td><td>Mac mini</td><td>Hermes 보조 실험</td></tr><tr><td><b>Jump Desktop</b></td><td>원격 GUI·Fluid/RDP/VNC</td><td>Connect는 mini, Viewer는 MacBook/iPad</td><td>GUI 작업용</td></tr></tbody></table></div>
-</details></section>
+</details><p class="guide-bridge">첫 연결은 <a href="#start" data-guide-detail="serverRemote">초기 설정 5단계</a>에서, 접속할 노트북 준비는 <a href="#macbook">맥북 준비 안내</a>에서 확인하세요.</p>
+</section>
 <section class="panel" id="reviews">
 <div class="section-head"><div><div class="kicker">FIELD NOTES</div><h2>실사용 후기</h2></div><p>무엇을 맡길지, 어떻게 켜둘지, 어디까지 돌릴지.<br>다른 사람의 경험을 내 맥미니의 운영 원칙으로 바꿉니다.</p></div>
 <p class="verification-line">최근 조사 <time datetime="2026-10-05">2026.10.05</time> · 최근 3개월 중심 · M6 직접 사례와 다른 세대의 운영 교훈을 구분 · 내 기기 재현 시험 전</p>
@@ -601,7 +618,9 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 </details>
 <p class="guide-notice"><strong>이번 주의 세 가지 완료 기준</strong><br>맥북을 닫고 작은 작업 3건 완료 · 내 자료 질문 10개를 원문 대조 · 백업에서 테스트 파일 1개 복원. 프로그램 설치 개수보다 실제 결과로 판단합니다.</p>
 </details>
-<div class="review-verdict"><span>내 구성의 결론</span><p>Hermes는 그대로.<br><strong>작은 모델로 꾸준히, 무거운 일은 하나씩.</strong></p><small>Mac mini 32GB · 맥북 + Windows · 남는 HDD 2개 기준</small></div>
+<p class="guide-bridge">내 구성에 적용할 순서와 기대효과는 <a href="#workflows">실사용·홈서버</a>에 모았습니다. 여기서는 원문과 사용 조건을 비교하세요.</p>
+<details class="editorial-detail guide-collection archive-collection" id="reviewArchive"><summary>이전 조사 · 영상·커뮤니티 사례 <span>9월 기록 / 전체 자막 분석·실험 수치·국내외 사용기</span></summary><p class="archive-note">이전 조사 자료를 보존했습니다. 당시의 기기·버전·측정 조건을 확인한 뒤 참고하세요.</p>
+
 <div class="video-review-grid" aria-label="유튜브 실사용 사례 세 가지">
 <article class="video-review" id="reviewJocoding">
 <div class="video-review-mark"><span>01</span><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="5"/><path d="m13 11 8 5-8 5z"/></svg></div>
@@ -653,15 +672,6 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <p>Z-Image-Turbo는 첫 실행 <strong>92.89초</strong>, 두 번째 <strong>47.79초</strong>, 스왑 약 <strong>2.04GB</strong>로 표시됩니다. 해상도·스텝 등 모든 조건을 맞춘 비교가 아니므로 내 예상 시간으로 확정하지 않습니다. <a href="https://www.youtube.com/watch?v=azST0hlKTY0&amp;t=505s">이미지 생성 비교 화면 ↗</a></p>
 <p>운영 제안: 이미지·전사를 실행할 때 다른 큰 모델을 함께 띄우지 않고 순서대로 처리합니다. 처음에는 메모리 압박·스왑 변화와 실제 작업 완료 여부를 함께 확인하세요.</p>
 </details>
-<h3>내 맥미니에 가져올 세 가지</h3>
-<p class="review-plan-note">아래는 영상을 바탕으로 한 도입 제안입니다. 현재 이 사이트에 연결·자동 실행되는 기능은 아닙니다.</p>
-<ol class="review-adoption">
-<li><span>먼저</span><div><h4>링크 자료실</h4><p>링크 → 요약·원문·확인일 → 무료 로컬/클라우드 구분 → 해볼 일. 첫 시험은 링크 10개로, 중복·확인 불가·수정 시간을 점검합니다.</p></div></li>
-<li><span>다음</span><div><h4>변경사항 보고</h4><p>새 소식을 모두 쌓기보다 기존 추천에서 달라진 점만 확인합니다. 사이트 수정·메일 발송은 자동 실행하지 않고 제안부터 검토합니다.</p></div></li>
-<li><span>필요할 때</span><div><h4>전사·파일 정리</h4><p>내 녹음과 허용한 폴더부터. 작은 모델 하나를 공유하고 음성·이미지 작업은 순차 처리합니다. 음성 메모를 자료실에 합치는 것은 이 가이드의 확장 제안입니다.</p></div></li>
-</ol>
-<p class="review-plan-note">내장·별도 SSD는 앱과 작업, HDD 2개는 Mac·Windows 백업으로 역할을 정하세요. DAS·NAS 구입은 절전 복귀와 독립 운영 필요를 비교한 뒤 결정합니다. 외부 게시·삭제·클라우드 전송은 승인 경계를 둡니다.</p>
-<div class="review-guide-links"><a href="#workflows">실사용·홈서버 가이드 →</a><a href="#models">무료 모델 선택 →</a><a href="#storage">있는 장비부터 준비 →</a></div>
 <h3>다른 사용자 경험도 함께 보기</h3>
 
 <details class="editorial-detail case-collection"><summary>국내외 실제 사용자 후기 6건 보기</summary><p class="verification-line">후기 확인 2026.09.11 · 지피터스·YouTube·Reddit · 조사 범위 06.11–09.11, 정확한 게시일이 없는 후기는 별도 표시 · 맥미니 성능 실측 전</p>
@@ -718,6 +728,8 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 </details>
 <details class="editorial-detail"><summary>이전 확인 기록 · 9월 11일</summary><div class="review-list"><article><span class="verification-line">Reddit · 2026.08.15 게시</span><h3>Apple Silicon 최적화는 실행 도구마다 다르다</h3><p>작성자는 여러 Mac 추론 도구의 캐시·배치·추측 디코딩 지원이 흩어져 있다고 평가했습니다. 특정 도구가 언제나 가장 빠르다는 근거로 일반화하지 않았습니다.</p><a href="https://www.reddit.com/r/LocalLLaMA/comments/1vphr8u/sota_apple_silicon_inference_august_15_2026/">원문과 반론 읽기 →</a></article><article><span class="verification-line">Reddit · 2026.08.22 게시</span><h3>메모리와 개발 환경도 함께 고려</h3><p>Mac mini·MacBook 사용자들이 모델 실행과 개발 도구를 함께 쓸 때의 메모리 부담, 실행 도구별 차이를 보고했습니다. 기종·모델·설정이 달라 댓글의 속도를 M6 32GB 예상 성능으로 옮기지 않았습니다.</p><a href="https://www.reddit.com/r/macmini/comments/1vv69jj/question_what_are_your_experiences_with_local_llms/">사용자 경험 읽기 →</a></article><article><span class="verification-line">GitHub · README 확인 2026.09.11 · 후기가 아닌 기능 문서</span><h3>herdr의 Hermes 연동</h3><p>저장소는 Hermes 통합과 SSH 원격 연결을 안내합니다. 이는 기능 문서이지 3개월간의 사용자 만족도나 안정성 통계는 아닙니다.</p><a href="https://github.com/SuperCodeAgents/herdr-terminal">기능·설치 문서 읽기 →</a></article></div></details>
 <details class="editorial-detail"><summary>선정 기준과 한계</summary><p>게시일·본문을 확인한 Reddit와 Threads 사례를 포함했습니다. Threads는 작성자의 답변과 다른 사람의 제안을 구분했습니다. 링크는 로그인·지역·삭제 여부에 따라 열리지 않을 수 있습니다. 공식 기능은 릴리스·모델 카드로 대조했으며, 투표 수나 댓글 일부로 대세·속도 순위를 매기지 않습니다.</p><p>기기명·메모리·체감은 작성자의 자기 보고입니다. 내 기기에서는 같은 문서와 질문으로 모델·실행 도구를 하나씩 비교하고, 첫 응답 시간·작업 성공·메모리 압박을 기록하세요. 이전 후기와 지피터스·YouTube 자료를 이번에 전부 재검증한 것은 아닙니다.</p></details>
+
+</details>
 </section>
 <section class="panel" id="storage"><div class="section-head"><div><div class="kicker">STORAGE PLAN</div><h2>작업은 SSD.<br>백업은 따로.</h2></div><p>남는 HDD 2개는 Mac·Windows 백업에. 30만 원 미만 DAS와 예산을 늘린 2베이 NAS 중, 내 운영 방식에 맞게 고릅니다.</p></div>
 <p class="verification-line">2026.10.05 확인 · HDD 용량·모델·건강 상태는 미확인 · 제품 구매·포맷·기기 실측은 수행하지 않았습니다.</p>
@@ -807,19 +819,5 @@ document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',(
 window.addEventListener('popstate',()=>openPanel(location.hash.slice(1),false));
 window.addEventListener('hashchange',()=>openPanel(location.hash.slice(1),false));
 openPanel(location.hash.slice(1)||'start',false,false);
-const checks=[...document.querySelectorAll('[data-task]')];let saved={};let storageOK=true;
-try{const value=JSON.parse(localStorage.getItem('hermesSetupTasks')||'{}');if(value&&typeof value==='object'&&!Array.isArray(value))saved=value}catch{storageOK=false}
-const destinations={prepare:'macbook',macos:'start',hermes:'start',model:'models',agents:'architecture',remote:'remote',workflow:'workflows'};
-const hint=document.getElementById('progressHint');hint.setAttribute('aria-live','polite');
-checks.forEach(c=>{c.checked=saved[c.dataset.task]===true;c.addEventListener('change',()=>{saved[c.dataset.task]=c.checked;try{localStorage.setItem('hermesSetupTasks',JSON.stringify(saved))}catch{storageOK=false}updateProgress()})});
-function updateProgress(){
- const done=checks.filter(c=>c.checked).length,pct=Math.round(done/checks.length*100),next=checks.find(c=>!c.checked),ring=document.querySelector('.progress-ring');
- ring.style.setProperty('--progress',pct+'%');ring.setAttribute('role','progressbar');ring.setAttribute('aria-label','구축 진행률');ring.setAttribute('aria-valuenow',pct);ring.setAttribute('aria-valuemin','0');ring.setAttribute('aria-valuemax','100');
- document.getElementById('progressText').textContent=pct+'%';
- document.getElementById('progressTitle').textContent=done===checks.length?'구축 완료':done===0?'아직 시작 전':done+' / '+checks.length+'단계 완료';
- hint.textContent=next?next.closest('.task').querySelector('strong').textContent+' 항목이 다음 단계입니다.':'실전 활용에서 첫 작업을 시작하세요.';
- if(!storageOK)hint.textContent+=' 현재 브라우저에서 진행 상태를 저장할 수 없습니다.';
- const button=document.querySelector('.progress-card [data-open]');button.dataset.open=next?destinations[next.dataset.task]:'workflows';button.textContent=next?'다음 단계 열기':'실전 활용 열기';
-}
-updateProgress();
-</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20260930-1"></script><script src="lab-planner.js?v=20261005-1"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260923-2"><script src="lab-outcomes.js?v=20260925-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20261005-2"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20260912-1"></script><link rel="stylesheet" href="lab-reviews.css?v=20260925-1"><link rel="stylesheet" href="lab-editorial.css?v=20261005-2"><link rel="stylesheet" href="lab-server.css?v=20261005-1"><script src="lab-server.js?v=20261005-1"></script></body></html>
+// Setup progress lives in lab-server.js. Legacy saved data is left untouched.
+</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20260930-1"></script><script src="lab-planner.js?v=20261005-3"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260923-2"><script src="lab-outcomes.js?v=20260925-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20261005-3"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20261005-3"></script><link rel="stylesheet" href="lab-reviews.css?v=20260925-1"><link rel="stylesheet" href="lab-editorial.css?v=20261005-3"><link rel="stylesheet" href="lab-server.css?v=20261005-1"><script src="lab-server.js?v=20261005-1"></script></body></html>
