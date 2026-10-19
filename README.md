@@ -16,7 +16,8 @@ GitHub Pages: https://handul7.github.io/hermes-local-lab/
 - 단계별 완료 기준·문제 해결·로컬 진행 저장, OpenClaw·Paseo·Orca·Dots 선택 가이드
 - 10/5 활용 조사: M6·구형 Mac 사례 구분, 전체 자막/설명/글의 확인 범위, 문서 검색·PDF·창작 적용안
 - 보유 RX 7900 GRE 16GB의 Ollama 지원과 이미지 생성 조건, Mac과 Windows의 역할 분담
-- 30만 원 미만 DAS vs 2베이 NAS, DAS 자체 절전, SMB 공유 및 Mac·Windows 백업 배치
+- 보유 저장장치의 무구매 활용 vs 조건부 DAS 추가, Time Machine 호환성·SMB 접근·데이터 손실 위험 비교
+- 10/5 DAS·NAS 가격 조사는 과거 참고 자료로 유지
 
 2026-10-05 초기 설정·연결 문서 확인. 기존 모델·후기별 확인일과 실제 기기 실측 여부는 별도로 표기합니다. 기본 앱 구성은 로그인 후 운영을 전제로 하며, 완전 무인 재부팅 복구를 보장하지 않습니다.
 
@@ -33,3 +34,22 @@ GitHub Pages: https://handul7.github.io/hermes-local-lab/
 ## 구성
 
 별도 빌드나 서버가 필요 없는 HTML·CSS·JavaScript 사이트입니다. `index.html`이 시작 페이지이며, GitHub Pages는 `main` 브랜치의 루트에서 배포합니다. `.nojekyll`로 정적 파일을 그대로 제공합니다.
+
+## 저장장치 구성 · 2026-10-20 수정
+
+맥미니 512GB는 구매 완료했습니다. Windows에는 NVMe SSD 1TB·2TB와 HDD 3TB·4TB가 있습니다. 디스크 이동과 외장 장치 구매는 미확정입니다. 사용량·여유 공간·건강 상태·OS 위치는 확인하지 않았습니다.
+
+| 구성 | Mac | Windows | 백업·접근 한계 |
+| --- | --- | --- | --- |
+| 무구매 · 우선 권장 | 내장 512GB, 핵심 모델만 | NVMe 합계 3TB + HDD 합계 7TB 유지 | Windows SMB는 PC 가동 필요. Mac 중요 파일의 날짜별 사본은 가능하지만 일반 Windows SMB를 Time Machine 대상으로 간주하지 않음 |
+| DAS 추가 · 예시 | 내장 512GB + HDD 3TB를 Time Machine 전용으로 검토 | NVMe 3TB + HDD 4TB 남음 | DAS 비용 발생, 기존 3TB 자료의 별도 사본·복원 확인 후에만 재배치 가능. Mac 직결 APFS / APFS 암호화 검토 |
+
+**권장:** 먼저 기존 배치를 유지하고 실제 사용량과 중요 자료의 사본을 확인합니다. 무구매안은 Mac 전체 백업의 완성안이 아닙니다. Time Machine 지원 대상이 없으면 백업 공백으로 남깁니다. Mac 직결 백업 또는 PC를 끈 상태의 대용량 공유가 필요할 때 DAS를 검토합니다. Time Machine 전용 디스크는 공용 자료 원본과 분리합니다. NAS는 독립 파일 서버가 필요한 경우의 후속 비교이며 필수 구매가 아닙니다.
+
+NVMe를 옮기면 Windows의 SSD 공간이 그만큼 줄고 호환 외장 케이스가 필요합니다. 1TB가 OS 디스크라면 이전·재설치와 부팅 확인이 선행되어야 하며 이동 확정으로 취급하지 않습니다. HDD 두 개를 모두 옮기면 Windows HDD 공간은 없어집니다. 원시 용량의 합계는 실제 여유 공간이나 백업 가능 용량이 아닙니다.
+
+Windows 파일 이력은 개인 파일의 버전 백업이며 전체 시스템 이미지가 아닙니다. SMB 공유는 호스트 가동·권한·네트워크에 의존합니다. 외부에서는 VPN 등을 사용하고 SMB를 인터넷에 직접 공개하지 않습니다. 동기화·RAID·같은 디스크의 다른 파티션은 별도 백업이 아니며 같은 PC/DAS 안의 사본도 공통 고장·악성코드 위험이 있습니다.
+
+실기기 검증 필요: 디스크 상태·사용량·OS 위치, 기존 사본 복원, USB 절전 복귀·마운트, Time Machine 최초 백업·파일 복원, SMB 권한·원격 접근, 파일 이력 대상 폴더·복원. 디스크 초기화·데이터 이동·장치 구매는 수행하지 않았습니다. Node 테스트는 안내의 일관성을 검증하며 실제 하드웨어 호환성이나 백업 성공을 증명하지 않습니다.
+
+공식 근거: [Apple Time Machine 지원 장치](https://support.apple.com/en-us/102423), [백업 디스크 형식](https://support.apple.com/guide/mac-help/types-of-disks-you-can-use-with-time-machine-mh15139/mac), [Microsoft 파일 이력](https://support.microsoft.com/en-gb/windows/experience/backup-recovery/backup-and-restore-with-file-history).
