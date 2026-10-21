@@ -220,7 +220,7 @@
   [...policy.children].filter(node=>node.tagName!=='SUMMARY').forEach(node=>history.append(node));
   const scope=document.createElement('p');scope.textContent='공식 지원·커뮤니티 사용기·이 가이드의 활용 제안을 구분합니다. 모델의 한국어 품질, 속도와 새 맥미니의 무인 운영은 직접 시험 전입니다. 확인일은 항목별로 다르며, 사이트 구성을 정리한 날이 전체 정보의 재검증일은 아닙니다.';
   const currentScope=document.createElement('p');
-  currentScope.innerHTML='2026.10.21: 실행기 정식 버전, 기본 모델 6개와 음성·이미지·검색 후보의 배포 조건, Clef Flash·Jev의 역할, M6 저장장치 연결 조건을 다시 확인했습니다. 같은 M6 32GB 공개 측정과 최근 Reddit 원문을 추가했습니다. 새 YouTube 영상은 설명·챕터까지만 확인했고 전체 자막은 확보하지 못했습니다. X·Threads의 새 근거는 충분히 확인하지 못해 이번 사례 목록에 넣지 않았습니다. <a href="#sources" data-guide-detail="currentAudit">이번 점검표·남은 확인 사항 →</a>';
+  currentScope.innerHTML='2026.10.21: 실행기 정식 버전, 기본 모델 6개와 음성·이미지·검색 후보의 배포 조건, Clef Flash·Jev의 역할, M6 저장장치 연결 조건을 다시 확인했습니다. 같은 M6 32GB 공개 측정과 최근 Reddit 원문을 추가했습니다. X·Threads의 10/20–21 원문을 추가로 읽고 Raon·Phonon·OMP·Perplexity의 공식 조건을 대조했습니다. SNS 발표·소개는 내 기기 실측과 다릅니다. 새 YouTube 영상은 설명·챕터까지만 확인했고 전체 자막은 확보하지 못했습니다. <a href="#reviews" data-guide-detail="socialFieldNotes">SNS 추가 조사 →</a> · <a href="#sources" data-guide-detail="currentAudit">이번 점검표·남은 확인 사항 →</a>';
   policy.append(scope,currentScope,history);
   // Short local outline: no extra top-level menu or sidebar.
   panels.forEach(panel=>{

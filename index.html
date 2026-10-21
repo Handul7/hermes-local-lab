@@ -45,6 +45,7 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <p class="verification-line">설치 경로 10/5 확인 · OpenClaw 정식 배포·Paseo ACP·Orca 승인 기본값·Dots 연결 범위 10/21 재확인 · 설치·연결·한국어 성능 실측 전 · 이 사이트는 계정·로컬 파일 권한을 요청하지 않습니다.</p>
 </div></details>
 <p class="update-entry"><strong>운영 원칙:</strong> Hermes는 유지하고 실행기만 필요할 때 비교하세요. oMLX의 캐시·동시 요청 기능이 있어도 32GB에서는 순차 작업부터입니다. <a href="#models">실행기·모델 선택 기준 →</a></p>
+<p class="verification-line">10/21 추가 확인 · 코딩 도구 <a href="#reviews" data-guide-detail="socialOmp">Oh My Pi</a>와 유료 Mac 에이전트 <a href="#reviews" data-guide-detail="socialPerplexity">Perplexity Computer</a>는 선택 비교입니다. Hermes 확장 플러그인이나 첫날 필수 설치가 아닙니다.</p>
 <details class="editorial-detail guide-collection" id="localDecisionModels"><summary>새 선택지 · 로컬 판단 모델 <span>10/21 · Clef Flash 추가 / 채팅 모델과 역할이 달라요</span></summary>
 <div class="update-body">
 <p><strong>글을 쓰는 모델 옆에, 분류만 맡는 모델.</strong> 요청을 문서·코딩·검토 중 어디로 보낼지, 어떤 스킬 후보를 볼지 판단하는 선택 기능입니다. Jev 자체가 무료 로컬로 공개된 것은 아닙니다.</p>
@@ -108,7 +109,7 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <section class="panel" id="models">
 <div class="section-head"><div><h2>구독 없이, 내 맥에서.</h2></div><p>32GB 맥미니에서 시작할 대화 모델 6개만 골랐습니다. 기본 모델 하나를 먼저 쓰고, 필요한 기능만 더하세요.</p></div>
 <p class="verification-line">기본 후보 선정 2026.09.12 · 6개 후보 배포·조건 재확인 2026.10.21 · 맥미니 실측 전</p>
-<p class="update-entry"><strong>10/21 핵심:</strong> 새 모델을 늘리기 전에 <a href="#models" data-guide-detail="runtimeUpdate">실행기·Hermes 업데이트</a>부터. 분류 자동화가 필요해지면 <a href="#architecture" data-guide-detail="localDecisionModels">Clef Flash</a>를 별도로 비교하세요. <a href="#sources" data-guide-detail="currentAudit">전체 점검 범위 →</a></p>
+<p class="update-entry"><strong>10/21 핵심:</strong> <a href="#models" data-guide-detail="runtimeUpdate">실행기·Hermes 업데이트</a>부터. 오늘 공개된 국내 <a href="#reviews" data-guide-detail="socialRaon">Raon-1 mini</a>는 별도 시험 후보이며 기본 6개를 대체하지 않습니다. 분류 전용 <a href="#architecture" data-guide-detail="localDecisionModels">Clef Flash</a>와 역할도 다릅니다. <a href="#sources" data-guide-detail="currentAudit">전체 점검 범위 →</a></p>
 <h3>처음에는 이 구성부터</h3>
 <div class="free-starter starter-main" aria-label="무료 로컬 AI 시작 구성">
 <article><div><span class="starter-number">먼저, 문서 하나부터</span><h4>Ollama + Qwen</h4><p>실행기와 대화 모델 하나로 요약부터 시작하세요.<br>Hermes 연결은 도구 시험 후 진행합니다.</p></div><div class="starter-actions"><a href="https://ollama.com/download/mac">Ollama 받기 ↗</a><button class="btn" type="button" data-free-starter>무료 기본 구성 담기</button><small>Ollama·Qwen·Hermes 3개를 계획에 담습니다.<br>실제 설치는 하지 않습니다.</small></div></article>
@@ -237,7 +238,7 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 </div>
 <p><strong>내 추천:</strong> 먼저 0.6B로 짧은 한국어 문장을 듣고, 품질이 아쉬울 때 아래의 1.7B와 비교하세요. 전체 문서를 한 번에 읽히거나 주력 LLM·이미지 모델과 동시에 실행하지 않습니다. 받아쓰기는 음성 → 글(ASR), TTS는 글 → 음성입니다. Gemini Live의 실시간 대화와도 다른 기능입니다.</p>
 <p class="update-links"><a href="#workflows" data-guide-detail="qwenVoiceWorkflow">녹음 → 요약 → 음성 활용 →</a><a href="#dictation">말로 입력할 앱이 필요하다면 →</a></p>
-<p class="update-caution"><strong>10/21 재확인: MLX Audio 0.6.1(10/20).</strong> STT 업로드 임시 파일 수정, Ming-3.0-tts-0.5B와 Gradium Phonon 지원 등이 추가됐습니다. 새 지원 목록만으로 한국어 품질을 판단할 수 없어 Qwen3-TTS 0.6B 기본 후보는 유지합니다. <a href="https://github.com/Blaizzy/mlx-audio/releases/tag/v0.6.1">정식 릴리스·수정 범위 ↗</a></p>
+<p class="update-caution"><strong>10/21 재확인: MLX Audio 0.6.1(10/20).</strong> STT 업로드 임시 파일 수정, Ming-3.0-tts-0.5B와 Gradium Phonon 지원 등이 추가됐습니다. Phonon의 현재 공개 언어에는 <strong>한국어가 없습니다.</strong> 한국어는 Qwen3-TTS 0.6B 후보를 유지하고, 영어 알림에만 <a href="#reviews" data-guide-detail="socialPhonon">Phonon의 크기·라이선스·설치 경로</a>를 비교하세요. <a href="https://github.com/Blaizzy/mlx-audio/releases/tag/v0.6.1">정식 릴리스·수정 범위 ↗</a></p>
 <p class="update-scope">Gemini API 제공 방식·Qwen TTS 공개 상태·MLX Audio 릴리스 재확인 2026.10.21 · 다운로드 크기 ≠ 최대 RAM · 실제 음성 생성 시험 전</p>
 </div></details>
 <details class="editorial-detail update-detail" id="qwenMediaUpdate"><summary>Qwen 이미지·음성 · 내 맥에서 쓸 수 있는 것은?</summary>
@@ -509,7 +510,7 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <section class="panel" id="start">
 <div class="section-head"><div><div class="kicker">MAC MINI · AI SERVER</div><h2>새 맥미니, AI 서버로 시작하기</h2></div><p>처음 켜는 순간부터 밖에서 작업을 확인하기까지.<br>아래 6단계를 순서대로 따라오세요.</p></div>
 <p class="verification-line">설치 안내 10/5 · 실행기·모델·핵심 지원 점검 <time datetime="2026-10-21">2026.10.21</time> · M6 32GB / 512GB · 내 기기 실측 전</p>
-<aside class="research-brief" aria-label="이번 업데이트 요약"><div><span class="research-date">OCT 21 · GUIDE UPDATE</span><h3>설치 목록은 가볍게.<br>운영은 한 단계 더 확실하게.</h3><p>Ollama·Hermes 갱신부터. 무료 기본 모델은 유지하고, 새 도구는 필요할 때만 비교하세요.</p></div><nav aria-label="업데이트 바로가기"><a href="#models" data-guide-detail="runtimeUpdate">01 <span>달라진 버전·갱신 순서</span> →</a><a href="#reviews" data-guide-detail="recentFieldNotes">02 <span>내 사양과 가까운 실제 사례</span> →</a><a href="#sources" data-guide-detail="currentAudit">03 <span>전체 점검표·확인하지 못한 것</span> →</a></nav></aside>
+<aside class="research-brief" aria-label="이번 업데이트 요약"><div><span class="research-date">OCT 21 · GUIDE UPDATE</span><h3>설치 목록은 가볍게.<br>운영은 한 단계 더 확실하게.</h3><p>Ollama·Hermes 갱신부터. 무료 기본 모델은 유지하고, 새 도구는 필요할 때만 비교하세요.</p></div><nav aria-label="업데이트 바로가기"><a href="#models" data-guide-detail="runtimeUpdate">01 <span>달라진 버전·갱신 순서</span> →</a><a href="#reviews" data-guide-detail="socialFieldNotes">02 <span>X·Threads에서 찾은 새 후보</span> →</a><a href="#sources" data-guide-detail="currentAudit">03 <span>전체 점검표·확인하지 못한 것</span> →</a></nav></aside>
 <details class="editorial-detail setup-overview" id="serverOverview"><summary>오늘 만들 구성 한눈에 보기 <span>맥북·Windows → 맥미니 → 로컬 모델</span></summary>
 <div class="server-intro">
 <div><span class="server-eyebrow">오늘 만들 것</span><h3>집에서 일하고,<br>어디서든 확인하는 AI.</h3><p>기본 구성은 <strong>Ollama + Qwen3.5 9B + Hermes</strong>입니다. 모델의 로컬 추론 사용료는 0원. 전기·장비·외부 서비스 비용은 별도예요.</p></div>
@@ -608,7 +609,49 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <section class="panel" id="reviews">
 <div class="section-head"><div><div class="kicker">FIELD NOTES</div><h2>실사용 후기</h2></div><p>무엇을 맡길지, 어떻게 켜둘지, 어디까지 돌릴지.<br>다른 사람의 경험을 내 맥미니의 운영 원칙으로 바꿉니다.</p></div>
 <p class="verification-line">최근 조사 <time datetime="2026-10-21">2026.10.21</time> · 10월 자료 우선, 이전 3개월 기록 보존 · 내 기기 재현 시험 전</p>
-<details class="editorial-detail guide-collection" id="recentFieldNotes" open><summary>10/21 조사 · 내 맥미니에 가져올 변화<span>같은 32GB 측정 · 원격 자료실 · SSD 스트리밍의 한계</span></summary>
+<details class="editorial-detail guide-collection" id="socialFieldNotes" open><summary>10/21 추가 조사 · X·Threads에서 가져온 네 가지<span>한국어 모델 · 작은 음성 · 코딩 도구 · 유료 로컬 에이전트</span></summary>
+<p><strong>새 소식과 실사용 검증은 다릅니다.</strong> X·Threads의 10/20–21 발표·소개 원문을 읽고 공식 모델 카드·설치 문서와 대조했습니다. 출시일과 게시일을 구분하며, 아래는 내 M6 32GB에서 실행·성능을 측정한 후기가 아닙니다. 인기 순위나 플랫폼 전체를 조사한 결과도 아닙니다.</p>
+<div class="field-note-grid social-note-grid">
+<article><span class="verification-line">X · 공식 발표 10/21 · 조건부 시험</span><h3>Raon-1 mini preview</h3><p><strong>한국어 대화·도구 호출을 비교하고 싶다면.</strong> 크래프톤이 공개한 국내 모델입니다. Apple Silicon용 MLX 가중치가 있지만, ‘활성 4B’를 4B급 메모리로 이해하면 안 됩니다.</p>
+<details class="editorial-detail" id="socialRaon"><summary>32GB 조건 · 무료 범위 · 받는 곳</summary>
+<p>전체 <strong>28.8B / 활성 4.3B</strong> MoE, 공식 MLX는 NVFP4 양자화로 HF 표기 <strong>약 17.5GB</strong>입니다. 이는 다운로드 크기이지 최대 RAM이 아닙니다. 가중치 규모와 Mac 경로를 근거로 <strong>32GB 단독 시험 후보</strong>로만 분류합니다.</p>
+<p><strong>무료 범위:</strong> 모델·가중치는 Apache 2.0. HF 로그인 후 접근 조건 확인·요청이 필요하며 공식 안내는 자동 승인을 명시합니다. 온라인 Playground의 한시 무료·별도 약관과 로컬 가중치 이용 조건은 다릅니다.</p>
+<p><strong>설치:</strong> 아래 공식 모델 카드의 <em>MLX (Apple silicon)</em> 안내를 따르세요. 현재 Python 3.11+, MLX 0.32.4 / mlx-lm 0.32.2 / Transformers 5.20.1 예제입니다. <code>trust_remote_code</code>는 저장소 코드를 실행하므로 내용을 검토하고 별도 가상환경을 사용합니다. 가상환경 자체가 보안 샌드박스는 아닙니다.</p>
+<p><strong>내 시험:</strong> 기존 LLM을 내리고 짧은 문서·동시 요청 1개부터. 한국어 문서 5개와 파일 도구 호출을 비교하고 메모리 압박·전체 완료 시간을 기록하세요. 공식 262K 최대 문맥이나 NVIDIA 가속 수치를 내 맥의 시작 설정·예상 성능으로 쓰지 않습니다. Hermes 연결 예제가 있지만 실제 도구 성공 여부는 별도 확인입니다.</p>
+<p class="verification-line">Preview · 한국어 강점은 제작사 평가이며 내부 한국어 벤치마크는 비공개 · 주력 Qwen 교체는 실측 후 판단</p>
+<p class="update-links"><a href="https://x.com/Krafton_AI/status/2112772568776339709">KRAFTON 공식 X 원문 ↗</a><a href="https://x.com/ivanfioravanti/status/2112784248688021574">MLX 공개 소개 ↗</a><a href="https://huggingface.co/KRAFTON/Raon-1-mini-preview-mlx">공식 MLX 모델·설치·접근 조건 ↗</a></p>
+</details></article>
+<article><span class="verification-line">X · 공식 공개 10/20 / 게시 10/21 · 영어용</span><h3>Phonon · 작은 음성 알림</h3><p><strong>“작업 끝났어요”를 영어로 들려주기.</strong> 아주 작은 로컬 TTS 후보입니다. 한국어 받아쓰기나 한국어 음성 합성의 새 기본 모델은 아닙니다.</p>
+<details class="editorial-detail" id="socialPhonon"><summary>언어 · 이용 조건 · 설치 경로</summary>
+<p><strong>31m-en:</strong> 영어 전용, q8 가중치 약 64.5MB, Apache 2.0. <strong>40m:</strong> 영어·프랑스어·독일어·스페인어·포르투갈어 계열이며 가중치는 CC BY-NC 4.0입니다. 무료 다운로드를 상업적 자유 이용과 혼동하지 마세요.</p>
+<p><strong>한국어:</strong> 현재 공개 모델의 지원 언어에 없습니다. 발표문에 나오는 한국어 맞춤 모델 협업은 누구나 받을 수 있는 한국어 가중치 공개가 아닙니다.</p>
+<p><strong>설치:</strong> 공식 <a href="https://github.com/gradium-ai/xn-ptts/releases/tag/v0.4.0">ptts 0.4.0</a>의 Mac 안내 또는 이미 쓰는 <a href="https://github.com/Blaizzy/mlx-audio/releases/tag/v0.6.1">MLX Audio 0.6.1</a> 지원 경로 중 하나를 선택합니다. 모델·목소리를 받은 뒤 로컬 합성이 가능하며, 가중치 크기에 실행 메모리·목소리 파일은 포함되지 않습니다.</p>
+<p><strong>내 활용 제안:</strong> Hermes 작업 결과 한 문장 → 영어 음성 파일 → 로컬 재생. 한국어 요약 듣기는 기존 Qwen3-TTS와 비교하세요. 다른 Mac의 밀리초 수치를 M6 예상 속도로 옮기지 않습니다.</p>
+<p class="update-links"><a href="https://x.com/Prince_Canuma/status/2112594486597763195">MLX 개발자 X 원문 ↗</a><a href="https://gradium.ai/blog/release-phonon-open-weight">공식 공개 범위·언어 ↗</a><a href="https://huggingface.co/gradium/phonon-31m-en">영어 무료 모델 ↗</a></p>
+</details></article>
+<article><span class="verification-line">Threads · 소개 게시 10/21 · 코딩할 때만</span><h3>Oh My Pi · OMP</h3><p><strong>수정하는 모델과 검토하는 역할을 나누기.</strong> 로컬 실행기를 연결할 수 있는 코딩 에이전트 도구입니다. 모델 자체나 Hermes 플러그인이 아닙니다.</p>
+<details class="editorial-detail" id="socialOmp"><summary>무료 범위 · 내 구성과의 차이 · 설치</summary>
+<p>Pi 기반 MIT 도구이며 Ollama·LM Studio의 로컬 API를 지원합니다. 모델 역할 선택, 보조 에이전트와 Agent Hub를 제공합니다. <strong>도구가 무료여도 연결한 클라우드 모델의 요금은 별도</strong>입니다.</p>
+<p><strong>내 판단:</strong> 코딩 작업이 늘면 Hermes와 같은 작은 수정 작업으로 비교하세요. 처음부터 큰 작성·검토 모델 두 개를 동시에 올리지 않습니다. 업무용 Hermes 구성은 유지합니다.</p>
+<p><strong>설치:</strong> <a href="https://github.com/can1357/oh-my-pi#install">공식 README</a>의 Homebrew 경로는 <code>brew install can1357/tap/omp</code>입니다. 설치 후 로컬 제공자를 선택하고 연결 모델·비용·도구 권한을 확인하세요.</p>
+<p><strong>주의:</strong> 기존 도구의 규칙·스킬·MCP 설정과 저장소의 확장·훅을 발견해 불러올 수 있습니다. 신뢰하는 테스트 저장소에서 시작하고 자동 로딩 범위를 먼저 검토하세요. worktree 분리는 접근 권한 격리가 아닙니다.</p>
+<p class="verification-line">Threads는 기능 소개이며 M6 32GB 장기 사용기·성공률 자료가 아닙니다. 읽은 소개 글과 공식 문서에서 확인한 기능만 반영했습니다.</p>
+<p class="update-links"><a href="https://www.threads.com/@manmansa_01/post/Dev1O_YH8Uv">Threads 소개 원문 ↗</a><a href="https://github.com/can1357/oh-my-pi">공식 기능·신뢰 경계 ↗</a></p>
+</details></article>
+<article><span class="verification-line">Threads · 공식 발표 10/20 / 게시 10/21 · 보류</span><h3>Perplexity Computer · Mac 로컬</h3><p><strong>Mac 파일·앱을 묶어 처리하는 유료 선택지.</strong> 모델뿐 아니라 작업 계획·실행까지 로컬로 하는 모드가 추가됐습니다. 네 무료 기본 구성에는 넣지 않습니다.</p>
+<details class="editorial-detail" id="socialPerplexity"><summary>32GB에서 보류하는 이유 · 공식 설치</summary>
+<p><strong>조건:</strong> Pro·Max·Enterprise 구독 대상입니다. 공식 안내는 지원 Apple Silicon Mac에서 <strong>36GB 이상 권장</strong>입니다. 네 32GB는 권장 사양보다 작지만, 이를 ‘설치 불가’라는 하한으로 단정하지 않습니다. 실제 메모리·처리 속도는 확인 전입니다.</p>
+<p><strong>기능:</strong> 로컬 모델은 Qwen 3.6 또는 PPLX Pro. 허용한 파일과 Notes·Mail·Numbers 등 지원 앱을 활용합니다. 내 활용 후보는 로컬 메모에서 할 일을 추려 초안을 만드는 작업입니다. 앱 쓰기·메시지 전송 권한은 별도로 검토하세요.</p>
+<p><strong>로컬 경계:</strong> <em>Fully local</em>과 클라우드에서 시작하는 <em>Hybrid Compute</em>는 다릅니다. 사용자가 허용하면 클라우드로 작업을 넘길 수 있으므로 앱 전체를 항상 오프라인·외부 전송 없음으로 설명하지 않습니다.</p>
+<p><strong>설치:</strong> <a href="https://www.perplexity.ai/personal-computer">공식 Mac 앱</a> → 앱 안의 로컬 모델 다운로드 → Fully local 선택입니다. 유료 구독이나 새 장비 구매부터 하지 말고 이용 자격과 내 사양 조건을 먼저 확인하세요.</p>
+<p class="update-links"><a href="https://www.threads.com/@luke78511/post/Dev0_NiDQbv">Threads 소개 원문 ↗</a><a href="https://www.perplexity.ai/en-GB/hub/blog/perplexity-computer-now-runs-fully-local-on-mac">공식 발표·권장 메모리 ↗</a></p>
+</details></article>
+</div>
+<p class="guide-notice"><strong>내 맥미니에서 가져갈 순서:</strong> 기존 Qwen + Hermes로 문서 작업 완성 → 한국어 품질이 아쉬울 때 Raon 단독 비교 → 영어 알림이 필요할 때 Phonon. OMP는 코딩이 늘 때, Perplexity는 유료·메모리 조건을 받아들일 때만 검토합니다. 새 후보를 설치 목록에 자동 추가하지 않았습니다.</p>
+<p class="verification-line">원문·공식 조건 대조 2026.10.21 · 발표·소개 글과 내 활용 제안을 구분 · 모델 다운로드·앱 설치·계정 접근 신청은 수행하지 않음</p>
+<a href="#reviews" data-guide-detail="recentFieldNotes">같은 M6 32GB의 GitHub·Reddit 측정과 기존 활용 사례 →</a>
+</details>
+<details class="editorial-detail guide-collection" id="recentFieldNotes"><summary>10/21 조사 · 내 맥미니에 가져올 변화<span>같은 32GB 측정 · 원격 자료실 · SSD 스트리밍의 한계</span></summary>
 <p>10월 공개 자료를 우선 확인했습니다. 아래는 공개 측정·사용자 자기 보고·영상 설명을 구분한 기록입니다. 한국어 Hermes 업무를 이 맥미니에서 직접 재현한 시험은 아닙니다.</p>
 <div class="field-note-grid">
 <article><span class="verification-line">GitHub · M6 32GB · 측정 10/3–4</span><h3>같은 맥, 같은 질문으로 비교하기</h3><p>HDZucht가 LM Studio의 llama.cpp·MLX·Splash를 비교한 원자료와 실행 조건을 공개했습니다. 모델 하나씩, 반복 측정 중앙값을 사용했으며 일반 문장·코드·JSON에 따라 결과가 달랐습니다.</p><p><strong>내 적용:</strong> 문서 5개로 첫 응답·전체 완료·도구 성공·메모리를 기록합니다. 독일어·영어 중심 시험과 자동 평가는 한국어 품질이나 장기 안정성 검증이 아닙니다.</p><a href="https://github.com/HDZucht/Mac-Mini-M6-LLM-benchmarks">기기·설정·원자료 ↗</a></article>
@@ -617,7 +660,7 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <article><span class="verification-line">Reddit · 10/13 게시 · 작성자 표기 64GB Mac</span><h3>SSD 스트리밍은 RAM 증설이 아니다</h3><p>Flash Next 전문가 가중치를 SSD에서 미리 읽는 실험이 공유됐습니다. 제작자 본인의 최적화 결과이며, 32GB가 아닌 64GB 환경입니다.</p><p><strong>내 적용:</strong> 이 사례 때문에 고가 독·SSD를 먼저 사지 않습니다. 상시 모델은 메모리에 맞추고, SSD는 모델·색인, HDD는 백업으로 역할을 유지합니다.</p><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x4sit6/based_on_advice_from_localllama_implemented_a_n2/">실험 원문·공개 코드 ↗</a></article>
 </div>
 <p class="guide-notice"><strong>비슷한 사용자가 묻는 질문도 구분했습니다.</strong> <a href="https://www.reddit.com/r/ClaudeCode/comments/1x4vzik/mac_mini_m6_32_gb_as_a_headless_agent_machine_how/">10/13 M6 32GB 헤드리스 에이전트 구성 글</a>은 고객 자료 분리·승인·휴대폰 관리에 관한 질문이지 성공 사례가 아닙니다. 내 구성에서도 로컬 자료와 클라우드 전달 자료를 나누고, 외부 게시·전송은 승인 후 진행하는 원칙만 가져옵니다.</p>
-<p class="verification-line"><strong>X·Threads:</strong> 최근 게시글 검색을 시도했지만 검증 가능한 새 원문을 충분히 확보하지 못했습니다. 이번 신규 추천 근거에서 제외했으며, 아래 9월·10/5 원문 확인 기록의 날짜를 바꾸지 않았습니다. 인기 순위·전수조사 결과가 아닙니다.</p>
+<p class="verification-line"><strong>X·Threads 추가 확인 완료:</strong> 10/20–21 발표·소개 원문과 공식 조건을 <a href="#reviews" data-guide-detail="socialFieldNotes">별도 네 가지 후보</a>로 정리했습니다. 아래 9월·10/5 기록의 확인일을 바꾸지는 않았습니다. 인기 순위·전수조사 결과가 아닙니다.</p>
 <a href="#models" data-guide-detail="runtimeUpdate">내가 갱신할 실행기 보기 →</a>
 </details>
 <details class="editorial-detail guide-collection" id="octoberFieldNotes"><summary>10/5 조사 · 내 맥미니에 가져올 사례<span>자료 검색 · 원격 작업 · PDF · 창작 · 큰 모델의 한계</span></summary>
@@ -798,12 +841,12 @@ openclaw gateway status</code></pre><button type="button" class="btn" data-copy-
 <div class="table-wrap audit-table"><table><caption>네 M6 32GB AI 서버에 필요한 변화만 반영</caption><thead><tr><th scope="col">분야</th><th scope="col">이번 확인·반영</th><th scope="col">내 선택 / 남은 확인</th></tr></thead><tbody>
 <tr><th scope="row">실행기·Hermes</th><td>Ollama 0.40.6, Hermes 0.22.2, oMLX 0.7.1, LM Studio 0.4.26 / Bionic 1.1.8의 정식 배포·변경 기록.</td><td>기존 도구부터 하나씩 갱신. <a href="#models" data-guide-detail="runtimeUpdate">버전·출처·복구 시험 →</a></td></tr>
 <tr><th scope="row">기본 모델 표 9개</th><td>LLM 6개 + Whisper·FLUX.1 schnell·Qwen3-Embedding의 공식 공개 상태·라이선스, 국내 GGUF 배포 경로 확인. Qwen 9B의 MLX / GGUF 용량 구분.</td><td>모델을 무조건 신제품으로 교체하지 않음. 한국어·도구 정확도·최대 RAM은 직접 시험. HF의 FLUX 다운로드는 계정·접근 동의가 필요할 수 있음. <a href="#models">모델 표 →</a></td></tr>
-<tr><th scope="row">국내 모델</th><td>A.X 4.0 Light·Kanana 1.5의 Apache 2.0 공개 상태 유지. NAVER·SKT 공식 목록도 확인.</td><td>새 대형 계열을 작은 모델과 혼동하지 않음. NAVER Omni·EXAONE 등 보류 모델을 새로 Mac에서 실행 검증한 것은 아님. <a href="#models">보류 이유 확인 →</a></td></tr>
-<tr><th scope="row">이미지·음성</th><td>Qwen ASR·TTS, FLUX.2 klein·Z-Image 공개 상태 확인. Qwen-Image-2.1 연구용 조건 재확인. MLX Audio 0.6.1, MLX-Serve 26.10.2 반영.</td><td>Gemini TTS는 API, Qwen 음성은 로컬 후보. MiniMax H3·새 영상/음악 기능의 32GB 실용성은 미검증. <a href="#models" data-guide-detail="modelNews">용도별 경계 →</a></td></tr>
-<tr><th scope="row">받아쓰기·보조 에이전트</th><td>Handy 0.9.8, Superwhisper 오프라인 전사, Wispr Flow 서버 전송 확인. OpenClaw 정식 태그, Paseo Hermes ACP, Orca 승인 기본값, Dots 클라우드 역할 확인.</td><td>앱별 마이너 버전·모바일 스토어 가격은 모두 갱신한 것이 아님. 기존 다운로드 안내의 확인일 유지. <a href="#architecture" data-guide-detail="optionalAgentTools">선택 도구 →</a></td></tr>
+<tr><th scope="row">국내 모델</th><td>A.X 4.0 Light·Kanana 1.5의 공개 상태 유지. KRAFTON Raon-1 mini preview 공식 X·MLX 카드 추가 대조: 전체 28.8B, 약 17.5GB, Apache 2.0·접근 요청 필요.</td><td>Raon은 32GB 단독 시험 후보. 무료 기본 6개는 유지하며 NAVER Omni·EXAONE 등을 새로 Mac에서 실행 검증한 것은 아님. <a href="#reviews" data-guide-detail="socialRaon">Raon 조건·설치 →</a></td></tr>
+<tr><th scope="row">이미지·음성</th><td>Qwen ASR·TTS, FLUX.2 klein·Z-Image 공개 상태, Qwen-Image-2.1 연구용 조건 확인. MLX Audio 0.6.1, MLX-Serve 26.10.2 반영. Phonon 공개 언어·모델별 라이선스 추가.</td><td>한국어는 Qwen TTS 후보 유지, Phonon 공개 모델은 한국어 미지원. MiniMax H3·새 영상/음악 기능의 32GB 실용성은 미검증. <a href="#reviews" data-guide-detail="socialPhonon">음성 추가 조사 →</a></td></tr>
+<tr><th scope="row">받아쓰기·보조 에이전트</th><td>Handy 0.9.8, Superwhisper 오프라인 전사, Wispr Flow 서버 전송 확인. OpenClaw·Paseo·Orca·Dots 핵심 범위 유지. OMP 로컬 연결, Perplexity Fully local의 유료·36GB 권장 조건 추가.</td><td>앱별 버전·스토어 가격 전체 갱신은 아님. OMP는 코딩 선택지, Perplexity는 네 32GB 무료 기본안에서 보류. <a href="#architecture" data-guide-detail="optionalAgentTools">기존 선택 도구 →</a> · <a href="#reviews" data-guide-detail="socialFieldNotes">새 후보 →</a></td></tr>
 <tr><th scope="row">판단 모델</th><td>Clef Flash 로컬 후보 추가. Jev 1.14 공개와 latest / preview 별칭 차이, Tev1 라이선스 미확정 확인.</td><td>Jev는 클라우드. Clef는 일반 채팅 대체 아님. 한국어 분류를 평가하고 연결. <a href="#architecture" data-guide-detail="localDecisionModels">무료 로컬 판단 후보 →</a></td></tr>
 <tr><th scope="row">M6·원격·저장장치</th><td>Apple M6 후면 TB4·2.5GbE, Ollama의 Windows RX 7900 GRE 지원, macOS에서 일반 SSH와 Tailscale SSH의 조건 재대조.</td><td>DAS 자동 절전은 제품별 확인 유지. 가격은 <strong>10/5 당시</strong> 자료로, 이번에 재견적하지 않음. <a href="#storage" data-guide-detail="activeStorage">포트·장비 선택 →</a></td></tr>
-<tr><th scope="row">커뮤니티·영상</th><td>GitHub M6 32GB 측정, Reddit 원문, YouTube 설명·챕터 대조.</td><td>X·Threads 최근 원문 확보 부족. 새 영상 자막 전문 미확보. <a href="#reviews" data-guide-detail="recentFieldNotes">확인 수준별 사례 →</a></td></tr>
+<tr><th scope="row">커뮤니티·영상</th><td>GitHub M6 32GB 측정, Reddit 원문, YouTube 설명·챕터 대조. X·Threads 10/20–21 원문과 공식 발표·모델 카드·설치 문서 추가 확인.</td><td>새 SNS 글은 출시·기능 소개이지 내 M6 실측 후기가 아님. 새 영상 자막 전문 미확보는 그대로. <a href="#reviews" data-guide-detail="socialFieldNotes">SNS 원문·적용 판단 →</a> · <a href="#reviews" data-guide-detail="recentFieldNotes">측정·사용기 →</a></td></tr>
 </tbody></table></div>
 <p class="guide-notice"><strong>유지하는 기본 구성:</strong> Ollama + Qwen3.5 9B + Hermes, 필요한 때만 음성·이미지. 모델마다 별도 상시 프로세스를 늘리지 않고 먼저 순차 작업을 완성합니다. 단순 다운로드 가능 여부를 한국어 업무·24시간 서버 운영의 검증으로 표시하지 않습니다.</p>
 <p class="update-links"><a href="https://www.apple.com/kr/mac-mini/specs/">Apple M6 사양 ↗</a><a href="https://docs.ollama.com/gpu">RX 7900 GRE 지원 ↗</a><a href="https://tailscale.com/docs/features/tailscale-ssh">SSH 지원 방식 ↗</a><a href="https://huggingface.co/naver-hyperclovax/models">NAVER 목록 ↗</a><a href="https://huggingface.co/skt/models">SKT 목록 ↗</a></p>
@@ -852,4 +895,4 @@ window.addEventListener('popstate',()=>openPanel(location.hash.slice(1),false));
 window.addEventListener('hashchange',()=>openPanel(location.hash.slice(1),false));
 openPanel(location.hash.slice(1)||'start',false,false);
 // Setup progress lives in lab-server.js. Legacy saved data is left untouched.
-</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20261021-1"></script><script src="lab-planner.js?v=20261005-3"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260923-2"><script src="lab-outcomes.js?v=20260925-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20261021-1"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20261005-3"></script><link rel="stylesheet" href="lab-reviews.css?v=20260925-1"><link rel="stylesheet" href="lab-editorial.css?v=20261021-1"><link rel="stylesheet" href="lab-server.css?v=20261005-1"><script src="lab-server.js?v=20261005-1"></script></body></html>
+</script><link rel="stylesheet" href="lab-planner.css?v=20260911-7"><link rel="stylesheet" href="lab-visual.css?v=20260913-1"><script src="lab-models.js?v=20261021-1"></script><script src="lab-planner.js?v=20261005-3"></script><link rel="stylesheet" href="lab-outcomes.css?v=20260923-2"><script src="lab-outcomes.js?v=20260925-2"></script><link rel="stylesheet" href="lab-navigation.css?v=20260912-1"><script src="lab-navigation.js?v=20261021-2"></script><link rel="stylesheet" href="lab-motion.css?v=20260912-1"><link rel="stylesheet" href="lab-free-ai.css?v=20260912-4"><script src="lab-motion.js?v=20261005-3"></script><link rel="stylesheet" href="lab-reviews.css?v=20260925-1"><link rel="stylesheet" href="lab-editorial.css?v=20261021-1"><link rel="stylesheet" href="lab-server.css?v=20261005-1"><script src="lab-server.js?v=20261005-1"></script></body></html>

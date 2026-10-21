@@ -17,6 +17,7 @@ GitHub Pages: https://handul7.github.io/hermes-local-lab/
 - 10/5 활용 조사: M6·구형 Mac 사례 구분, 전체 자막/설명/글의 확인 범위, 문서 검색·PDF·창작 적용안
 - 보유 RX 7900 GRE 16GB의 Ollama 지원과 이미지 생성 조건, Mac과 Windows의 역할 분담
 - 30만 원 미만 DAS vs 2베이 NAS, DAS 자체 절전, SMB 공유 및 Mac·Windows 백업 배치
+- 10/21 X·Threads 추가 조사: Raon 공식 MLX의 접근·메모리 조건, Phonon 언어·라이선스, OMP와 Perplexity의 선택 기준. 원문·공식 설치 경로를 함께 제공하며 발표와 실측을 구분합니다.
 
 2026-10-05 초기 설정·연결 문서 확인. 기존 모델·후기별 확인일과 실제 기기 실측 여부는 별도로 표기합니다. 기본 앱 구성은 로그인 후 운영을 전제로 하며, 완전 무인 재부팅 복구를 보장하지 않습니다.
 
