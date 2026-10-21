@@ -6,6 +6,9 @@
     {name:'후기·자료',pages:[['reviews','실사용 후기'],['sources','공식 출처'],['glossary','용어집']],auxiliary:['sources','glossary']}
   ];
   const terms = [
+    ['Clef Flash','Cloudflare · 로컬 판단 모델','에이전트','문서 분류·후보 선택·이미지 판단처럼 정해진 결정을 돕는 공개 모델. 일반 대화 모델과 역할이 다르며 한국어 평가와 도구 실행 승인은 별도로 필요합니다.','architecture'],
+    ['TTFT','Time to first token · 첫 응답 지연','모델','요청을 보내고 첫 토큰을 받기까지 걸리는 시간. 생성 속도(tokens/s)가 빨라도 긴 문서를 처음 읽는 시간이 길면 체감 응답은 느릴 수 있습니다.','reviews'],
+    ['Splash','Apple Silicon 가속 엔진','모델','특정 모델 구조를 가속하는 실행 엔진. 앱마다 지원 모델·OS·메모리 조건이 다릅니다. 다른 실행기의 32GB 사용기가 LM Studio Bionic의 공식 36GB 최소 조건을 바꾸지는 않습니다.','models'],
     ['DAS','직접 연결 저장장치 · 다스','기본','USB 등으로 컴퓨터 한 대에 연결하는 저장장치. 맥미니가 SMB로 공유하면 Windows·MacBook도 네트워크로 접근할 수 있습니다.','storage'],
     ['NAS','네트워크 저장장치 · 나스','기본','컴퓨터와 별도로 켜 두고 네트워크에서 파일 공유·백업을 제공하는 장치. AI 실행용 SSD나 별도 백업 사본을 자동으로 대체하지는 않습니다.','storage'],
     ['SMB','파일 공유 · Windows 공유','기본','Mac과 Windows가 네트워크로 파일에 접근하는 규약. Mac에 연결한 APFS 디스크도 Mac의 SMB 공유를 통해 Windows에서 사용할 수 있습니다.','storage'],
@@ -196,7 +199,7 @@
   // Model recommendations describe fit and licensing, not unmeasured benchmark scores.
   const footer=document.querySelector('.footer');footer.replaceChildren();
   const footerName=document.createElement('span');footerName.textContent='Hermes Local Lab · 독립적인 개인 구축 가이드';
-  const footerDate=document.createElement('span');footerDate.textContent='구성 정리 2026.10.05 · 자료 확인일은 항목별 표기';footer.append(footerName,footerDate);
+  const footerDate=document.createElement('span');footerDate.textContent='자료 점검 2026.10.21 · 확인 범위는 항목별 표기';footer.append(footerName,footerDate);
   const utilityLinks=document.createElement('nav');utilityLinks.className='footer-utilities';utilityLinks.setAttribute('aria-label','참고 자료');
   utilityLinks.innerHTML='<a href="#sources">공식 출처·확인 범위</a><a href="#glossary">용어집</a><a href="#macbook">맥북 준비</a>';footer.prepend(utilityLinks);
   const policy=document.createElement('details');policy.className='editorial-detail source-policy';
@@ -216,7 +219,9 @@
   const history=document.createElement('details');history.className='editorial-detail';history.innerHTML='<summary>날짜별 조사 범위·변경 기록</summary>';
   [...policy.children].filter(node=>node.tagName!=='SUMMARY').forEach(node=>history.append(node));
   const scope=document.createElement('p');scope.textContent='공식 지원·커뮤니티 사용기·이 가이드의 활용 제안을 구분합니다. 모델의 한국어 품질, 속도와 새 맥미니의 무인 운영은 직접 시험 전입니다. 확인일은 항목별로 다르며, 사이트 구성을 정리한 날이 전체 정보의 재검증일은 아닙니다.';
-  policy.append(scope,history);
+  const currentScope=document.createElement('p');
+  currentScope.innerHTML='2026.10.21: 실행기 정식 버전, 기본 모델 6개와 음성·이미지·검색 후보의 배포 조건, Clef Flash·Jev의 역할, M6 저장장치 연결 조건을 다시 확인했습니다. 같은 M6 32GB 공개 측정과 최근 Reddit 원문을 추가했습니다. 새 YouTube 영상은 설명·챕터까지만 확인했고 전체 자막은 확보하지 못했습니다. X·Threads의 새 근거는 충분히 확인하지 못해 이번 사례 목록에 넣지 않았습니다. <a href="#sources" data-guide-detail="currentAudit">이번 점검표·남은 확인 사항 →</a>';
+  policy.append(scope,currentScope,history);
   // Short local outline: no extra top-level menu or sidebar.
   panels.forEach(panel=>{
     panel.querySelector('h2')?.setAttribute('aria-level','1');

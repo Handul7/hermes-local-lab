@@ -1,7 +1,7 @@
 /* Curated 32GB candidates. Download size is not runtime RAM. No installation is performed. */
 (() => {
   const models = [
-    {id:'qwen9b',name:'Qwen3.5 9B',runtime:'ollama',tags:['agent','code','docs','meeting'],agent:true,command:'ollama run qwen3.5:9b',url:'https://ollama.com/library/qwen3.5:9b',size:'6.6GB / Q4_K_M',role:'일반 대화·한국어 문서 요약. Hermes의 실제 도구 호출은 별도 시험합니다.'},
+    {id:'qwen9b',name:'Qwen3.5 9B',runtime:'ollama',tags:['agent','code','docs','meeting'],agent:true,command:'ollama run qwen3.5:9b',url:'https://ollama.com/library/qwen3.5:9b',size:'7.6GB(MLX) / 6.6GB(GGUF Q4_K_M)',role:'일반 대화·한국어 문서 요약. Hermes의 실제 도구 호출은 별도 시험합니다.'},
     {id:'gemma12b',name:'Gemma 4 12B',runtime:'ollama',tags:['agent','docs','image'],agent:true,command:'ollama run gemma4:12b',url:'https://ollama.com/library/gemma4:12b',size:'약 7.7GB MLX / 8.0GB GGUF Q4_K_M',role:'문서 이미지·화면 캡처 이해와 글쓰기. Qwen 대신 비교할 후보입니다.'},
     {id:'ministral8b',name:'Ministral 3 8B',runtime:'ollama',tags:['agent','docs','code'],agent:true,command:'ollama run ministral-3:8b',url:'https://ollama.com/library/ministral-3:8b',size:'6.0GB / Q4_K_M',role:'다국어 문서·JSON 출력·도구 사용 비교. 필수 추가 설치는 아닙니다.'},
     {id:'gptoss20b',name:'gpt-oss 20B',runtime:'ollama',tags:['agent','code'],agent:true,command:'ollama run gpt-oss:20b',url:'https://ollama.com/library/gpt-oss:20b',size:'14GB / MXFP4',role:'작업 계획·추론·Hermes 메인 비교. 다른 생성 모델을 내리고 단독 실행부터 시작합니다.'},
