@@ -199,7 +199,7 @@
   // Model recommendations describe fit and licensing, not unmeasured benchmark scores.
   const footer=document.querySelector('.footer');footer.replaceChildren();
   const footerName=document.createElement('span');footerName.textContent='Hermes Local Lab · 독립적인 개인 구축 가이드';
-  const footerDate=document.createElement('span');footerDate.textContent='자료 점검 2026.10.21 · 확인 범위는 항목별 표기';footer.append(footerName,footerDate);
+  const footerDate=document.createElement('span');footerDate.textContent='자료 점검 2026.10.23 · 확인 범위는 항목별 표기';footer.append(footerName,footerDate);
   const utilityLinks=document.createElement('nav');utilityLinks.className='footer-utilities';utilityLinks.setAttribute('aria-label','참고 자료');
   utilityLinks.innerHTML='<a href="#sources">공식 출처·확인 범위</a><a href="#glossary">용어집</a><a href="#macbook">맥북 준비</a>';footer.prepend(utilityLinks);
   const policy=document.createElement('details');policy.className='editorial-detail source-policy';
@@ -221,6 +221,8 @@
   const scope=document.createElement('p');scope.textContent='공식 지원·커뮤니티 사용기·이 가이드의 활용 제안을 구분합니다. 모델의 한국어 품질, 속도와 새 맥미니의 무인 운영은 직접 시험 전입니다. 확인일은 항목별로 다르며, 사이트 구성을 정리한 날이 전체 정보의 재검증일은 아닙니다.';
   const currentScope=document.createElement('p');
   currentScope.innerHTML='2026.10.21: 실행기 정식 버전, 기본 모델 6개와 음성·이미지·검색 후보의 배포 조건, Clef Flash·Jev의 역할, M6 저장장치 연결 조건을 다시 확인했습니다. 같은 M6 32GB 공개 측정과 최근 Reddit 원문을 추가했습니다. X·Threads의 10/20–21 원문을 추가로 읽고 Raon·Phonon·OMP·Perplexity의 공식 조건을 대조했습니다. SNS 발표·소개는 내 기기 실측과 다릅니다. 새 YouTube 영상은 설명·챕터까지만 확인했고 전체 자막은 확보하지 못했습니다. <a href="#reviews" data-guide-detail="socialFieldNotes">SNS 추가 조사 →</a> · <a href="#sources" data-guide-detail="currentAudit">이번 점검표·남은 확인 사항 →</a>';
+  history.querySelector('summary').after(currentScope.cloneNode(true));
+  currentScope.innerHTML='2026.10.23: 10/25 설치를 앞두고 정식 실행기 버전·기본 모델 9개의 공개 조건·설치 흐름을 다시 확인했습니다. Hermes Desktop Local Models 기본 제공, OpenClaw의 Node.js 보안 조건, Raon의 공개 메타데이터와 README 불일치를 반영했습니다. 10/21 SNS 조사와 과거 가격 기록은 당시 확인일을 유지합니다. 사이트 동작 검증은 실제 맥미니의 모델 성능·백업·무인 복구 시험과 다릅니다. <a href="#start">첫날 6단계 →</a> · <a href="#sources" data-guide-detail="currentAudit">최종 점검 범위 →</a>';
   policy.append(scope,currentScope,history);
   // Short local outline: no extra top-level menu or sidebar.
   panels.forEach(panel=>{
@@ -242,7 +244,7 @@
   });
   const nextPages={macbook:['start','AI 서버 초기 설정','준비를 마쳤다면'],start:['workflows','첫 활용법','기본 설정을 마쳤다면'],models:['plan','내 설치 계획','필요한 도구를 골랐다면'],dictation:['workflows','활용 방법','받아쓴 문장을 활용하려면'],workflows:['architecture','Hermes 팀 구성','작업을 역할별로 나누려면'],architecture:['remote','원격 접속','밖에서도 사용하려면'],remote:['plan','내 설치 계획','설정할 도구를 정리하려면'],storage:['start','AI 서버 초기 설정','저장장치를 준비했다면'],reviews:['models','모델 비교','내 기기에 맞게 고르려면'],sources:['plan','내 설치 계획','설치 계획으로 돌아가기']};
   Object.entries(nextPages).forEach(([id,[target,title,reason]])=>{const nav=document.createElement('nav');nav.className='reading-next';nav.setAttribute('aria-label','다음 가이드');const small=document.createElement('span');small.textContent=reason;const a=document.createElement('a');a.href='#'+target;a.textContent=title+' →';nav.append(small,a);document.getElementById(id).append(nav)});
-  document.querySelectorAll('th').forEach(th=>th.scope='col');
+  document.querySelectorAll('th').forEach(th=>{if(!th.hasAttribute('scope'))th.scope='col'});
   document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>document.querySelector('.panel.active h2')?.focus({preventScroll:true})));
   const skip=document.createElement('a');skip.href='#start';skip.className='skip-content';skip.textContent='본문으로 이동';skip.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();document.querySelector('.panel.active h2')?.focus()});document.body.prepend(skip);
   document.querySelectorAll('.table-wrap').forEach(wrap=>{if(wrap.closest('#dictation')||wrap.classList.contains('free-model-wrap'))return;wrap.tabIndex=0;wrap.setAttribute('role','region');wrap.setAttribute('aria-label',(wrap.closest('.panel').querySelector('h2')?.textContent||'비교')+' 표, 좁은 화면에서는 좌우 스크롤');const hint=document.createElement('p');hint.className='table-scroll-hint';hint.textContent='표가 잘리면 좌우로 밀어서 확인하세요.';wrap.before(hint)});

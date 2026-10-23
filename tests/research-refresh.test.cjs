@@ -15,11 +15,11 @@ function detail(id){
 }
 test('current runtime advice is dated, sourced, stable-only and memory-qualified',()=>{
   const runtime=detail('runtimeUpdate');
-  for(const version of ['0.40.6','0.22.2','0.7.1','0.4.26','1.1.8'])assert.ok(runtime.includes(version),version);
-  for(const phrase of ['2026.10.21','GGUF','모든 GGUF가 되는 것은 아닙니다','메모리 보호','백업','localhost:11434/v1','localhost:8000/v1'])assert.ok(runtime.includes(phrase),phrase);
+  for(const version of ['0.40.8','0.22.4','0.7.2','0.4.26 Build 5','1.1.9'])assert.ok(runtime.includes(version),version);
+  for(const phrase of ['2026.10.23','GGUF','모든 GGUF가 되는 것은 아닙니다','메모리 보호','백업','localhost:11434/v1','localhost:8000/v1'])assert.ok(runtime.includes(phrase),phrase);
   assert.ok(detail('octoberSetupAudit').includes('이전 기록'));
   assert.ok(detail('localWatchlist').includes('36GB'));
-  assert.ok(navigation.includes('자료 점검 2026.10.21'));
+  assert.ok(navigation.includes('자료 점검 2026.10.23'));
 });
 test('Qwen download sizes agree across comparison and interactive installer',()=>{
   const sizing='7.6GB(MLX) / 6.6GB(GGUF Q4_K_M)';

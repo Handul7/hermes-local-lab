@@ -18,6 +18,7 @@ GitHub Pages: https://handul7.github.io/hermes-local-lab/
 - 보유 RX 7900 GRE 16GB의 Ollama 지원과 이미지 생성 조건, Mac과 Windows의 역할 분담
 - 30만 원 미만 DAS vs 2베이 NAS, DAS 자체 절전, SMB 공유 및 Mac·Windows 백업 배치
 - 10/21 X·Threads 추가 조사: Raon 공식 MLX의 접근·메모리 조건, Phonon 언어·라이선스, OMP와 Perplexity의 선택 기준. 원문·공식 설치 경로를 함께 제공하며 발표와 실측을 구분합니다.
+- 10/23 설치 전 최종 점검: 실행기 정식 버전, Hermes 내장 Local Models 제공 범위, OpenClaw Node.js 보안 조건과 설치 경로, Raon 접근 안내 불일치를 반영했습니다. 첫날은 Ollama + Qwen 9B + Hermes와 재접속 확인에 집중합니다.
 
 2026-10-05 초기 설정·연결 문서 확인. 기존 모델·후기별 확인일과 실제 기기 실측 여부는 별도로 표기합니다. 기본 앱 구성은 로그인 후 운영을 전제로 하며, 완전 무인 재부팅 복구를 보장하지 않습니다.
 
@@ -30,6 +31,8 @@ GitHub Pages: https://handul7.github.io/hermes-local-lab/
 연결된 서비스는 각 서비스의 정책을 따릅니다. 브랜드 로고의 권리는 각 권리자에게 있습니다. 일부 브랜드 아이콘은 [Lobe Icons](https://github.com/lobehub/lobe-icons)를 참고합니다. Apple 또는 도구 개발사의 공식 사이트가 아닌 독립적인 개인 가이드입니다.
 
 모델·가격·지원 환경은 변할 수 있으므로 설치 전 공식 출처를 확인하세요. 기기 성능과 한국어 정확도를 직접 실측한 벤치마크가 아닙니다.
+
+10/23 확인 범위는 사이트의 ‘공식 출처 → 최종 점검표’에 명시합니다. 이전 SNS 조사·가격·실험 기록 전체를 같은 날짜로 갱신하지 않습니다. `node --test tests/*.test.cjs`로 설치 흐름·상태 저장·출처 구분·콘텐츠 일관성 회귀 테스트를 실행할 수 있습니다.
 
 ## 구성
 
