@@ -6,6 +6,7 @@
     {name:'후기·자료',pages:[['reviews','실사용 후기'],['sources','공식 출처'],['glossary','용어집']],auxiliary:['sources','glossary']}
   ];
   const terms = [
+    ['ego(lite)','에고라이트 · Ego Lite · ego-browser','에이전트','Hermes 같은 에이전트가 웹페이지를 읽고 조작하는 로컬 브라우저. 무료 LLM이 아니며 연결 모델의 요금·외부 전송은 별도입니다. 작업 공간인 Space를 나눠도 기존 로그인 계정 접근까지 차단하는 보안 샌드박스는 아닙니다.','architecture'],
     ['Clef Flash','Cloudflare · 로컬 판단 모델','에이전트','문서 분류·후보 선택·이미지 판단처럼 정해진 결정을 돕는 공개 모델. 일반 대화 모델과 역할이 다르며 한국어 평가와 도구 실행 승인은 별도로 필요합니다.','architecture'],
     ['TTFT','Time to first token · 첫 응답 지연','모델','요청을 보내고 첫 토큰을 받기까지 걸리는 시간. 생성 속도(tokens/s)가 빨라도 긴 문서를 처음 읽는 시간이 길면 체감 응답은 느릴 수 있습니다.','reviews'],
     ['Splash','Apple Silicon 가속 엔진','모델','특정 모델 구조를 가속하는 실행 엔진. 앱마다 지원 모델·OS·메모리 조건이 다릅니다. 다른 실행기의 32GB 사용기가 LM Studio Bionic의 공식 36GB 최소 조건을 바꾸지는 않습니다.','models'],
@@ -138,7 +139,17 @@
   [...new Set(rows.map(r=>r.cells[0].textContent.trim()))].forEach(key=>{const o=document.createElement('option');o.value=key;o.textContent=fieldNames[key]+' · '+key;modelSelect.append(o)});
   function filterModels(){let count=0;rows.forEach(r=>{r.hidden=(!!modelSelect.value&&r.cells[0].textContent.trim()!==modelSelect.value)||(!!modelOrigin.value&&r.dataset.origin!==modelOrigin.value);if(!r.hidden)count++});filter.querySelector('#modelCount').textContent=count?count+'개 실사용 후보 · 설치 경로 확인 / 실기기 검증 전':'해당 조건의 모델이 없습니다. 분야 또는 개발사를 전체로 바꿔보세요.'}
   modelSelect.value='LLM';[modelSelect,modelOrigin].forEach(select=>select.addEventListener('change',filterModels));filterModels();
-  document.querySelectorAll('[data-copy-command]').forEach(button=>button.addEventListener('click',async()=>{const code=document.getElementById(button.dataset.copyCommand);try{await navigator.clipboard.writeText(code.textContent);button.textContent='복사됨';}catch{button.textContent='직접 선택해 복사';}setTimeout(()=>button.textContent='명령 복사',2500)}));
+  document.querySelectorAll('[data-copy-command]').forEach(button=>{
+    const originalLabel=button.textContent;
+    let restoreTimer;
+    button.addEventListener('click',async()=>{
+      clearTimeout(restoreTimer);
+      const code=document.getElementById(button.dataset.copyCommand);
+      try{await navigator.clipboard.writeText(code.textContent);button.textContent='복사됨';}
+      catch{button.textContent='직접 선택해 복사';}
+      restoreTimer=setTimeout(()=>button.textContent=originalLabel,2500);
+    });
+  });
   const siteNote=document.createElement('p');siteNote.className='visitor-note';siteNote.textContent='Apple Silicon Mac · 메모리 32GB 구성을 중심으로 한 개인 구축 가이드입니다. 설치 목록은 이 브라우저에만 저장되며 계정 동기화나 실제 설치를 수행하지 않습니다. 모델·가격·지원 환경은 설치 전 공식 출처에서 확인하세요.';
   document.querySelector('.footer').before(siteNote);
 
@@ -222,7 +233,7 @@
   const currentScope=document.createElement('p');
   currentScope.innerHTML='2026.10.21: 실행기 정식 버전, 기본 모델 6개와 음성·이미지·검색 후보의 배포 조건, Clef Flash·Jev의 역할, M6 저장장치 연결 조건을 다시 확인했습니다. 같은 M6 32GB 공개 측정과 최근 Reddit 원문을 추가했습니다. X·Threads의 10/20–21 원문을 추가로 읽고 Raon·Phonon·OMP·Perplexity의 공식 조건을 대조했습니다. SNS 발표·소개는 내 기기 실측과 다릅니다. 새 YouTube 영상은 설명·챕터까지만 확인했고 전체 자막은 확보하지 못했습니다. <a href="#reviews" data-guide-detail="socialFieldNotes">SNS 추가 조사 →</a> · <a href="#sources" data-guide-detail="currentAudit">이번 점검표·남은 확인 사항 →</a>';
   history.querySelector('summary').after(currentScope.cloneNode(true));
-  currentScope.innerHTML='2026.10.23: 10/25 설치를 앞두고 정식 실행기 버전·기본 모델 9개의 공개 조건·설치 흐름을 다시 확인했습니다. Hermes Desktop Local Models 기본 제공, OpenClaw의 Node.js 보안 조건, Raon의 공개 메타데이터와 README 불일치를 반영했습니다. 10/21 SNS 조사와 과거 가격 기록은 당시 확인일을 유지합니다. 사이트 동작 검증은 실제 맥미니의 모델 성능·백업·무인 복구 시험과 다릅니다. <a href="#start">첫날 6단계 →</a> · <a href="#sources" data-guide-detail="currentAudit">최종 점검 범위 →</a>';
+  currentScope.innerHTML='2026.10.23: 10/25 설치를 앞두고 정식 실행기 버전·기본 모델 9개의 공개 조건·설치 흐름을 다시 확인했습니다. Hermes Desktop Local Models 기본 제공, OpenClaw의 Node.js 보안 조건, Raon의 공개 메타데이터와 README 불일치를 반영했습니다. ego(lite)의 설치·Hermes 연결·무료 범위·로그인 권한을 추가 조사해 선택 도구로 정리했습니다. 10/21 SNS 조사와 과거 가격 기록은 당시 확인일을 유지합니다. 사이트 동작 검증은 실제 맥미니의 모델 성능·백업·무인 복구 시험과 다릅니다. <a href="#start">첫날 6단계 →</a> · <a href="#architecture" data-guide-detail="setupEgolite">에고라이트 →</a> · <a href="#sources" data-guide-detail="currentAudit">최종 점검 범위 →</a>';
   policy.append(scope,currentScope,history);
   // Short local outline: no extra top-level menu or sidebar.
   panels.forEach(panel=>{

@@ -19,6 +19,7 @@ GitHub Pages: https://handul7.github.io/hermes-local-lab/
 - 30만 원 미만 DAS vs 2베이 NAS, DAS 자체 절전, SMB 공유 및 Mac·Windows 백업 배치
 - 10/21 X·Threads 추가 조사: Raon 공식 MLX의 접근·메모리 조건, Phonon 언어·라이선스, OMP와 Perplexity의 선택 기준. 원문·공식 설치 경로를 함께 제공하며 발표와 실측을 구분합니다.
 - 10/23 설치 전 최종 점검: 실행기 정식 버전, Hermes 내장 Local Models 제공 범위, OpenClaw Node.js 보안 조건과 설치 경로, Raon 접근 안내 불일치를 반영했습니다. 첫날은 Ollama + Qwen 9B + Hermes와 재접속 확인에 집중합니다.
+- 10/23 ego(lite) 추가: 선택형 웹 조사 브라우저로 분류하고 공식 Hermes 연결·설치 경로, 무료 범위, 앱/스킬 버전 차이, 로그인·외부 전송·승인 조건을 정리했습니다. 로컬 Qwen 예제와 내 M6 실측을 구분하며 실제 앱 설치나 계정 연결은 수행하지 않았습니다.
 
 2026-10-05 초기 설정·연결 문서 확인. 기존 모델·후기별 확인일과 실제 기기 실측 여부는 별도로 표기합니다. 기본 앱 구성은 로그인 후 운영을 전제로 하며, 완전 무인 재부팅 복구를 보장하지 않습니다.
 
