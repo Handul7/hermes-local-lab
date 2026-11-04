@@ -30,7 +30,7 @@ test('Raon remains a preview trial with explicit access uncertainty, not a 4B-me
 test('Phonon is not presented as Korean TTS or uniformly commercially free',()=>{
   const phonon=detail('socialPhonon');
   for(const phrase of ['영어 전용','64.5MB','Apache 2.0','CC BY-NC 4.0','한국어 가중치 공개가 아닙니다','v0.4.0','Qwen3-TTS'])assert.ok(phonon.includes(phrase),phrase);
-  assert.ok(detail('geminiTtsUpdate').includes('한국어가 없습니다'));
+  assert.ok(detail('geminiTtsUpdate').includes('Phonon 공개 모델은 한국어 미지원'));
 });
 test('optional agents retain cost, access and memory boundaries',()=>{
   const omp=detail('socialOmp'),perplexity=detail('socialPerplexity');

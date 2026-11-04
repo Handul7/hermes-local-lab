@@ -34,7 +34,7 @@ test('ego privacy does not equate task spaces or local files with safe offline p
 });
 test('ego versions and published benchmarks are not presented as local execution tests',()=>{
   const verification=detail('egoliteVerification');
-  for(const phrase of ['v2.1.0','0.6.0.15','0.6.0.20','HTTP 헤더','설치 파일 실행·서명 검증','headless 브라우저가 아닙니다','30분','M6·Qwen 9B 실측이 아닙니다','실제 제어·M6 성능 시험은 하지 않았습니다'])assert.ok(verification.includes(phrase),phrase);
+  for(const phrase of ['v2.1.0','0.6.2.7','11/3','에이전트 플러그인은 따로 갱신','설치 파일 실행·서명 검증','headless 브라우저가 아닙니다','30분','M6·Qwen 9B 실측이 아닙니다','실제 제어·M6 성능 시험은 하지 않았습니다'])assert.ok(verification.includes(phrase),phrase);
 });
 test('ego is reachable from setup, workflows, audit and glossary without a new route',()=>{
   for(const id of ['start','workflows','sources']){

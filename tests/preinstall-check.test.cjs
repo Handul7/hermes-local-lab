@@ -15,10 +15,10 @@ function detail(id){
   assert.fail('Unclosed details: '+id);
 }
 test('install-day guide keeps one free model and makes latest checks time-bounded',()=>{
-  assert.ok(html.includes('10/25 설치 준비'));
-  assert.ok(html.includes('2026-10-23'));
+  assert.ok(html.includes('오늘의 이전 준비'));
+  assert.ok(html.includes('2026-11-05'));
   const runtime=detail('runtimeUpdate');
-  for(const phrase of ['10/25 설치 당일','hermes update','23GB','32GB 첫 서버에서는 보류'])assert.ok(runtime.includes(phrase),phrase);
+  for(const phrase of ['2026.11.05','hermes update','23GB','32GB 첫 서버에서는 보류'])assert.ok(runtime.includes(phrase),phrase);
   assert.equal((html.match(/data-server-done=/g)||[]).length,6);
   assert.equal((html.match(/data-model-pick=/g)||[]).length,6);
 });
@@ -28,14 +28,14 @@ test('Hermes local alternative is stable-channel aware and avoids duplicate serv
   assert.ok(!html.includes('현재 canary 또는'));
   assert.ok(html.includes('data-guide-detail="hermesLocalAlternative"'));
 });
-test('OpenClaw has exact patched Node floors and no assumed Mac DMG',()=>{
+test('OpenClaw distinguishes supported Node floors, security advice and official Mac DMG',()=>{
   const claw=detail('setupOpenClaw');
-  for(const phrase of ['v2026.10.6','10/22','24.22.1','26.12.1','node --version','Mac DMG 첨부가 확인되지 않아','/v1을 붙이지 않습니다'])assert.ok(claw.includes(phrase),phrase);
+  for(const phrase of ['v2026.10.10','11/3','24.16.0','26.1.0','24.22.1','26.12.1','node --version','Mac arm64 DMG','/v1을 붙이지 않습니다'])assert.ok(claw.includes(phrase),phrase);
   assert.ok(claw.includes('https://docs.openclaw.ai/install'));
 });
 test('audit distinguishes fresh verification from historical research',()=>{
   const audit=detail('currentAudit');
-  for(const phrase of ['2026.10.23','10/21 수집 기록 유지','10/21 조사 유지','이번에 재견적하지 않음'])assert.ok(audit.includes(phrase),phrase);
+  for(const phrase of ['2026.11.05','10/21 수집 기록 유지','10/21 조사 유지','이번에 재견적하지 않음'])assert.ok(audit.includes(phrase),phrase);
   assert.ok(navigation.includes('currentScope.cloneNode(true)'));
   assert.ok(navigation.includes('2026.10.21:'));
 });

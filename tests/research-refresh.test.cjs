@@ -15,11 +15,11 @@ function detail(id){
 }
 test('current runtime advice is dated, sourced, stable-only and memory-qualified',()=>{
   const runtime=detail('runtimeUpdate');
-  for(const version of ['0.40.8','0.22.4','0.7.2','0.4.26 Build 5','1.1.9'])assert.ok(runtime.includes(version),version);
-  for(const phrase of ['2026.10.23','GGUF','모든 GGUF가 되는 것은 아닙니다','메모리 보호','백업','localhost:11434/v1','localhost:8000/v1'])assert.ok(runtime.includes(phrase),phrase);
+  for(const version of ['0.40.14','0.22.7','0.7.3','0.4.28 Build 2','1.1.10'])assert.ok(runtime.includes(version),version);
+  for(const phrase of ['2026.11.05','GGUF','모든 GGUF가 되는 것은 아닙니다','메모리 보호','백업','localhost:11434/v1','localhost:8000/v1'])assert.ok(runtime.includes(phrase),phrase);
   assert.ok(detail('octoberSetupAudit').includes('이전 기록'));
   assert.ok(detail('localWatchlist').includes('36GB'));
-  assert.ok(navigation.includes('자료 점검 2026.10.23'));
+  assert.ok(navigation.includes('자료 점검 2026.11.05'));
 });
 test('Qwen download sizes agree across comparison and interactive installer',()=>{
   const sizing='7.6GB(MLX) / 6.6GB(GGUF Q4_K_M)';
@@ -36,7 +36,7 @@ test('new research distinguishes public measurements, self-reports and inaccessi
 test('local decision models do not imply authorization or free cloud inference',()=>{
   const decisions=detail('localDecisionModels');
   for(const phrase of ['Clef Flash 9B','Apache 2.0','32GB','한국어','승인','Tev1','confidence'])assert.ok(decisions.includes(phrase),phrase);
-  assert.ok(html.includes('jev-latest → 1.13.0'));
+  assert.ok(html.includes('jev-latest → 1.14.0'));
   assert.ok(html.includes('jev-preview → 1.14.0'));
   assert.ok(html.includes('서버'));
   assert.ok(navigation.includes("['Clef Flash'"));

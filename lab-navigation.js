@@ -8,6 +8,7 @@
   const terms = [
     ['ego(lite)','에고라이트 · Ego Lite · ego-browser','에이전트','Hermes 같은 에이전트가 웹페이지를 읽고 조작하는 로컬 브라우저. 무료 LLM이 아니며 연결 모델의 요금·외부 전송은 별도입니다. 작업 공간인 Space를 나눠도 기존 로그인 계정 접근까지 차단하는 보안 샌드박스는 아닙니다.','architecture'],
     ['Clef Flash','Cloudflare · 로컬 판단 모델','에이전트','문서 분류·후보 선택·이미지 판단처럼 정해진 결정을 돕는 공개 모델. 일반 대화 모델과 역할이 다르며 한국어 평가와 도구 실행 승인은 별도로 필요합니다.','architecture'],
+    ['프로필 이전','마이그레이션 · migration · 백업','운영','기존 Hermes의 필요한 설정·스킬·메모리를 새 기기의 새 이름으로 가져오는 과정. 전체 백업과 포함 범위가 다르며 인증·경로·예약 작업은 다시 확인합니다.','start'],
     ['TTFT','Time to first token · 첫 응답 지연','모델','요청을 보내고 첫 토큰을 받기까지 걸리는 시간. 생성 속도(tokens/s)가 빨라도 긴 문서를 처음 읽는 시간이 길면 체감 응답은 느릴 수 있습니다.','reviews'],
     ['Splash','Apple Silicon 가속 엔진','모델','특정 모델 구조를 가속하는 실행 엔진. 앱마다 지원 모델·OS·메모리 조건이 다릅니다. 다른 실행기의 32GB 사용기가 LM Studio Bionic의 공식 36GB 최소 조건을 바꾸지는 않습니다.','models'],
     ['DAS','직접 연결 저장장치 · 다스','기본','USB 등으로 컴퓨터 한 대에 연결하는 저장장치. 맥미니가 SMB로 공유하면 Windows·MacBook도 네트워크로 접근할 수 있습니다.','storage'],
@@ -210,7 +211,7 @@
   // Model recommendations describe fit and licensing, not unmeasured benchmark scores.
   const footer=document.querySelector('.footer');footer.replaceChildren();
   const footerName=document.createElement('span');footerName.textContent='Hermes Local Lab · 독립적인 개인 구축 가이드';
-  const footerDate=document.createElement('span');footerDate.textContent='자료 점검 2026.10.23 · 확인 범위는 항목별 표기';footer.append(footerName,footerDate);
+  const footerDate=document.createElement('span');footerDate.textContent='자료 점검 2026.11.05 · 확인 범위는 항목별 표기';footer.append(footerName,footerDate);
   const utilityLinks=document.createElement('nav');utilityLinks.className='footer-utilities';utilityLinks.setAttribute('aria-label','참고 자료');
   utilityLinks.innerHTML='<a href="#sources">공식 출처·확인 범위</a><a href="#glossary">용어집</a><a href="#macbook">맥북 준비</a>';footer.prepend(utilityLinks);
   const policy=document.createElement('details');policy.className='editorial-detail source-policy';
@@ -234,6 +235,8 @@
   currentScope.innerHTML='2026.10.21: 실행기 정식 버전, 기본 모델 6개와 음성·이미지·검색 후보의 배포 조건, Clef Flash·Jev의 역할, M6 저장장치 연결 조건을 다시 확인했습니다. 같은 M6 32GB 공개 측정과 최근 Reddit 원문을 추가했습니다. X·Threads의 10/20–21 원문을 추가로 읽고 Raon·Phonon·OMP·Perplexity의 공식 조건을 대조했습니다. SNS 발표·소개는 내 기기 실측과 다릅니다. 새 YouTube 영상은 설명·챕터까지만 확인했고 전체 자막은 확보하지 못했습니다. <a href="#reviews" data-guide-detail="socialFieldNotes">SNS 추가 조사 →</a> · <a href="#sources" data-guide-detail="currentAudit">이번 점검표·남은 확인 사항 →</a>';
   history.querySelector('summary').after(currentScope.cloneNode(true));
   currentScope.innerHTML='2026.10.23: 10/25 설치를 앞두고 정식 실행기 버전·기본 모델 9개의 공개 조건·설치 흐름을 다시 확인했습니다. Hermes Desktop Local Models 기본 제공, OpenClaw의 Node.js 보안 조건, Raon의 공개 메타데이터와 README 불일치를 반영했습니다. ego(lite)의 설치·Hermes 연결·무료 범위·로그인 권한을 추가 조사해 선택 도구로 정리했습니다. 10/21 SNS 조사와 과거 가격 기록은 당시 확인일을 유지합니다. 사이트 동작 검증은 실제 맥미니의 모델 성능·백업·무인 복구 시험과 다릅니다. <a href="#start">첫날 6단계 →</a> · <a href="#architecture" data-guide-detail="setupEgolite">에고라이트 →</a> · <a href="#sources" data-guide-detail="currentAudit">최종 점검 범위 →</a>';
+  history.querySelector('summary').after(currentScope.cloneNode(true));
+  currentScope.innerHTML='2026.11.05: 기존 맥북에서 새 맥미니로 옮기는 백업·프로필 선별 이전·재접속 순서를 추가했습니다. Ollama·Hermes·oMLX·LM Studio, OpenClaw·ego(lite)·Handy·MLX Audio·MLX-Serve의 공식 배포를 확인했습니다. 기본 모델 9개를 유지하고 LFM3 텍스트·음성은 별도 비교 후보로, Jev 별칭은 1.14.0으로 갱신했습니다. 실제 맥미니 설치·마이그레이션·M6 성능 시험은 하지 않았습니다. SNS 사용기는 10/21 수집 기록을 유지합니다. <a href="#start" data-guide-detail="migrationDay">오늘 이전 순서 →</a> · <a href="#sources" data-guide-detail="currentAudit">확인 범위 →</a>';
   policy.append(scope,currentScope,history);
   // Short local outline: no extra top-level menu or sidebar.
   panels.forEach(panel=>{
